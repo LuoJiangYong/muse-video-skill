@@ -21,6 +21,7 @@
 | OLDSPICE-MAN | The Man Your Man Could Smell Like | commercial | 2010 | Tom Kuntz | studio-ad | product-demo | 单镜头喜剧, 连续转场, 荒诞推销, 打破第四面墙, 病毒传播 |
 | JOHNLEWIS-PENGUIN | Monty the Penguin | commercial | 2014 | Dougal Wilson | studio-ad | product-demo | 圣诞叙事, 情感蓄力, 儿童视角, CGI角色, 节日音乐 |
 | SONY-BALLS | Balls | commercial | 2005 | Nicolai Fuglsig | product-demo | studio-ad | 色彩爆炸, 实拍奇观, 纯视觉叙事, 音乐驱动, 无CG |
+| VOLVO-SPLIT | The Epic Split | commercial | 2013 | Andreas Nilsson | product-demo | studio-ad | 人体极限, 产品演示即表演, 极简叙事, 病毒传播, 一镜到底 |
 
 ### 类型枚举
 
@@ -74,6 +75,10 @@
 | 无叙事纯视觉 | SONY-BALLS |
 | 产品隐喻叙事 | SONY-BALLS |
 | Show-Dont-Tell极致 | SONY-BALLS |
+| 极简信息设计 | VOLVO-SPLIT |
+| 产品演示即叙事 | VOLVO-SPLIT |
+| 人生哲学旁白 | VOLVO-SPLIT |
+| 信任证明结构 | VOLVO-SPLIT |
 
 ### 镜头语言 (→ DP)
 
@@ -110,6 +115,10 @@
 | 广角全景多机位 | SONY-BALLS |
 | 色彩分组编排 | SONY-BALLS |
 | 微距弹跳特写 | SONY-BALLS |
+| 一镜到底航拍 | VOLVO-SPLIT |
+| 对称史诗构图 | VOLVO-SPLIT |
+| 黎明金色时刻 | VOLVO-SPLIT |
+| 中远景固定机位 | VOLVO-SPLIT |
 
 ### 色彩/美术 (→ Art Director)
 
@@ -137,6 +146,9 @@
 | 光谱顺序色彩 | SONY-BALLS |
 | 灰色街景vs饱和色 | SONY-BALLS |
 | Pantone级纯色 | SONY-BALLS |
+| 三色极简调色 | VOLVO-SPLIT |
+| 晨曦暖金+金属银 | VOLVO-SPLIT |
+| 逆光剪影轮廓 | VOLVO-SPLIT |
 
 ### 特效语言 (→ VFX)
 
@@ -167,6 +179,9 @@
 | 零CGI实拍调度 | SONY-BALLS |
 | 250K球物理 | SONY-BALLS |
 | 纯色彩分级后期 | SONY-BALLS |
+| 安全绳擦除 | VOLVO-SPLIT |
+| 零CGI人体极限 | VOLVO-SPLIT |
+| 实拍stunt调度 | VOLVO-SPLIT |
 
 ### 声音设计 (→ Sound Designer)
 
@@ -194,6 +209,9 @@
 | 音乐反差策略 | SONY-BALLS |
 | 无音效设计 | SONY-BALLS |
 | 歌曲去电子化改编 | SONY-BALLS |
+| 空灵女声反差 | VOLVO-SPLIT |
+| 信息层频谱分离 | VOLVO-SPLIT |
+| 旁白去广告化录音 | VOLVO-SPLIT |
 
 ### 创意广告专属 (→ Studio-Ad, Product-Demo)
 
@@ -206,7 +224,7 @@
 | 舞蹈编排 | APPLE-WH |
 | 非人类主角 | COSMOS-L |
 | 荒诞夸大策略 | OLDSPICE-MAN |
-| 病毒一句话公式 | OLDSPICE-MAN |
+| 病毒一句话公式 | OLDSPICE-MAN, VOLVO-SPLIT |
 | 幽默推销模型 | OLDSPICE-MAN |
 | 打破第四面墙广告 | OLDSPICE-MAN |
 | 情感蓄力公式 | JOHNLEWIS-PENGUIN |
@@ -216,6 +234,9 @@
 | 纯隐喻型广告 | SONY-BALLS |
 | 不做功能说明 | SONY-BALLS |
 | 感官替代功能 | SONY-BALLS |
+| 产品演示即表演 | VOLVO-SPLIT |
+| 极限信任证明 | VOLVO-SPLIT |
+| 极简信息密度 | VOLVO-SPLIT |
 
 ---
 
@@ -225,9 +246,9 @@
 
 | 场景类型 | 强相关案例 | 可参考案例 |
 |----------|----------|-----------|
-| studio-ad | APPLE-WH, APPLE-DB, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS | BR2049, NIKE-YCS |
+| studio-ad | APPLE-WH, APPLE-DB, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT | BR2049, NIKE-YCS |
 | logo-animation | NIKE-YCS, PACIFIC-RIM | APPLE-WH |
-| product-demo | NIKE-YCS, APPLE-DB, COSMOS-L, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS | APPLE-WH |
+| product-demo | NIKE-YCS, APPLE-DB, COSMOS-L, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT | APPLE-WH |
 | sci-fi | BR2049, COSMOS-L, WANDERING-E, PACIFIC-RIM | — |
 | custom (art-film) | WKW-ML | — |
 
@@ -239,9 +260,9 @@
 |-----------|---------|
 | cyberpunk | BR2049 |
 | cyberpunk-adjacent | WANDERING-E, PACIFIC-RIM |
-| minimalist | APPLE-DB, BR2049, SONY-BALLS |
+| minimalist | APPLE-DB, BR2049, SONY-BALLS, VOLVO-SPLIT |
 | surreal | APPLE-WH, COSMOS-L |
-| epic | BR2049, NIKE-YCS, WANDERING-E, PACIFIC-RIM, SONY-BALLS |
+| epic | BR2049, NIKE-YCS, WANDERING-E, PACIFIC-RIM, SONY-BALLS, VOLVO-SPLIT |
 | intimate | BR2049, WKW-ML |
 | energetic | NIKE-YCS, APPLE-DB, PACIFIC-RIM, OLDSPICE-MAN |
 | dreamy | APPLE-WH, COSMOS-L, WKW-ML, JOHNLEWIS-PENGUIN, SONY-BALLS |
@@ -260,12 +281,12 @@
 
 | 角色 | 必看案例 | 推荐案例 |
 |------|---------|---------|
-| Writer (编剧) | BR2049, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS | NIKE-YCS |
-| DP (摄影指导) | BR2049, APPLE-WH, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS | COSMOS-L |
-| Art Director (美术) | BR2049, APPLE-WH, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS | COSMOS-L |
-| VFX Supervisor (特效) | BR2049, APPLE-WH, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS | COSMOS-L |
-| Sound Designer (声音) | BR2049, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS | NIKE-YCS |
-| 广告创意综合 | APPLE-DB, NIKE-YCS, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS | APPLE-WH |
+| Writer (编剧) | BR2049, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT | NIKE-YCS |
+| DP (摄影指导) | BR2049, APPLE-WH, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT | COSMOS-L |
+| Art Director (美术) | BR2049, APPLE-WH, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT | COSMOS-L |
+| VFX Supervisor (特效) | BR2049, APPLE-WH, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT | COSMOS-L |
+| Sound Designer (声音) | BR2049, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT | NIKE-YCS |
+| 广告创意综合 | APPLE-DB, NIKE-YCS, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT | APPLE-WH |
 
 ---
 
@@ -310,4 +331,4 @@
 
 ---
 
-*最后更新：2026-06-12 | 案例总数：11（Phase 7-C: SONY-BALLS 完成）*
+*最后更新：2026-06-12 | 案例总数：12（Phase 7-D: VOLVO-SPLIT 完成 — 优先级1全部完成）*
