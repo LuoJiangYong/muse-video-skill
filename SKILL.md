@@ -1,7 +1,7 @@
 ---
 name: muse-video
 description: "Use when the user wants to plan, brainstorm, or design a video project — ads, product demos, logo animations, sci-fi shorts, or any creative video. This is a pre-production engine that produces a Creative Package (script + storyboard + art direction + prompts), NOT a video renderer. For actual video rendering and composition, route to HyperFrames; for AI image/video generation, route to ComfyUI."
-version: 0.4.0
+version: 0.5.0
 author: Hermes Agent + 钱多多
 license: MIT
 platforms: [linux, macos, windows]

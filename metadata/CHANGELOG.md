@@ -6,6 +6,49 @@
 
 ---
 
+## [0.5.0] — 2026-06-12
+
+### 新增 — Phase 5: 案例库扩充（4 个案例文件）
+
+**Apple Welcome Home — `references/cases/APPLE-WH.md` (219 行)**
+- Spike Jonze 为 Apple HomePod 执导的标杆级广告片
+- 14 项技法 × 5 角色维度：无对白叙事 / 身体驱动转场 / 单镜头错觉缝合 / 空间扭曲跟拍 / 360° 环绕运动 / 物理空间拉伸 VFX / 镜像无限反射 / 色彩渗入转场 / 音乐驱动节奏 / 环境音景空间定位 / 产品隐形植入 / 艺术家背书 / 感官替代功能
+- 6 场景色调对照表（灰→黄→蓝→粉→彩→灰）
+
+**Nike You Can't Stop Us — `references/cases/NIKE-YCS.md` (217 行)**
+- Oscar Hudson 执导，24 名运动员 × 36 种运动 × 53 组分屏匹配
+- 14 项技法 × 5 角色维度：隐喻剪辑 / 无旁白累积 / 集体叙事 / 分屏匹配几何精度 / 档案素材统一化 / 动态节奏数学设计 / 分屏匹配隐藏艺术 / 动态节奏变速 / 声画对位 / 静默爆发 / 品牌精神替代产品展示 / 集体共鸣 / 蓄力结构
+- 5 场景色调对照表 + 详细时间轴节奏参数
+
+**Apple Don't Blink — `references/cases/APPLE-DB.md` (226 行)**
+- Apple 2019 年终产品回顾，107 秒展示 80+ 功能点
+- 13 项技法 × 5 角色维度：功能叙事 / 极简旁白子弹规则 / 密度递增 S 曲线 / 高速剪辑第一帧即最终帧 / 产品密度空间 / 微距功能视觉化 / UI 标注叠加 / 产品极速转场 / 节奏递增音频 / 产品声音符号化 / 产品密度=竞争力 / 节奏递增心理操控 / 证明-不解释
+- 5 场景色调对照表 + 功能→画面映射公式
+
+**Cosmos Laundromat — `references/cases/COSMOS-L.md` (225 行)**
+- Blender Foundation 开源短片，暖色科幻的自然光革命
+- 14 项技法 × 5 角色维度：环境叙事 / 非人类主角情感 / 无对白情感渐进 / 自然光模拟 CG 革命 / 巨物尺度对比 / 微距材质凝视 / 虚拟摄影机物理感 / 材质渲染物理真实性 / 光传输模拟 / 体积光效情绪 / 异世界音景 / 音乐情感引导 / 材质声音地图
+- 7 场景色调对照表（从「绿色牢笼」到「蓝色自由」）
+
+### 修改
+
+- `SKILL.md`：版本号 0.4.0 → 0.5.0
+- `metadata/registry.yaml`：4 个案例文件 status=complete，Phase 5 统计；总文件数 39→43
+- `references/cases/INDEX.md`：最后更新日期标注 Phase 5 完成状态
+
+### 影响分析
+
+- 受影响的文件：`SKILL.md`, `metadata/registry.yaml`, `metadata/CHANGELOG.md`, `references/cases/INDEX.md`
+- 新增文件：4 个（APPLE-WH.md / NIKE-YCS.md / APPLE-DB.md / COSMOS-L.md）
+- 下游影响：SKILL.md 路由表无需修改（INDEX.md 交叉引用已在 Phase 1 完成）；场景文档中的案例引用表已预填这些案例 ID
+
+### 迁移指南
+
+- 无需迁移。所有 Phase 0-4 文件保持不变，Phase 5 为纯增量。
+- 4 个案例文件均按 `_TEMPLATE.md` 格式，与 BR2049.md 同深度标准，可直接被 Agent 引用。
+
+---
+
 ## [0.4.0] — 2026-06-12
 
 ### 新增 — Phase 4: 示例项目（2 个示例，16+ 文件）
