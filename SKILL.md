@@ -1,8 +1,8 @@
 ---
 name: muse-video
-description: "Use when the user wants to plan, brainstorm, or design a video project — ads, product demos, logo animations, sci-fi shorts, or any creative video. This is a pre-production engine that produces a Creative Package (script + storyboard + art direction + prompts), NOT a video renderer. For actual video rendering and composition, route to HyperFrames; for AI image/video generation, route to ComfyUI."
+description: "When the user asks to 策划/构思/设计/写脚本/画分镜 for a video project — e.g. '帮我策划一个广告创意' '这个产品演示视频怎么拍' '帮我写科幻短片的分镜脚本' '给我这个品牌TVC的美术方向'。Not for actual video rendering/compositing (route to HyperFrames) or AI image/video generation (route to ComfyUI)."
 version: 0.8.0
-author: Hermes Agent + 钱多多
+author: luojiangyong
 license: MIT
 platforms: [linux, macos, windows]
 metadata:
