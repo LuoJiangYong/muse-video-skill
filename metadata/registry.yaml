@@ -177,6 +177,15 @@ files:
     owner: case-library
     description: "Guinness Surfer 完整拆解（Jonathan Glazer, 17+ 技法 × 5 角色维度, 纯隐喻广告巅峰+黑白冲浪+等待史诗=史上最佳广告）"
 
+  - path: references/cases/APPLE-1984.md
+    role: case
+    phase: 7
+    status: complete
+    dependencies: [references/cases/_TEMPLATE.md]
+    dependents: [references/cases/INDEX.md]
+    owner: case-library
+    description: "Apple 1984 完整拆解（Ridley Scott, 17+ 技法 × 5 角色维度, 反乌托邦+品牌宣言+超级碗一次性播出=广告史上最有影响力的作品）"
+
   # --- Roles (Phase 2) ---
   - path: references/roles/director.md
     role: role-doc
@@ -483,7 +492,7 @@ files:
     description: "版本变更日志：每次修改的动机、影响、迁移指南"
 
 # --- 统计 ---
-# Total files: 52
+# Total files: 53
 # Phase 0 (complete): 2
 # Phase 1 (complete): 7
 # Phase 2 (complete): 16
@@ -491,4 +500,4 @@ files:
 # Phase 4 (complete): 2
 # Phase 5 (complete): 4
 # Phase 6 (complete): 3
-# Phase 7 (in-progress): 6
+# Phase 7 (in-progress): 7
