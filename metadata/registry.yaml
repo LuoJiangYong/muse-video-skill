@@ -60,6 +60,42 @@ files:
     owner: case-library
     description: "银翼杀手2049 完整拆解（12 技法 × 5 角色维度）"
 
+  - path: references/cases/APPLE-WH.md
+    role: case
+    phase: 5
+    status: complete
+    dependencies: [references/cases/_TEMPLATE.md, references/scenes/studio-ad.md, references/scenes/product-demo.md]
+    dependents: [references/cases/INDEX.md]
+    owner: case-library
+    description: "Apple Welcome Home 完整拆解（Spike Jonze, 14 技法 × 5 角色维度, 空间扭曲+音乐驱动=广告巅峰）"
+
+  - path: references/cases/NIKE-YCS.md
+    role: case
+    phase: 5
+    status: complete
+    dependencies: [references/cases/_TEMPLATE.md, references/scenes/product-demo.md, references/scenes/logo-animation.md]
+    dependents: [references/cases/INDEX.md]
+    owner: case-library
+    description: "Nike You Can't Stop Us 完整拆解（Oscar Hudson, 14 技法 × 5 角色维度, 分屏匹配+品牌精神=史诗广告）"
+
+  - path: references/cases/APPLE-DB.md
+    role: case
+    phase: 5
+    status: complete
+    dependencies: [references/cases/_TEMPLATE.md, references/scenes/product-demo.md, references/scenes/studio-ad.md]
+    dependents: [references/cases/INDEX.md]
+    owner: case-library
+    description: "Apple Don't Blink 完整拆解（13 技法 × 5 角色维度, 产品密度+节奏递增=极简暴力美学）"
+
+  - path: references/cases/COSMOS-L.md
+    role: case
+    phase: 5
+    status: complete
+    dependencies: [references/cases/_TEMPLATE.md, references/scenes/sci-fi.md, references/scenes/product-demo.md]
+    dependents: [references/cases/INDEX.md]
+    owner: case-library
+    description: "Cosmos Laundromat 完整拆解（Blender Foundation, 14 技法 × 5 角色维度, 开源动画的自然光革命）"
+
   # --- Roles (Phase 2) ---
   - path: references/roles/director.md
     role: role-doc
@@ -366,9 +402,10 @@ files:
     description: "版本变更日志：每次修改的动机、影响、迁移指南"
 
 # --- 统计 ---
-# Total files: 39
+# Total files: 43
 # Phase 0 (complete): 2
 # Phase 1 (complete): 7
 # Phase 2 (complete): 16
 # Phase 3 (complete): 12
 # Phase 4 (complete): 2
+# Phase 5 (complete): 4
