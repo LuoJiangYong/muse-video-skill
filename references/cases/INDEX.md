@@ -23,6 +23,7 @@
 | SONY-BALLS | Balls | commercial | 2005 | Nicolai Fuglsig | product-demo | studio-ad | 色彩爆炸, 实拍奇观, 纯视觉叙事, 音乐驱动, 无CG |
 | VOLVO-SPLIT | The Epic Split | commercial | 2013 | Andreas Nilsson | product-demo | studio-ad | 人体极限, 产品演示即表演, 极简叙事, 病毒传播, 一镜到底 |
 | HONDA-COG | The Cog / 齿轮 | commercial | 2003 | Antoine Bardou-Jacquet | product-demo | studio-ad | 连锁反应叙事, 产品零件即角色, 多米诺悬念, 零CGI实拍, 精密工程 |
+| GUINNESS-SURFER | Surfer / 冲浪者 | commercial | 1999 | Jonathan Glazer | studio-ad | product-demo | 品牌隐喻, 等待的史诗, 黑白冲浪, 文学旁白, 无产品广告 |
 
 ### 类型枚举
 
@@ -84,6 +85,10 @@
 | 产品零件即角色 | HONDA-COG |
 | 多米诺悬念结构 | HONDA-COG |
 | 完全无对白叙事 | HONDA-COG |
+| 品牌隐喻叙事 | GUINNESS-SURFER |
+| 等待即叙事 | GUINNESS-SURFER |
+| 完全无产品 | GUINNESS-SURFER |
+| 文学化旁白 | GUINNESS-SURFER |
 
 ### 镜头语言 (→ DP)
 
@@ -128,6 +133,10 @@
 | 零件质感凝视 | HONDA-COG |
 | 静动静态节奏 | HONDA-COG |
 | motion-control复现 | HONDA-COG |
+| 黑白史诗摄影 | GUINNESS-SURFER |
+| 浪头即角色 | GUINNESS-SURFER |
+| 慢动作仪式感 | GUINNESS-SURFER |
+| 巨浪微人对比 | GUINNESS-SURFER |
 
 ### 色彩/美术 (→ Art Director)
 
@@ -160,6 +169,8 @@
 | 逆光剪影轮廓 | VOLVO-SPLIT |
 | 白色极简空间 | HONDA-COG |
 | 工业本色材质 | HONDA-COG |
+| 黑白银盐美学 | GUINNESS-SURFER |
+| 浪花白泡沫白 | GUINNESS-SURFER |
 
 ### 特效语言 (→ VFX)
 
@@ -195,6 +206,9 @@
 | 实拍stunt调度 | VOLVO-SPLIT |
 | 精密计时链 | HONDA-COG |
 | 概率管理实拍 | HONDA-COG |
+| 浪中白马合成 | GUINNESS-SURFER |
+| 真实巨浪实拍 | GUINNESS-SURFER |
+| 慢动作时间VFX | GUINNESS-SURFER |
 
 ### 声音设计 (→ Sound Designer)
 
@@ -228,6 +242,9 @@
 | 机械打击乐 | HONDA-COG |
 | 无配乐无旁白 | HONDA-COG |
 | 声音饥饿策略 | HONDA-COG |
+| 黑暗电子驱动 | GUINNESS-SURFER |
+| 旁白节奏化 | GUINNESS-SURFER |
+| 声音三级弧线 | GUINNESS-SURFER |
 
 ### 创意广告专属 (→ Studio-Ad, Product-Demo)
 
@@ -246,8 +263,8 @@
 | 情感蓄力公式 | JOHNLEWIS-PENGUIN |
 | 节日礼物叙事 | JOHNLEWIS-PENGUIN |
 | 非人类角色共情 | JOHNLEWIS-PENGUIN |
-| 品牌隐形策略 | JOHNLEWIS-PENGUIN |
-| 纯隐喻型广告 | SONY-BALLS |
+| 品牌隐形策略 | JOHNLEWIS-PENGUIN, GUINNESS-SURFER |
+| 纯隐喻型广告 | SONY-BALLS, GUINNESS-SURFER |
 | 不做功能说明 | SONY-BALLS |
 | 感官替代功能 | SONY-BALLS |
 | 产品演示即表演 | VOLVO-SPLIT |
@@ -256,6 +273,8 @@
 | 零件即品牌 | HONDA-COG |
 | 失败即品牌执着 | HONDA-COG |
 | 信息自我发现 | HONDA-COG |
+| 三重普遍性策略 | GUINNESS-SURFER |
+| 突破品类惯例 | GUINNESS-SURFER |
 
 ---
 
@@ -265,9 +284,9 @@
 
 | 场景类型 | 强相关案例 | 可参考案例 |
 |----------|----------|-----------|
-| studio-ad | APPLE-WH, APPLE-DB, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT, HONDA-COG | BR2049, NIKE-YCS |
+| studio-ad | APPLE-WH, APPLE-DB, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT, HONDA-COG, GUINNESS-SURFER | BR2049, NIKE-YCS |
 | logo-animation | NIKE-YCS, PACIFIC-RIM | APPLE-WH |
-| product-demo | NIKE-YCS, APPLE-DB, COSMOS-L, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT, HONDA-COG | APPLE-WH |
+| product-demo | NIKE-YCS, APPLE-DB, COSMOS-L, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT, HONDA-COG, GUINNESS-SURFER | APPLE-WH |
 | sci-fi | BR2049, COSMOS-L, WANDERING-E, PACIFIC-RIM | — |
 | custom (art-film) | WKW-ML | — |
 
@@ -281,16 +300,17 @@
 | cyberpunk-adjacent | WANDERING-E, PACIFIC-RIM |
 | minimalist | APPLE-DB, BR2049, SONY-BALLS, VOLVO-SPLIT, HONDA-COG |
 | surreal | APPLE-WH, COSMOS-L |
-| epic | BR2049, NIKE-YCS, WANDERING-E, PACIFIC-RIM, SONY-BALLS, VOLVO-SPLIT, HONDA-COG |
+| epic | BR2049, NIKE-YCS, WANDERING-E, PACIFIC-RIM, SONY-BALLS, VOLVO-SPLIT, HONDA-COG, GUINNESS-SURFER |
 | intimate | BR2049, WKW-ML |
 | energetic | NIKE-YCS, APPLE-DB, PACIFIC-RIM, OLDSPICE-MAN |
-| dreamy | APPLE-WH, COSMOS-L, WKW-ML, JOHNLEWIS-PENGUIN, SONY-BALLS |
-| gritty | BR2049, WANDERING-E, PACIFIC-RIM |
+| dreamy | APPLE-WH, COSMOS-L, WKW-ML, JOHNLEWIS-PENGUIN, SONY-BALLS, GUINNESS-SURFER |
+| gritty | BR2049, WANDERING-E, PACIFIC-RIM, GUINNESS-SURFER |
 | nostalgic | WKW-ML, JOHNLEWIS-PENGUIN |
-| melancholic | WKW-ML |
+| melancholic | WKW-ML, GUINNESS-SURFER |
 | humorous | OLDSPICE-MAN |
 | absurd | OLDSPICE-MAN |
 | heartwarming | JOHNLEWIS-PENGUIN |
+| poetic | GUINNESS-SURFER |
 
 ---
 
@@ -300,12 +320,12 @@
 
 | 角色 | 必看案例 | 推荐案例 |
 |------|---------|---------|
-| Writer (编剧) | BR2049, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT, HONDA-COG | NIKE-YCS |
-| DP (摄影指导) | BR2049, APPLE-WH, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT, HONDA-COG | COSMOS-L |
-| Art Director (美术) | BR2049, APPLE-WH, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT, HONDA-COG | COSMOS-L |
-| VFX Supervisor (特效) | BR2049, APPLE-WH, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT, HONDA-COG | COSMOS-L |
-| Sound Designer (声音) | BR2049, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT, HONDA-COG | NIKE-YCS |
-| 广告创意综合 | APPLE-DB, NIKE-YCS, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT, HONDA-COG | APPLE-WH |
+| Writer (编剧) | BR2049, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT, HONDA-COG, GUINNESS-SURFER | NIKE-YCS |
+| DP (摄影指导) | BR2049, APPLE-WH, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT, HONDA-COG, GUINNESS-SURFER | COSMOS-L |
+| Art Director (美术) | BR2049, APPLE-WH, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT, HONDA-COG, GUINNESS-SURFER | COSMOS-L |
+| VFX Supervisor (特效) | BR2049, APPLE-WH, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT, HONDA-COG, GUINNESS-SURFER | COSMOS-L |
+| Sound Designer (声音) | BR2049, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT, HONDA-COG, GUINNESS-SURFER | NIKE-YCS |
+| 广告创意综合 | APPLE-DB, NIKE-YCS, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT, HONDA-COG, GUINNESS-SURFER | APPLE-WH |
 
 ---
 
@@ -350,4 +370,4 @@
 
 ---
 
-*最后更新：2026-06-12 | 案例总数：13（Phase 7-E: HONDA-COG 完成）*
+*最后更新：2026-06-12 | 案例总数：14（Phase 7-F: GUINNESS-SURFER 完成）*
