@@ -78,6 +78,12 @@ muse-video/
 │   │   ├── product-demo.md      # Product showcase: feature→shot mapping, B-roll, CTA
 │   │   └── sci-fi.md            # Sci-fi world-building: tech rules, VFX language, alienation
 │   │
+│   ├── cases/                   ← Case studies: films + commercials analyzed by role dimension.
+│   │   ├── INDEX.md             # Multi-dimensional cross-reference (技法×场景×风格×角色)
+│   │   ├── _TEMPLATE.md         # Case file template — copy and fill for each new case
+│   │   ├── BR2049.md            # Blade Runner 2049 — cyberpunk visual language
+│   │   └── ...                  # One file per case, infinite expansion
+│   │
 │   ├── pipelines/               ← WHEN to activate roles, in what order, with what loop rules.
 │   │   ├── default.md           # Standard 7-phase pipeline (full creative process)
 │   │   └── fast-track.md        # Accelerated pipeline for simple/single-scene requests
@@ -91,13 +97,19 @@ muse-video/
 │   ├── format_script.py         # Input: scene array → Output: formatted shooting script
 │   ├── storyboard_grid.py       # Input: storyboard array → Output: grid layout (2×3, 3×3)
 │   ├── prompt_assembler.py      # Input: full Project State → Output: Creative Pack JSON
-│   └── moodboard_compare.py     # Input: 2+ visual directions → Output: comparison matrix
+│   ├── moodboard_compare.py     # Input: 2+ visual directions → Output: comparison matrix
+│   ├── export_html.py           # Input: Project State JSON → Output: literary script HTML
+│   └── export_xlsx.py           # Input: Project State JSON → Output: tech breakdown Excel
 │
 ├── assets/                      ← TEMPLATES, SCHEMAS, EXAMPLES, FONTS.
 │   ├── templates/               ← Output templates. Agent fills in the blanks.
 │   │   ├── script.md            # Shooting script template
 │   │   ├── storyboard.md        # Storyboard panel template
-│   │   └── creative-pack.md     # Final deliverable template
+│   │   ├── creative-pack.md     # Final deliverable template
+│   │   └── export/              ← Export format templates (JSON → human-readable)
+│   │       ├── script-literary.html     # Literary script HTML (Courier, industry-standard)
+│   │       ├── script-storyboard.html   # Storyboard gallery HTML (card grid)
+│   │       └── script-tech.xlsx         # Technical breakdown Excel (camera, lighting, VFX)
 │   │
 │   ├── schemas/                 ← Data contracts.
 │   │   └── project-state.json   # Project State JSON Schema (THE interface between roles)
