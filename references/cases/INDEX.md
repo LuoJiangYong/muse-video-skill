@@ -14,10 +14,10 @@
 | APPLE-WH | Welcome Home | commercial | 2018 | Spike Jonze | studio-ad | product-demo | 超现实转场, 物理空间扭曲, 单镜头错觉, 色彩情绪, 舞蹈编排 |
 | NIKE-YCS | You Can't Stop Us | commercial | 2020 | Oscar Hudson | product-demo | logo-animation | 分屏匹配, 动态节奏, 档案素材, 隐喻剪辑, 品牌精神 |
 | APPLE-DB | Don't Blink | commercial | 2019 | — | product-demo | studio-ad | 高速剪辑, 产品密度, 节奏递增, 极简旁白, 功能叙事 |
-|| COSMOS-L | Cosmos Laundromat | short-film | 2015 | Blender Foundation | sci-fi | product-demo | 材质渲染, 自然光, 角色动画, 环境叙事, 非人类主角 |
-|| WKW-ML | 花样年华 | film | 2000 | 王家卫 | custom | studio-ad | 留白叙事, 重复结构, 框架构图, 色彩叙事, 慢快门步印, 旗袍叙事 |
-|| WANDERING-E | 流浪地球 | film | 2019 | 郭帆 | sci-fi | product-demo | 巨物尺度, 集体英雄主义, 等离子蓝, 行星发动机, 低频嗡鸣, 中国民乐融合 |
-|| PACIFIC-RIM | 环太平洋 | film | 2013 | Guillermo del Toro | sci-fi | logo-animation | 重量感运动, 霓虹雨夜, 双人共驾, 机械物理, 怪兽设计, 雨水粒子 |
+| COSMOS-L | Cosmos Laundromat | short-film | 2015 | Blender Foundation | sci-fi | product-demo | 材质渲染, 自然光, 角色动画, 环境叙事, 非人类主角 |
+| WKW-ML | 花样年华 | film | 2000 | 王家卫 | custom | studio-ad | 留白叙事, 重复结构, 框架构图, 色彩叙事, 慢快门步印, 旗袍叙事 |
+| WANDERING-E | 流浪地球 | film | 2019 | 郭帆 | sci-fi | product-demo | 巨物尺度, 集体英雄主义, 等离子蓝, 行星发动机, 低频嗡鸣, 中国民乐融合 |
+| PACIFIC-RIM | 环太平洋 | film | 2013 | Guillermo del Toro | sci-fi | logo-animation | 重量感运动, 霓虹雨夜, 双人共驾, 机械物理, 怪兽设计, 雨水粒子 |
 
 ### 类型枚举
 
@@ -170,17 +170,17 @@
 
 | 风格/情绪 | 案例 ID |
 |-----------|---------|
-|| cyberpunk | BR2049 |
-|| cyberpunk-adjacent | WANDERING-E, PACIFIC-RIM |
+| cyberpunk | BR2049 |
+| cyberpunk-adjacent | WANDERING-E, PACIFIC-RIM |
 | minimalist | APPLE-DB, BR2049 |
 | surreal | APPLE-WH, COSMOS-L |
-|| epic | BR2049, NIKE-YCS, WANDERING-E, PACIFIC-RIM |
+| epic | BR2049, NIKE-YCS, WANDERING-E, PACIFIC-RIM |
 | intimate | BR2049, WKW-ML |
 | energetic | NIKE-YCS, APPLE-DB, PACIFIC-RIM |
 | dreamy | APPLE-WH, COSMOS-L, WKW-ML |
-|| gritty | BR2049, WANDERING-E, PACIFIC-RIM |
-|| nostalgic | WKW-ML |
-|| melancholic | WKW-ML |
+| gritty | BR2049, WANDERING-E, PACIFIC-RIM |
+| nostalgic | WKW-ML |
+| melancholic | WKW-ML |
 
 ---
 
@@ -190,11 +190,11 @@
 
 | 角色 | 必看案例 | 推荐案例 |
 |------|---------|---------|
-|| Writer (编剧) | BR2049, WKW-ML, WANDERING-E, PACIFIC-RIM | NIKE-YCS |
+| Writer (编剧) | BR2049, WKW-ML, WANDERING-E, PACIFIC-RIM | NIKE-YCS |
 | DP (摄影指导) | BR2049, APPLE-WH, WKW-ML, WANDERING-E, PACIFIC-RIM | COSMOS-L |
 | Art Director (美术) | BR2049, APPLE-WH, WKW-ML, WANDERING-E, PACIFIC-RIM | COSMOS-L |
-|| VFX Supervisor (特效) | BR2049, APPLE-WH, WKW-ML, WANDERING-E, PACIFIC-RIM | COSMOS-L |
-|| Sound Designer (声音) | BR2049, WKW-ML, WANDERING-E, PACIFIC-RIM | NIKE-YCS |
+| VFX Supervisor (特效) | BR2049, APPLE-WH, WKW-ML, WANDERING-E, PACIFIC-RIM | COSMOS-L |
+| Sound Designer (声音) | BR2049, WKW-ML, WANDERING-E, PACIFIC-RIM | NIKE-YCS |
 | 广告创意综合 | APPLE-DB, NIKE-YCS | APPLE-WH |
 
 ---
@@ -235,6 +235,7 @@
 □ 主注册表的「主场景」「辅场景」与「场景→案例表」一致
 □ 主注册表的「类型」枚举值正确
 □ 每个案例 ID 在角色表中对应行完整
+□ 所有表格行前缀统一为单 |（用 cat -A 验证，禁止 || 双 pipe 错位）★ Phase 6 教训
 ```
 
 ---
