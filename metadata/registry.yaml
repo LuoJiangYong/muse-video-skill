@@ -119,7 +119,7 @@ files:
   - path: references/scenes/studio-ad.md
     role: scene-doc
     phase: 2
-    status: not_started
+    status: complete
     dependencies: [CONSTITUTION.md, references/roles/dp.md, references/roles/art-director.md]
     dependents: [SKILL.md]
     owner: scene-studio-ad
@@ -128,7 +128,7 @@ files:
   - path: references/scenes/logo-animation.md
     role: scene-doc
     phase: 2
-    status: not_started
+    status: complete
     dependencies: [CONSTITUTION.md, references/roles/vfx.md, references/roles/art-director.md]
     dependents: [SKILL.md]
     owner: scene-logo-animation
@@ -137,7 +137,7 @@ files:
   - path: references/scenes/product-demo.md
     role: scene-doc
     phase: 2
-    status: not_started
+    status: complete
     dependencies: [CONSTITUTION.md, references/roles/writer.md, references/roles/dp.md]
     dependents: [SKILL.md]
     owner: scene-product-demo
@@ -146,7 +146,7 @@ files:
   - path: references/scenes/sci-fi.md
     role: scene-doc
     phase: 2
-    status: not_started
+    status: complete
     dependencies: [CONSTITUTION.md, references/roles/art-director.md, references/roles/vfx.md]
     dependents: [SKILL.md, references/cases/BR2049.md]
     owner: scene-sci-fi
