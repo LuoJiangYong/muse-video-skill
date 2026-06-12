@@ -258,7 +258,7 @@ files:
   - path: assets/templates/script.md
     role: template
     phase: 3
-    status: not_started
+    status: complete
     dependencies: [assets/schemas/project-state.json]
     dependents: [scripts/format_script.py]
     owner: templates
@@ -267,7 +267,7 @@ files:
   - path: assets/templates/storyboard.md
     role: template
     phase: 3
-    status: not_started
+    status: complete
     dependencies: [assets/schemas/project-state.json]
     dependents: [scripts/storyboard_grid.py]
     owner: templates
@@ -276,7 +276,7 @@ files:
   - path: assets/templates/creative-pack.md
     role: template
     phase: 3
-    status: not_started
+    status: complete
     dependencies: [assets/schemas/project-state.json]
     dependents: [scripts/prompt_assembler.py]
     owner: templates
