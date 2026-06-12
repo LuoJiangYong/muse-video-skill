@@ -285,7 +285,7 @@ files:
   - path: assets/templates/export/script-literary.html
     role: export-template
     phase: 3
-    status: not_started
+    status: complete
     dependencies: [assets/schemas/project-state.json]
     dependents: [scripts/export_html.py]
     owner: templates
@@ -294,7 +294,7 @@ files:
   - path: assets/templates/export/script-storyboard.html
     role: export-template
     phase: 3
-    status: not_started
+    status: complete
     dependencies: [assets/schemas/project-state.json]
     dependents: [scripts/export_html.py]
     owner: templates
@@ -303,7 +303,7 @@ files:
   - path: assets/templates/export/script-tech.xlsx
     role: export-template
     phase: 3
-    status: not_started
+    status: complete
     dependencies: [assets/schemas/project-state.json]
     dependents: [scripts/export_xlsx.py]
     owner: templates

@@ -1,0 +1,124 @@
+{
+  "$schema": "https://hermes-agent.nousresearch.com/skills/muse-video/export/xlsx-schema",
+  "title": "分镜技术表 Excel 模板定义",
+  "description": "定义 export_xlsx.py 生成的 Excel 文件结构。JSON 驱动，不是硬编码。",
+  "version": "0.3.0",
+
+  "sheets": [
+    {
+      "name": "分镜技术表",
+      "description": "每行一个分镜面板，包含完整的镜头/灯光/特效信息",
+      "columns": [
+        {"key": "panel_id", "header": "镜号", "width": 8, "type": "integer"},
+        {"key": "scene_id", "header": "场次", "width": 8, "type": "integer"},
+        {"key": "scene_title", "header": "场景名称", "width": 20, "type": "string"},
+        {"key": "layout", "header": "景别", "width": 12, "type": "string"},
+        {"key": "description", "header": "画面描述", "width": 40, "type": "string"},
+        {"key": "duration", "header": "时长", "width": 8, "type": "string"},
+        {"key": "shot_type", "header": "镜头类型", "width": 14, "type": "string"},
+        {"key": "movement", "header": "运镜方式", "width": 16, "type": "string"},
+        {"key": "lens", "header": "焦段", "width": 10, "type": "string"},
+        {"key": "lighting", "header": "灯光方案", "width": 20, "type": "string"},
+        {"key": "camera_notes", "header": "摄影备注", "width": 24, "type": "string"},
+        {"key": "vfx_notes", "header": "特效备注", "width": 24, "type": "string"},
+        {"key": "sound_notes", "header": "声音备注", "width": 24, "type": "string"},
+        {"key": "prompt", "header": "AI 提示词", "width": 50, "type": "string"},
+        {"key": "character_ids", "header": "关联角色 ID", "width": 14, "type": "string"},
+        {"key": "approved", "header": "审核状态", "width": 10, "type": "boolean"},
+        {"key": "revision", "header": "版本", "width": 8, "type": "integer"}
+      ],
+      "conditional_formatting": {
+        "approved_true": {
+          "column": "approved",
+          "condition": "value == true",
+          "fill": "d4edda",
+          "font_color": "155724"
+        },
+        "approved_false": {
+          "column": "approved",
+          "condition": "value == false",
+          "fill": "fff3cd",
+          "font_color": "856404"
+        }
+      },
+      "header_style": {
+        "fill": "cc785c",
+        "font_color": "ffffff",
+        "font_bold": true,
+        "font_size": 11
+      },
+      "freeze_panes": "A2"
+    },
+
+    {
+      "name": "项目概要",
+      "description": "项目级元数据",
+      "orientation": "portrait",
+      "rows": [
+        {"label": "项目标题", "key": "project.title"},
+        {"label": "场景类型", "key": "project.scene_type"},
+        {"label": "预估时长", "key": "project.duration_est"},
+        {"label": "画幅比例", "key": "project.aspect_ratio"},
+        {"label": "风格类型", "key": "project.genre"},
+        {"label": "目标平台", "key": "project.platform"},
+        {"label": "语言", "key": "project.language"},
+        {"label": "Logline", "key": "script.logline"},
+        {"label": "导演阐述", "key": "director_notes.vision"},
+        {"label": "情绪基调", "key": "director_notes.tone"},
+        {"label": "总镜数", "key": "_panels_count"},
+        {"label": "生成时间", "key": "_generated_at"}
+      ],
+      "label_style": {
+        "font_bold": true,
+        "fill": "f5f3ef",
+        "column_width_a": 16,
+        "column_width_b": 50
+      }
+    },
+
+    {
+      "name": "色调方案",
+      "description": "美术指导的色调方案",
+      "columns": [
+        {"key": "name", "header": "颜色名称", "width": 16},
+        {"key": "hex", "header": "色值", "width": 12},
+        {"key": "usage", "header": "用途", "width": 30}
+      ],
+      "data_key": "visual_dev.palette"
+    },
+
+    {
+      "name": "特效清单",
+      "description": "VFX 特效详细清单",
+      "columns": [
+        {"key": "name", "header": "技法名称", "width": 20},
+        {"key": "usage", "header": "用途", "width": 30},
+        {"key": "scene_ids", "header": "涉及场景", "width": 16}
+      ],
+      "data_key": "vfx.techniques"
+    },
+
+    {
+      "name": "声音方案",
+      "description": "声音设计概要",
+      "rows": [
+        {"label": "配乐风格", "key": "sound.music_style"},
+        {"label": "参考曲目", "key": "sound.music_refs"},
+        {"label": "音效备注", "key": "sound.sfx_notes"},
+        {"label": "旁白基调", "key": "sound.narration_tone"},
+        {"label": "旁白语言", "key": "sound.narration_language"},
+        {"label": "静默运用", "key": "sound.silence_usage"}
+      ]
+    }
+  ],
+
+  "global_style": {
+    "font_name": "Microsoft YaHei",
+    "font_size": 10,
+    "header_font_size": 11,
+    "header_fill": "cc785c",
+    "header_font_color": "ffffff",
+    "border_style": "thin",
+    "border_color": "cccccc"
+  }
+}

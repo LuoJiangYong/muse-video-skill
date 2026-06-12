@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{project.title}} — 分镜展示</title>
+<style>
+  /* ── 分镜卡片网格 ── */
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+  :root {
+    --bg: #faf9f5;
+    --card-bg: #ffffff;
+    --text: #141413;
+    --text-secondary: #666;
+    --accent: #cc785c;
+    --border: #e0ddd5;
+    --shadow: 0 1px 3px rgba(0,0,0,0.08);
+    --shadow-hover: 0 4px 12px rgba(0,0,0,0.12);
+    --radius: 10px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text);
+    background: var(--bg);
+    padding: 2rem;
+  }
+
+  /* ── Header ── */
+  .header {
+    max-width: 1200px;
+    margin: 0 auto 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid var(--accent);
+  }
+
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+
+  .header .subtitle {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+  }
+
+  .header .grid-info {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.2em 0.8em;
+    background: var(--accent);
+    color: white;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  /* ── Grid ── */
+  .storyboard-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  /* For 2×3 layout */
+  .storyboard-grid.layout-2x3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .storyboard-grid.layout-3x3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* ── Card ── */
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+
+  .card:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px);
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.8rem 1rem;
+    background: #f5f3ef;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .card-header .panel-id {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--accent);
+  }
+
+  .card-header .scene-ref {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+  }
+
+  .card-header .layout-badge {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    padding: 0.15em 0.5em;
+    background: var(--text);
+    color: white;
+    border-radius: 3px;
+    letter-spacing: 0.05em;
+  }
+
+  .card-body {
+    padding: 1rem;
+  }
+
+  .card-body .description {
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.5;
+  }
+
+  .card-body .prompt {
+    background: #f8f8f8;
+    padding: 0.6rem 0.8rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.8rem;
+    color: #555;
+    line-height: 1.4;
+    margin-bottom: 0.8rem;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  .card-body .tech-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  .card-body .tech-meta .tag {
+    padding: 0.15em 0.5em;
+    background: #eee;
+    border-radius: 3px;
+    color: #555;
+  }
+
+  .card-body .image-placeholder {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #f0eee8;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #bbb;
+    font-size: 0.85rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .card-body .image-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+
+  .card-footer {
+    padding: 0.6rem 1rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+  }
+
+  .status-badge {
+    padding: 0.15em 0.6em;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.7rem;
+  }
+
+  .status-badge.approved {
+    background: #d4edda;
+    color: #155724;
+  }
+
+  .status-badge.pending {
+    background: #fff3cd;
+    color: #856404;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    max-width: 1200px;
+    margin: 2rem auto 0;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .storyboard-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .storyboard-grid {
+      grid-template-columns: 1fr;
+    }
+    body { padding: 1rem; }
+  }
+
+  /* ── Print ── */
+  @media print {
+    body { background: white; }
+    .card { box-shadow: none; break-inside: avoid; }
+    .card:hover { transform: none; }
+  }
+
+  /* ── Dark mode ── */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #141413;
+      --card-bg: #1e1e1c;
+      --text: #e0e0e0;
+      --text-secondary: #999;
+      --border: #333;
+      --shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
+    .card-header { background: #252523; }
+    .card-body .prompt { background: #252523; color: #aaa; }
+    .card-body .image-placeholder { background: #252523; }
+    .card-body .tech-meta .tag { background: #333; color: #aaa; }
+    .status-badge.approved { background: #1a3a24; color: #8fdf9f; }
+    .status-badge.pending { background: #3a3010; color: #dfc860; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ Header ═══ -->
+<header class="header">
+  <h1>{{project.title}}</h1>
+  <div class="subtitle">
+    {{project.scene_type}} · {{project.duration_est}} · {{project.aspect_ratio}}
+  </div>
+  <span class="grid-info">{{_grid_layout}} 网格 · {{_panels_count}} 镜</span>
+</header>
+
+<!-- ═══ Storyboard Grid ═══ -->
+<div class="storyboard-grid layout-{{#if _is_3x3}}3x3{{else}}2x3{{/if}}">
+
+{{#each storyboard}}
+  <article class="card">
+    <header class="card-header">
+      <span class="panel-id">#{{panel_id}}</span>
+      <span class="layout-badge">{{layout}}</span>
+      <span class="scene-ref">Scene {{scene_id}}</span>
+    </header>
+
+    <div class="card-body">
+      {{#if generated_url}}
+      <div class="image-placeholder">
+        <img src="{{generated_url}}" alt="{{description}}" loading="lazy">
+      </div>
+      {{else}}
+      <div class="image-placeholder">🎬 待生成</div>
+      {{/if}}
+
+      <div class="description">{{description}}</div>
+
+      {{#if prompt}}
+      <div class="prompt">{{prompt}}</div>
+      {{/if}}
+
+      <div class="tech-meta">
+        {{#if camera_notes}}<span class="tag">📷 {{camera_notes}}</span>{{/if}}
+        {{#if vfx_notes}}<span class="tag">✨ {{vfx_notes}}</span>{{/if}}
+        {{#if character_ids}}<span class="tag">👤 {{character_ids}}</span>{{/if}}
+      </div>
+    </div>
+
+    <footer class="card-footer">
+      <span>Rev {{_meta.revision}}</span>
+      {{#if approved}}
+      <span class="status-badge approved">✓ 已审核</span>
+      {{else}}
+      <span class="status-badge pending">⏳ 待审核</span>
+      {{/if}}
+    </footer>
+  </article>
+{{/each}}
+
+</div>
+
+<!-- ═══ Footer ═══ -->
+<footer class="footer">
+  Generated by Muse Video Skill · {{_generated_at}}<br>
+  总镜数 {{_panels_count}} · 网格 {{_grid_layout}}
+</footer>
+
+</body>
+</html>

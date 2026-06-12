@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{project.title}} — 文学剧本</title>
+<style>
+  /* ── Courier 标准剧本格式 ── */
+  @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap');
+
+  :root {
+    --page-width: 8.5in;
+    --margin: 1.5in 1in 1in 1.5in; /* 标准剧本页边距 */
+    --text-color: #1a1a1a;
+    --bg-color: #faf9f5;
+    --accent: #cc785c;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+    font-size: 12pt;
+    line-height: 1.0; /* 标准剧本行距=1 */
+    color: var(--text-color);
+    background: var(--bg-color);
+    max-width: var(--page-width);
+    margin: 0 auto;
+    padding: 1.5in 1in 1in 1.5in;
+  }
+
+  /* ── 标题页 ── */
+  .title-page {
+    text-align: center;
+    margin-top: 3in;
+    page-break-after: always;
+  }
+
+  .title-page h1 {
+    font-size: 24pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 1em;
+    text-decoration: underline;
+  }
+
+  .title-page .byline {
+    font-size: 14pt;
+    margin-bottom: 2em;
+  }
+
+  .title-page .meta {
+    font-size: 11pt;
+    color: #666;
+    margin-top: 3in;
+    text-align: left;
+  }
+
+  .title-page .meta p {
+    margin-bottom: 0.3em;
+  }
+
+  /* ── 场景标题 ── */
+  .scene-header {
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+  }
+
+  .scene-header .slug {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .scene-header .info {
+    font-size: 10pt;
+    color: #555;
+    margin-top: 0.3em;
+  }
+
+  /* ── 剧本元素 ── */
+  .action {
+    margin: 0.7em 0;
+    text-align: justify;
+  }
+
+  .character {
+    margin: 1em 0 0 0;
+    padding-left: 2.2in;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+
+  .dialogue {
+    margin: 0 1in 0 1.5in;
+    max-width: 3.5in;
+    margin-bottom: 0.5em;
+  }
+
+  .parenthetical {
+    margin: 0 1.3in 0 1.8in;
+    font-style: italic;
+    color: #555;
+    font-size: 10pt;
+  }
+
+  .transition {
+    text-align: right;
+    margin: 1em 0;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  .shot {
+    margin: 0.5em 0;
+    font-weight: 700;
+  }
+
+  /* ── 技术备注 ── */
+  .tech-notes {
+    margin: 0.5em 0 1em 0;
+    padding: 0.5em 0.8em;
+    background: #f0f0f0;
+    border-left: 3px solid var(--accent);
+    font-size: 9pt;
+    color: #666;
+  }
+
+  .tech-notes dt {
+    font-weight: 700;
+    display: inline;
+    color: #444;
+  }
+
+  .tech-notes dd {
+    display: inline;
+    margin-right: 1.5em;
+  }
+
+  /* ── 页脚 ── */
+  .page-break { page-break-before: always; }
+
+  .footer {
+    margin-top: 2em;
+    padding-top: 1em;
+    border-top: 1px solid #ddd;
+    font-size: 9pt;
+    color: #999;
+    text-align: center;
+  }
+
+  /* ── 打印优化 ── */
+  @media print {
+    body {
+      padding: 1.5in 1in 1in 1.5in;
+      background: white;
+    }
+    .tech-notes { background: none; border-left-color: #999; }
+    .no-print { display: none; }
+  }
+
+  /* ── Dark mode ── */
+  @media (prefers-color-scheme: dark) {
+    body { background: #141413; color: #e0e0e0; }
+    .tech-notes { background: #1e1e1e; border-left-color: var(--accent); color: #aaa; }
+    .tech-notes dt { color: #ccc; }
+    .title-page .meta { color: #888; }
+    .scene-header .info { color: #999; }
+    .parenthetical { color: #999; }
+    .footer { color: #666; border-top-color: #333; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ 标题页 ═══ -->
+<div class="title-page">
+  <h1>{{project.title}}</h1>
+  <div class="byline">编剧：Muse Video Skill</div>
+
+  <div class="meta">
+    <p><strong>场景类型</strong>：{{project.scene_type}}</p>
+    <p><strong>预估时长</strong>：{{project.duration_est}}</p>
+    <p><strong>画幅比例</strong>：{{project.aspect_ratio}}</p>
+    <p><strong>风格类型</strong>：{{project.genre}}</p>
+    <p><strong>目标平台</strong>：{{project.platform}}</p>
+    <p><strong>语言</strong>：{{project.language}}</p>
+    <p><strong>Logline</strong>：{{script.logline}}</p>
+    <p style="margin-top:1em;"><strong>导演阐述</strong>：{{director_notes.vision}}</p>
+  </div>
+</div>
+
+<!-- ═══ 正文 ═══ -->
+<div class="page-break"></div>
+
+{{#each script.scenes}}
+
+<div class="scene-header">
+  <div class="slug">{{scene_id}}. {{scene_title}}</div>
+  <div class="info">{{location}} · {{time_of_day}} · {{duration}}</div>
+</div>
+
+{{#if action}}
+<div class="action">{{action}}</div>
+{{/if}}
+
+{{#if dialogue}}
+<div class="character">角色</div>
+<div class="dialogue">{{dialogue}}</div>
+{{/if}}
+
+{{#if camera}}
+<div class="tech-notes">
+  <dl>
+    <dt>镜头：</dt><dd>{{camera.shot_type}}</dd>
+    <dt>运镜：</dt><dd>{{camera.movement}}</dd>
+    <dt>焦段：</dt><dd>{{camera.lens}}</dd>
+    <dt>灯光：</dt><dd>{{camera.lighting}}</dd>
+    {{#if camera.composition_notes}}<dt>构图：</dt><dd>{{camera.composition_notes}}</dd>{{/if}}
+  </dl>
+</div>
+{{/if}}
+
+{{#if vfx_notes}}
+<div class="tech-notes">
+  <dl><dt>特效：</dt><dd>{{vfx_notes}}</dd></dl>
+</div>
+{{/if}}
+
+{{#if sound_notes}}
+<div class="tech-notes">
+  <dl><dt>声音：</dt><dd>{{sound_notes}}</dd></dl>
+</div>
+{{/if}}
+
+{{/each}}
+
+<!-- ═══ 页脚 ═══ -->
+<div class="footer">
+  Generated by Muse Video Skill · {{_generated_at}}<br>
+  编剧版本 {{script._meta.writer_revision}} · DP 版本 {{script._meta.dp_revision}} · 导演审核：{{script._meta.director_approved}}
+</div>
+
+</body>
+</html>
