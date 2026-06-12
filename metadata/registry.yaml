@@ -100,16 +100,16 @@ files:
   - path: references/roles/vfx.md
     role: role-doc
     phase: 2
-    status: not_started
+    status: complete
     dependencies: [CONSTITUTION.md]
-    dependents: [SKILL.md]
+    dependents: [SKILL.md, references/scenes/logo-animation.md, references/scenes/sci-fi.md]
     owner: vfx
     description: "特效指导角色：材质、粒子、转场、合成技术清单"
 
   - path: references/roles/sound-designer.md
     role: role-doc
     phase: 2
-    status: not_started
+    status: complete
     dependencies: [CONSTITUTION.md]
     dependents: [SKILL.md]
     owner: sound-designer
