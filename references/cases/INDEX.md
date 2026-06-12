@@ -20,6 +20,7 @@
 | PACIFIC-RIM | 环太平洋 | film | 2013 | Guillermo del Toro | sci-fi | logo-animation | 重量感运动, 霓虹雨夜, 双人共驾, 机械物理, 怪兽设计, 雨水粒子 |
 | OLDSPICE-MAN | The Man Your Man Could Smell Like | commercial | 2010 | Tom Kuntz | studio-ad | product-demo | 单镜头喜剧, 连续转场, 荒诞推销, 打破第四面墙, 病毒传播 |
 | JOHNLEWIS-PENGUIN | Monty the Penguin | commercial | 2014 | Dougal Wilson | studio-ad | product-demo | 圣诞叙事, 情感蓄力, 儿童视角, CGI角色, 节日音乐 |
+| SONY-BALLS | Balls | commercial | 2005 | Nicolai Fuglsig | product-demo | studio-ad | 色彩爆炸, 实拍奇观, 纯视觉叙事, 音乐驱动, 无CG |
 
 ### 类型枚举
 
@@ -70,6 +71,9 @@
 | 反转结局 | JOHNLEWIS-PENGUIN |
 | 无产品叙事 | JOHNLEWIS-PENGUIN |
 | 非人类情感代言 | JOHNLEWIS-PENGUIN |
+| 无叙事纯视觉 | SONY-BALLS |
+| 产品隐喻叙事 | SONY-BALLS |
+| Show-Dont-Tell极致 | SONY-BALLS |
 
 ### 镜头语言 (→ DP)
 
@@ -102,6 +106,10 @@
 | CGI实拍融合 | JOHNLEWIS-PENGUIN |
 | 温暖家庭光线 | JOHNLEWIS-PENGUIN |
 | 人格化角色动画 | JOHNLEWIS-PENGUIN |
+| 超高速摄影(1000fps) | SONY-BALLS |
+| 广角全景多机位 | SONY-BALLS |
+| 色彩分组编排 | SONY-BALLS |
+| 微距弹跳特写 | SONY-BALLS |
 
 ### 色彩/美术 (→ Art Director)
 
@@ -126,6 +134,9 @@
 | 冷暖对比叙事 | JOHNLEWIS-PENGUIN |
 | 金色时刻释放 | JOHNLEWIS-PENGUIN |
 | 企鹅人格化设计 | JOHNLEWIS-PENGUIN |
+| 光谱顺序色彩 | SONY-BALLS |
+| 灰色街景vs饱和色 | SONY-BALLS |
+| Pantone级纯色 | SONY-BALLS |
 
 ### 特效语言 (→ VFX)
 
@@ -153,6 +164,9 @@
 | 身体语言情感系统 | JOHNLEWIS-PENGUIN |
 | 灯光匹配合成 | JOHNLEWIS-PENGUIN |
 | 羽毛SSS渲染 | JOHNLEWIS-PENGUIN |
+| 零CGI实拍调度 | SONY-BALLS |
+| 250K球物理 | SONY-BALLS |
+| 纯色彩分级后期 | SONY-BALLS |
 
 ### 声音设计 (→ Sound Designer)
 
@@ -177,6 +191,9 @@
 | 无对白音乐叙事 | JOHNLEWIS-PENGUIN |
 | 静默品牌登场 | JOHNLEWIS-PENGUIN |
 | 翻唱nostalgia触发 | JOHNLEWIS-PENGUIN |
+| 音乐反差策略 | SONY-BALLS |
+| 无音效设计 | SONY-BALLS |
+| 歌曲去电子化改编 | SONY-BALLS |
 
 ### 创意广告专属 (→ Studio-Ad, Product-Demo)
 
@@ -196,6 +213,9 @@
 | 节日礼物叙事 | JOHNLEWIS-PENGUIN |
 | 非人类角色共情 | JOHNLEWIS-PENGUIN |
 | 品牌隐形策略 | JOHNLEWIS-PENGUIN |
+| 纯隐喻型广告 | SONY-BALLS |
+| 不做功能说明 | SONY-BALLS |
+| 感官替代功能 | SONY-BALLS |
 
 ---
 
@@ -205,9 +225,9 @@
 
 | 场景类型 | 强相关案例 | 可参考案例 |
 |----------|----------|-----------|
-| studio-ad | APPLE-WH, APPLE-DB, OLDSPICE-MAN, JOHNLEWIS-PENGUIN | BR2049, NIKE-YCS |
+| studio-ad | APPLE-WH, APPLE-DB, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS | BR2049, NIKE-YCS |
 | logo-animation | NIKE-YCS, PACIFIC-RIM | APPLE-WH |
-| product-demo | NIKE-YCS, APPLE-DB, COSMOS-L, OLDSPICE-MAN, JOHNLEWIS-PENGUIN | APPLE-WH |
+| product-demo | NIKE-YCS, APPLE-DB, COSMOS-L, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS | APPLE-WH |
 | sci-fi | BR2049, COSMOS-L, WANDERING-E, PACIFIC-RIM | — |
 | custom (art-film) | WKW-ML | — |
 
@@ -219,12 +239,12 @@
 |-----------|---------|
 | cyberpunk | BR2049 |
 | cyberpunk-adjacent | WANDERING-E, PACIFIC-RIM |
-| minimalist | APPLE-DB, BR2049 |
+| minimalist | APPLE-DB, BR2049, SONY-BALLS |
 | surreal | APPLE-WH, COSMOS-L |
-| epic | BR2049, NIKE-YCS, WANDERING-E, PACIFIC-RIM |
+| epic | BR2049, NIKE-YCS, WANDERING-E, PACIFIC-RIM, SONY-BALLS |
 | intimate | BR2049, WKW-ML |
 | energetic | NIKE-YCS, APPLE-DB, PACIFIC-RIM, OLDSPICE-MAN |
-| dreamy | APPLE-WH, COSMOS-L, WKW-ML, JOHNLEWIS-PENGUIN |
+| dreamy | APPLE-WH, COSMOS-L, WKW-ML, JOHNLEWIS-PENGUIN, SONY-BALLS |
 | gritty | BR2049, WANDERING-E, PACIFIC-RIM |
 | nostalgic | WKW-ML, JOHNLEWIS-PENGUIN |
 | melancholic | WKW-ML |
@@ -240,12 +260,12 @@
 
 | 角色 | 必看案例 | 推荐案例 |
 |------|---------|---------|
-| Writer (编剧) | BR2049, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN | NIKE-YCS |
-| DP (摄影指导) | BR2049, APPLE-WH, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN | COSMOS-L |
-| Art Director (美术) | BR2049, APPLE-WH, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN | COSMOS-L |
-| VFX Supervisor (特效) | BR2049, APPLE-WH, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN | COSMOS-L |
-| Sound Designer (声音) | BR2049, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN | NIKE-YCS |
-| 广告创意综合 | APPLE-DB, NIKE-YCS, OLDSPICE-MAN, JOHNLEWIS-PENGUIN | APPLE-WH |
+| Writer (编剧) | BR2049, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS | NIKE-YCS |
+| DP (摄影指导) | BR2049, APPLE-WH, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS | COSMOS-L |
+| Art Director (美术) | BR2049, APPLE-WH, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS | COSMOS-L |
+| VFX Supervisor (特效) | BR2049, APPLE-WH, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS | COSMOS-L |
+| Sound Designer (声音) | BR2049, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS | NIKE-YCS |
+| 广告创意综合 | APPLE-DB, NIKE-YCS, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS | APPLE-WH |
 
 ---
 
@@ -290,4 +310,4 @@
 
 ---
 
-*最后更新：2026-06-12 | 案例总数：10（Phase 7-B: JOHNLEWIS-PENGUIN 完成）*
+*最后更新：2026-06-12 | 案例总数：11（Phase 7-C: SONY-BALLS 完成）*

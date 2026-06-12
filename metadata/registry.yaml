@@ -141,6 +141,15 @@ files:
     owner: case-library
     description: "John Lewis Monty the Penguin 完整拆解（Dougal Wilson, 15+ 技法 × 5 角色维度, 情感蓄力+CGI角色+翻唱策略=圣诞广告标杆）"
 
+  - path: references/cases/SONY-BALLS.md
+    role: case
+    phase: 7
+    status: complete
+    dependencies: [references/cases/_TEMPLATE.md]
+    dependents: [references/cases/INDEX.md]
+    owner: case-library
+    description: "Sony Bravia Balls 完整拆解（Nicolai Fuglsig, 14+ 技法 × 5 角色维度, 纯视觉奇观+零CGI实拍+音乐反差=广告史里程碑）"
+
   # --- Roles (Phase 2) ---
   - path: references/roles/director.md
     role: role-doc
@@ -447,7 +456,7 @@ files:
     description: "版本变更日志：每次修改的动机、影响、迁移指南"
 
 # --- 统计 ---
-# Total files: 48
+# Total files: 49
 # Phase 0 (complete): 2
 # Phase 1 (complete): 7
 # Phase 2 (complete): 16
@@ -455,4 +464,4 @@ files:
 # Phase 4 (complete): 2
 # Phase 5 (complete): 4
 # Phase 6 (complete): 3
-# Phase 7 (in-progress): 2
+# Phase 7 (in-progress): 3
