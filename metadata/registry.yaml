@@ -159,6 +159,15 @@ files:
     owner: case-library
     description: "Volvo Trucks The Epic Split 完整拆解（Andreas Nilsson, 15+ 技法 × 5 角色维度, 产品演示即表演+极简叙事+病毒公式=B2B广告革命）"
 
+  - path: references/cases/HONDA-COG.md
+    role: case
+    phase: 7
+    status: complete
+    dependencies: [references/cases/_TEMPLATE.md]
+    dependents: [references/cases/INDEX.md]
+    owner: case-library
+    description: "Honda The Cog 完整拆解（Antoine Bardou-Jacquet, 16+ 技法 × 5 角色维度, 鲁布·戈德堡机械+606次实拍+零CGI=工程史诗广告标杆）"
+
   # --- Roles (Phase 2) ---
   - path: references/roles/director.md
     role: role-doc
@@ -465,7 +474,7 @@ files:
     description: "版本变更日志：每次修改的动机、影响、迁移指南"
 
 # --- 统计 ---
-# Total files: 50
+# Total files: 51
 # Phase 0 (complete): 2
 # Phase 1 (complete): 7
 # Phase 2 (complete): 16
@@ -473,4 +482,4 @@ files:
 # Phase 4 (complete): 2
 # Phase 5 (complete): 4
 # Phase 6 (complete): 3
-# Phase 7 (in-progress): 4
+# Phase 7 (in-progress): 5

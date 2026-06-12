@@ -22,6 +22,7 @@
 | JOHNLEWIS-PENGUIN | Monty the Penguin | commercial | 2014 | Dougal Wilson | studio-ad | product-demo | 圣诞叙事, 情感蓄力, 儿童视角, CGI角色, 节日音乐 |
 | SONY-BALLS | Balls | commercial | 2005 | Nicolai Fuglsig | product-demo | studio-ad | 色彩爆炸, 实拍奇观, 纯视觉叙事, 音乐驱动, 无CG |
 | VOLVO-SPLIT | The Epic Split | commercial | 2013 | Andreas Nilsson | product-demo | studio-ad | 人体极限, 产品演示即表演, 极简叙事, 病毒传播, 一镜到底 |
+| HONDA-COG | The Cog / 齿轮 | commercial | 2003 | Antoine Bardou-Jacquet | product-demo | studio-ad | 连锁反应叙事, 产品零件即角色, 多米诺悬念, 零CGI实拍, 精密工程 |
 
 ### 类型枚举
 
@@ -79,6 +80,10 @@
 | 产品演示即叙事 | VOLVO-SPLIT |
 | 人生哲学旁白 | VOLVO-SPLIT |
 | 信任证明结构 | VOLVO-SPLIT |
+| 连锁反应叙事 | HONDA-COG |
+| 产品零件即角色 | HONDA-COG |
+| 多米诺悬念结构 | HONDA-COG |
+| 完全无对白叙事 | HONDA-COG |
 
 ### 镜头语言 (→ DP)
 
@@ -119,6 +124,10 @@
 | 对称史诗构图 | VOLVO-SPLIT |
 | 黎明金色时刻 | VOLVO-SPLIT |
 | 中远景固定机位 | VOLVO-SPLIT |
+| 微距追踪跟拍 | HONDA-COG |
+| 零件质感凝视 | HONDA-COG |
+| 静动静态节奏 | HONDA-COG |
+| motion-control复现 | HONDA-COG |
 
 ### 色彩/美术 (→ Art Director)
 
@@ -149,6 +158,8 @@
 | 三色极简调色 | VOLVO-SPLIT |
 | 晨曦暖金+金属银 | VOLVO-SPLIT |
 | 逆光剪影轮廓 | VOLVO-SPLIT |
+| 白色极简空间 | HONDA-COG |
+| 工业本色材质 | HONDA-COG |
 
 ### 特效语言 (→ VFX)
 
@@ -176,12 +187,14 @@
 | 身体语言情感系统 | JOHNLEWIS-PENGUIN |
 | 灯光匹配合成 | JOHNLEWIS-PENGUIN |
 | 羽毛SSS渲染 | JOHNLEWIS-PENGUIN |
-| 零CGI实拍调度 | SONY-BALLS |
+| 零CGI实拍调度 | SONY-BALLS, HONDA-COG |
 | 250K球物理 | SONY-BALLS |
 | 纯色彩分级后期 | SONY-BALLS |
 | 安全绳擦除 | VOLVO-SPLIT |
 | 零CGI人体极限 | VOLVO-SPLIT |
 | 实拍stunt调度 | VOLVO-SPLIT |
+| 精密计时链 | HONDA-COG |
+| 概率管理实拍 | HONDA-COG |
 
 ### 声音设计 (→ Sound Designer)
 
@@ -212,6 +225,9 @@
 | 空灵女声反差 | VOLVO-SPLIT |
 | 信息层频谱分离 | VOLVO-SPLIT |
 | 旁白去广告化录音 | VOLVO-SPLIT |
+| 机械打击乐 | HONDA-COG |
+| 无配乐无旁白 | HONDA-COG |
+| 声音饥饿策略 | HONDA-COG |
 
 ### 创意广告专属 (→ Studio-Ad, Product-Demo)
 
@@ -237,6 +253,9 @@
 | 产品演示即表演 | VOLVO-SPLIT |
 | 极限信任证明 | VOLVO-SPLIT |
 | 极简信息密度 | VOLVO-SPLIT |
+| 零件即品牌 | HONDA-COG |
+| 失败即品牌执着 | HONDA-COG |
+| 信息自我发现 | HONDA-COG |
 
 ---
 
@@ -246,9 +265,9 @@
 
 | 场景类型 | 强相关案例 | 可参考案例 |
 |----------|----------|-----------|
-| studio-ad | APPLE-WH, APPLE-DB, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT | BR2049, NIKE-YCS |
+| studio-ad | APPLE-WH, APPLE-DB, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT, HONDA-COG | BR2049, NIKE-YCS |
 | logo-animation | NIKE-YCS, PACIFIC-RIM | APPLE-WH |
-| product-demo | NIKE-YCS, APPLE-DB, COSMOS-L, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT | APPLE-WH |
+| product-demo | NIKE-YCS, APPLE-DB, COSMOS-L, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT, HONDA-COG | APPLE-WH |
 | sci-fi | BR2049, COSMOS-L, WANDERING-E, PACIFIC-RIM | — |
 | custom (art-film) | WKW-ML | — |
 
@@ -260,9 +279,9 @@
 |-----------|---------|
 | cyberpunk | BR2049 |
 | cyberpunk-adjacent | WANDERING-E, PACIFIC-RIM |
-| minimalist | APPLE-DB, BR2049, SONY-BALLS, VOLVO-SPLIT |
+| minimalist | APPLE-DB, BR2049, SONY-BALLS, VOLVO-SPLIT, HONDA-COG |
 | surreal | APPLE-WH, COSMOS-L |
-| epic | BR2049, NIKE-YCS, WANDERING-E, PACIFIC-RIM, SONY-BALLS, VOLVO-SPLIT |
+| epic | BR2049, NIKE-YCS, WANDERING-E, PACIFIC-RIM, SONY-BALLS, VOLVO-SPLIT, HONDA-COG |
 | intimate | BR2049, WKW-ML |
 | energetic | NIKE-YCS, APPLE-DB, PACIFIC-RIM, OLDSPICE-MAN |
 | dreamy | APPLE-WH, COSMOS-L, WKW-ML, JOHNLEWIS-PENGUIN, SONY-BALLS |
@@ -281,12 +300,12 @@
 
 | 角色 | 必看案例 | 推荐案例 |
 |------|---------|---------|
-| Writer (编剧) | BR2049, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT | NIKE-YCS |
-| DP (摄影指导) | BR2049, APPLE-WH, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT | COSMOS-L |
-| Art Director (美术) | BR2049, APPLE-WH, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT | COSMOS-L |
-| VFX Supervisor (特效) | BR2049, APPLE-WH, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT | COSMOS-L |
-| Sound Designer (声音) | BR2049, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT | NIKE-YCS |
-| 广告创意综合 | APPLE-DB, NIKE-YCS, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT | APPLE-WH |
+| Writer (编剧) | BR2049, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT, HONDA-COG | NIKE-YCS |
+| DP (摄影指导) | BR2049, APPLE-WH, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT, HONDA-COG | COSMOS-L |
+| Art Director (美术) | BR2049, APPLE-WH, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT, HONDA-COG | COSMOS-L |
+| VFX Supervisor (特效) | BR2049, APPLE-WH, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT, HONDA-COG | COSMOS-L |
+| Sound Designer (声音) | BR2049, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT, HONDA-COG | NIKE-YCS |
+| 广告创意综合 | APPLE-DB, NIKE-YCS, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT, HONDA-COG | APPLE-WH |
 
 ---
 
@@ -331,4 +350,4 @@
 
 ---
 
-*最后更新：2026-06-12 | 案例总数：12（Phase 7-D: VOLVO-SPLIT 完成 — 优先级1全部完成）*
+*最后更新：2026-06-12 | 案例总数：13（Phase 7-E: HONDA-COG 完成）*
