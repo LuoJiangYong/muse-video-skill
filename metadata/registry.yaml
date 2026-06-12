@@ -64,9 +64,9 @@ files:
   - path: references/roles/director.md
     role: role-doc
     phase: 2
-    status: not_started
+    status: complete
     dependencies: [CONSTITUTION.md, references/pipelines/default.md]
-    dependents: [SKILL.md]
+    dependents: [SKILL.md, references/roles/dp.md, references/pipelines/default.md]
     owner: director
     description: "导演角色：审核标准、迭代策略、拍板话术、vision 模板"
 
