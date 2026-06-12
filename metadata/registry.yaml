@@ -175,7 +175,7 @@ files:
   - path: references/media/image-gen-guide.md
     role: reference
     phase: 2
-    status: not_started
+    status: complete
     dependencies: []
     dependents: [references/roles/art-director.md]
     owner: media
@@ -184,7 +184,7 @@ files:
   - path: references/media/character-consistency.md
     role: reference
     phase: 2
-    status: not_started
+    status: complete
     dependencies: [references/media/image-gen-guide.md]
     dependents: [references/roles/art-director.md]
     owner: media
@@ -193,7 +193,7 @@ files:
   - path: references/media/tool-matrix.md
     role: reference
     phase: 2
-    status: not_started
+    status: complete
     dependencies: []
     dependents: [SKILL.md]
     owner: media
@@ -369,6 +369,6 @@ files:
 # Total files: 39
 # Phase 0 (complete): 2
 # Phase 1 (complete): 7
-# Phase 2 (not_started): 16
+# Phase 2 (complete): 16
 # Phase 3 (not_started): 12
 # Phase 4 (not_started): 2
