@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>最后的记忆贩 — 文学剧本</title>
+<style>
+  /* ── Courier 标准剧本格式 ── */
+  @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap');
+
+  :root {
+    --page-width: 8.5in;
+    --margin: 1.5in 1in 1in 1.5in; /* 标准剧本页边距 */
+    --text-color: #1a1a1a;
+    --bg-color: #faf9f5;
+    --accent: #cc785c;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+    font-size: 12pt;
+    line-height: 1.0; /* 标准剧本行距=1 */
+    color: var(--text-color);
+    background: var(--bg-color);
+    max-width: var(--page-width);
+    margin: 0 auto;
+    padding: 1.5in 1in 1in 1.5in;
+  }
+
+  /* ── 标题页 ── */
+  .title-page {
+    text-align: center;
+    margin-top: 3in;
+    page-break-after: always;
+  }
+
+  .title-page h1 {
+    font-size: 24pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 1em;
+    text-decoration: underline;
+  }
+
+  .title-page .byline {
+    font-size: 14pt;
+    margin-bottom: 2em;
+  }
+
+  .title-page .meta {
+    font-size: 11pt;
+    color: #666;
+    margin-top: 3in;
+    text-align: left;
+  }
+
+  .title-page .meta p {
+    margin-bottom: 0.3em;
+  }
+
+  /* ── 场景标题 ── */
+  .scene-header {
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+  }
+
+  .scene-header .slug {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .scene-header .info {
+    font-size: 10pt;
+    color: #555;
+    margin-top: 0.3em;
+  }
+
+  /* ── 剧本元素 ── */
+  .action {
+    margin: 0.7em 0;
+    text-align: justify;
+  }
+
+  .character {
+    margin: 1em 0 0 0;
+    padding-left: 2.2in;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+
+  .dialogue {
+    margin: 0 1in 0 1.5in;
+    max-width: 3.5in;
+    margin-bottom: 0.5em;
+  }
+
+  .parenthetical {
+    margin: 0 1.3in 0 1.8in;
+    font-style: italic;
+    color: #555;
+    font-size: 10pt;
+  }
+
+  .transition {
+    text-align: right;
+    margin: 1em 0;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  .shot {
+    margin: 0.5em 0;
+    font-weight: 700;
+  }
+
+  /* ── 技术备注 ── */
+  .tech-notes {
+    margin: 0.5em 0 1em 0;
+    padding: 0.5em 0.8em;
+    background: #f0f0f0;
+    border-left: 3px solid var(--accent);
+    font-size: 9pt;
+    color: #666;
+  }
+
+  .tech-notes dt {
+    font-weight: 700;
+    display: inline;
+    color: #444;
+  }
+
+  .tech-notes dd {
+    display: inline;
+    margin-right: 1.5em;
+  }
+
+  /* ── 页脚 ── */
+  .page-break { page-break-before: always; }
+
+  .footer {
+    margin-top: 2em;
+    padding-top: 1em;
+    border-top: 1px solid #ddd;
+    font-size: 9pt;
+    color: #999;
+    text-align: center;
+  }
+
+  /* ── 打印优化 ── */
+  @media print {
+    body {
+      padding: 1.5in 1in 1in 1.5in;
+      background: white;
+    }
+    .tech-notes { background: none; border-left-color: #999; }
+    .no-print { display: none; }
+  }
+
+  /* ── Dark mode ── */
+  @media (prefers-color-scheme: dark) {
+    body { background: #141413; color: #e0e0e0; }
+    .tech-notes { background: #1e1e1e; border-left-color: var(--accent); color: #aaa; }
+    .tech-notes dt { color: #ccc; }
+    .title-page .meta { color: #888; }
+    .scene-header .info { color: #999; }
+    .parenthetical { color: #999; }
+    .footer { color: #666; border-top-color: #333; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ 标题页 ═══ -->
+<div class="title-page">
+  <h1>最后的记忆贩</h1>
+  <div class="byline">编剧：Muse Video Skill</div>
+
+  <div class="meta">
+    <p><strong>场景类型</strong>：sci-fi</p>
+    <p><strong>预估时长</strong>：90s</p>
+    <p><strong>画幅比例</strong>：2.39:1</p>
+    <p><strong>风格类型</strong>：cyberpunk-noir</p>
+    <p><strong>目标平台</strong>：film-festival</p>
+    <p><strong>语言</strong>：zh-CN</p>
+    <p><strong>Logline</strong>：2089年，一个记忆贩子在回收记忆的过程中，发现了一段不该存在的片段——关于绿色。他开始质疑这个尘橙世界的真实性。</p>
+    <p style="margin-top:1em;"><strong>导演阐述</strong>：一支90秒赛博朋克概念短片，向BR2049致敬。讲述近未来（2089年）的记忆贩子——一个在尘橙天空下回收和贩卖他人记忆的孤独者。某个回收任务中，他发现了一段不该存在的记忆——关于绿色、树木、未被污染的蓝天。这段记忆打破了他对世界的认知。本片追求'沉默的力量'——全片对白不超过10句，用画面、环境、粒子、巨物美学来传递信息。核心视觉锚点：BR2049的尘橙天空 + 巨物建筑 + 单一光源原则 + 永远有粒子在飘。故事的核心冲突不是打斗，而是'知道了不该知道的事'。</p>
+  </div>
+</div>
+
+<!-- ═══ 正文 ═══ -->
+<div class="page-break"></div>
+
+
+
+<div class="scene-header">
+  <div class="slug">1. 尘橙之城</div>
+  <div class="info">洛杉矶废墟——2089年，巨型粗野主义建筑群，尘橙天空 · 黄昏（永久性的尘橙暮光——大气污染导致天空永远是橙色） · 12s</div>
+</div>
+
+{{#if action}}
+<div class="action">一个极端广角的建立镜头：废弃的巨型粗野主义建筑群笼罩在尘橙色的雾霾中。飞行车（破旧型号，不是光鲜的科幻悬浮车）在建筑间缓慢穿行，像疲惫的昆虫。灰烬粒子在空气中持续漂浮。一栋建筑的侧面有一块残破的全息广告牌——闪烁、色彩偏移、有扫描线——显示着早已不存在的产品的广告。镜头极缓慢地向下摇，落在一栋建筑的较低层——那里有一扇很小的窗户，透出微弱的冷蓝色光。</div>
+
+
+{{#if dialogue}}
+<div class="character">角色</div>
+<div class="dialogue">（无对白）</div>
+
+
+{{#if camera}}
+<div class="tech-notes">
+  <dl>
+    <dt>镜头：</dt><dd>极端广角（大远景）→ 下摇至中景（建筑窗口）</dd>
+    <dt>运镜：</dt><dd>极缓dolly推进 + 微俯摇（12秒内视角从城市全景下降到建筑中层的窗口）</dd>
+    <dt>焦段：</dt><dd>24mm广角（大远景）+ 缓缓变焦至50mm（窗口中景）</dd>
+    <dt>灯光：</dt><dd>单一光源：尘橙色的太阳（被霾层散射为巨大的柔光光源）。无补光——建筑的暗面完全压黑（IRE<5%）</dd>
+    {{#if camera.composition_notes}}<dt>构图：</dt><dd>开场4秒——建筑在画面中占比>90%，飞行车<3%。4秒后摇下——建筑的粗野主义质感（裸露混凝土）逐渐清晰。8秒后——窗口的冷蓝色光在橙色画面中形成唯一的冷色对比点</dd>
+  </dl>
+</div>
+
+
+{{#if vfx_notes}}
+<div class="tech-notes">
+  <dl><dt>特效：</dt><dd>全息广告牌（BR2049式'不完美'全息：扫描线+色彩偏移+边缘闪烁+间歇性信号丢失），灰烬粒子系统（密度不均匀，有团块，慢速随机运动），大气雾霾（volumetric fog,橙色散射）</dd></dl>
+</div>
+
+
+{{#if sound_notes}}
+<div class="tech-notes">
+  <dl><dt>声音：</dt><dd>工业环境音优先（BR2049声音层次）：远处飞行引擎的低频嗡鸣(40%) + 灰烬粒子沙沙声(25%) + 全息广告牌的电流声(20%) + 风声(15%)。无音乐。</dd></dl>
+</div>
+
+
+
+
+<div class="scene-header">
+  <div class="slug">2. 记忆贩的巢穴</div>
+  <div class="info">记忆贩的公寓——建筑中层，一个被改装为「记忆工坊」的小空间 · 室内——无自然光，仅有设备光源 · 15s</div>
+</div>
+
+{{#if action}}
+<div class="action">室内。空间逼仄，墙壁是裸露的混凝土。唯一的光源是工作台上的记忆读取设备——一个老旧的神经接口终端，散发着冷蓝色光（参考BR2049 K公寓的全息Joi光）。记忆贩（背影，我们始终不看清他的脸）坐在工作台前。他在处理一个记忆晶片——用微小的工具小心翼翼地清洁接口。工作台上散落着数十个类似的晶片，每个都贴着褪色的手写标签（'2077.3.12 日落'、'2082.9.5 婚礼'、'2084.1.8 最后一次拥抱'）。他拿起一个新的晶片——标签是空白的——插入读取设备。设备发出微弱的嗡鸣声。</div>
+
+
+{{#if dialogue}}
+<div class="character">角色</div>
+<div class="dialogue">（无对白——全程通过动作和环境传递信息）</div>
+
+
+{{#if camera}}
+<div class="tech-notes">
+  <dl>
+    <dt>镜头：</dt><dd>中景（建立空间）→ 过肩中特写（工作台）→ 大特写（手部操作+晶片）</dd>
+    <dt>运镜：</dt><dd>静态开场4秒（建立空间）→ dolly极缓推进（从门口到工作台）→ 静态（手部大特写）</dd>
+    <dt>焦段：</dt><dd>35mm（空间建立）→ 85mm（工作台过肩）→ 100mm微距（晶片大特写）</dd>
+    <dt>灯光：</dt><dd>单一光源：记忆读取设备的冷蓝色屏幕光。设备光向上打在记忆贩的脸上——但我们只看到下巴和脖子（面部保持神秘）。墙壁上有设备光投射出的微弱波纹（数据流）。极微弱的金色轮廓光从背后窗户的缝隙漏入（尘橙天空的间接光）</dd>
+    {{#if camera.composition_notes}}<dt>构图：</dt><dd>空间建立时：记忆贩在画面左1/3，工作台在右2/3。推进后：晶片在画面正中（类似产品广告Hero Shot——但这里是'反Hero'——晶片是破旧的，标签是手写的）</dd>
+  </dl>
+</div>
+
+
+{{#if vfx_notes}}
+<div class="tech-notes">
+  <dl><dt>特效：</dt><dd>神经接口终端——设备光在混凝土墙上的数据波纹（类似水纹但带有数字扫描线），记忆晶片插入时接口的微弱蓝白色火花，标签上的手写字迹是环境的一部分（BR2049文字作为环境）</dd></dl>
+</div>
+
+
+{{#if sound_notes}}
+<div class="tech-notes">
+  <dl><dt>声音：</dt><dd>设备低频嗡鸣(50%) + 微弱的数据流电子音(20%) + 晶片插入的清脆金属声(15%) + 窗外远处偶尔传来的飞行引擎声(10%) + 记忆贩的呼吸声(5%，仅在插入晶片的前一秒——制造紧张感)</dd></dl>
+</div>
+
+
+
+
+<div class="scene-header">
+  <div class="slug">3. 不该存在的记忆</div>
+  <div class="info">记忆贩的意识空间——记忆回放的抽象表现 · 无时间——意识空间 · 12s</div>
+</div>
+
+{{#if action}}
+<div class="action">记忆贩闭上眼睛。画面过渡到记忆回放：不是常规的清晰画面——而是一个人的记忆碎片，破碎的、不完整的、像被水浸过的胶片。正常的记忆（他已看过无数次的那种）——模糊的人脸、日常生活的片段、城市中的灰色生活。然后，异常出现了——一个他不认识的画面：绿色。真正的绿色。一棵树。不是全息投影的树（那种有扫描线），而是一棵真实的树，有真实的叶子，在风中摇曳。天空是蓝色的——不是尘橙色。这个画面只持续了2秒，然后记忆断裂——画面变成雪花噪点——然后回到现实。</div>
+
+
+{{#if dialogue}}
+<div class="character">角色</div>
+<div class="dialogue">（无对白）</div>
+
+
+{{#if camera}}
+<div class="tech-notes">
+  <dl>
+    <dt>镜头：</dt><dd>记忆回放用主观镜头（POV——记忆贩的视角）</dd>
+    <dt>运镜：</dt><dd>记忆画面：微晃手持感（模拟人眼的不稳定性）——区别于外部世界的精确dolly运动</dd>
+    <dt>焦段：</dt><dd>主观镜头用28mm（接近人眼视角），绿色的树用50mm（更亲近的视角）</dd>
+    <dt>灯光：</dt><dd>记忆画面没有统一的光源逻辑——这是'回忆'不是'现实'。正常记忆：灰暗、低对比度、褪色。绿色记忆：突然的高饱和度、真实的阳光（从画面左上角射入——真正的太阳光，不是霾散射光）</dd>
+    {{#if camera.composition_notes}}<dt>构图：</dt><dd>绿色记忆出现在画面的0:05-0:07——仅2秒。以1.5倍速度播放（现实中2秒=主观感受3秒）。树在画面正中，树叶占画幅60%。蓝天的饱和度与尘橙天空形成极致冲突</dd>
+  </dl>
+</div>
+
+
+{{#if vfx_notes}}
+<div class="tech-notes">
+  <dl><dt>特效：</dt><dd>记忆画面的视觉处理：轻微的色彩偏移(像旧胶片)、间歇性闪烁、边缘有微弱的VHS式噪点带。正常记忆→绿色记忆的过渡是一瞬间的'撕裂感'——画面横向撕裂0.3秒后突然切换到绿色。记忆断裂→现实的过渡是雪花噪点+白屏闪烁(0.5秒)</dd></dl>
+</div>
+
+
+{{#if sound_notes}}
+<div class="tech-notes">
+  <dl><dt>声音：</dt><dd>记忆回放时：微弱的电流嗡鸣(类似旧CRT电视)+ 破碎的人声片段（听不清内容）。绿色记忆出现的2秒：突然插入一段极纯净的声音——风吹树叶的沙沙声（这是全片唯一一次出现'自然声音'）。记忆断裂：尖锐的电子反馈声(0.2秒)→ 静默(0.3秒)→ 回到设备嗡鸣（现实）</dd></dl>
+</div>
+
+
+
+
+<div class="scene-header">
+  <div class="slug">4. 不可能的确认</div>
+  <div class="info">记忆贩的公寓 · 室内——时间流逝（窗外从黄昏进入夜晚） · 10s</div>
+</div>
+
+{{#if action}}
+<div class="action">回到现实。记忆贩猛地睁开眼睛——这是他多年来第一次对一段记忆产生情绪反应。他拔下晶片，翻转它——背面刻着一行小字：'2089.4.15 — 最后一次看见绿色。'他的手微微颤抖。他抬头看向窗外——尘橙色的天空正在变暗（从黄昏到夜晚的过渡）。窗外，一座巨型建筑正在缓慢地进行日常维护——一个机械臂以极慢的速度在建筑表面移动，像一只巨大的昆虫在舔舐混凝土。</div>
+
+
+{{#if dialogue}}
+<div class="character">角色</div>
+<div class="dialogue">记忆贩（自言自语，沙哑低声）：'这不是模拟。'（唯一一句台词）</div>
+
+
+{{#if camera}}
+<div class="tech-notes">
+  <dl>
+    <dt>镜头：</dt><dd>中特写（记忆贩的侧面——仍不露全脸）→ 第一人称主观（窗外视角）→ 回到中特写</dd>
+    <dt>运镜：</dt><dd>前半3秒静态（记忆贩凝视晶片）→ 主观镜头：dolly推向窗口（3秒）→ 快速切回中特写（他在看窗外）→ 再次主观：从窗口向上摇至巨型建筑（4秒）</dd>
+    <dt>焦段：</dt><dd>85mm（中特写）+ 24mm（窗外远景+巨物）</dd>
+    <dt>灯光：</dt><dd>室内：仍以设备冷蓝色光为主，但窗外射入的最后一缕尘橙暮光在记忆贩侧面形成金色轮廓。窗外：巨大的机械臂在巨型建筑上投下移动的阴影——阴影缓慢爬过他公寓的墙壁</dd>
+    {{#if camera.composition_notes}}<dt>构图：</dt><dd>巨物美学在此场景全面展开：窗外建筑占画面70%，机械臂以极缓速度移动（10秒内移动画面的5%宽度）。记忆贩在观察它时，他在画面右下角——人在巨物面前的比例<10%</dd>
+  </dl>
+</div>
+
+
+{{#if vfx_notes}}
+<div class="tech-notes">
+  <dl><dt>特效：</dt><dd>黄昏→夜晚的光线过渡（3秒内的天空色渐变——尘橙→深蓝黑），机械臂的巨物缓动（BR2049式关键帧极小间距+ease-in-out长尾，持续10秒+），巨型建筑上的维护灯光（微弱的红色闪烁——建筑'活着'的迹象）</dd></dl>
+</div>
+
+
+{{#if sound_notes}}
+<div class="tech-notes">
+  <dl><dt>声音：</dt><dd>BR2049式爆发式巨响手法：在长时间的设备低频嗡鸣后，当记忆贩看到背面刻字时→突然插入一声低频的重击（类似心跳但更工业，持续0.5秒）→立刻回到安静。然后窗外：巨型机械臂发出极低频的金属呻吟（20-40Hz），这个声音覆盖了整个后半段——它是'世界的呼吸'</dd></dl>
+</div>
+
+
+
+
+<div class="scene-header">
+  <div class="slug">5. 认知拆解</div>
+  <div class="info">记忆贩的公寓——多个空间（意识流剪辑） · 夜晚——室内仅剩设备光 · 12s</div>
+</div>
+
+{{#if action}}
+<div class="action">记忆贩崩溃了——不是戏剧化的崩溃，而是安静的内在拆解。快速剪辑序列（10个镜头，每个0.8-1.2秒）：
+① 他站起来，椅子向后倒——慢动作，椅子倒了3秒才落地（时间感知被拉长）→ ② 他的手扫过工作台，部分晶片被扫落——但晶片落地也是慢动作→ ③ 他走到墙边，额头抵在粗糙的混凝土墙上→ ④ 墙上贴满了手写笔记——关于记忆分类、神经接口的电路图、一张被反复折叠的旧照片（模糊的脸）→ ⑤ 他的手指沿着墙上的裂缝划过（混凝土的粗糙质感）→ ⑥ 回闪——绿色记忆中的树叶在阳光下闪烁（0.5秒）→ ⑦ 回到现实——他的眼睛特写（第一次展示全脸——双眼布满血丝，眼神里有恐惧但不是恐惧暴力——是恐惧'知道自己不知道'）→ ⑧ 他看向窗外——巨型建筑的维护灯光在黑暗中闪烁（像城市的'心跳'）→ ⑨ 他拿起那个刻字的晶片，紧握在手心→ ⑩ 他缓缓坐回工作台前——镜头拉远，他重新变得很小，工作台的冷蓝色光是他唯一的光源。</div>
+
+
+{{#if dialogue}}
+<div class="character">角色</div>
+<div class="dialogue">（无对白——仅通过表演和剪辑传递内在冲突）</div>
+
+
+{{#if camera}}
+<div class="tech-notes">
+  <dl>
+    <dt>镜头：</dt><dd>混合——中景/特写/大特写/回闪/大远景</dd>
+    <dt>运镜：</dt><dd>快速剪辑中60%为静态镜头（保持信息清晰），10%手持（椅子倒下的慢动作——摄像机微微晃动，模拟他的眩晕感），30%dolly（最后拉远至大远景）</dd>
+    <dt>焦段：</dt><dd>混合——50mm（中景），85mm（特写），100mm微距（混凝土纹理/旧照片），24mm（最后拉远至大远景）</dd>
+    <dt>灯光：</dt><dd>所有室内镜头统一使用冷蓝色设备光作为唯一主光（保持BR2049单一光源原则）。唯一的暖色来自第6个镜头——绿色记忆回闪中的自然太阳光（暖白，非尘橙）。最后的大远景中，记忆贩在画面中只是一个剪影——被冷蓝色光勾勒出轮廓</dd>
+    {{#if camera.composition_notes}}<dt>构图：</dt><dd>第7个镜头（眼睛特写）是核心——第一次展示角色的全脸。单眼充满画面（占80%画幅），极浅景深（f/1.4），眼神中有绿色记忆的微弱反光（后期合成——暗示'绿色'已在他眼中扎根）。最后镜头：公寓窗口在巨型建筑面前只有1/50大小——学习BR2049的尺度对比</dd>
+  </dl>
+</div>
+
+
+{{#if vfx_notes}}
+<div class="tech-notes">
+  <dl><dt>特效：</dt><dd>回闪片段（镜头6）的视觉处理——比场景3中的原始记忆更明亮、更饱和、更清晰——因为记忆在被'记住'的过程中变得更强烈（记忆的不可靠性）。最后大远景中的冷蓝色剪影——光晕效果（bloom）+ 粒子漂浮</dd></dl>
+</div>
+
+
+{{#if sound_notes}}
+<div class="tech-notes">
+  <dl><dt>声音：</dt><dd>本场景是BR2049声音层次的实践。层次1：持续的设备低频嗡鸣（底层，50%）→ 层次2：椅子慢动作倒下的声音被拉长为一声低沉的金属拖拽（20%）→ 层次3：晶片落地的声音被放大——每片晶片落地都是一声清晰但被回响延长的'叮——'（15%）→ 层次4：第6镜头出现的瞬间，突然插入一段Vangelis式CS-80合成器高频旋律（只持续1秒，立刻消失）→ 层次5：最后拉远时，所有声音逐渐融合为一声持续的、逐渐增强的工业嗡鸣——然后突然切断（静默0.5秒）→ 转场到场景6</dd></dl>
+</div>
+
+
+
+
+<div class="scene-header">
+  <div class="slug">6. 墙外的信号</div>
+  <div class="info">记忆贩的公寓→建筑的通风井 · 深夜 · 10s</div>
+</div>
+
+{{#if action}}
+<div class="action">记忆贩发现了什么。在他工作台后面的墙上——那条他刚才手指划过的裂缝——透过裂缝，他看到了光。不是设备冷蓝光，不是尘橙天光，是一种他不认识的光。他拿起一把旧改锥，开始撬开裂缝。混凝土碎屑落下——他伸手进去，拉出了一根被隐藏的数据线。线的末端连接着一个小型全息投影器——破旧的型号，表面有锈迹。他按下开关——投影器投射出一段信息——但信息被加密了，只能看到碎片：一个坐标（经度/纬度）、一个日期（'2089.5.1'）、和四个字——'绿色存在'。</div>
+
+
+{{#if dialogue}}
+<div class="character">角色</div>
+<div class="dialogue">（无对白）</div>
+
+
+{{#if camera}}
+<div class="tech-notes">
+  <dl>
+    <dt>镜头：</dt><dd>中景→过肩→大特写→中景</dd>
+    <dt>运镜：</dt><dd>dolly推进（跟随他的视线向裂缝移动）→ 过肩（他在撬墙）→ 大特写（他拿出数据线的手+全息投影器）→ 静态（全息信息浮现）</dd>
+    <dt>焦段：</dt><dd>50mm→85mm→100mm微距→50mm</dd>
+    <dt>灯光：</dt><dd>全息投影的光成为新的临时光源——一种柔和的绿色光（饱和度很低，不是霓虹绿，而是自然的、植物般的淡绿）。这个光的绿色与场景5回闪中'绿色记忆'的色调一致——建立视觉关联</dd>
+    {{#if camera.composition_notes}}<dt>构图：</dt><dd>全息投影器的锈迹是一个重要细节——它不是'未来科技产品'而是'被遗弃的旧科技'，与BR2049的美学一致。投影信息的碎片在空气中不稳定地闪烁（有扫描线+色彩偏移+间歇信号丢失）</dd>
+  </dl>
+</div>
+
+
+{{#if vfx_notes}}
+<div class="tech-notes">
+  <dl><dt>特效：</dt><dd>全息投影（BR2049式不完美全息——扫描线+边缘闪烁+色彩偏移+间歇信号丢失），投影的淡绿色光在记忆贩脸上的映射（不是均匀照亮，而是有扫描线在脸上扫过），从裂缝中取出的数据线上的锈迹纹理</dd></dl>
+</div>
+
+
+{{#if sound_notes}}
+<div class="tech-notes">
+  <dl><dt>声音：</dt><dd>撬墙时：混凝土碎裂的脆响（被放大——ASMR质感）。数据线被拉出时：微弱的电流声（像重新接通电路）。全息投影启动时：设备自检的提示音序列（3个不同音高的短促'哔'声）+ 微弱的绿色光闪烁声（类似荧光灯启动）</dd></dl>
+</div>
+
+
+
+
+<div class="scene-header">
+  <div class="slug">7. 最后的晶片</div>
+  <div class="info">记忆贩的公寓 · 深夜→即将黎明（尘橙天空的最暗时刻） · 10s</div>
+</div>
+
+{{#if action}}
+<div class="action">记忆贩回到工作台前。他将那个刻字的晶片插入读取设备——但这次他调整了参数（通过手部操作传递——他在绕过安全协议，访问被加密的元数据层）。读取设备嗡鸣声变高。显示出晶片的来源地址——一个城外的废弃卫星站，注册日期是2089年4月15日（正好是晶片背面刻字的日期），发送者ID被删除——但他在元数据的残留碎片中读到了一个名字：'E.V.E. — 生态验证工程'。窗外——尘橙天空的最暗时刻即将结束，地平线上开始出现第一道微弱的尘橙色光——但不是太阳，而是城市边缘的巨型垃圾处理厂的火光。</div>
+
+
+{{#if dialogue}}
+<div class="character">角色</div>
+<div class="dialogue">（无对白）</div>
+
+
+{{#if camera}}
+<div class="tech-notes">
+  <dl>
+    <dt>镜头：</dt><dd>过肩中特写（工作台）→ 大特写（晶片+屏幕数据）→ 中特写（他的脸——第二次全脸展示）→ 窗外大远景</dd>
+    <dt>运镜：</dt><dd>dolly极缓推进（6秒内从过肩推进到屏幕大特写）→ 快速拉远至窗外大远景（3秒）</dd>
+    <dt>焦段：</dt><dd>85mm→100mm微距→85mm→24mm广角</dd>
+    <dt>灯光：</dt><dd>主光仍是设备冷蓝色光。但在记忆贩读到'E.V.E.'时——窗外的第一道'火光'渗入室内，在冷蓝色上叠加了一道微弱的暖橙色（尘橙——但这次是火光的橙，不是霾的橙）。两种光在他的脸上交汇——冷蓝（科技/现实）与暖橙（世界/真相）</dd>
+    {{#if camera.composition_notes}}<dt>构图：</dt><dd>记忆贩读数据时——他的双眼反射出屏幕上的数据流（蓝白色字符在他眼中流动）——与场景5中的'绿色记忆反光'形成对照：蓝=已知的科技世界，绿=未知的自然世界。最后窗外大远景：巨物垃圾处理厂的火光映亮天空1/3面积——这不是晨曦，这是'世界的真相'——城市靠燃烧垃圾获得能源</dd>
+  </dl>
+</div>
+
+
+{{#if vfx_notes}}
+<div class="tech-notes">
+  <dl><dt>特效：</dt><dd>屏幕数据流的视觉设计——不被美化的实用界面：白字蓝底，命令行风格，有闪烁的光标等待输入。远处垃圾处理厂的火光——暖橙色辉光(volumetric light)+烟柱升腾（粒子系统）+远处建筑被火光映亮的表面</dd></dl>
+</div>
+
+
+{{#if sound_notes}}
+<div class="tech-notes">
+  <dl><dt>声音：</dt><dd>设备嗡鸣声频率逐渐升高（象征他在突破安全协议——音高从40Hz升至80Hz）。读到'E.V.E.'时——插入一段极短(0.3秒)的电子脉冲声——类似'系统被入侵'的警告声，但被中途切断（暗示信息被主动删除）。最后窗外：垃圾处理厂的低频火焰燃烧声（持续的轰隆声，20-30Hz）</dd></dl>
+</div>
+
+
+
+
+<div class="scene-header">
+  <div class="slug">8. 走向绿色</div>
+  <div class="info">记忆贩的公寓→室外→开放结尾 · 黎明（尘橙色的'白天'开始——但其实只是霾层散射的人造光） · 9s</div>
+</div>
+
+{{#if action}}
+<div class="action">记忆贩站起身。他拿起那个刻字的晶片，放入外套内侧口袋。他看了一眼工作台上的其他晶片——那些贴着标签的、他曾经视为'财富'的记忆——然后转身，走向门口。门打开，尘橙色的'阳光'涌入。他走出门外——镜头留在室内，透过门框看到他的背影逐渐变小，融入尘橙色的雾霾中。他走向的方向是城市的边缘——垃圾处理厂的方向——那个'E.V.E.'存在的方向。画面最后停留在空荡荡的公寓内：工作台上的冷蓝色设备光仍在闪烁，墙上的裂缝仍在，一枚被遗留的晶片在桌上——标签上写着'2089.4.15 绿色'。——淡出至黑。</div>
+
+
+{{#if dialogue}}
+<div class="character">角色</div>
+<div class="dialogue">（无对白——全片以沉默收尾）</div>
+
+
+{{#if camera}}
+<div class="tech-notes">
+  <dl>
+    <dt>镜头：</dt><dd>中景（他站起身）→ 中景（他看向工作台——做出选择）→ 主观（门口望向室外——尘橙色的无尽走廊）→ 静态（室内镜头——门框构图，他消失在雾霾中）→ 大特写（被遗留的晶片）</dd>
+    <dt>运镜：</dt><dd>他站起身的部分为手持感微动（唯一一次在平静场景中使用手持——象征他'不再静止'）→ 门口主观为dolly极缓推进→ 最后室内为完全静态（长时间——9秒中的5秒）</dd>
+    <dt>焦段：</dt><dd>50mm（室内中景）→ 28mm（主观走廊）→ 100mm微距（最后遗留的晶片）</dd>
+    <dt>灯光：</dt><dd>门打开后尘橙光涌入——但这是'脏'的光，不是温暖的光——它照亮的不是希望，而是'世界的本来面目'。最后晶片的特写：冷蓝色设备光斜射在晶片标签的'绿色'二字上——冷蓝与晶片本身反射的微弱暖光交汇</dd>
+    {{#if camera.composition_notes}}<dt>构图：</dt><dd>门框构图——学习BR2049的环形构图原则。门框在画面中形成一个矩形框架，记忆贩在框架中远去——框架=他逃离的'旧世界'。最后晶片占据画面中心80%——标签上的'绿色'二字是视觉焦点——但晶片本身是裂了一角的（他在场景5中摔到的）——暗示'绿色'的信息也是残缺的</dd>
+  </dl>
+</div>
+
+
+{{#if vfx_notes}}
+<div class="tech-notes">
+  <dl><dt>特效：</dt><dd>门外的尘橙雾霾(volumetric fog)——他的背影在其中逐渐被吞没（5秒淡出）。最后晶片上的灰尘粒子在设备光中缓慢漂浮——提醒观众粒子始终存在（世界的'活着'的证据）。淡出至黑——黑色持续2秒——给观众处理情绪的空间（学习BR2049的'安静就是大声'）</dd></dl>
+</div>
+
+
+{{#if sound_notes}}
+<div class="tech-notes">
+  <dl><dt>声音：</dt><dd>最终声音设计（BR2049式多层收束）：
+层次1：他站起身时——椅子与地面的摩擦声（清晰，被放大）
+层次2：门打开——尘橙世界的外部声音涌入（远处的飞行引擎+工业噪音+风声——这是全片第一次清晰听到'外部世界'的声音）
+层次3：他离开后——外部声音逐渐减弱（他走远了），室内声音重新浮现——设备嗡鸣（忠诚的、持续的）
+层次4：最后晶片的特写——所有声音收束到只剩两个：设备低频嗡鸣(60%) + 灰烬粒子漂浮的细微沙沙声(40%)
+层次5：淡出至黑——声音在黑色画面出现后1秒完全消失。黑色静默持续2秒（给观众'呼吸'的空间）——然后全片结束</dd></dl>
+</div>
+
+
+
+
+<!-- ═══ 页脚 ═══ -->
+<div class="footer">
+  Generated by Muse Video Skill · 2026-06-12T07:45:27Z<br>
+  编剧版本 3 · DP 版本 3 · 导演审核：True
+</div>
+
+</body>
+</html>

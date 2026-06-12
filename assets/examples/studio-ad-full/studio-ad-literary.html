@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>光影之间 — 文学剧本</title>
+<style>
+  /* ── Courier 标准剧本格式 ── */
+  @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap');
+
+  :root {
+    --page-width: 8.5in;
+    --margin: 1.5in 1in 1in 1.5in; /* 标准剧本页边距 */
+    --text-color: #1a1a1a;
+    --bg-color: #faf9f5;
+    --accent: #cc785c;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+    font-size: 12pt;
+    line-height: 1.0; /* 标准剧本行距=1 */
+    color: var(--text-color);
+    background: var(--bg-color);
+    max-width: var(--page-width);
+    margin: 0 auto;
+    padding: 1.5in 1in 1in 1.5in;
+  }
+
+  /* ── 标题页 ── */
+  .title-page {
+    text-align: center;
+    margin-top: 3in;
+    page-break-after: always;
+  }
+
+  .title-page h1 {
+    font-size: 24pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 1em;
+    text-decoration: underline;
+  }
+
+  .title-page .byline {
+    font-size: 14pt;
+    margin-bottom: 2em;
+  }
+
+  .title-page .meta {
+    font-size: 11pt;
+    color: #666;
+    margin-top: 3in;
+    text-align: left;
+  }
+
+  .title-page .meta p {
+    margin-bottom: 0.3em;
+  }
+
+  /* ── 场景标题 ── */
+  .scene-header {
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+  }
+
+  .scene-header .slug {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .scene-header .info {
+    font-size: 10pt;
+    color: #555;
+    margin-top: 0.3em;
+  }
+
+  /* ── 剧本元素 ── */
+  .action {
+    margin: 0.7em 0;
+    text-align: justify;
+  }
+
+  .character {
+    margin: 1em 0 0 0;
+    padding-left: 2.2in;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+
+  .dialogue {
+    margin: 0 1in 0 1.5in;
+    max-width: 3.5in;
+    margin-bottom: 0.5em;
+  }
+
+  .parenthetical {
+    margin: 0 1.3in 0 1.8in;
+    font-style: italic;
+    color: #555;
+    font-size: 10pt;
+  }
+
+  .transition {
+    text-align: right;
+    margin: 1em 0;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  .shot {
+    margin: 0.5em 0;
+    font-weight: 700;
+  }
+
+  /* ── 技术备注 ── */
+  .tech-notes {
+    margin: 0.5em 0 1em 0;
+    padding: 0.5em 0.8em;
+    background: #f0f0f0;
+    border-left: 3px solid var(--accent);
+    font-size: 9pt;
+    color: #666;
+  }
+
+  .tech-notes dt {
+    font-weight: 700;
+    display: inline;
+    color: #444;
+  }
+
+  .tech-notes dd {
+    display: inline;
+    margin-right: 1.5em;
+  }
+
+  /* ── 页脚 ── */
+  .page-break { page-break-before: always; }
+
+  .footer {
+    margin-top: 2em;
+    padding-top: 1em;
+    border-top: 1px solid #ddd;
+    font-size: 9pt;
+    color: #999;
+    text-align: center;
+  }
+
+  /* ── 打印优化 ── */
+  @media print {
+    body {
+      padding: 1.5in 1in 1in 1.5in;
+      background: white;
+    }
+    .tech-notes { background: none; border-left-color: #999; }
+    .no-print { display: none; }
+  }
+
+  /* ── Dark mode ── */
+  @media (prefers-color-scheme: dark) {
+    body { background: #141413; color: #e0e0e0; }
+    .tech-notes { background: #1e1e1e; border-left-color: var(--accent); color: #aaa; }
+    .tech-notes dt { color: #ccc; }
+    .title-page .meta { color: #888; }
+    .scene-header .info { color: #999; }
+    .parenthetical { color: #999; }
+    .footer { color: #666; border-top-color: #333; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ 标题页 ═══ -->
+<div class="title-page">
+  <h1>光影之间</h1>
+  <div class="byline">编剧：Muse Video Skill</div>
+
+  <div class="meta">
+    <p><strong>场景类型</strong>：studio-ad</p>
+    <p><strong>预估时长</strong>：30s</p>
+    <p><strong>画幅比例</strong>：16:9</p>
+    <p><strong>风格类型</strong>：luxury-minimalist</p>
+    <p><strong>目标平台</strong>：all-platform</p>
+    <p><strong>语言</strong>：zh-CN</p>
+    <p><strong>Logline</strong>：一道光线划过暗夜，唤起一支腕表的觉醒——从材质到功能，从佩戴到身份，光影之间，时间有了形状。</p>
+    <p style="margin-top:1em;"><strong>导演阐述</strong>：一支30秒的奢侈品级智能手表棚拍广告。用极简主义的灯光和构图，将产品从「科技配件」提升为「腕间艺术品」。核心视觉策略：减法灯光+高反差+液态金属流动感。每一帧都是精心设计的静物画，产品在光影交替中展现材质之美。</p>
+  </div>
+</div>
+
+<!-- ═══ 正文 ═══ -->
+<div class="page-break"></div>
+
+
+
+<div class="scene-header">
+  <div class="slug">1. 暗夜初醒</div>
+  <div class="info">摄影棚——黑背景，产品旋转台 · 无时间概念（纯黑环境） · 5s</div>
+</div>
+
+{{#if action}}
+<div class="action">全黑画面。一束极细的金色侧光从画面右上方缓缓扫入，像黎明第一道光。光触及表盘的边缘，金属边框折射出第一道暖金色光芒。表盘缓缓旋转10°，光追随之。背景粒子（金色微尘）开始缓慢漂浮。</div>
+
+
+{{#if dialogue}}
+<div class="character">角色</div>
+<div class="dialogue">（无对白）</div>
+
+
+{{#if camera}}
+<div class="tech-notes">
+  <dl>
+    <dt>镜头：</dt><dd>极端特写（表盘局部）</dd>
+    <dt>运镜：</dt><dd>静态——极缓dolly推进（20秒内推进15%）</dd>
+    <dt>焦段：</dt><dd>100mm微距镜头</dd>
+    <dt>灯光：</dt><dd>单一金色侧光（模拟BR2049华莱士总部金色水面底光），无辅光——画面90%是纯黑</dd>
+    {{#if camera.composition_notes}}<dt>构图：</dt><dd>表盘右侧1/3处，左侧留黑。金属边框的高光构成画面唯一亮部</dd>
+  </dl>
+</div>
+
+
+{{#if vfx_notes}}
+<div class="tech-notes">
+  <dl><dt>特效：</dt><dd>金色微尘粒子漂浮（模拟BR2049式粒子氛围）</dd></dl>
+</div>
+
+
+{{#if sound_notes}}
+<div class="tech-notes">
+  <dl><dt>声音：</dt><dd>极低频嗡鸣（模拟BR2049工业环境音），音量从无渐入</dd></dl>
+</div>
+
+
+
+
+<div class="scene-header">
+  <div class="slug">2. 材质交响</div>
+  <div class="info">摄影棚——多光源细节拍摄台 · 无时间概念 · 8s</div>
+</div>
+
+{{#if action}}
+<div class="action">快速剪辑序列（8个微距镜头，每个1秒）：
+① 表冠的拉丝纹理（顶光硬光）→ ② 表带的皮革毛孔（侧光柔光）→ ③ 蓝宝石玻璃的倒角边缘（逆光折射）→ ④ 表扣的抛光镜面（环形光）→ ⑤ 表盘的太阳纹（旋转底光）→ ⑥ 指针的夜光涂层（紫外光激发）→ ⑦ 背透机芯的齿轮（顶光微距）→ ⑧ 整体45°展示面（Hero Shot）。
+每个镜头切换时，光从一个材质「传递」到下一个材质，形成视觉流。</div>
+
+
+{{#if dialogue}}
+<div class="character">角色</div>
+<div class="dialogue">（无对白，仅音效）</div>
+
+
+{{#if camera}}
+<div class="tech-notes">
+  <dl>
+    <dt>镜头：</dt><dd>微距大特写（每个镜头都针对特定材质）→ 最后Hero Shot为中景</dd>
+    <dt>运镜：</dt><dd>静态（8个镜头）→ 极缓dolly推进（Hero Shot）</dd>
+    <dt>焦段：</dt><dd>100mm微距镜头（微距）+ 50mm（Hero Shot）</dd>
+    <dt>灯光：</dt><dd>按材质切换灯光：拉丝金属=侧顶硬光 / 皮革=大型柔光箱 / 玻璃=逆光+反光板 / 抛光=环形柔光 / 夜光=UV灯+全黑</dd>
+    {{#if camera.composition_notes}}<dt>构图：</dt><dd>每个材质特写填满画幅的60-80%，Hero Shot填满40%</dd>
+  </dl>
+</div>
+
+
+{{#if vfx_notes}}
+<div class="tech-notes">
+  <dl><dt>特效：</dt><dd>镜头之间的光传递转场——上一个镜头的光源方向延续到下一个镜头的第一个1/3秒</dd></dl>
+</div>
+
+
+{{#if sound_notes}}
+<div class="tech-notes">
+  <dl><dt>声音：</dt><dd>每切换一个材质，对应一个清脆的金属/皮革/玻璃音效（ASMR级别），叠加在持续的低频嗡鸣上</dd></dl>
+</div>
+
+
+
+
+<div class="scene-header">
+  <div class="slug">3. 功能觉醒</div>
+  <div class="info">摄影棚——产品使用场景模拟台 · 无时间概念 · 7s</div>
+</div>
+
+{{#if action}}
+<div class="action">表盘从息屏到亮屏的完整过程（2.5秒慢动作）：
+微弱的呼吸灯在表盘边缘亮起→屏幕从中心渐变点亮→AMOLED纯黑背景下，时间数字以优雅的无衬线字体浮现→表盘显示心率监测动画（一道红色光波扫过屏幕）。
+随后（4.5秒）：手指从画面外伸入，轻触表盘——屏幕响应触控，切换到消息通知界面。指尖与玻璃的接触点有微弱的静电感光效。</div>
+
+
+{{#if dialogue}}
+<div class="character">角色</div>
+<div class="dialogue">（无对白）</div>
+
+
+{{#if camera}}
+<div class="tech-notes">
+  <dl>
+    <dt>镜头：</dt><dd>从极端特写（息屏状态，占画幅80%）拉远至中景（手指触控，占画幅40%）</dd>
+    <dt>运镜：</dt><dd>极缓dolly拉远</dd>
+    <dt>焦段：</dt><dd>100mm微距→50mm</dd>
+    <dt>灯光：</dt><dd>息屏阶段保持纯黑+表盘边缘微弱的呼吸光。亮屏后以屏幕本身的光源作为唯一主光（面光），辅以极弱的背面轮廓光分离表盘与黑色背景。手指入画后增加一个顶部的柔光箱（模拟天然光源）</dd>
+    {{#if camera.composition_notes}}<dt>构图：</dt><dd>表盘始终居中，手指从右下方进入。触控瞬间构图转为三分法——表盘在左1/3，手指在右2/3</dd>
+  </dl>
+</div>
+
+
+{{#if vfx_notes}}
+<div class="tech-notes">
+  <dl><dt>特效：</dt><dd>AMOLED屏幕光芒效果（纯黑下的像素级发光），触控静电光效（微弱蓝白色电弧），心率监测红色光波动画</dd></dl>
+</div>
+
+
+{{#if sound_notes}}
+<div class="tech-notes">
+  <dl><dt>声音：</dt><dd>息屏→亮屏：渐强的电子合成器pad（模拟Vangelis CS-80音色）。亮屏瞬间：一声清脆的'叮'（类似Mac开机声但更低频）。心率监测：低频心跳声叠加。手指触控：一声轻微的点击+触觉反馈嗡嗡声</dd></dl>
+</div>
+
+
+
+
+<div class="scene-header">
+  <div class="slug">4. 腕间艺术</div>
+  <div class="info">摄影棚——腕部佩戴拍摄台（演员的手腕） · 无时间概念 · 7s</div>
+</div>
+
+{{#if action}}
+<div class="action">演员的手腕从画面下方缓缓升起（慢动作），手表已佩戴好。手腕旋转——先展示表盘正面（面向镜头），再缓慢旋转至侧面（展示表冠），最后回到正面静止。
+演员的袖口是深灰色精纺羊毛西装——与表盘的深黑形成微妙层次。手腕的动作优雅而克制，像古典芭蕾的手部姿势。
+最后1.5秒：手腕静止，表盘在画面正中。一束金色顶光落下，照亮整支表。</div>
+
+
+{{#if dialogue}}
+<div class="character">角色</div>
+<div class="dialogue">（无对白）</div>
+
+
+{{#if camera}}
+<div class="tech-notes">
+  <dl>
+    <dt>镜头：</dt><dd>中特写（手腕+手表占画幅50%）→ 近特写（手表占画幅70%）</dd>
+    <dt>运镜：</dt><dd>dolly极缓推进（7秒内从50%→70%）+ 0.5秒静态收尾</dd>
+    <dt>焦段：</dt><dd>85mm人像镜头</dd>
+    <dt>灯光：</dt><dd>大型柔光箱从顶部45°角下打（模拟天窗自然光），辅以侧面的金色反光板（暖调补充）。演员手腕下方有一块小型白色反光板消除下巴阴影。深灰袖口与黑背景之间用极弱的背面轮廓光分离</dd>
+    {{#if camera.composition_notes}}<dt>构图：</dt><dd>三分法：手表在画面中央偏上1/3处。演员袖口和手腕构成自然画框（类似BR2049环形构图）。背景是渐变深灰（从底部纯黑到顶部30%灰）</dd>
+  </dl>
+</div>
+
+
+{{#if vfx_notes}}
+<div class="tech-notes">
+  <dl><dt>特效：</dt><dd>演员腕部的柔和光晕（模拟高质感广告中的'皮肤辉光'），手表金属边框的微反射——映出摄影棚柔光箱的虚化倒影</dd></dl>
+</div>
+
+
+{{#if sound_notes}}
+<div class="tech-notes">
+  <dl><dt>声音：</dt><dd>持续的低频pad逐渐加入弦乐群（大提琴+低音提琴），营造'佩戴仪式感'。0:20处加入一声极轻微的布料摩擦声（袖口与表带接触）</dd></dl>
+</div>
+
+
+
+
+<div class="scene-header">
+  <div class="slug">5. 品牌落版</div>
+  <div class="info">摄影棚——正面Hero Shot + 品牌LOGO · 无时间概念 · 3s</div>
+</div>
+
+{{#if action}}
+<div class="action">手表从45°展示面缓缓旋转至完全正面（Hero Shot），旋转过程中金色粒子从中涌出并在表盘周围形成环绕的光轨。旋转完成后，手表静止在画面正中。品牌LOGO从表盘上方以淡入方式浮现（小字号，下方配品牌标语）。画面保持1秒后淡出至黑。</div>
+
+
+{{#if dialogue}}
+<div class="character">角色</div>
+<div class="dialogue">旁白（低沉男声，中文）：'光影之间。'（仅4个字）</div>
+
+
+{{#if camera}}
+<div class="tech-notes">
+  <dl>
+    <dt>镜头：</dt><dd>Hero Shot——正面微俯中景</dd>
+    <dt>运镜：</dt><dd>静态（产品旋转由转台完成，摄影机不移动）</dd>
+    <dt>焦段：</dt><dd>50mm标准镜头</dd>
+    <dt>灯光：</dt><dd>三点布光（经典广告落版）：主光=正面偏上大型柔光箱（柔光），辅光=两侧反光板（消除阴影），轮廓光=背面两个聚光灯+蜂巢（分离产品与深灰背景）。所有光源色温统一5600K，保持产品色彩中性</dd>
+    {{#if camera.composition_notes}}<dt>构图：</dt><dd>产品严格居中，占画幅45%。LOGO在产品上方15%位置。画面四角有极微弱的暗角（vignette）</dd>
+  </dl>
+</div>
+
+
+{{#if vfx_notes}}
+<div class="tech-notes">
+  <dl><dt>特效：</dt><dd>金色粒子环绕光轨（3D粒子系统——在ComfyUI/HyperFrames中实现），LOGO淡入动画（0.5秒），画面暗角效果</dd></dl>
+</div>
+
+
+{{#if sound_notes}}
+<div class="tech-notes">
+  <dl><dt>声音：</dt><dd>音乐在落版前0.5秒达到情绪高点（大提琴+合成器pad的和声峰值），旁白说完后音乐立即收束——留0.5秒纯环境音+粒子音效，然后静默淡出</dd></dl>
+</div>
+
+
+
+
+<!-- ═══ 页脚 ═══ -->
+<div class="footer">
+  Generated by Muse Video Skill · 2026-06-12T07:38:47Z<br>
+  编剧版本 2 · DP 版本 2 · 导演审核：True
+</div>
+
+</body>
+</html>

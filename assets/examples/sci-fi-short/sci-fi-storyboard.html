@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>最后的记忆贩 — 分镜展示</title>
+<style>
+  /* ── 分镜卡片网格 ── */
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+  :root {
+    --bg: #faf9f5;
+    --card-bg: #ffffff;
+    --text: #141413;
+    --text-secondary: #666;
+    --accent: #cc785c;
+    --border: #e0ddd5;
+    --shadow: 0 1px 3px rgba(0,0,0,0.08);
+    --shadow-hover: 0 4px 12px rgba(0,0,0,0.12);
+    --radius: 10px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text);
+    background: var(--bg);
+    padding: 2rem;
+  }
+
+  /* ── Header ── */
+  .header {
+    max-width: 1200px;
+    margin: 0 auto 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid var(--accent);
+  }
+
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+
+  .header .subtitle {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+  }
+
+  .header .grid-info {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.2em 0.8em;
+    background: var(--accent);
+    color: white;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  /* ── Grid ── */
+  .storyboard-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  /* For 2×3 layout */
+  .storyboard-grid.layout-2x3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .storyboard-grid.layout-3x3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* ── Card ── */
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+
+  .card:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px);
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.8rem 1rem;
+    background: #f5f3ef;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .card-header .panel-id {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--accent);
+  }
+
+  .card-header .scene-ref {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+  }
+
+  .card-header .layout-badge {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    padding: 0.15em 0.5em;
+    background: var(--text);
+    color: white;
+    border-radius: 3px;
+    letter-spacing: 0.05em;
+  }
+
+  .card-body {
+    padding: 1rem;
+  }
+
+  .card-body .description {
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.5;
+  }
+
+  .card-body .prompt {
+    background: #f8f8f8;
+    padding: 0.6rem 0.8rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.8rem;
+    color: #555;
+    line-height: 1.4;
+    margin-bottom: 0.8rem;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  .card-body .tech-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  .card-body .tech-meta .tag {
+    padding: 0.15em 0.5em;
+    background: #eee;
+    border-radius: 3px;
+    color: #555;
+  }
+
+  .card-body .image-placeholder {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #f0eee8;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #bbb;
+    font-size: 0.85rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .card-body .image-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+
+  .card-footer {
+    padding: 0.6rem 1rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+  }
+
+  .status-badge {
+    padding: 0.15em 0.6em;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.7rem;
+  }
+
+  .status-badge.approved {
+    background: #d4edda;
+    color: #155724;
+  }
+
+  .status-badge.pending {
+    background: #fff3cd;
+    color: #856404;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    max-width: 1200px;
+    margin: 2rem auto 0;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .storyboard-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .storyboard-grid {
+      grid-template-columns: 1fr;
+    }
+    body { padding: 1rem; }
+  }
+
+  /* ── Print ── */
+  @media print {
+    body { background: white; }
+    .card { box-shadow: none; break-inside: avoid; }
+    .card:hover { transform: none; }
+  }
+
+  /* ── Dark mode ── */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #141413;
+      --card-bg: #1e1e1c;
+      --text: #e0e0e0;
+      --text-secondary: #999;
+      --border: #333;
+      --shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
+    .card-header { background: #252523; }
+    .card-body .prompt { background: #252523; color: #aaa; }
+    .card-body .image-placeholder { background: #252523; }
+    .card-body .tech-meta .tag { background: #333; color: #aaa; }
+    .status-badge.approved { background: #1a3a24; color: #8fdf9f; }
+    .status-badge.pending { background: #3a3010; color: #dfc860; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ Header ═══ -->
+<header class="header">
+  <h1>最后的记忆贩</h1>
+  <div class="subtitle">
+    sci-fi · 90s · 2.39:1
+  </div>
+  <span class="grid-info">3×3 网格 · 8 镜</span>
+</header>
+
+<!-- ═══ Storyboard Grid ═══ -->
+<div class="storyboard-grid layout-">
+
+
+  <article class="card">
+    <header class="card-header">
+      <span class="panel-id">#1</span>
+      <span class="layout-badge">extreme-wide</span>
+      <span class="scene-ref">Scene 1</span>
+    </header>
+
+    <div class="card-body">
+      {{#if generated_url}}
+      <div class="image-placeholder">
+        <img src="—" alt="建立镜头：尘橙天空下的巨型粗野主义建筑群。灰烬粒子漂浮。飞行车在建筑间穿行（占画面<3%）。残破的全息广告牌在建筑侧面闪烁。" loading="lazy">
+      </div>
+      
+      <div class="image-placeholder">🎬 待生成</div>
+      
+
+      <div class="description">建立镜头：尘橙天空下的巨型粗野主义建筑群。灰烬粒子漂浮。飞行车在建筑间穿行（占画面<3%）。残破的全息广告牌在建筑侧面闪烁。</div>
+
+      {{#if prompt}}
+      <div class="prompt">extreme wide shot of dystopian cyberpunk city, massive decaying brutalist buildings, orange dust sky, grey ash particles floating in air, small flying vehicles like tired insects between buildings, broken holographic billboard with scanlines and color shift on building side, Blade Runner 2049 aesthetic, volumetric fog, atmospheric perspective, cinematic, ultra-wide 2.39:1 aspect ratio, 8K</div>
+      
+
+      <div class="tech-meta">
+        {{#if camera_notes}}<span class="tag">📷 24mm广角，极缓dolly推进+微俯摇（12秒），单一尘橙太阳光源</span>
+        {{#if vfx_notes}}<span class="tag">✨ 全息广告牌不完美系统+灰烬粒子+volumetric fog</span>
+        {{#if character_ids}}<span class="tag">👤 </span>
+      </div>
+    </div>
+
+    <footer class="card-footer">
+      <span>Rev 1</span>
+      {{#if approved}}
+      <span class="status-badge approved">✓ 已审核</span>
+      
+      <span class="status-badge pending">⏳ 待审核</span>
+      
+    </footer>
+  </article>
+
+  <article class="card">
+    <header class="card-header">
+      <span class="panel-id">#2</span>
+      <span class="layout-badge">medium</span>
+      <span class="scene-ref">Scene 2</span>
+    </header>
+
+    <div class="card-body">
+      {{#if generated_url}}
+      <div class="image-placeholder">
+        <img src="—" alt="记忆贩的巢穴——逼仄的混凝土空间。他（背影）坐在工作台前，冷蓝色设备光是唯一光源。工作台上散落着带手写标签的记忆晶片。" loading="lazy">
+      </div>
+      
+      <div class="image-placeholder">🎬 待生成</div>
+      
+
+      <div class="description">记忆贩的巢穴——逼仄的混凝土空间。他（背影）坐在工作台前，冷蓝色设备光是唯一光源。工作台上散落着带手写标签的记忆晶片。</div>
+
+      {{#if prompt}}
+      <div class="prompt">medium shot of a small concrete apartment interior, a man in silhouette sitting at a workbench facing away from camera, single cold blue light source from a neural interface device, scattered memory chips with handwritten faded labels on the workbench, cracked concrete walls, narrow claustrophobic space, Blade Runner 2049 K's apartment aesthetic, cinematic, moody, 2.39:1</div>
+      
+
+      <div class="tech-meta">
+        {{#if camera_notes}}<span class="tag">📷 35mm→85mm（从空间建立到工作台推进），dolly极缓推进，单一冷蓝设备光源</span>
+        {{#if vfx_notes}}<span class="tag">✨ 设备光数据波纹+晶片插入的蓝白火花</span>
+        {{#if character_ids}}<span class="tag">👤 </span>
+      </div>
+    </div>
+
+    <footer class="card-footer">
+      <span>Rev 1</span>
+      {{#if approved}}
+      <span class="status-badge approved">✓ 已审核</span>
+      
+      <span class="status-badge pending">⏳ 待审核</span>
+      
+    </footer>
+  </article>
+
+  <article class="card">
+    <header class="card-header">
+      <span class="panel-id">#3</span>
+      <span class="layout-badge">close-up</span>
+      <span class="scene-ref">Scene 3</span>
+    </header>
+
+    <div class="card-body">
+      {{#if generated_url}}
+      <div class="image-placeholder">
+        <img src="—" alt="记忆回放中的异常画面——一棵真实的树在绿色叶子在阳光下摇曳，背景是蓝色的天空。画质有旧胶片式的色彩偏移和边缘VHS噪点。这是全片最饱和的画面。" loading="lazy">
+      </div>
+      
+      <div class="image-placeholder">🎬 待生成</div>
+      
+
+      <div class="description">记忆回放中的异常画面——一棵真实的树在绿色叶子在阳光下摇曳，背景是蓝色的天空。画质有旧胶片式的色彩偏移和边缘VHS噪点。这是全片最饱和的画面。</div>
+
+      {{#if prompt}}
+      <div class="prompt">a real green tree with leaves shimmering in genuine warm sunlight, clear blue sky background, seen through a distorted memory-vision filter, slight chromatic aberration and VHS noise at edges, nostalgic and dreamlike quality, stark contrast to a dusty orange dystopian world, cinematic, 50mm lens, high saturation for this scene only, 2.39:1</div>
+      
+
+      <div class="tech-meta">
+        {{#if camera_notes}}<span class="tag">📷 28mm（主观POV）+ 50mm（树），微晃手持感，真实阳光</span>
+        {{#if vfx_notes}}<span class="tag">✨ 记忆视觉滤镜——色彩偏移+闪烁+VHS噪点+突然高饱和度</span>
+        {{#if character_ids}}<span class="tag">👤 </span>
+      </div>
+    </div>
+
+    <footer class="card-footer">
+      <span>Rev 1</span>
+      {{#if approved}}
+      <span class="status-badge approved">✓ 已审核</span>
+      
+      <span class="status-badge pending">⏳ 待审核</span>
+      
+    </footer>
+  </article>
+
+  <article class="card">
+    <header class="card-header">
+      <span class="panel-id">#4</span>
+      <span class="layout-badge">extreme-wide</span>
+      <span class="scene-ref">Scene 4</span>
+    </header>
+
+    <div class="card-body">
+      {{#if generated_url}}
+      <div class="image-placeholder">
+        <img src="—" alt="窗外视角——巨型建筑在黄昏中。一个巨大的机械臂以极缓速度在建筑表面移动。建筑占画面70%。尘橙暮光从窗外射入。" loading="lazy">
+      </div>
+      
+      <div class="image-placeholder">🎬 待生成</div>
+      
+
+      <div class="description">窗外视角——巨型建筑在黄昏中。一个巨大的机械臂以极缓速度在建筑表面移动。建筑占画面70%。尘橙暮光从窗外射入。</div>
+
+      {{#if prompt}}
+      <div class="prompt">extreme wide shot through a window of a massive brutalist building at dusk, orange dust sky, a gigantic mechanical arm moving extremely slowly across the building surface, building occupying 70% of frame, dust particles floating, last rays of orange twilight entering through window, Blade Runner 2049 scale contrast aesthetic, cinematic, volumetric lighting, 2.39:1, 8K</div>
+      
+
+      <div class="tech-meta">
+        {{#if camera_notes}}<span class="tag">📷 24mm广角，dolly推向窗口→向上摇至巨物，尘橙暮光为主光+冷蓝室内光为辅</span>
+        {{#if vfx_notes}}<span class="tag">✨ 巨物缓动（10秒+）+黄昏→夜晚过渡+建筑维护红灯闪烁</span>
+        {{#if character_ids}}<span class="tag">👤 </span>
+      </div>
+    </div>
+
+    <footer class="card-footer">
+      <span>Rev 1</span>
+      {{#if approved}}
+      <span class="status-badge approved">✓ 已审核</span>
+      
+      <span class="status-badge pending">⏳ 待审核</span>
+      
+    </footer>
+  </article>
+
+  <article class="card">
+    <header class="card-header">
+      <span class="panel-id">#5</span>
+      <span class="layout-badge">extreme-close-up</span>
+      <span class="scene-ref">Scene 5</span>
+    </header>
+
+    <div class="card-body">
+      {{#if generated_url}}
+      <div class="image-placeholder">
+        <img src="—" alt="记忆贩的第一次全脸特写——双眼布满血丝，极浅景深。眼神中映出绿色记忆的微弱反光。粗糙的混凝土墙在背景虚化。这是角色情感的最高点。" loading="lazy">
+      </div>
+      
+      <div class="image-placeholder">🎬 待生成</div>
+      
+
+      <div class="description">记忆贩的第一次全脸特写——双眼布满血丝，极浅景深。眼神中映出绿色记忆的微弱反光。粗糙的混凝土墙在背景虚化。这是角色情感的最高点。</div>
+
+      {{#if prompt}}
+      <div class="prompt">extreme close-up of a gaunt man's eyes, bloodshot from staring at screens, faint green reflection in his pupils (the green memory), weathered skin texture, shallow depth of field at f/1.4, blurred rough concrete wall in background, single cold blue device light from below, intense observer's gaze, Blade Runner 2049 character portrait aesthetic, 85mm lens, cinematic, 2.39:1</div>
+      
+
+      <div class="tech-meta">
+        {{#if camera_notes}}<span class="tag">📷 85mm，静态，f/1.4极浅景深，冷蓝设备光为主（来自下方），眼中有绿色记忆反光</span>
+        {{#if vfx_notes}}<span class="tag">✨ 眼中绿色反光（后期合成）+bloom光晕</span>
+        {{#if character_ids}}<span class="tag">👤 </span>
+      </div>
+    </div>
+
+    <footer class="card-footer">
+      <span>Rev 1</span>
+      {{#if approved}}
+      <span class="status-badge approved">✓ 已审核</span>
+      
+      <span class="status-badge pending">⏳ 待审核</span>
+      
+    </footer>
+  </article>
+
+  <article class="card">
+    <header class="card-header">
+      <span class="panel-id">#6</span>
+      <span class="layout-badge">extreme-close-up</span>
+      <span class="scene-ref">Scene 6</span>
+    </header>
+
+    <div class="card-body">
+      {{#if generated_url}}
+      <div class="image-placeholder">
+        <img src="—" alt="从混凝土裂缝中取出的锈蚀全息投影器。他的手握着投影器，表面有锈迹和划痕。投影器投射出破碎的信息——坐标、日期、'绿色存在'四字。淡绿色投影光照在他手上。" loading="lazy">
+      </div>
+      
+      <div class="image-placeholder">🎬 待生成</div>
+      
+
+      <div class="description">从混凝土裂缝中取出的锈蚀全息投影器。他的手握着投影器，表面有锈迹和划痕。投影器投射出破碎的信息——坐标、日期、'绿色存在'四字。淡绿色投影光照在他手上。</div>
+
+      {{#if prompt}}
+      <div class="prompt">extreme close-up of a rusty holographic projector pulled from a concrete wall crack, weathered hands holding it, rust and scratches on device surface, projecting fragmented encrypted data in pale green light - coordinates, a date, the words '绿色存在' in Chinese, scanlines and flicker on projection, the green light casting uneven glow on the weathered hands, Blade Runner 2049 imperfect hologram aesthetic, 100mm macro, 2.39:1</div>
+      
+
+      <div class="tech-meta">
+        {{#if camera_notes}}<span class="tag">📷 100mm微距，dolly推进至手部大特写，淡绿全息光为新主光源</span>
+        {{#if vfx_notes}}<span class="tag">✨ 全息不完美系统+淡绿光面部映射+扫描线</span>
+        {{#if character_ids}}<span class="tag">👤 </span>
+      </div>
+    </div>
+
+    <footer class="card-footer">
+      <span>Rev 1</span>
+      {{#if approved}}
+      <span class="status-badge approved">✓ 已审核</span>
+      
+      <span class="status-badge pending">⏳ 待审核</span>
+      
+    </footer>
+  </article>
+
+  <article class="card">
+    <header class="card-header">
+      <span class="panel-id">#7</span>
+      <span class="layout-badge">wide</span>
+      <span class="scene-ref">Scene 7</span>
+    </header>
+
+    <div class="card-body">
+      {{#if generated_url}}
+      <div class="image-placeholder">
+        <img src="—" alt="窗外远景——城市边缘的巨型垃圾处理厂燃烧着。暖橙色的火光辉光照亮天空1/3，烟柱升腾。远处的建筑表面被火光映成暖橙色。冷蓝设备光在室内前景。" loading="lazy">
+      </div>
+      
+      <div class="image-placeholder">🎬 待生成</div>
+      
+
+      <div class="description">窗外远景——城市边缘的巨型垃圾处理厂燃烧着。暖橙色的火光辉光照亮天空1/3，烟柱升腾。远处的建筑表面被火光映成暖橙色。冷蓝设备光在室内前景。</div>
+
+      {{#if prompt}}
+      <div class="prompt">wide shot through a window, distant view of a massive waste processing plant burning at the city edge, warm orange fire glow illuminating one third of the dark sky, smoke columns rising, distant building surfaces reflecting orange fire light, foreground interior with cold blue device light on a workbench, Blade Runner 2049 industrial landscape aesthetic, volumetric fire glow, atmospheric smoke particles, cinematic, 2.39:1, 8K</div>
+      
+
+      <div class="tech-meta">
+        {{#if camera_notes}}<span class="tag">📷 24mm广角，从室内工作台快速拉远至窗外远景，冷蓝+暖橙双光交汇</span>
+        {{#if vfx_notes}}<span class="tag">✨ 火光辉光+烟柱粒子+建筑表面火光映照</span>
+        {{#if character_ids}}<span class="tag">👤 </span>
+      </div>
+    </div>
+
+    <footer class="card-footer">
+      <span>Rev 1</span>
+      {{#if approved}}
+      <span class="status-badge approved">✓ 已审核</span>
+      
+      <span class="status-badge pending">⏳ 待审核</span>
+      
+    </footer>
+  </article>
+
+  <article class="card">
+    <header class="card-header">
+      <span class="panel-id">#8</span>
+      <span class="layout-badge">medium</span>
+      <span class="scene-ref">Scene 8</span>
+    </header>
+
+    <div class="card-body">
+      {{#if generated_url}}
+      <div class="image-placeholder">
+        <img src="—" alt="结尾画面——门框构图。记忆贩的背影在尘橙雾霾中远去。空荡荡的公寓内，工作台上遗留着一枚裂了一角的晶片，标签上写着'2089.4.15 绿色'。冷蓝色设备光仍在闪烁。" loading="lazy">
+      </div>
+      
+      <div class="image-placeholder">🎬 待生成</div>
+      
+
+      <div class="description">结尾画面——门框构图。记忆贩的背影在尘橙雾霾中远去。空荡荡的公寓内，工作台上遗留着一枚裂了一角的晶片，标签上写着'2089.4.15 绿色'。冷蓝色设备光仍在闪烁。</div>
+
+      {{#if prompt}}
+      <div class="prompt">medium shot from inside a concrete apartment looking through a doorway frame, a man's silhouette walking away into thick orange dusty fog, empty apartment interior behind, a cracked memory chip left on the workbench with handwritten label '2089.4.15 绿色', cold blue device light still flickering, grey ash particles floating in the blue light, Blade Runner 2049 framing aesthetic, melancholic and poetic, cinematic, 2.39:1</div>
+      
+
+      <div class="tech-meta">
+        {{#if camera_notes}}<span class="tag">📷 50mm（门框构图）→100mm微距（最后晶片），静态收束，冷蓝+尘橙双光</span>
+        {{#if vfx_notes}}<span class="tag">✨ volumetric fog（他消失在雾霾中）+晶片灰尘粒子+裂痕</span>
+        {{#if character_ids}}<span class="tag">👤 </span>
+      </div>
+    </div>
+
+    <footer class="card-footer">
+      <span>Rev 1</span>
+      {{#if approved}}
+      <span class="status-badge approved">✓ 已审核</span>
+      
+      <span class="status-badge pending">⏳ 待审核</span>
+      
+    </footer>
+  </article>
+
+
+</div>
+
+<!-- ═══ Footer ═══ -->
+<footer class="footer">
+  Generated by Muse Video Skill · 2026-06-12T07:45:27Z<br>
+  总镜数 8 · 网格 3×3
+</footer>
+
+</body>
+</html>

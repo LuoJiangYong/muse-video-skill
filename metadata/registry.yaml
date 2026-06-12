@@ -313,20 +313,20 @@ files:
   - path: assets/examples/studio-ad-full/
     role: example
     phase: 4
-    status: not_started
+    status: complete
     dependencies: [references/scenes/studio-ad.md, references/pipelines/default.md]
     dependents: []
     owner: examples
-    description: "完整棚拍广告案例（所有阶段产出）"
+    description: "「光影之间」完整棚拍广告案例（5场景+7分镜+所有脚本产出）"
 
   - path: assets/examples/sci-fi-short/
     role: example
     phase: 4
-    status: not_started
-    dependencies: [references/scenes/sci-fi.md, references/pipelines/default.md]
+    status: complete
+    dependencies: [references/scenes/sci-fi.md, references/pipelines/default.md, references/cases/BR2049.md]
     dependents: []
     owner: examples
-    description: "完整科幻短片案例（所有阶段产出）"
+    description: "「最后的记忆贩」完整科幻短片案例（8场景+8分镜+BR2049深度引用+所有脚本产出）"
 
   # --- Metadata (self-referential) ---
   - path: metadata/registry.yaml
@@ -371,4 +371,4 @@ files:
 # Phase 1 (complete): 7
 # Phase 2 (complete): 16
 # Phase 3 (complete): 12
-# Phase 4 (not_started): 2
+# Phase 4 (complete): 2

@@ -6,6 +6,41 @@
 
 ---
 
+## [0.4.0] — 2026-06-12
+
+### 新增 — Phase 4: 示例项目（2 个示例，16+ 文件）
+
+**完整棚拍广告案例 —「光影之间」**
+- `assets/examples/studio-ad-full/README.md`：创意 brief + 管线执行记录 + 产出清单 + 脚本再生指南
+- `assets/examples/studio-ad-full/project-state.json`：完整 Project State JSON（5 场景 + 7 分镜，27KB，所有 `_meta.director_approved=true`）
+- 脚本产出：`script.md` / `storyboard.md` / `creative-pack.json` + `.md` / `studio-ad-literary.html` + `-storyboard.html` / `tech-breakdown.xlsx`
+- 创意特征：减法灯光哲学（BR2049 单一光源）+ 材质叙事（8微距剪辑）+ 沉默对白（仅4字旁白）+ 光传递转场 + 金色粒子首尾呼应
+
+**完整科幻短片案例 —「最后的记忆贩」**
+- `assets/examples/sci-fi-short/README.md`：创意 brief + 管线执行记录 + BR2049 技法映射表 + 产出清单
+- `assets/examples/sci-fi-short/project-state.json`：完整 Project State JSON（8 场景 + 8 分镜 + 1 角色，53KB，所有 `_meta.director_approved=true`）
+- 脚本产出：`script.md` / `storyboard.md` / `creative-pack.json` + `.md` / `sci-fi-literary.html` + `-storyboard.html` / `tech-breakdown.xlsx`
+- 创意特征：BR2049 全景式致敬——12 项技法直接继承（沉默对白/信息释放节奏/巨物尺度对比/单一光源/环形构图/dolly克制/场景色调对照/粒子氛围/全息不完美/巨物缓动/工业环境音/爆发式巨响）
+- 角色设计：Kael（记忆贩）— 面部仅在 2 个镜头中完全展示（叙事手段）
+
+### 修改
+
+- `SKILL.md`：版本号 0.3.0 → 0.4.0
+- `metadata/registry.yaml`：2 个示例文件 status not_started→complete，BR2049 依赖补充；Phase 4 统计更新
+
+### 影响分析
+
+- 受影响的文件：`SKILL.md`, `metadata/registry.yaml`, `metadata/CHANGELOG.md`
+- 新增文件：10 个（2 个 README + 2 个 project-state.json + 6 个补充产出文件）
+- 下游影响：无（所有新文件均为新建，不修改已有 Phase 0-3 文件）
+
+### 迁移指南
+
+- 无需迁移。Phase 0-3 的所有文件保持不变。
+- 两个示例项目均可独立运行：进入对应目录，按 README.md 中的「脚本再生」命令重新生成所有产出。
+
+---
+
 ## [0.3.0] — 2026-06-12
 
 ### 新增 — Phase 3: 脚本+模板+导出（12 个文件）

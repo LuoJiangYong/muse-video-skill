@@ -1,0 +1,694 @@
+{
+  "project": {
+    "title": "最后的记忆贩",
+    "scene_type": "sci-fi",
+    "aspect_ratio": "2.39:1",
+    "duration_est": "90s",
+    "genre": "cyberpunk-noir",
+    "platform": "film-festival",
+    "language": "zh-CN"
+  },
+  "director_notes": {
+    "vision": "一支90秒赛博朋克概念短片，向BR2049致敬。讲述近未来（2089年）的记忆贩子——一个在尘橙天空下回收和贩卖他人记忆的孤独者。某个回收任务中，他发现了一段不该存在的记忆——关于绿色、树木、未被污染的蓝天。这段记忆打破了他对世界的认知。本片追求'沉默的力量'——全片对白不超过10句，用画面、环境、粒子、巨物美学来传递信息。核心视觉锚点：BR2049的尘橙天空 + 巨物建筑 + 单一光源原则 + 永远有粒子在飘。故事的核心冲突不是打斗，而是'知道了不该知道的事'。",
+    "tone": "压抑、孤独、诗意、存在主义式的追问",
+    "constraints": [
+      "对白不超过10句（学习BR2049沉默对白技法）",
+      "科技必须自洽——2089年的科技水平统一（近未来，科技外显型）",
+      "每个场景至少1种粒子元素（灰烬/水雾/尘埃/数据粒子）",
+      "主要角色（记忆贩）的面部在片中只完整展示一次——在第7场最后的特写中",
+      "不使用任何'霓虹=赛博朋克'的视觉陈词"
+    ],
+    "decisions": [
+      {
+        "phase": "phase2",
+        "decision": "8场叙事结构：世界建立→角色引入→任务→发现异常→内心冲突→决断→后果→开放结尾",
+        "rationale": "BR2049式信息释放节奏——每10秒给一个新信息，同时引出新问题"
+      },
+      {
+        "phase": "phase3",
+        "decision": "色调方案严格继承BR2049场景色调对照体系：尘橙(室外)/冷蓝灰(室内)/暖金(权力空间)/褪色金(废墟)/灰白(结尾)",
+        "rationale": "用色彩分区替代场景标题——观众通过色调变化感知空间转换"
+      },
+      {
+        "phase": "phase4",
+        "decision": "全片60%镜头为dolly极缓运动（≤步行速度1/4），30%静态，10%手持（仅在场景5的内心冲突段落）",
+        "rationale": "学习BR2049的dolly克制运动——让观众沉浸在环境中而非被镜头牵引"
+      }
+    ],
+    "_meta": {
+      "role": "director",
+      "revision": 3,
+      "director_approved": true
+    }
+  },
+  "script": {
+    "logline": "2089年，一个记忆贩子在回收记忆的过程中，发现了一段不该存在的片段——关于绿色。他开始质疑这个尘橙世界的真实性。",
+    "structure": "三幕八场（BR2049式信息释放节奏：每10秒一新信息，波浪形信息密度）",
+    "scenes": [
+      {
+        "scene_id": 1,
+        "scene_title": "尘橙之城",
+        "duration": "12s",
+        "location": "洛杉矶废墟——2089年，巨型粗野主义建筑群，尘橙天空",
+        "time_of_day": "黄昏（永久性的尘橙暮光——大气污染导致天空永远是橙色）",
+        "dialogue": "（无对白）",
+        "action": "一个极端广角的建立镜头：废弃的巨型粗野主义建筑群笼罩在尘橙色的雾霾中。飞行车（破旧型号，不是光鲜的科幻悬浮车）在建筑间缓慢穿行，像疲惫的昆虫。灰烬粒子在空气中持续漂浮。一栋建筑的侧面有一块残破的全息广告牌——闪烁、色彩偏移、有扫描线——显示着早已不存在的产品的广告。镜头极缓慢地向下摇，落在一栋建筑的较低层——那里有一扇很小的窗户，透出微弱的冷蓝色光。",
+        "camera": {
+          "shot_type": "极端广角（大远景）→ 下摇至中景（建筑窗口）",
+          "movement": "极缓dolly推进 + 微俯摇（12秒内视角从城市全景下降到建筑中层的窗口）",
+          "lens": "24mm广角（大远景）+ 缓缓变焦至50mm（窗口中景）",
+          "lighting": "单一光源：尘橙色的太阳（被霾层散射为巨大的柔光光源）。无补光——建筑的暗面完全压黑（IRE<5%）",
+          "composition_notes": "开场4秒——建筑在画面中占比>90%，飞行车<3%。4秒后摇下——建筑的粗野主义质感（裸露混凝土）逐渐清晰。8秒后——窗口的冷蓝色光在橙色画面中形成唯一的冷色对比点"
+        },
+        "vfx_notes": "全息广告牌（BR2049式'不完美'全息：扫描线+色彩偏移+边缘闪烁+间歇性信号丢失），灰烬粒子系统（密度不均匀，有团块，慢速随机运动），大气雾霾（volumetric fog,橙色散射）",
+        "sound_notes": "工业环境音优先（BR2049声音层次）：远处飞行引擎的低频嗡鸣(40%) + 灰烬粒子沙沙声(25%) + 全息广告牌的电流声(20%) + 风声(15%)。无音乐。"
+      },
+      {
+        "scene_id": 2,
+        "scene_title": "记忆贩的巢穴",
+        "duration": "15s",
+        "location": "记忆贩的公寓——建筑中层，一个被改装为「记忆工坊」的小空间",
+        "time_of_day": "室内——无自然光，仅有设备光源",
+        "dialogue": "（无对白——全程通过动作和环境传递信息）",
+        "action": "室内。空间逼仄，墙壁是裸露的混凝土。唯一的光源是工作台上的记忆读取设备——一个老旧的神经接口终端，散发着冷蓝色光（参考BR2049 K公寓的全息Joi光）。记忆贩（背影，我们始终不看清他的脸）坐在工作台前。他在处理一个记忆晶片——用微小的工具小心翼翼地清洁接口。工作台上散落着数十个类似的晶片，每个都贴着褪色的手写标签（'2077.3.12 日落'、'2082.9.5 婚礼'、'2084.1.8 最后一次拥抱'）。他拿起一个新的晶片——标签是空白的——插入读取设备。设备发出微弱的嗡鸣声。",
+        "camera": {
+          "shot_type": "中景（建立空间）→ 过肩中特写（工作台）→ 大特写（手部操作+晶片）",
+          "movement": "静态开场4秒（建立空间）→ dolly极缓推进（从门口到工作台）→ 静态（手部大特写）",
+          "lens": "35mm（空间建立）→ 85mm（工作台过肩）→ 100mm微距（晶片大特写）",
+          "lighting": "单一光源：记忆读取设备的冷蓝色屏幕光。设备光向上打在记忆贩的脸上——但我们只看到下巴和脖子（面部保持神秘）。墙壁上有设备光投射出的微弱波纹（数据流）。极微弱的金色轮廓光从背后窗户的缝隙漏入（尘橙天空的间接光）",
+          "composition_notes": "空间建立时：记忆贩在画面左1/3，工作台在右2/3。推进后：晶片在画面正中（类似产品广告Hero Shot——但这里是'反Hero'——晶片是破旧的，标签是手写的）"
+        },
+        "vfx_notes": "神经接口终端——设备光在混凝土墙上的数据波纹（类似水纹但带有数字扫描线），记忆晶片插入时接口的微弱蓝白色火花，标签上的手写字迹是环境的一部分（BR2049文字作为环境）",
+        "sound_notes": "设备低频嗡鸣(50%) + 微弱的数据流电子音(20%) + 晶片插入的清脆金属声(15%) + 窗外远处偶尔传来的飞行引擎声(10%) + 记忆贩的呼吸声(5%，仅在插入晶片的前一秒——制造紧张感)"
+      },
+      {
+        "scene_id": 3,
+        "scene_title": "不该存在的记忆",
+        "duration": "12s",
+        "location": "记忆贩的意识空间——记忆回放的抽象表现",
+        "time_of_day": "无时间——意识空间",
+        "dialogue": "（无对白）",
+        "action": "记忆贩闭上眼睛。画面过渡到记忆回放：不是常规的清晰画面——而是一个人的记忆碎片，破碎的、不完整的、像被水浸过的胶片。正常的记忆（他已看过无数次的那种）——模糊的人脸、日常生活的片段、城市中的灰色生活。然后，异常出现了——一个他不认识的画面：绿色。真正的绿色。一棵树。不是全息投影的树（那种有扫描线），而是一棵真实的树，有真实的叶子，在风中摇曳。天空是蓝色的——不是尘橙色。这个画面只持续了2秒，然后记忆断裂——画面变成雪花噪点——然后回到现实。",
+        "camera": {
+          "shot_type": "记忆回放用主观镜头（POV——记忆贩的视角）",
+          "movement": "记忆画面：微晃手持感（模拟人眼的不稳定性）——区别于外部世界的精确dolly运动",
+          "lens": "主观镜头用28mm（接近人眼视角），绿色的树用50mm（更亲近的视角）",
+          "lighting": "记忆画面没有统一的光源逻辑——这是'回忆'不是'现实'。正常记忆：灰暗、低对比度、褪色。绿色记忆：突然的高饱和度、真实的阳光（从画面左上角射入——真正的太阳光，不是霾散射光）",
+          "composition_notes": "绿色记忆出现在画面的0:05-0:07——仅2秒。以1.5倍速度播放（现实中2秒=主观感受3秒）。树在画面正中，树叶占画幅60%。蓝天的饱和度与尘橙天空形成极致冲突"
+        },
+        "vfx_notes": "记忆画面的视觉处理：轻微的色彩偏移(像旧胶片)、间歇性闪烁、边缘有微弱的VHS式噪点带。正常记忆→绿色记忆的过渡是一瞬间的'撕裂感'——画面横向撕裂0.3秒后突然切换到绿色。记忆断裂→现实的过渡是雪花噪点+白屏闪烁(0.5秒)",
+        "sound_notes": "记忆回放时：微弱的电流嗡鸣(类似旧CRT电视)+ 破碎的人声片段（听不清内容）。绿色记忆出现的2秒：突然插入一段极纯净的声音——风吹树叶的沙沙声（这是全片唯一一次出现'自然声音'）。记忆断裂：尖锐的电子反馈声(0.2秒)→ 静默(0.3秒)→ 回到设备嗡鸣（现实）"
+      },
+      {
+        "scene_id": 4,
+        "scene_title": "不可能的确认",
+        "duration": "10s",
+        "location": "记忆贩的公寓",
+        "time_of_day": "室内——时间流逝（窗外从黄昏进入夜晚）",
+        "dialogue": "记忆贩（自言自语，沙哑低声）：'这不是模拟。'（唯一一句台词）",
+        "action": "回到现实。记忆贩猛地睁开眼睛——这是他多年来第一次对一段记忆产生情绪反应。他拔下晶片，翻转它——背面刻着一行小字：'2089.4.15 — 最后一次看见绿色。'他的手微微颤抖。他抬头看向窗外——尘橙色的天空正在变暗（从黄昏到夜晚的过渡）。窗外，一座巨型建筑正在缓慢地进行日常维护——一个机械臂以极慢的速度在建筑表面移动，像一只巨大的昆虫在舔舐混凝土。",
+        "camera": {
+          "shot_type": "中特写（记忆贩的侧面——仍不露全脸）→ 第一人称主观（窗外视角）→ 回到中特写",
+          "movement": "前半3秒静态（记忆贩凝视晶片）→ 主观镜头：dolly推向窗口（3秒）→ 快速切回中特写（他在看窗外）→ 再次主观：从窗口向上摇至巨型建筑（4秒）",
+          "lens": "85mm（中特写）+ 24mm（窗外远景+巨物）",
+          "lighting": "室内：仍以设备冷蓝色光为主，但窗外射入的最后一缕尘橙暮光在记忆贩侧面形成金色轮廓。窗外：巨大的机械臂在巨型建筑上投下移动的阴影——阴影缓慢爬过他公寓的墙壁",
+          "composition_notes": "巨物美学在此场景全面展开：窗外建筑占画面70%，机械臂以极缓速度移动（10秒内移动画面的5%宽度）。记忆贩在观察它时，他在画面右下角——人在巨物面前的比例<10%"
+        },
+        "vfx_notes": "黄昏→夜晚的光线过渡（3秒内的天空色渐变——尘橙→深蓝黑），机械臂的巨物缓动（BR2049式关键帧极小间距+ease-in-out长尾，持续10秒+），巨型建筑上的维护灯光（微弱的红色闪烁——建筑'活着'的迹象）",
+        "sound_notes": "BR2049式爆发式巨响手法：在长时间的设备低频嗡鸣后，当记忆贩看到背面刻字时→突然插入一声低频的重击（类似心跳但更工业，持续0.5秒）→立刻回到安静。然后窗外：巨型机械臂发出极低频的金属呻吟（20-40Hz），这个声音覆盖了整个后半段——它是'世界的呼吸'"
+      },
+      {
+        "scene_id": 5,
+        "scene_title": "认知拆解",
+        "duration": "12s",
+        "location": "记忆贩的公寓——多个空间（意识流剪辑）",
+        "time_of_day": "夜晚——室内仅剩设备光",
+        "dialogue": "（无对白——仅通过表演和剪辑传递内在冲突）",
+        "action": "记忆贩崩溃了——不是戏剧化的崩溃，而是安静的内在拆解。快速剪辑序列（10个镜头，每个0.8-1.2秒）：\n① 他站起来，椅子向后倒——慢动作，椅子倒了3秒才落地（时间感知被拉长）→ ② 他的手扫过工作台，部分晶片被扫落——但晶片落地也是慢动作→ ③ 他走到墙边，额头抵在粗糙的混凝土墙上→ ④ 墙上贴满了手写笔记——关于记忆分类、神经接口的电路图、一张被反复折叠的旧照片（模糊的脸）→ ⑤ 他的手指沿着墙上的裂缝划过（混凝土的粗糙质感）→ ⑥ 回闪——绿色记忆中的树叶在阳光下闪烁（0.5秒）→ ⑦ 回到现实——他的眼睛特写（第一次展示全脸——双眼布满血丝，眼神里有恐惧但不是恐惧暴力——是恐惧'知道自己不知道'）→ ⑧ 他看向窗外——巨型建筑的维护灯光在黑暗中闪烁（像城市的'心跳'）→ ⑨ 他拿起那个刻字的晶片，紧握在手心→ ⑩ 他缓缓坐回工作台前——镜头拉远，他重新变得很小，工作台的冷蓝色光是他唯一的光源。",
+        "camera": {
+          "shot_type": "混合——中景/特写/大特写/回闪/大远景",
+          "movement": "快速剪辑中60%为静态镜头（保持信息清晰），10%手持（椅子倒下的慢动作——摄像机微微晃动，模拟他的眩晕感），30%dolly（最后拉远至大远景）",
+          "lens": "混合——50mm（中景），85mm（特写），100mm微距（混凝土纹理/旧照片），24mm（最后拉远至大远景）",
+          "lighting": "所有室内镜头统一使用冷蓝色设备光作为唯一主光（保持BR2049单一光源原则）。唯一的暖色来自第6个镜头——绿色记忆回闪中的自然太阳光（暖白，非尘橙）。最后的大远景中，记忆贩在画面中只是一个剪影——被冷蓝色光勾勒出轮廓",
+          "composition_notes": "第7个镜头（眼睛特写）是核心——第一次展示角色的全脸。单眼充满画面（占80%画幅），极浅景深（f/1.4），眼神中有绿色记忆的微弱反光（后期合成——暗示'绿色'已在他眼中扎根）。最后镜头：公寓窗口在巨型建筑面前只有1/50大小——学习BR2049的尺度对比"
+        },
+        "vfx_notes": "回闪片段（镜头6）的视觉处理——比场景3中的原始记忆更明亮、更饱和、更清晰——因为记忆在被'记住'的过程中变得更强烈（记忆的不可靠性）。最后大远景中的冷蓝色剪影——光晕效果（bloom）+ 粒子漂浮",
+        "sound_notes": "本场景是BR2049声音层次的实践。层次1：持续的设备低频嗡鸣（底层，50%）→ 层次2：椅子慢动作倒下的声音被拉长为一声低沉的金属拖拽（20%）→ 层次3：晶片落地的声音被放大——每片晶片落地都是一声清晰但被回响延长的'叮——'（15%）→ 层次4：第6镜头出现的瞬间，突然插入一段Vangelis式CS-80合成器高频旋律（只持续1秒，立刻消失）→ 层次5：最后拉远时，所有声音逐渐融合为一声持续的、逐渐增强的工业嗡鸣——然后突然切断（静默0.5秒）→ 转场到场景6"
+      },
+      {
+        "scene_id": 6,
+        "scene_title": "墙外的信号",
+        "duration": "10s",
+        "location": "记忆贩的公寓→建筑的通风井",
+        "time_of_day": "深夜",
+        "dialogue": "（无对白）",
+        "action": "记忆贩发现了什么。在他工作台后面的墙上——那条他刚才手指划过的裂缝——透过裂缝，他看到了光。不是设备冷蓝光，不是尘橙天光，是一种他不认识的光。他拿起一把旧改锥，开始撬开裂缝。混凝土碎屑落下——他伸手进去，拉出了一根被隐藏的数据线。线的末端连接着一个小型全息投影器——破旧的型号，表面有锈迹。他按下开关——投影器投射出一段信息——但信息被加密了，只能看到碎片：一个坐标（经度/纬度）、一个日期（'2089.5.1'）、和四个字——'绿色存在'。",
+        "camera": {
+          "shot_type": "中景→过肩→大特写→中景",
+          "movement": "dolly推进（跟随他的视线向裂缝移动）→ 过肩（他在撬墙）→ 大特写（他拿出数据线的手+全息投影器）→ 静态（全息信息浮现）",
+          "lens": "50mm→85mm→100mm微距→50mm",
+          "lighting": "全息投影的光成为新的临时光源——一种柔和的绿色光（饱和度很低，不是霓虹绿，而是自然的、植物般的淡绿）。这个光的绿色与场景5回闪中'绿色记忆'的色调一致——建立视觉关联",
+          "composition_notes": "全息投影器的锈迹是一个重要细节——它不是'未来科技产品'而是'被遗弃的旧科技'，与BR2049的美学一致。投影信息的碎片在空气中不稳定地闪烁（有扫描线+色彩偏移+间歇信号丢失）"
+        },
+        "vfx_notes": "全息投影（BR2049式不完美全息——扫描线+边缘闪烁+色彩偏移+间歇信号丢失），投影的淡绿色光在记忆贩脸上的映射（不是均匀照亮，而是有扫描线在脸上扫过），从裂缝中取出的数据线上的锈迹纹理",
+        "sound_notes": "撬墙时：混凝土碎裂的脆响（被放大——ASMR质感）。数据线被拉出时：微弱的电流声（像重新接通电路）。全息投影启动时：设备自检的提示音序列（3个不同音高的短促'哔'声）+ 微弱的绿色光闪烁声（类似荧光灯启动）"
+      },
+      {
+        "scene_id": 7,
+        "scene_title": "最后的晶片",
+        "duration": "10s",
+        "location": "记忆贩的公寓",
+        "time_of_day": "深夜→即将黎明（尘橙天空的最暗时刻）",
+        "dialogue": "（无对白）",
+        "action": "记忆贩回到工作台前。他将那个刻字的晶片插入读取设备——但这次他调整了参数（通过手部操作传递——他在绕过安全协议，访问被加密的元数据层）。读取设备嗡鸣声变高。显示出晶片的来源地址——一个城外的废弃卫星站，注册日期是2089年4月15日（正好是晶片背面刻字的日期），发送者ID被删除——但他在元数据的残留碎片中读到了一个名字：'E.V.E. — 生态验证工程'。窗外——尘橙天空的最暗时刻即将结束，地平线上开始出现第一道微弱的尘橙色光——但不是太阳，而是城市边缘的巨型垃圾处理厂的火光。",
+        "camera": {
+          "shot_type": "过肩中特写（工作台）→ 大特写（晶片+屏幕数据）→ 中特写（他的脸——第二次全脸展示）→ 窗外大远景",
+          "movement": "dolly极缓推进（6秒内从过肩推进到屏幕大特写）→ 快速拉远至窗外大远景（3秒）",
+          "lens": "85mm→100mm微距→85mm→24mm广角",
+          "lighting": "主光仍是设备冷蓝色光。但在记忆贩读到'E.V.E.'时——窗外的第一道'火光'渗入室内，在冷蓝色上叠加了一道微弱的暖橙色（尘橙——但这次是火光的橙，不是霾的橙）。两种光在他的脸上交汇——冷蓝（科技/现实）与暖橙（世界/真相）",
+          "composition_notes": "记忆贩读数据时——他的双眼反射出屏幕上的数据流（蓝白色字符在他眼中流动）——与场景5中的'绿色记忆反光'形成对照：蓝=已知的科技世界，绿=未知的自然世界。最后窗外大远景：巨物垃圾处理厂的火光映亮天空1/3面积——这不是晨曦，这是'世界的真相'——城市靠燃烧垃圾获得能源"
+        },
+        "vfx_notes": "屏幕数据流的视觉设计——不被美化的实用界面：白字蓝底，命令行风格，有闪烁的光标等待输入。远处垃圾处理厂的火光——暖橙色辉光(volumetric light)+烟柱升腾（粒子系统）+远处建筑被火光映亮的表面",
+        "sound_notes": "设备嗡鸣声频率逐渐升高（象征他在突破安全协议——音高从40Hz升至80Hz）。读到'E.V.E.'时——插入一段极短(0.3秒)的电子脉冲声——类似'系统被入侵'的警告声，但被中途切断（暗示信息被主动删除）。最后窗外：垃圾处理厂的低频火焰燃烧声（持续的轰隆声，20-30Hz）"
+      },
+      {
+        "scene_id": 8,
+        "scene_title": "走向绿色",
+        "duration": "9s",
+        "location": "记忆贩的公寓→室外→开放结尾",
+        "time_of_day": "黎明（尘橙色的'白天'开始——但其实只是霾层散射的人造光）",
+        "dialogue": "（无对白——全片以沉默收尾）",
+        "action": "记忆贩站起身。他拿起那个刻字的晶片，放入外套内侧口袋。他看了一眼工作台上的其他晶片——那些贴着标签的、他曾经视为'财富'的记忆——然后转身，走向门口。门打开，尘橙色的'阳光'涌入。他走出门外——镜头留在室内，透过门框看到他的背影逐渐变小，融入尘橙色的雾霾中。他走向的方向是城市的边缘——垃圾处理厂的方向——那个'E.V.E.'存在的方向。画面最后停留在空荡荡的公寓内：工作台上的冷蓝色设备光仍在闪烁，墙上的裂缝仍在，一枚被遗留的晶片在桌上——标签上写着'2089.4.15 绿色'。——淡出至黑。",
+        "camera": {
+          "shot_type": "中景（他站起身）→ 中景（他看向工作台——做出选择）→ 主观（门口望向室外——尘橙色的无尽走廊）→ 静态（室内镜头——门框构图，他消失在雾霾中）→ 大特写（被遗留的晶片）",
+          "movement": "他站起身的部分为手持感微动（唯一一次在平静场景中使用手持——象征他'不再静止'）→ 门口主观为dolly极缓推进→ 最后室内为完全静态（长时间——9秒中的5秒）",
+          "lens": "50mm（室内中景）→ 28mm（主观走廊）→ 100mm微距（最后遗留的晶片）",
+          "lighting": "门打开后尘橙光涌入——但这是'脏'的光，不是温暖的光——它照亮的不是希望，而是'世界的本来面目'。最后晶片的特写：冷蓝色设备光斜射在晶片标签的'绿色'二字上——冷蓝与晶片本身反射的微弱暖光交汇",
+          "composition_notes": "门框构图——学习BR2049的环形构图原则。门框在画面中形成一个矩形框架，记忆贩在框架中远去——框架=他逃离的'旧世界'。最后晶片占据画面中心80%——标签上的'绿色'二字是视觉焦点——但晶片本身是裂了一角的（他在场景5中摔到的）——暗示'绿色'的信息也是残缺的"
+        },
+        "vfx_notes": "门外的尘橙雾霾(volumetric fog)——他的背影在其中逐渐被吞没（5秒淡出）。最后晶片上的灰尘粒子在设备光中缓慢漂浮——提醒观众粒子始终存在（世界的'活着'的证据）。淡出至黑——黑色持续2秒——给观众处理情绪的空间（学习BR2049的'安静就是大声'）",
+        "sound_notes": "最终声音设计（BR2049式多层收束）：\n层次1：他站起身时——椅子与地面的摩擦声（清晰，被放大）\n层次2：门打开——尘橙世界的外部声音涌入（远处的飞行引擎+工业噪音+风声——这是全片第一次清晰听到'外部世界'的声音）\n层次3：他离开后——外部声音逐渐减弱（他走远了），室内声音重新浮现——设备嗡鸣（忠诚的、持续的）\n层次4：最后晶片的特写——所有声音收束到只剩两个：设备低频嗡鸣(60%) + 灰烬粒子漂浮的细微沙沙声(40%)\n层次5：淡出至黑——声音在黑色画面出现后1秒完全消失。黑色静默持续2秒（给观众'呼吸'的空间）——然后全片结束"
+      }
+    ],
+    "_meta": {
+      "writer_revision": 3,
+      "dp_revision": 3,
+      "director_approved": true
+    }
+  },
+  "visual_dev": {
+    "palette": [
+      {
+        "name": "尘橙",
+        "hex": "#B85C38",
+        "usage": "primary —— 室外主色调，天空、雾霾、粒子、建筑表面。直接继承BR2049洛杉矶街头尘橙色"
+      },
+      {
+        "name": "深蓝黑",
+        "hex": "#1A1A2E",
+        "usage": "室外暗部 —— 建筑的暗面、夜晚天空。与尘橙形成冷暖对比"
+      },
+      {
+        "name": "冷蓝灰",
+        "hex": "#4A6FA5",
+        "usage": "室内主光源 —— 设备光、屏幕光、K公寓式全息光。控制所有室内场景的情绪"
+      },
+      {
+        "name": "暖金",
+        "hex": "#D4A84B",
+        "usage": "accent —— 垃圾处理厂火光、晶片标签的褪色、尘橙光的暖调成分。继承BR2049华莱士总部金色"
+      },
+      {
+        "name": "病态绿",
+        "hex": "#4A9E4A",
+        "usage": "special —— 记忆中的绿色（自然树木）、E.V.E.全息投影的淡绿光。全片最稀有的颜色——出现<5%"
+      },
+      {
+        "name": "褪色金",
+        "hex": "#C4A35A",
+        "usage": "辅色 —— 晶片的金属表面、旧照片的褪色。继承BR2049赌场废墟褪色金"
+      },
+      {
+        "name": "深灰",
+        "hex": "#2A2A3A",
+        "usage": "室内暗部 —— 混凝土墙壁、阴影。继承BR2049 K公寓深灰"
+      },
+      {
+        "name": "灰白",
+        "hex": "#E8E0D0",
+        "usage": "记忆中的天空色、最后晶片标签的文字色。继承BR2049结尾雪景灰白"
+      }
+    ],
+    "mood": "压抑而诗意。世界是锈迹斑斑的，但有一种残破的美——像被遗弃的教堂。尘橙色的雾霾让一切都笼罩在一种末日黄昏的氛围中。角色是渺小的——巨物建筑持续提醒着人类的微不足道。但「绿色」的出现像一粒种子——它不解决问题，但它让问题变得值得追问。",
+    "style_refs": [
+      {
+        "ref_type": "film",
+        "name": "Blade Runner 2049",
+        "description": "核心视觉参考——尘橙天空/巨物美学/单一光源/粒子氛围/全息不完美/环形构图/克制运动。本片几乎在每个技法层面都向BR2049致敬"
+      },
+      {
+        "ref_type": "film",
+        "name": "Stalker (1979, Tarkovsky)",
+        "description": "废墟中的诗意、缓慢的长镜头、'区域'的不可知性——借鉴其对'禁区'的神秘感和角色在环境中的渺小"
+      },
+      {
+        "ref_type": "artist",
+        "name": "Simon Stålenhag",
+        "description": "巨型科技遗存与日常生活的并置——借鉴其将科幻元素自然融入破旧环境的手法"
+      },
+      {
+        "ref_type": "photographer",
+        "name": "Edward Burtynsky",
+        "description": "工业景观摄影——巨型人工结构、污染的色调、人类活动的痕迹——借鉴其对'人类世'的视觉记录"
+      }
+    ],
+    "characters": [
+      {
+        "name": "Kael（记忆贩）",
+        "role": "Protagonist",
+        "traits": "35-45岁男性。瘦削，长期在室内工作导致肤色苍白。深色短发，有白发。眼睛因长时间盯着神经接口屏幕而略有血丝。穿着破旧的深灰色工装外套（多个口袋，用于装晶片和工具）。手指有旧伤疤——修理设备时留下的。不修边幅但手指动作极其精准（手是'工具'）。",
+        "mood": "疲惫而警觉。多年回收记忆让他对大多数人类情感麻木——但绿色记忆打破了这个麻木。表情以'看'为主（学习BR2049 K的'观察者'角色），不通过表情向观众传递情绪——通过动作和环境。",
+        "ref_image_prompt": "a gaunt man in his late 30s, pale skin from working indoors, short dark hair with grey streaks, bloodshot eyes from staring at screens, wearing a worn dark grey utility jacket with multiple pockets, rough hands with old scars on fingers, sits in a dimly lit concrete room lit only by blue device light, cyberpunk noir aesthetic, cinematic, 85mm portrait lens, shallow depth of field, moody, 2.39:1",
+        "consistency_notes": "关键特征：瘦削的脸型（颧骨突出） / 深灰工装外套（所有场景中持续穿着） / 手指伤疤（在大特写手部镜头中可见） / 眼神中持续的'观察者'凝视。面部只在场景5和7中完全展示——在此之前保持神秘（背影/侧面/暗部）"
+      }
+    ],
+    "image_refs": [
+      {
+        "prompt": "dystopian cyberpunk cityscape, orange dust sky, massive brutalist decaying buildings, flying vehicles like tired insects between buildings, grey ash particles floating, broken holographic billboard with scanlines, cinematic wide shot, Blade Runner 2049 aesthetic, 2.39:1, volumetric fog, atmospheric perspective, 8K",
+        "generated_url": "",
+        "approved": true,
+        "notes": "场景1参考图：尘橙之城建立镜头"
+      },
+      {
+        "prompt": "interior of a small concrete apartment room, dim blue light from a neural interface device on a workbench, scattered memory chips with handwritten labels, cracked concrete walls, a man's silhouette sitting at the workbench facing away from camera, narrow space, cyberpunk noir, Blade Runner 2049 K's apartment aesthetic, single light source, cinematic, 2.39:1",
+        "generated_url": "",
+        "approved": true,
+        "notes": "场景2参考图：记忆贩的巢穴"
+      },
+      {
+        "prompt": "a real green tree with leaves shimmering in genuine sunlight, blue sky background, seen through a distorted memory-vision filter, slight chromatic aberration at edges, nostalgic and dreamlike, contrasting with a dark orange dystopian world, cinematic, 50mm lens, 2.39:1",
+        "generated_url": "",
+        "approved": true,
+        "notes": "场景3参考图：绿色记忆"
+      }
+    ],
+    "_meta": {
+      "revision": 3,
+      "director_approved": true
+    }
+  },
+  "cinematography": {
+    "camera_style": "BR2049式克制——全片约60%镜头使用dolly极缓运动（速度≤步行1/4），30%完全静态，10%手持（仅在场景5的认知拆解段落）。镜头不是'叙述者'而是'观察者'——它不牵引观众，而是让观众沉浸在环境中。核心Dolly原则：一个推镜头持续10-20秒——观众意识不到镜头在动，但环境在缓慢变化。",
+    "lighting_philosophy": "BR2049的单一光源原则是本片的灯光宪法。每个场景只设计1个主光源方向（室外=尘橙太阳、室内=设备冷蓝光、全息投影=淡绿光）。所有辅光只做补充不抢主光。暗面压到纯黑（IRE<5%）。学习BR2049 Deakins的方法：先定主光源→用柔光箱+烟尘+巨型LED墙扩展→CG也遵循同一物理逻辑。",
+    "lens_preference": "24mm广角（建立镜头+巨物美学——人在画面<5%）/ 28mm（主观POV——接近人眼视角）/ 35mm（空间建立）/ 50mm（标准——情感场景+绿色记忆）/ 85mm（角色中特写——面部+过肩）/ 100mm微距（晶片/手部/混凝土纹理）",
+    "color_grading": "最终调色严格依照BR2049场景色调对照：室外→尘橙(#B85C38基调) / 室内→冷蓝灰(#4A6FA5基调) / 绿色记忆→保持真实自然色调（高饱和度，不调色）以形成最大反差。整体降低饱和度15%，保留'褪色'质感。暗部压黑（IRE 0-5%），高光控制在IRE 70-80%。",
+    "movement_language": "Dolly极缓推进（90%设计镜头）——持续10-20秒，速度极慢但不停。静态（开场建立镜头+结尾收束）。手持（仅在场景5认知拆解段落——椅子慢动作倒下+他在墙边时的手持微晃——象征内在世界的崩塌）。转场原则：相邻场景的光源方向保持一致（光传递转场法）。",
+    "_meta": {
+      "revision": 3,
+      "director_approved": true
+    }
+  },
+  "sound": {
+    "music_style": "Vangelis式合成器氛围音景（直接继承BR2049声音哲学）。双层结构：低频CS-80 pad层（持续嗡鸣，40-60Hz）+ 中频旋律碎片（偶尔出现，不连续，像被遗忘的旋律）。全片只有两段明确的旋律片段——场景5回闪时的高频CS-80旋律（1秒）+ 场景8结尾前的弦乐群（大提琴+低音提琴——但在完全出现前被切断）。大部分时间，声音是'环境'不是'音乐'。",
+    "music_refs": [
+      "Vangelis - Blade Runner Blues（CS-80合成器低频pad——直接参考）",
+      "Vangelis - Tears in Rain（结尾旋律——旋律被环境吞没的感觉）",
+      "Ben Salisbury & Geoff Barrow - Annihilation OST（环境恐怖+自然声音的异化）",
+      "Hildur Guðnadóttir - Chernobyl OST（工业环境音作为'音乐'——低频+金属共振）"
+    ],
+    "sfx_notes": [
+      "世界呼吸（全片持续）：远程飞行引擎的低频嗡鸣+建筑金属结构的热胀冷缩声+粒子漂浮沙沙声",
+      "场景1：全息广告牌电流声（间歇性+信号丢失噼啪声）+ 灰烬粒子沙沙",
+      "场景2：神经接口设备嗡鸣（40Hz）+ 晶片插入的清脆'咔嗒'+ 数据流电子音（微弱）",
+      "场景3：CRT电视式电流嗡鸣+ 树叶沙沙声（全片唯一的自然声音——纯净、清晰、与尘橙世界形成音质上的极致对比）+ 记忆断裂的电子反馈声+静默",
+      "场景4：BR2049式爆发式巨响——低频重击(0.5秒)→立刻回静→巨型机械臂金属呻吟(20-40Hz)",
+      "场景5：椅子慢动作倒下的金属拖拽声+ 晶片落地的回响延长'叮——'+ CS-80高频旋律突然插入→立即消失+ 所有声音融合为工业嗡鸣→突然切断+静默0.5秒",
+      "场景6：混凝土碎裂脆响(ASMR)+ 电路重接电流声+ 全息投影启动的3声提示音",
+      "场景7：设备嗡鸣声频率升高(40→80Hz)+ 电子脉冲警告声(被中途切断)+ 垃圾处理厂低频火焰轰隆(20-30Hz)",
+      "场景8：椅子摩擦声+ 外部世界声音涌入+ 逐渐减弱+ 只剩设备嗡鸣+粒子沙沙→黑色静默2秒"
+    ],
+    "narration_tone": "无旁白——全片以沉默为对白（学习BR2049的沉默对白技法）。仅一句台词——场景4的'这不是模拟'。",
+    "narration_language": "zh-CN",
+    "silence_usage": "本片声音设计的结构性元素——不是'没有声音'而是'静默作为一种声音'。全片有4个关键静默时刻：（1）场景3记忆断裂后；（2）场景5认知拆解结尾——所有声音切断后0.5秒静默；（3）场景7读到'E.V.E.'后——警告声被切断的0.3秒静默；（4）结尾——黑色画面后的2秒完全静默。每次静默都承担叙事功能——给角色和观众'消化信息'的空间。",
+    "_meta": {
+      "revision": 2,
+      "director_approved": true
+    }
+  },
+  "vfx": {
+    "techniques": [
+      {
+        "name": "灰烬粒子系统（全片）",
+        "usage": "BR2049式粒子氛围——每个场景至少1种粒子：室外=灰烬/室内=尘埃/记忆=数据粒子/结尾=灰烬。密度不均匀，有团块，慢速随机运动",
+        "scene_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ]
+      },
+      {
+        "name": "全息投影'不完美'系统",
+        "usage": "BR2049式有缺陷的全息——扫描线+色彩偏移+边缘闪烁+间歇信号丢失。应用在所有全息元素：广告牌(场1)/Joi式设备光(场2)/E.V.E.投影(场6)",
+        "scene_ids": [
+          1,
+          2,
+          6
+        ]
+      },
+      {
+        "name": "巨物缓动系统",
+        "usage": "BR2049式大型结构物极缓运动——关键帧间距极小+ease-in-out长尾，持续5-10秒+。应用：飞行车(场1)/机械臂(场4)/垃圾处理厂(场7)",
+        "scene_ids": [
+          1,
+          4,
+          7
+        ]
+      },
+      {
+        "name": "大气雾霾(Volumetric Fog)",
+        "usage": "尘橙色的体积雾——控制室外所有场景的远景可见度。远处的建筑在雾中逐渐消失——不是均匀衰减，有密度变化",
+        "scene_ids": [
+          1,
+          4,
+          7,
+          8
+        ]
+      },
+      {
+        "name": "记忆视觉滤镜",
+        "usage": "记忆回放画面的特殊处理——色彩偏移(旧胶片)/间歇闪烁/VHS式噪点带/绿色记忆的突然高饱和度。区分'记忆'和'现实'的视觉语言",
+        "scene_ids": [
+          3,
+          5
+        ]
+      },
+      {
+        "name": "数据流界面",
+        "usage": "神经接口终端屏幕上的命令行式数据界面——白字蓝底，闪烁光标，实用而非美化",
+        "scene_ids": [
+          2,
+          7
+        ]
+      },
+      {
+        "name": "光晕(Bloom)+辉光(Glow)",
+        "usage": "冷蓝色设备光的光晕效果、垃圾处理厂火光的辉光、绿色记忆中自然阳光的光晕（完全不同的光质）",
+        "scene_ids": [
+          2,
+          3,
+          4,
+          5,
+          7,
+          8
+        ]
+      },
+      {
+        "name": "淡绿光映射",
+        "usage": "E.V.E.全息投影的淡绿光在记忆贩脸上的映射——扫描线在脸上的投影，不均匀照亮",
+        "scene_ids": [
+          6
+        ]
+      },
+      {
+        "name": "火光辉光+烟柱",
+        "usage": "垃圾处理厂的暖橙色火光辉光(volumetric light)+烟柱升腾(粒子系统)+建筑表面被火光映亮",
+        "scene_ids": [
+          7
+        ]
+      },
+      {
+        "name": "晶片裂痕+灰尘",
+        "usage": "结尾遗留晶片上的物理损坏痕迹(一角碎裂)+灰尘粒子在设备光中漂浮",
+        "scene_ids": [
+          8
+        ]
+      }
+    ],
+    "transitions": [
+      {
+        "from_scene": 1,
+        "to_scene": 2,
+        "type": "硬切——室外冷蓝窗口→室内冷蓝设备光（光色延续）",
+        "description": "窗外窗口的冷蓝色光与室内设备冷蓝色光保持一致——观众通过光色感知空间转换"
+      },
+      {
+        "from_scene": 2,
+        "to_scene": 3,
+        "type": "软过渡——他闭上眼睛→画面淡入记忆回放",
+        "description": "现实→意识的转换。0.5秒淡入到记忆视角——画面从冷蓝调过渡到灰暗/褪色的记忆色调"
+      },
+      {
+        "from_scene": 3,
+        "to_scene": 4,
+        "type": "记忆断裂转场——雪花噪点+白屏闪烁(0.5秒)→硬切回现实",
+        "description": "通过视觉'断裂'从记忆空间回到现实——观众感受到他睁眼的瞬间冲击"
+      },
+      {
+        "from_scene": 4,
+        "to_scene": 5,
+        "type": "时间流逝暗示——窗外从黄昏变夜晚→室内暗部加深",
+        "description": "黄昏→夜晚的光线过渡（天空色渐变）+室内设备光的相对亮度增加"
+      },
+      {
+        "from_scene": 5,
+        "to_scene": 6,
+        "type": "声音驱动转场——场景5结尾所有声音突然切断+静默0.5秒→场景6以撬墙的脆响开始",
+        "description": "静默作为转场——给观众重置情绪的空间后，用新的声音焦点引导注意力"
+      },
+      {
+        "from_scene": 6,
+        "to_scene": 7,
+        "type": "硬切——全息投影器关闭→他回到工作台前",
+        "description": "直接的视觉切割——从淡绿光回到冷蓝光，传达'他从发现中回来'的信息"
+      },
+      {
+        "from_scene": 7,
+        "to_scene": 8,
+        "type": "火柴转场——垃圾处理厂的火光在场景7的窗外→场景8门打开后的尘橙光（光色+光质延续）",
+        "description": "暖橙色光从场景7持续到场景8——他从'看到火光'到'走向火光'——光的方向性转变（从窗外水平→从门口涌入）象征他做出了决定"
+      }
+    ],
+    "materials": [
+      {
+        "name": "粗野主义混凝土",
+        "properties": "裸露混凝土，粗糙表面，可见模板痕迹，裂缝，水渍，锈迹。所有室内外建筑的主材质",
+        "scene_ids": [
+          1,
+          2,
+          4,
+          5,
+          6,
+          7,
+          8
+        ]
+      },
+      {
+        "name": "锈蚀金属",
+        "properties": "飞行车/设备外壳——锈迹覆盖率15-30%，边缘有剥落的漆面。晶片接口的金属触点有铜绿",
+        "scene_ids": [
+          1,
+          2,
+          6
+        ]
+      },
+      {
+        "name": "褪色全息材料",
+        "properties": "全息投影——不是完美的3D影像，而是有扫描线/色彩偏移/边缘闪烁/间歇信号丢失的'破损光'",
+        "scene_ids": [
+          1,
+          2,
+          6
+        ]
+      },
+      {
+        "name": "玻璃/塑料复合材料",
+        "properties": "记忆晶片——半透明深灰色，表面有细微划痕，一角可能碎裂。标签是手写的纸质（褪色+咖啡渍）",
+        "scene_ids": [
+          2,
+          3,
+          4,
+          5,
+          7,
+          8
+        ]
+      }
+    ],
+    "_meta": {
+      "revision": 2,
+      "director_approved": true
+    }
+  },
+  "storyboard": [
+    {
+      "panel_id": 1,
+      "scene_id": 1,
+      "layout": "extreme-wide",
+      "description": "建立镜头：尘橙天空下的巨型粗野主义建筑群。灰烬粒子漂浮。飞行车在建筑间穿行（占画面<3%）。残破的全息广告牌在建筑侧面闪烁。",
+      "prompt": "extreme wide shot of dystopian cyberpunk city, massive decaying brutalist buildings, orange dust sky, grey ash particles floating in air, small flying vehicles like tired insects between buildings, broken holographic billboard with scanlines and color shift on building side, Blade Runner 2049 aesthetic, volumetric fog, atmospheric perspective, cinematic, ultra-wide 2.39:1 aspect ratio, 8K",
+      "character_ids": [],
+      "camera_notes": "24mm广角，极缓dolly推进+微俯摇（12秒），单一尘橙太阳光源",
+      "vfx_notes": "全息广告牌不完美系统+灰烬粒子+volumetric fog",
+      "generated_url": "",
+      "approved": true,
+      "_meta": {
+        "revision": 1,
+        "director_approved": true
+      }
+    },
+    {
+      "panel_id": 2,
+      "scene_id": 2,
+      "layout": "medium",
+      "description": "记忆贩的巢穴——逼仄的混凝土空间。他（背影）坐在工作台前，冷蓝色设备光是唯一光源。工作台上散落着带手写标签的记忆晶片。",
+      "prompt": "medium shot of a small concrete apartment interior, a man in silhouette sitting at a workbench facing away from camera, single cold blue light source from a neural interface device, scattered memory chips with handwritten faded labels on the workbench, cracked concrete walls, narrow claustrophobic space, Blade Runner 2049 K's apartment aesthetic, cinematic, moody, 2.39:1",
+      "character_ids": [],
+      "camera_notes": "35mm→85mm（从空间建立到工作台推进），dolly极缓推进，单一冷蓝设备光源",
+      "vfx_notes": "设备光数据波纹+晶片插入的蓝白火花",
+      "generated_url": "",
+      "approved": true,
+      "_meta": {
+        "revision": 1,
+        "director_approved": true
+      }
+    },
+    {
+      "panel_id": 3,
+      "scene_id": 3,
+      "layout": "close-up",
+      "description": "记忆回放中的异常画面——一棵真实的树在绿色叶子在阳光下摇曳，背景是蓝色的天空。画质有旧胶片式的色彩偏移和边缘VHS噪点。这是全片最饱和的画面。",
+      "prompt": "a real green tree with leaves shimmering in genuine warm sunlight, clear blue sky background, seen through a distorted memory-vision filter, slight chromatic aberration and VHS noise at edges, nostalgic and dreamlike quality, stark contrast to a dusty orange dystopian world, cinematic, 50mm lens, high saturation for this scene only, 2.39:1",
+      "character_ids": [],
+      "camera_notes": "28mm（主观POV）+ 50mm（树），微晃手持感，真实阳光",
+      "vfx_notes": "记忆视觉滤镜——色彩偏移+闪烁+VHS噪点+突然高饱和度",
+      "generated_url": "",
+      "approved": true,
+      "_meta": {
+        "revision": 1,
+        "director_approved": true
+      }
+    },
+    {
+      "panel_id": 4,
+      "scene_id": 4,
+      "layout": "extreme-wide",
+      "description": "窗外视角——巨型建筑在黄昏中。一个巨大的机械臂以极缓速度在建筑表面移动。建筑占画面70%。尘橙暮光从窗外射入。",
+      "prompt": "extreme wide shot through a window of a massive brutalist building at dusk, orange dust sky, a gigantic mechanical arm moving extremely slowly across the building surface, building occupying 70% of frame, dust particles floating, last rays of orange twilight entering through window, Blade Runner 2049 scale contrast aesthetic, cinematic, volumetric lighting, 2.39:1, 8K",
+      "character_ids": [],
+      "camera_notes": "24mm广角，dolly推向窗口→向上摇至巨物，尘橙暮光为主光+冷蓝室内光为辅",
+      "vfx_notes": "巨物缓动（10秒+）+黄昏→夜晚过渡+建筑维护红灯闪烁",
+      "generated_url": "",
+      "approved": true,
+      "_meta": {
+        "revision": 1,
+        "director_approved": true
+      }
+    },
+    {
+      "panel_id": 5,
+      "scene_id": 5,
+      "layout": "extreme-close-up",
+      "description": "记忆贩的第一次全脸特写——双眼布满血丝，极浅景深。眼神中映出绿色记忆的微弱反光。粗糙的混凝土墙在背景虚化。这是角色情感的最高点。",
+      "prompt": "extreme close-up of a gaunt man's eyes, bloodshot from staring at screens, faint green reflection in his pupils (the green memory), weathered skin texture, shallow depth of field at f/1.4, blurred rough concrete wall in background, single cold blue device light from below, intense observer's gaze, Blade Runner 2049 character portrait aesthetic, 85mm lens, cinematic, 2.39:1",
+      "character_ids": [],
+      "camera_notes": "85mm，静态，f/1.4极浅景深，冷蓝设备光为主（来自下方），眼中有绿色记忆反光",
+      "vfx_notes": "眼中绿色反光（后期合成）+bloom光晕",
+      "generated_url": "",
+      "approved": true,
+      "_meta": {
+        "revision": 1,
+        "director_approved": true
+      }
+    },
+    {
+      "panel_id": 6,
+      "scene_id": 6,
+      "layout": "extreme-close-up",
+      "description": "从混凝土裂缝中取出的锈蚀全息投影器。他的手握着投影器，表面有锈迹和划痕。投影器投射出破碎的信息——坐标、日期、'绿色存在'四字。淡绿色投影光照在他手上。",
+      "prompt": "extreme close-up of a rusty holographic projector pulled from a concrete wall crack, weathered hands holding it, rust and scratches on device surface, projecting fragmented encrypted data in pale green light - coordinates, a date, the words '绿色存在' in Chinese, scanlines and flicker on projection, the green light casting uneven glow on the weathered hands, Blade Runner 2049 imperfect hologram aesthetic, 100mm macro, 2.39:1",
+      "character_ids": [],
+      "camera_notes": "100mm微距，dolly推进至手部大特写，淡绿全息光为新主光源",
+      "vfx_notes": "全息不完美系统+淡绿光面部映射+扫描线",
+      "generated_url": "",
+      "approved": true,
+      "_meta": {
+        "revision": 1,
+        "director_approved": true
+      }
+    },
+    {
+      "panel_id": 7,
+      "scene_id": 7,
+      "layout": "wide",
+      "description": "窗外远景——城市边缘的巨型垃圾处理厂燃烧着。暖橙色的火光辉光照亮天空1/3，烟柱升腾。远处的建筑表面被火光映成暖橙色。冷蓝设备光在室内前景。",
+      "prompt": "wide shot through a window, distant view of a massive waste processing plant burning at the city edge, warm orange fire glow illuminating one third of the dark sky, smoke columns rising, distant building surfaces reflecting orange fire light, foreground interior with cold blue device light on a workbench, Blade Runner 2049 industrial landscape aesthetic, volumetric fire glow, atmospheric smoke particles, cinematic, 2.39:1, 8K",
+      "character_ids": [],
+      "camera_notes": "24mm广角，从室内工作台快速拉远至窗外远景，冷蓝+暖橙双光交汇",
+      "vfx_notes": "火光辉光+烟柱粒子+建筑表面火光映照",
+      "generated_url": "",
+      "approved": true,
+      "_meta": {
+        "revision": 1,
+        "director_approved": true
+      }
+    },
+    {
+      "panel_id": 8,
+      "scene_id": 8,
+      "layout": "medium",
+      "description": "结尾画面——门框构图。记忆贩的背影在尘橙雾霾中远去。空荡荡的公寓内，工作台上遗留着一枚裂了一角的晶片，标签上写着'2089.4.15 绿色'。冷蓝色设备光仍在闪烁。",
+      "prompt": "medium shot from inside a concrete apartment looking through a doorway frame, a man's silhouette walking away into thick orange dusty fog, empty apartment interior behind, a cracked memory chip left on the workbench with handwritten label '2089.4.15 绿色', cold blue device light still flickering, grey ash particles floating in the blue light, Blade Runner 2049 framing aesthetic, melancholic and poetic, cinematic, 2.39:1",
+      "character_ids": [],
+      "camera_notes": "50mm（门框构图）→100mm微距（最后晶片），静态收束，冷蓝+尘橙双光",
+      "vfx_notes": "volumetric fog（他消失在雾霾中）+晶片灰尘粒子+裂痕",
+      "generated_url": "",
+      "approved": true,
+      "_meta": {
+        "revision": 1,
+        "director_approved": true
+      }
+    }
+  ],
+  "creative_pack": {
+    "comfyui_workflow": {},
+    "hyperframes_config": {},
+    "kling_prompts": [],
+    "runway_prompts": []
+  },
+  "tuning_notes": [
+    {
+      "category": "color",
+      "note": "绿色(#4A9E4A)在全片中的出现频率严格控制在<5%——需要仔细检查每个场景中绿色的使用量，确保其稀缺性强化'绿色=珍贵'的主题",
+      "priority": "critical"
+    },
+    {
+      "category": "pacing",
+      "note": "场景5的10个快速剪辑中，第6个（绿色回闪）建议延长至1.5秒——给观众多0.5秒识别'这是绿色'。当前0.5秒可能太短",
+      "priority": "high"
+    },
+    {
+      "category": "composition",
+      "note": "场景4和场景5-最后镜头都使用了'人<10%画面'的巨物对比——确保两个镜头在构图上有呼应（都用建筑作为'吞噬者'），但情绪相反（场景4=日常/麻木，场景5=觉醒/渺小感）",
+      "priority": "medium"
+    },
+    {
+      "category": "sound",
+      "note": "场景3的树叶沙沙声需要在音频频谱上与所有其他声音形成最大对比——建议用纯净的录音（真实树叶），不加任何后期处理（无混响/无压缩）——让'自然声音'听上去像异世界的",
+      "priority": "high"
+    },
+    {
+      "category": "vfx",
+      "note": "全息投影的'不完美'程度需要精确控制——太少=不像BR2049，太多=影响信息传达。建议初期渲染后逐帧检查：扫描线可见但不过度覆盖文字内容",
+      "priority": "medium"
+    },
+    {
+      "category": "other",
+      "note": "Kael的面部只在场景5（第7个镜头）和场景7（第3个镜头）中完全展示——之前的所有镜头中，确保他的面部处于暗部/背影/侧面/遮挡状态。这是叙事手段——'看到他的脸'='看到他的人性'",
+      "priority": "high"
+    }
+  ]
+}

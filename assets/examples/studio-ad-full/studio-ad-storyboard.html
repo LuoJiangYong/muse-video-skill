@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>光影之间 — 分镜展示</title>
+<style>
+  /* ── 分镜卡片网格 ── */
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+  :root {
+    --bg: #faf9f5;
+    --card-bg: #ffffff;
+    --text: #141413;
+    --text-secondary: #666;
+    --accent: #cc785c;
+    --border: #e0ddd5;
+    --shadow: 0 1px 3px rgba(0,0,0,0.08);
+    --shadow-hover: 0 4px 12px rgba(0,0,0,0.12);
+    --radius: 10px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text);
+    background: var(--bg);
+    padding: 2rem;
+  }
+
+  /* ── Header ── */
+  .header {
+    max-width: 1200px;
+    margin: 0 auto 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid var(--accent);
+  }
+
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+
+  .header .subtitle {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+  }
+
+  .header .grid-info {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.2em 0.8em;
+    background: var(--accent);
+    color: white;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  /* ── Grid ── */
+  .storyboard-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  /* For 2×3 layout */
+  .storyboard-grid.layout-2x3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .storyboard-grid.layout-3x3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* ── Card ── */
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+
+  .card:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px);
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.8rem 1rem;
+    background: #f5f3ef;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .card-header .panel-id {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--accent);
+  }
+
+  .card-header .scene-ref {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+  }
+
+  .card-header .layout-badge {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    padding: 0.15em 0.5em;
+    background: var(--text);
+    color: white;
+    border-radius: 3px;
+    letter-spacing: 0.05em;
+  }
+
+  .card-body {
+    padding: 1rem;
+  }
+
+  .card-body .description {
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.5;
+  }
+
+  .card-body .prompt {
+    background: #f8f8f8;
+    padding: 0.6rem 0.8rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.8rem;
+    color: #555;
+    line-height: 1.4;
+    margin-bottom: 0.8rem;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  .card-body .tech-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  .card-body .tech-meta .tag {
+    padding: 0.15em 0.5em;
+    background: #eee;
+    border-radius: 3px;
+    color: #555;
+  }
+
+  .card-body .image-placeholder {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #f0eee8;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #bbb;
+    font-size: 0.85rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .card-body .image-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+
+  .card-footer {
+    padding: 0.6rem 1rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+  }
+
+  .status-badge {
+    padding: 0.15em 0.6em;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.7rem;
+  }
+
+  .status-badge.approved {
+    background: #d4edda;
+    color: #155724;
+  }
+
+  .status-badge.pending {
+    background: #fff3cd;
+    color: #856404;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    max-width: 1200px;
+    margin: 2rem auto 0;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .storyboard-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .storyboard-grid {
+      grid-template-columns: 1fr;
+    }
+    body { padding: 1rem; }
+  }
+
+  /* ── Print ── */
+  @media print {
+    body { background: white; }
+    .card { box-shadow: none; break-inside: avoid; }
+    .card:hover { transform: none; }
+  }
+
+  /* ── Dark mode ── */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #141413;
+      --card-bg: #1e1e1c;
+      --text: #e0e0e0;
+      --text-secondary: #999;
+      --border: #333;
+      --shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
+    .card-header { background: #252523; }
+    .card-body .prompt { background: #252523; color: #aaa; }
+    .card-body .image-placeholder { background: #252523; }
+    .card-body .tech-meta .tag { background: #333; color: #aaa; }
+    .status-badge.approved { background: #1a3a24; color: #8fdf9f; }
+    .status-badge.pending { background: #3a3010; color: #dfc860; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ Header ═══ -->
+<header class="header">
+  <h1>光影之间</h1>
+  <div class="subtitle">
+    studio-ad · 30s · 16:9
+  </div>
+  <span class="grid-info">3×3 网格 · 7 镜</span>
+</header>
+
+<!-- ═══ Storyboard Grid ═══ -->
+<div class="storyboard-grid layout-">
+
+
+  <article class="card">
+    <header class="card-header">
+      <span class="panel-id">#1</span>
+      <span class="layout-badge">extreme-close-up</span>
+      <span class="scene-ref">Scene 1</span>
+    </header>
+
+    <div class="card-body">
+      {{#if generated_url}}
+      <div class="image-placeholder">
+        <img src="—" alt="全黑画面。一束极细的金色侧光从右上方扫入，触及表盘边缘。金属边框折射出暖金色光芒。背景纯黑。" loading="lazy">
+      </div>
+      
+      <div class="image-placeholder">🎬 待生成</div>
+      
+
+      <div class="description">全黑画面。一束极细的金色侧光从右上方扫入，触及表盘边缘。金属边框折射出暖金色光芒。背景纯黑。</div>
+
+      {{#if prompt}}
+      <div class="prompt">extreme close-up of luxury smartwatch edge, black titanium case, single golden rim light from top-right, 90% pure black frame, one golden highlight on metal edge, minimalist, cinematic product photography, fog-like gold dust particles floating, 8K ultra-detailed, 16:9</div>
+      
+
+      <div class="tech-meta">
+        {{#if camera_notes}}<span class="tag">📷 100mm微距，静态→极缓推进，单一金色侧光</span>
+        {{#if vfx_notes}}<span class="tag">✨ 金色微尘粒子漂浮</span>
+        {{#if character_ids}}<span class="tag">👤 </span>
+      </div>
+    </div>
+
+    <footer class="card-footer">
+      <span>Rev 1</span>
+      {{#if approved}}
+      <span class="status-badge approved">✓ 已审核</span>
+      
+      <span class="status-badge pending">⏳ 待审核</span>
+      
+    </footer>
+  </article>
+
+  <article class="card">
+    <header class="card-header">
+      <span class="panel-id">#2</span>
+      <span class="layout-badge">extreme-close-up</span>
+      <span class="scene-ref">Scene 2</span>
+    </header>
+
+    <div class="card-body">
+      {{#if generated_url}}
+      <div class="image-placeholder">
+        <img src="—" alt="表冠的拉丝钛合金纹理，硬顶光揭示微米级细节。金属表面呈现单向拉丝的精密质感。" loading="lazy">
+      </div>
+      
+      <div class="image-placeholder">🎬 待生成</div>
+      
+
+      <div class="description">表冠的拉丝钛合金纹理，硬顶光揭示微米级细节。金属表面呈现单向拉丝的精密质感。</div>
+
+      {{#if prompt}}
+      <div class="prompt">extreme macro shot of brushed titanium watch crown, hard top light revealing micro-details, industrial design precision engineering, pure black background, 100mm macro lens, product photography, 8K ultra detailed, 16:9</div>
+      
+
+      <div class="tech-meta">
+        {{#if camera_notes}}<span class="tag">📷 100mm微距，静态，硬顶光</span>
+        {{#if vfx_notes}}<span class="tag">✨ 光传递转场——延续场景1金色侧光方向</span>
+        {{#if character_ids}}<span class="tag">👤 </span>
+      </div>
+    </div>
+
+    <footer class="card-footer">
+      <span>Rev 1</span>
+      {{#if approved}}
+      <span class="status-badge approved">✓ 已审核</span>
+      
+      <span class="status-badge pending">⏳ 待审核</span>
+      
+    </footer>
+  </article>
+
+  <article class="card">
+    <header class="card-header">
+      <span class="panel-id">#3</span>
+      <span class="layout-badge">extreme-close-up</span>
+      <span class="scene-ref">Scene 2</span>
+    </header>
+
+    <div class="card-body">
+      {{#if generated_url}}
+      <div class="image-placeholder">
+        <img src="—" alt="表带的意大利小牛皮——微观镜头下可见天然毛孔纹理和柔软褶皱。柔和的侧光勾勒出皮革的温润质感。" loading="lazy">
+      </div>
+      
+      <div class="image-placeholder">🎬 待生成</div>
+      
+
+      <div class="description">表带的意大利小牛皮——微观镜头下可见天然毛孔纹理和柔软褶皱。柔和的侧光勾勒出皮革的温润质感。</div>
+
+      {{#if prompt}}
+      <div class="prompt">extreme macro of Italian calfskin leather watch strap, natural pore texture visible, soft side light, warm brown tones, pure black background, luxurious material study, 100mm macro, 8K ultra detailed, 16:9</div>
+      
+
+      <div class="tech-meta">
+        {{#if camera_notes}}<span class="tag">📷 100mm微距，静态，大型柔光箱侧光</span>
+        {{#if vfx_notes}}<span class="tag">✨ 光传递转场</span>
+        {{#if character_ids}}<span class="tag">👤 </span>
+      </div>
+    </div>
+
+    <footer class="card-footer">
+      <span>Rev 1</span>
+      {{#if approved}}
+      <span class="status-badge approved">✓ 已审核</span>
+      
+      <span class="status-badge pending">⏳ 待审核</span>
+      
+    </footer>
+  </article>
+
+  <article class="card">
+    <header class="card-header">
+      <span class="panel-id">#4</span>
+      <span class="layout-badge">close-up</span>
+      <span class="scene-ref">Scene 3</span>
+    </header>
+
+    <div class="card-body">
+      {{#if generated_url}}
+      <div class="image-placeholder">
+        <img src="—" alt="表盘从息屏渐变亮屏的瞬间。AMOLED纯黑背景下，时间数字以优雅的无衬线字体浮现。屏幕边缘有微弱呼吸光。" loading="lazy">
+      </div>
+      
+      <div class="image-placeholder">🎬 待生成</div>
+      
+
+      <div class="description">表盘从息屏渐变亮屏的瞬间。AMOLED纯黑背景下，时间数字以优雅的无衬线字体浮现。屏幕边缘有微弱呼吸光。</div>
+
+      {{#if prompt}}
+      <div class="prompt">close-up of smartwatch AMOLED screen turning on, pure black display, white minimal sans-serif digital time appearing, subtle blue edge glow, pure black background, futuristic interface, cinematic lighting from the screen itself, 8K, 16:9</div>
+      
+
+      <div class="tech-meta">
+        {{#if camera_notes}}<span class="tag">📷 100mm微距→50mm，极缓dolly拉远</span>
+        {{#if vfx_notes}}<span class="tag">✨ AMOLED屏幕像素级发光</span>
+        {{#if character_ids}}<span class="tag">👤 </span>
+      </div>
+    </div>
+
+    <footer class="card-footer">
+      <span>Rev 1</span>
+      {{#if approved}}
+      <span class="status-badge approved">✓ 已审核</span>
+      
+      <span class="status-badge pending">⏳ 待审核</span>
+      
+    </footer>
+  </article>
+
+  <article class="card">
+    <header class="card-header">
+      <span class="panel-id">#5</span>
+      <span class="layout-badge">medium</span>
+      <span class="scene-ref">Scene 3</span>
+    </header>
+
+    <div class="card-body">
+      {{#if generated_url}}
+      <div class="image-placeholder">
+        <img src="—" alt="手指从画面外伸入轻触表盘。指尖与玻璃的接触点有微弱蓝白色静电光效。表盘显示心率监测红色光波。" loading="lazy">
+      </div>
+      
+      <div class="image-placeholder">🎬 待生成</div>
+      
+
+      <div class="description">手指从画面外伸入轻触表盘。指尖与玻璃的接触点有微弱蓝白色静电光效。表盘显示心率监测红色光波。</div>
+
+      {{#if prompt}}
+      <div class="prompt">medium shot of human finger touching smartwatch screen, electrostatic blue-white sparkle at contact point, red heart-rate wave animation on AMOLED display, pure black background, soft top light, minimalist tech aesthetic, 50mm lens, 8K, 16:9</div>
+      
+
+      <div class="tech-meta">
+        {{#if camera_notes}}<span class="tag">📷 50mm，静态→极缓拉远，屏幕光为主光+顶部柔光箱</span>
+        {{#if vfx_notes}}<span class="tag">✨ 静电光效+心率光波动画</span>
+        {{#if character_ids}}<span class="tag">👤 </span>
+      </div>
+    </div>
+
+    <footer class="card-footer">
+      <span>Rev 1</span>
+      {{#if approved}}
+      <span class="status-badge approved">✓ 已审核</span>
+      
+      <span class="status-badge pending">⏳ 待审核</span>
+      
+    </footer>
+  </article>
+
+  <article class="card">
+    <header class="card-header">
+      <span class="panel-id">#6</span>
+      <span class="layout-badge">medium-close-up</span>
+      <span class="scene-ref">Scene 4</span>
+    </header>
+
+    <div class="card-body">
+      {{#if generated_url}}
+      <div class="image-placeholder">
+        <img src="—" alt="演员手腕从画面下方升起，手表佩戴完好。深灰色精纺羊毛西装袖口构成画面下半部的自然画框。手腕在画面中央偏上。" loading="lazy">
+      </div>
+      
+      <div class="image-placeholder">🎬 待生成</div>
+      
+
+      <div class="description">演员手腕从画面下方升起，手表佩戴完好。深灰色精纺羊毛西装袖口构成画面下半部的自然画框。手腕在画面中央偏上。</div>
+
+      {{#if prompt}}
+      <div class="prompt">medium close-up of elegant wrist wearing luxury smartwatch, dark grey wool suit cuff, hand rising gracefully from bottom of frame, top-down large softbox lighting, golden accent rim light, pure dark gradient background, cinematic portrait, 85mm lens, 8K, 16:9, shallow depth of field</div>
+      
+
+      <div class="tech-meta">
+        {{#if camera_notes}}<span class="tag">📷 85mm，dolly极缓推进（50%→70%），天窗柔光+金色反光板</span>
+        {{#if vfx_notes}}<span class="tag">✨ 皮肤辉光+金属微反射</span>
+        {{#if character_ids}}<span class="tag">👤 </span>
+      </div>
+    </div>
+
+    <footer class="card-footer">
+      <span>Rev 1</span>
+      {{#if approved}}
+      <span class="status-badge approved">✓ 已审核</span>
+      
+      <span class="status-badge pending">⏳ 待审核</span>
+      
+    </footer>
+  </article>
+
+  <article class="card">
+    <header class="card-header">
+      <span class="panel-id">#7</span>
+      <span class="layout-badge">medium</span>
+      <span class="scene-ref">Scene 5</span>
+    </header>
+
+    <div class="card-body">
+      {{#if generated_url}}
+      <div class="image-placeholder">
+        <img src="—" alt="Hero Shot——手表从45°旋转至完全正面，金色粒子环绕成光轨。产品严格居中。品牌LOGO以淡入方式浮现。" loading="lazy">
+      </div>
+      
+      <div class="image-placeholder">🎬 待生成</div>
+      
+
+      <div class="description">Hero Shot——手表从45°旋转至完全正面，金色粒子环绕成光轨。产品严格居中。品牌LOGO以淡入方式浮现。</div>
+
+      {{#if prompt}}
+      <div class="prompt">hero shot of luxury black smartwatch, centered, front-facing, slightly top-down angle, golden particles orbiting in light trail around the watch, elegant brand logo fading in above, classic three-point studio lighting, dark gradient background, premium product photography, 50mm lens, 8K, 16:9, cinematic</div>
+      
+
+      <div class="tech-meta">
+        {{#if camera_notes}}<span class="tag">📷 50mm，静态（产品旋转由转台完成），三点布光</span>
+        {{#if vfx_notes}}<span class="tag">✨ 金色粒子环绕光轨+LOGO淡入+暗角</span>
+        {{#if character_ids}}<span class="tag">👤 </span>
+      </div>
+    </div>
+
+    <footer class="card-footer">
+      <span>Rev 1</span>
+      {{#if approved}}
+      <span class="status-badge approved">✓ 已审核</span>
+      
+      <span class="status-badge pending">⏳ 待审核</span>
+      
+    </footer>
+  </article>
+
+
+</div>
+
+<!-- ═══ Footer ═══ -->
+<footer class="footer">
+  Generated by Muse Video Skill · 2026-06-12T07:38:47Z<br>
+  总镜数 7 · 网格 3×3
+</footer>
+
+</body>
+</html>
