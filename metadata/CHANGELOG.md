@@ -6,6 +6,28 @@
 
 ---
 
+## [0.8.1] — 2026-06-12
+
+### 文档增强 — README + 生图指南 + 工具矩阵
+
+**README.md — 新增场景覆盖简介**
+- 在「工作流」与「案例库」之间新增「覆盖场景」表
+- 覆盖 5 种场景：棚拍广告 / 产品演示 / LOGO 演绎 / 科幻设定 / 艺术短片(自定义)
+- 每种场景标注定位 + 一句话 + 场景文档引用
+
+**image-gen-guide.md — 新增主流模型基准**
+- 工具速查表新增：ChatGPT Image (GPT-4o)、NanoBanana (Google)、即梦 (Jimeng)
+- 适用工具头部更新，覆盖现有 7 种工具
+
+**tool-matrix.md — 工具能力总览扩展**
+- 新增 4 个国产/新兴工具：LibTV (liblib.tv)、TAPNOW、即梦 (Jimeng)、happyhorse (阿里快马)
+- 覆盖工具头部从 6 个扩展至 10 个
+
+### 影响范围
+- README.md (+14 行)
+- references/media/image-gen-guide.md (+3 行，header 更新)
+- references/media/tool-matrix.md (+4 行，header 更新)
+
 ## [0.8.0] — 2026-06-12
 
 ### 新增 — Phase 7: 国际标杆广告案例扩充（优先级 2，4 个案例）

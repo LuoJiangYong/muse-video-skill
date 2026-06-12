@@ -1,7 +1,7 @@
 # 工具矩阵 — Tool Selection Matrix
 
 > **定位**：帮助 Agent 和用户决定「这个项目/这个阶段用哪个工具？」。不是工具教程——是决策指南。
-> **覆盖工具**：ComfyUI / HyperFrames / Kling / Runway / Pika / Suno。以 Muse Video 的产出物（Creative Package）为起点倒推工具选择。
+> **覆盖工具**：ComfyUI / HyperFrames / Kling / Runway / Pika / Suno / LibTV / TAPNOW / 即梦 / happyhorse。以 Muse Video 的产出物（Creative Package）为起点倒推工具选择。
 > **宪法约束**：Muse Video 不生成实际视频/音频——只产出 Creative Package。本矩阵帮助用户将 Package 中的每个部分对接到正确的工具。
 
 ---
@@ -16,6 +16,10 @@
 | **Runway** | 视频生成（Gen-3 Alpha）、视频编辑、运动笔刷、绿幕 | 静帧出图（已弱化）、音频 | 低 | 订阅制 |
 | **Pika** | 快速文生视频/图生视频、视频风格化 | 长视频、复杂场景 | 极低 | 免费额度+付费 |
 | **Suno AI** | AI 音乐生成（含歌词+人声） | 视频、图像、音效设计 | 低 | 免费额度+付费 |
+| **LibTV (liblib.tv)** | AI 图片/视频生成+编辑，中文 prompt 友好，风格模型丰富 | 实时渲染、复杂 3D、音频 | 低 | 免费额度+付费 |
+| **TAPNOW** | 快速 AI 创意出图，移动端友好，一键风格迁移 | 视频生成、精细参数控制 | 极低 | 免费额度+付费 |
+| **即梦 (Jimeng)** | 高质量 AI 图片/视频生成，中文语义理解强，集成抖音生态 | 专业级节点式精细控制 | 低 | 免费额度+付费 |
+| **happyhorse (阿里快马)** | AI 图片生成，通义系列模型，电商场景优化 | 视频生成、音频 | 低 | 免费额度+付费 |
 
 ---
 
