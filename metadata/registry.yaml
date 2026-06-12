@@ -221,8 +221,8 @@ files:
   - path: scripts/prompt_assembler.py
     role: script
     phase: 3
-    status: not_started
-    dependencies: [assets/schemas/project-state.json, scripts/format_script.py, scripts/storyboard_grid.py]
+    status: complete
+    dependencies: [assets/schemas/project-state.json, assets/templates/creative-pack.md, scripts/format_script.py, scripts/storyboard_grid.py]
     dependents: []
     owner: scripts
     description: "创作包组装：完整 Project State → Creative Pack JSON"
