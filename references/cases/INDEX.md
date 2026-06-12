@@ -14,7 +14,8 @@
 | APPLE-WH | Welcome Home | commercial | 2018 | Spike Jonze | studio-ad | product-demo | 超现实转场, 物理空间扭曲, 单镜头错觉, 色彩情绪, 舞蹈编排 |
 | NIKE-YCS | You Can't Stop Us | commercial | 2020 | Oscar Hudson | product-demo | logo-animation | 分屏匹配, 动态节奏, 档案素材, 隐喻剪辑, 品牌精神 |
 | APPLE-DB | Don't Blink | commercial | 2019 | — | product-demo | studio-ad | 高速剪辑, 产品密度, 节奏递增, 极简旁白, 功能叙事 |
-| COSMOS-L | Cosmos Laundromat | short-film | 2015 | Blender Foundation | sci-fi | product-demo | 材质渲染, 自然光, 角色动画, 环境叙事, 非人类主角 |
+|| COSMOS-L | Cosmos Laundromat | short-film | 2015 | Blender Foundation | sci-fi | product-demo | 材质渲染, 自然光, 角色动画, 环境叙事, 非人类主角 |
+|| WKW-ML | 花样年华 | film | 2000 | 王家卫 | custom | studio-ad | 留白叙事, 重复结构, 框架构图, 色彩叙事, 慢快门步印, 旗袍叙事 |
 
 ### 类型枚举
 
@@ -44,6 +45,10 @@
 | 隐喻剪辑 | NIKE-YCS |
 | 极简旁白 | APPLE-DB |
 | 环境叙事 | COSMOS-L |
+| 留白叙事 | WKW-ML |
+| 重复结构 | WKW-ML |
+| 未完成情感 | WKW-ML |
+| 时代背景隐喻 | WKW-ML |
 
 ### 镜头语言 (→ DP)
 
@@ -57,6 +62,11 @@
 | 分屏匹配 | NIKE-YCS |
 | 档案素材 | NIKE-YCS |
 | 自然光模拟 | COSMOS-L |
+| 框架构图 | WKW-ML |
+| 慢快门步印 | WKW-ML |
+| 浅景深孤立 | WKW-ML |
+| 镜面反射 | WKW-ML |
+| 极端低角度 | WKW-ML |
 
 ### 色彩/美术 (→ Art Director)
 
@@ -66,6 +76,9 @@
 | 场景色调对照表 | BR2049 |
 | 材质渲染 | COSMOS-L |
 | 物理空间扭曲 | APPLE-WH |
+| 旗袍色彩叙事 | WKW-ML |
+| 墙纸视觉密度 | WKW-ML |
+| 场景色调对照 | WKW-ML |
 
 ### 特效语言 (→ VFX)
 
@@ -76,6 +89,9 @@
 | 超现实转场 | APPLE-WH |
 | 分屏/画中画 | NIKE-YCS |
 | 材质表现 | COSMOS-L |
+| 步印模拟 | WKW-ML |
+| 雨夜霓虹 | WKW-ML |
+| 烟雾氛围层 | WKW-ML |
 
 ### 声音设计 (→ Sound Designer)
 
@@ -84,6 +100,8 @@
 | 合成器低音+留白 | BR2049 |
 | 环境音优先于对白 | BR2049 |
 | 动态节奏 | NIKE-YCS |
+| 音乐锚点 | WKW-ML |
+| 对白省略 | WKW-ML |
 
 ### 创意广告专属 (→ Studio-Ad, Product-Demo)
 
@@ -108,6 +126,7 @@
 | logo-animation | NIKE-YCS | APPLE-WH |
 | product-demo | NIKE-YCS, APPLE-DB, COSMOS-L | APPLE-WH |
 | sci-fi | BR2049, COSMOS-L | — |
+| custom (art-film) | WKW-ML | — |
 
 ---
 
@@ -119,10 +138,12 @@
 | minimalist | APPLE-DB, BR2049 |
 | surreal | APPLE-WH, COSMOS-L |
 | epic | BR2049, NIKE-YCS |
-| intimate | BR2049 |
+|| intimate | BR2049, WKW-ML |
 | energetic | NIKE-YCS, APPLE-DB |
-| dreamy | APPLE-WH, COSMOS-L |
-| gritty | BR2049 |
+| dreamy | APPLE-WH, COSMOS-L, WKW-ML |
+|| gritty | BR2049 |
+|| nostalgic | WKW-ML |
+|| melancholic | WKW-ML |
 
 ---
 
@@ -132,11 +153,11 @@
 
 | 角色 | 必看案例 | 推荐案例 |
 |------|---------|---------|
-| Writer (编剧) | BR2049 | NIKE-YCS |
-| DP (摄影指导) | BR2049, APPLE-WH | COSMOS-L |
-| Art Director (美术) | BR2049, APPLE-WH | COSMOS-L |
-| VFX Supervisor (特效) | BR2049, APPLE-WH | COSMOS-L |
-| Sound Designer (声音) | BR2049 | NIKE-YCS |
+|| Writer (编剧) | BR2049, WKW-ML | NIKE-YCS |
+| DP (摄影指导) | BR2049, APPLE-WH, WKW-ML | COSMOS-L |
+| Art Director (美术) | BR2049, APPLE-WH, WKW-ML | COSMOS-L |
+|| VFX Supervisor (特效) | BR2049, APPLE-WH, WKW-ML | COSMOS-L |
+|| Sound Designer (声音) | BR2049, WKW-ML | NIKE-YCS |
 | 广告创意综合 | APPLE-DB, NIKE-YCS | APPLE-WH |
 
 ---
@@ -181,4 +202,4 @@
 
 ---
 
-*最后更新：2026-06-12 | 案例总数：5（4 个案例文件已由 Phase 5 创建）*
+*最后更新：2026-06-12 | 案例总数：6（Phase 6 进行中: WKW-ML 已添加）*
