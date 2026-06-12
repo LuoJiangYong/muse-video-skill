@@ -6,6 +6,48 @@
 
 ---
 
+## [0.3.0] — 2026-06-12
+
+### 新增 — Phase 3: 脚本+模板+导出（12 个文件）
+
+**Markdown 模板（3 个）**
+- `assets/templates/script.md`：剧本 Markdown 模板，含场景分解、技术备注、元信息节
+- `assets/templates/storyboard.md`：分镜 Markdown 模板，支持 2×3/3×3 网格，含 AI 提示词+审核状态
+- `assets/templates/creative-pack.md`：创作包 Markdown 模板，完整 10 节结构（项目概要→下游工具对接）
+
+**核心脚本（3 个）**
+- `scripts/format_script.py`：scene array → 好莱坞剧本格式。schema-driven，支持 {{#each}} 遍历和 {{#if}} 条件块，CLI 支持 --input/--output/--template
+- `scripts/storyboard_grid.py`：storyboard array → 2×3/3×3 网格 Markdown。自动选择网格布局（≤6→2×3，≤9→3×3），支持 --grid 强制覆盖
+- `scripts/prompt_assembler.py`：完整 Project State → Creative Pack JSON + Markdown。自动生成 ComfyUI/HyperFrames/Kling/Runway 下游工具配置
+
+**导出脚本（3 个）**
+- `scripts/export_html.py`：Project State → 文学剧本 HTML（Courier 标准格式）+ 分镜展示 HTML（卡片网格，支持 dark mode）
+- `scripts/export_xlsx.py`：Project State → 分镜技术表 Excel（多 Sheet：分镜表/项目概要/色调方案/特效清单/声音方案），依赖 openpyxl
+- `scripts/moodboard_compare.py`：2+ 视觉方向 → 对比矩阵（色调对比/风格参考/相似度分析/推荐方向）
+
+**导出模板（3 个）**
+- `assets/templates/export/script-literary.html`：文学剧本 HTML 模板，Courier Prime 字体，标准剧本页边距，支持打印优化
+- `assets/templates/export/script-storyboard.html`：分镜展示 HTML 模板，响应式卡片网格，含图片占位、审核状态徽章
+- `assets/templates/export/script-tech.xlsx`：Excel 模板定义（JSON 驱动），5 个 Sheet 的列/行定义、条件格式、全局样式
+
+### 修改
+
+- `SKILL.md`：版本号 0.2.0 → 0.3.0
+- `metadata/registry.yaml`：12 个文件 status not_started→complete；Phase 3 统计更新
+
+### 影响分析
+
+- 受影响的文件：`SKILL.md`, `metadata/registry.yaml`, `metadata/CHANGELOG.md`
+- 新增依赖：format_script.py/storyboard_grid.py → templates/script.md/storyboard.md；prompt_assembler.py → templates/creative-pack.md
+- 下游影响：无（所有新文件均为新建，不修改已有文件）
+
+### 迁移指南
+
+- 无需迁移。Phase 0-2 的所有文件保持不变。
+- export_xlsx.py 需要 `pip install openpyxl`（仅在使用 Excel 导出时需要）
+
+---
+
 ## [0.2.0] — 2026-06-12
 
 ### 新增 — Phase 2: 角色+场景+管线+媒体（16 个文件）
