@@ -25,7 +25,7 @@
 
 ## 怎么用
 
-在 Hermes Agent 中加载本 Skill，然后像这样说话：
+在已安装本 Skill 的 AI Agent 中，像这样说话：
 
 ```
 帮我策划一个产品广告，风格参考 Apple Don't Blink
