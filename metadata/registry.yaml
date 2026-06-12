@@ -1,0 +1,374 @@
+# File Registry — 文件级元数据
+
+# 每个文件一行。新增/修改/删除文件必须同步更新此表。
+# Status: not_started | draft | complete | needs_update
+# Role: constitution | routing | role-doc | scene-doc | case | pipeline | schema | script | template | example | metadata | index | export-template
+
+files:
+  - path: CONSTITUTION.md
+    role: constitution
+    phase: 0
+    status: complete
+    dependencies: []
+    dependents: [SKILL.md, metadata/registry.yaml]
+    owner: architecture
+    description: "5 条设计宪法 + 目录布局 + 数据流 + 元数据治理章"
+
+  - path: SKILL.md
+    role: routing
+    phase: 1
+    status: complete
+    dependencies: [CONSTITUTION.md, references/cases/INDEX.md, references/pipelines/default.md, references/pipelines/fast-track.md]
+    dependents: []
+    owner: routing
+    description: "路由中枢：意图检测 → 场景路由 → 管线激活 → 阶段触发"
+
+  - path: assets/schemas/project-state.json
+    role: schema
+    phase: 0
+    status: complete
+    dependencies: [CONSTITUTION.md]
+    dependents: [scripts/prompt_assembler.py, scripts/export_html.py, scripts/export_xlsx.py, metadata/fields.yaml]
+    owner: data-contract
+    description: "项目状态 JSON Schema — 所有角色的唯一共享接口"
+
+  # --- Case Library ---
+  - path: references/cases/INDEX.md
+    role: index
+    phase: 1
+    status: complete
+    dependencies: []
+    dependents: [SKILL.md]
+    owner: case-library
+    description: "6 表交叉索引：主注册表 + 技法/场景/风格/角色 Mapping + SOP"
+
+  - path: references/cases/_TEMPLATE.md
+    role: template
+    phase: 1
+    status: complete
+    dependencies: [CONSTITUTION.md]
+    dependents: [references/cases/BR2049.md]
+    owner: case-library
+    description: "案例拆解标准化模板（按角色维度结构化）"
+
+  - path: references/cases/BR2049.md
+    role: case
+    phase: 1
+    status: complete
+    dependencies: [references/cases/_TEMPLATE.md]
+    dependents: [references/cases/INDEX.md]
+    owner: case-library
+    description: "银翼杀手2049 完整拆解（12 技法 × 5 角色维度）"
+
+  # --- Roles (Phase 2) ---
+  - path: references/roles/director.md
+    role: role-doc
+    phase: 2
+    status: not_started
+    dependencies: [CONSTITUTION.md, references/pipelines/default.md]
+    dependents: [SKILL.md]
+    owner: director
+    description: "导演角色：审核标准、迭代策略、拍板话术、vision 模板"
+
+  - path: references/roles/writer.md
+    role: role-doc
+    phase: 2
+    status: not_started
+    dependencies: [CONSTITUTION.md]
+    dependents: [SKILL.md]
+    owner: writer
+    description: "编剧角色：叙事结构库、对白技巧、情绪节奏、logline 生成"
+
+  - path: references/roles/dp.md
+    role: role-doc
+    phase: 2
+    status: not_started
+    dependencies: [CONSTITUTION.md, references/roles/director.md]
+    dependents: [SKILL.md]
+    owner: dp
+    description: "摄影指导角色：镜头语言、灯光方案、运镜类型、构图网格"
+
+  - path: references/roles/art-director.md
+    role: role-doc
+    phase: 2
+    status: not_started
+    dependencies: [CONSTITUTION.md]
+    dependents: [SKILL.md]
+    owner: art-director
+    description: "美术指导角色：色彩理论、风格库、世界观构建、人物造型"
+
+  - path: references/roles/vfx.md
+    role: role-doc
+    phase: 2
+    status: not_started
+    dependencies: [CONSTITUTION.md]
+    dependents: [SKILL.md]
+    owner: vfx
+    description: "特效指导角色：材质、粒子、转场、合成技术清单"
+
+  - path: references/roles/sound-designer.md
+    role: role-doc
+    phase: 2
+    status: not_started
+    dependencies: [CONSTITUTION.md]
+    dependents: [SKILL.md]
+    owner: sound-designer
+    description: "声音指导角色：配乐风格、音效设计、旁白基调、静默运用"
+
+  # --- Scenes (Phase 2) ---
+  - path: references/scenes/studio-ad.md
+    role: scene-doc
+    phase: 2
+    status: not_started
+    dependencies: [CONSTITUTION.md, references/roles/dp.md, references/roles/art-director.md]
+    dependents: [SKILL.md]
+    owner: scene-studio-ad
+    description: "棚拍广告场景：灯光方案、机位模板、道具清单、演员调度"
+
+  - path: references/scenes/logo-animation.md
+    role: scene-doc
+    phase: 2
+    status: not_started
+    dependencies: [CONSTITUTION.md, references/roles/vfx.md, references/roles/art-director.md]
+    dependents: [SKILL.md]
+    owner: scene-logo-animation
+    description: "LOGO 演绎场景：材质分类、动态节奏、品牌色适配"
+
+  - path: references/scenes/product-demo.md
+    role: scene-doc
+    phase: 2
+    status: not_started
+    dependencies: [CONSTITUTION.md, references/roles/writer.md, references/roles/dp.md]
+    dependents: [SKILL.md]
+    owner: scene-product-demo
+    description: "产品演示场景：功能叙事、B-roll 结构、CTA 设计"
+
+  - path: references/scenes/sci-fi.md
+    role: scene-doc
+    phase: 2
+    status: not_started
+    dependencies: [CONSTITUTION.md, references/roles/art-director.md, references/roles/vfx.md]
+    dependents: [SKILL.md, references/cases/BR2049.md]
+    owner: scene-sci-fi
+    description: "科幻设定场景：世界观规则、科技一致性、异化美感"
+
+  # --- Pipelines (Phase 2) ---
+  - path: references/pipelines/default.md
+    role: pipeline
+    phase: 2
+    status: not_started
+    dependencies: [CONSTITUTION.md, references/roles/director.md]
+    dependents: [SKILL.md]
+    owner: pipeline
+    description: "标准 7 阶段管线：每阶段的角色激活、产出、审核规则、loop 限制"
+
+  - path: references/pipelines/fast-track.md
+    role: pipeline
+    phase: 2
+    status: not_started
+    dependencies: [CONSTITUTION.md, references/pipelines/default.md]
+    dependents: [SKILL.md]
+    owner: pipeline
+    description: "快速管线：合并阶段 2+3+4，跳过 Director 多轮审核"
+
+  # --- Media (Phase 2) ---
+  - path: references/media/image-gen-guide.md
+    role: reference
+    phase: 2
+    status: not_started
+    dependencies: []
+    dependents: [references/roles/art-director.md]
+    owner: media
+    description: "生图提示词工程指南：ComfyUI/Flux/SD 的 prompt 模板与参数"
+
+  - path: references/media/character-consistency.md
+    role: reference
+    phase: 2
+    status: not_started
+    dependencies: [references/media/image-gen-guide.md]
+    dependents: [references/roles/art-director.md]
+    owner: media
+    description: "角色一致性策略：种子固定/IP-Adapter/LoRA/参考图重投"
+
+  - path: references/media/tool-matrix.md
+    role: reference
+    phase: 2
+    status: not_started
+    dependencies: []
+    dependents: [SKILL.md]
+    owner: media
+    description: "下游工具选择矩阵：ComfyUI vs Kling vs Runway vs HyperFrames"
+
+  # --- Scripts (Phase 3) ---
+  - path: scripts/format_script.py
+    role: script
+    phase: 3
+    status: not_started
+    dependencies: [assets/schemas/project-state.json]
+    dependents: [scripts/prompt_assembler.py]
+    owner: scripts
+    description: "剧本格式化：scene array → 标准好莱坞剧本格式"
+
+  - path: scripts/storyboard_grid.py
+    role: script
+    phase: 3
+    status: not_started
+    dependencies: [assets/schemas/project-state.json]
+    dependents: [scripts/prompt_assembler.py]
+    owner: scripts
+    description: "分镜网格生成：storyboard array → 2×3/3×3 网格布局"
+
+  - path: scripts/prompt_assembler.py
+    role: script
+    phase: 3
+    status: not_started
+    dependencies: [assets/schemas/project-state.json, scripts/format_script.py, scripts/storyboard_grid.py]
+    dependents: []
+    owner: scripts
+    description: "创作包组装：完整 Project State → Creative Pack JSON"
+
+  - path: scripts/moodboard_compare.py
+    role: script
+    phase: 3
+    status: not_started
+    dependencies: [assets/schemas/project-state.json]
+    dependents: []
+    owner: scripts
+    description: "美术方案对比：2+ 视觉方向 → 对比矩阵"
+
+  - path: scripts/export_html.py
+    role: script
+    phase: 3
+    status: not_started
+    dependencies: [assets/schemas/project-state.json, assets/templates/export/script-literary.html, assets/templates/export/script-storyboard.html]
+    dependents: []
+    owner: scripts
+    description: "HTML 导出：Project State → 文学剧本 HTML / 分镜展示 HTML"
+
+  - path: scripts/export_xlsx.py
+    role: script
+    phase: 3
+    status: not_started
+    dependencies: [assets/schemas/project-state.json, assets/templates/export/script-tech.xlsx]
+    dependents: []
+    owner: scripts
+    description: "Excel 导出：Project State → 分镜技术表"
+
+  # --- Templates (Phase 3) ---
+  - path: assets/templates/script.md
+    role: template
+    phase: 3
+    status: not_started
+    dependencies: [assets/schemas/project-state.json]
+    dependents: [scripts/format_script.py]
+    owner: templates
+    description: "剧本 Markdown 模板"
+
+  - path: assets/templates/storyboard.md
+    role: template
+    phase: 3
+    status: not_started
+    dependencies: [assets/schemas/project-state.json]
+    dependents: [scripts/storyboard_grid.py]
+    owner: templates
+    description: "分镜 Markdown 模板"
+
+  - path: assets/templates/creative-pack.md
+    role: template
+    phase: 3
+    status: not_started
+    dependencies: [assets/schemas/project-state.json]
+    dependents: [scripts/prompt_assembler.py]
+    owner: templates
+    description: "创作包 Markdown 模板"
+
+  - path: assets/templates/export/script-literary.html
+    role: export-template
+    phase: 3
+    status: not_started
+    dependencies: [assets/schemas/project-state.json]
+    dependents: [scripts/export_html.py]
+    owner: templates
+    description: "文学剧本 HTML 导出模板（Courier 标准格式）"
+
+  - path: assets/templates/export/script-storyboard.html
+    role: export-template
+    phase: 3
+    status: not_started
+    dependencies: [assets/schemas/project-state.json]
+    dependents: [scripts/export_html.py]
+    owner: templates
+    description: "分镜展示 HTML 导出模板（卡片网格）"
+
+  - path: assets/templates/export/script-tech.xlsx
+    role: export-template
+    phase: 3
+    status: not_started
+    dependencies: [assets/schemas/project-state.json]
+    dependents: [scripts/export_xlsx.py]
+    owner: templates
+    description: "分镜技术表 Excel 导出模板"
+
+  # --- Examples (Phase 4) ---
+  - path: assets/examples/studio-ad-full/
+    role: example
+    phase: 4
+    status: not_started
+    dependencies: [references/scenes/studio-ad.md, references/pipelines/default.md]
+    dependents: []
+    owner: examples
+    description: "完整棚拍广告案例（所有阶段产出）"
+
+  - path: assets/examples/sci-fi-short/
+    role: example
+    phase: 4
+    status: not_started
+    dependencies: [references/scenes/sci-fi.md, references/pipelines/default.md]
+    dependents: []
+    owner: examples
+    description: "完整科幻短片案例（所有阶段产出）"
+
+  # --- Metadata (self-referential) ---
+  - path: metadata/registry.yaml
+    role: metadata
+    phase: 1
+    status: complete
+    dependencies: [CONSTITUTION.md]
+    dependents: [metadata/dependencies.yaml]
+    owner: metadata
+    description: "文件级注册表：每个文件的状态、依赖、归属"
+
+  - path: metadata/fields.yaml
+    role: metadata
+    phase: 1
+    status: complete
+    dependencies: [assets/schemas/project-state.json]
+    dependents: [metadata/dependencies.yaml]
+    owner: metadata
+    description: "字段级元数据：每个 JSON 字段的类型、默认值、影响范围"
+
+  - path: metadata/dependencies.yaml
+    role: metadata
+    phase: 1
+    status: complete
+    dependencies: [metadata/registry.yaml, metadata/fields.yaml]
+    dependents: [CONSTITUTION.md]
+    owner: metadata
+    description: "依赖图：上下游关系 + 修改影响分析"
+
+  - path: metadata/CHANGELOG.md
+    role: metadata
+    phase: 1
+    status: complete
+    dependencies: []
+    dependents: [CONSTITUTION.md]
+    owner: metadata
+    description: "版本变更日志：每次修改的动机、影响、迁移指南"
+
+# --- 统计 ---
+# Total files: 39
+# Phase 0 (complete): 2
+# Phase 1 (complete): 7
+# Phase 2 (not_started): 16
+# Phase 3 (not_started): 12
+# Phase 4 (not_started): 2

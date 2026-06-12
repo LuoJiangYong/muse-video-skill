@@ -1,0 +1,468 @@
+# Field Metadata — 字段级元数据
+
+# 每个字段一行，对应 project-state.json 中的路径。
+# 新增/修改/删除 Schema 字段必须同步更新此表。
+# 用途：回答 "改了 X 字段会影响到哪些角色和哪些阶段？"
+
+fields:
+  # --- project ---
+  - path: project.title
+    type: string
+    default: ""
+    description: "项目名称"
+    affected_roles: [director]
+    affected_phases: [1]
+    version_added: "0.1.0"
+    breaking_change: false
+
+  - path: project.scene_type
+    type: enum
+    default: "custom"
+    enum_values: [studio-ad, logo-animation, product-demo, sci-fi, custom]
+    description: "场景类型 — 决定加载哪个场景文档"
+    affected_roles: [director]
+    affected_phases: [1]
+    version_added: "0.1.0"
+    breaking_change: false
+
+  - path: project.aspect_ratio
+    type: string
+    default: "16:9"
+    description: "画面比例"
+    affected_roles: [dp, art-director]
+    affected_phases: [1, 3, 4, 6]
+    version_added: "0.1.0"
+    breaking_change: false
+
+  - path: project.duration_est
+    type: string
+    default: "60s"
+    description: "预估时长"
+    affected_roles: [writer, director]
+    affected_phases: [1, 2, 4]
+    version_added: "0.1.0"
+    breaking_change: false
+
+  - path: project.genre
+    type: string
+    default: ""
+    description: "创意类型"
+    affected_roles: [art-director, sound-designer]
+    affected_phases: [1, 3, 5]
+    version_added: "0.1.0"
+    breaking_change: false
+
+  - path: project.platform
+    type: string
+    default: ""
+    description: "发布平台"
+    affected_roles: [director, dp]
+    affected_phases: [1, 4]
+    version_added: "0.1.0"
+    breaking_change: false
+
+  - path: project.language
+    type: string
+    default: "zh-CN"
+    description: "内容语言"
+    affected_roles: [writer, sound-designer]
+    affected_phases: [2, 4, 5]
+    version_added: "0.1.0"
+    breaking_change: false
+
+  # --- director_notes ---
+  - path: director_notes.vision
+    type: string
+    default: ""
+    description: "导演创意愿景（一段话）"
+    affected_roles: [writer, dp, art-director, vfx, sound-designer]
+    affected_phases: [2, 3, 4, 5, 6]
+    version_added: "0.1.0"
+    breaking_change: false
+
+  - path: director_notes.tone
+    type: string
+    default: ""
+    description: "情绪基调关键词"
+    affected_roles: [art-director, sound-designer, dp]
+    affected_phases: [3, 4, 5]
+    version_added: "0.1.0"
+    breaking_change: false
+
+  - path: director_notes.constraints
+    type: array<string>
+    default: []
+    description: "硬性约束列表"
+    affected_roles: [writer, dp, art-director, vfx]
+    affected_phases: [2, 3, 4, 6, 7]
+    version_added: "0.1.0"
+    breaking_change: false
+
+  - path: director_notes.decisions
+    type: array<object>
+    default: []
+    description: "关键创意决策记录"
+    affected_roles: [director]
+    affected_phases: [1, 2, 3, 4, 5, 6, 7]
+    version_added: "0.1.0"
+    breaking_change: false
+
+  # --- script ---
+  - path: script.logline
+    type: string
+    default: ""
+    description: "一句话故事概括"
+    affected_roles: [writer]
+    affected_phases: [2, 4]
+    version_added: "0.1.0"
+    breaking_change: false
+
+  - path: script.structure
+    type: string
+    default: ""
+    description: "叙事结构类型"
+    affected_roles: [writer]
+    affected_phases: [2, 4]
+    version_added: "0.1.0"
+    breaking_change: false
+
+  - path: script.scenes
+    type: array<object>
+    default: []
+    description: "场景数组 — 核心数据结构"
+    affected_roles: [writer, dp, vfx, sound-designer]
+    affected_phases: [4, 6, 7]
+    version_added: "0.1.0"
+    breaking_change: false
+
+  - path: script.scenes[].scene_id
+    type: integer
+    default: null
+    description: "场景序号"
+    affected_roles: [writer]
+    affected_phases: [4]
+    version_added: "0.1.0"
+    breaking_change: false
+
+  - path: script.scenes[].scene_title
+    type: string
+    default: ""
+    description: "场景标题"
+    affected_roles: [writer]
+    affected_phases: [4]
+    version_added: "0.1.0"
+    breaking_change: false
+
+  - path: script.scenes[].duration
+    type: string
+    default: ""
+    description: "场景时长"
+    affected_roles: [writer, dp]
+    affected_phases: [4]
+    version_added: "0.1.0"
+    breaking_change: false
+
+  - path: script.scenes[].location
+    type: string
+    default: ""
+    description: "场景地点 (INT/EXT)"
+    affected_roles: [writer, art-director]
+    affected_phases: [4]
+    version_added: "0.1.0"
+    breaking_change: false
+
+  - path: script.scenes[].dialogue
+    type: string
+    default: ""
+    description: "对白"
+    affected_roles: [writer]
+    affected_phases: [4]
+    version_added: "0.1.0"
+    breaking_change: false
+
+  - path: script.scenes[].action
+    type: string
+    default: ""
+    description: "动作描述/舞台指示"
+    affected_roles: [writer, dp]
+    affected_phases: [4]
+    version_added: "0.1.0"
+    breaking_change: false
+
+  - path: script.scenes[].camera
+    type: object
+    default: {}
+    description: "DP 的镜头方向"
+    affected_roles: [dp]
+    affected_phases: [4, 6]
+    version_added: "0.1.0"
+    breaking_change: false
+
+  - path: script.scenes[].camera.shot_type
+    type: string
+    default: ""
+    description: "景别 (ECU/CU/MS/WS/...)"
+    affected_roles: [dp]
+    affected_phases: [4, 6]
+    version_added: "0.1.0"
+    breaking_change: false
+
+  - path: script.scenes[].camera.movement
+    type: string
+    default: ""
+    description: "运镜方式"
+    affected_roles: [dp]
+    affected_phases: [4]
+    version_added: "0.1.0"
+    breaking_change: false
+
+  - path: script.scenes[].camera.lens
+    type: string
+    default: ""
+    description: "镜头焦段"
+    affected_roles: [dp]
+    affected_phases: [4]
+    version_added: "0.1.0"
+    breaking_change: false
+
+  - path: script.scenes[].camera.lighting
+    type: string
+    default: ""
+    description: "灯光方案"
+    affected_roles: [dp]
+    affected_phases: [4]
+    version_added: "0.1.0"
+    breaking_change: false
+
+  - path: script.scenes[].vfx_notes
+    type: string
+    default: ""
+    description: "特效备注"
+    affected_roles: [vfx]
+    affected_phases: [6]
+    version_added: "0.1.0"
+    breaking_change: false
+
+  - path: script.scenes[].sound_notes
+    type: string
+    default: ""
+    description: "声音备注"
+    affected_roles: [sound-designer]
+    affected_phases: [5]
+    version_added: "0.1.0"
+    breaking_change: false
+
+  # --- visual_dev ---
+  - path: visual_dev.palette
+    type: array<object>
+    default: []
+    description: "色调方案（name + hex + usage）"
+    affected_roles: [art-director, dp]
+    affected_phases: [3, 6]
+    version_added: "0.1.0"
+    breaking_change: false
+
+  - path: visual_dev.mood
+    type: string
+    default: ""
+    description: "视觉情绪描述"
+    affected_roles: [art-director]
+    affected_phases: [3]
+    version_added: "0.1.0"
+    breaking_change: false
+
+  - path: visual_dev.style_refs
+    type: array<object>
+    default: []
+    description: "风格参考（影片/艺术家/摄影师）"
+    affected_roles: [art-director, dp]
+    affected_phases: [3]
+    version_added: "0.1.0"
+    breaking_change: false
+
+  - path: visual_dev.characters
+    type: array<object>
+    default: []
+    description: "角色设定（name/role/traits/consistency_notes）"
+    affected_roles: [art-director, writer]
+    affected_phases: [3, 4, 6]
+    version_added: "0.1.0"
+    breaking_change: false
+
+  - path: visual_dev.image_refs
+    type: array<object>
+    default: []
+    description: "已生成的美术参考图（prompt + URL + approved）"
+    affected_roles: [art-director]
+    affected_phases: [3]
+    version_added: "0.1.0"
+    breaking_change: false
+
+  # --- cinematography ---
+  - path: cinematography.camera_style
+    type: string
+    default: ""
+    description: "摄影风格"
+    affected_roles: [dp]
+    affected_phases: [4]
+    version_added: "0.1.0"
+    breaking_change: false
+
+  - path: cinematography.lighting_philosophy
+    type: string
+    default: ""
+    description: "灯光哲学"
+    affected_roles: [dp]
+    affected_phases: [4]
+    version_added: "0.1.0"
+    breaking_change: false
+
+  - path: cinematography.movement_language
+    type: string
+    default: ""
+    description: "运动语言 (handheld/steadicam/dolly/...) "
+    affected_roles: [dp]
+    affected_phases: [4]
+    version_added: "0.1.0"
+    breaking_change: false
+
+  # --- sound ---
+  - path: sound.music_style
+    type: string
+    default: ""
+    description: "配乐风格"
+    affected_roles: [sound-designer]
+    affected_phases: [5]
+    version_added: "0.1.0"
+    breaking_change: false
+
+  - path: sound.sfx_notes
+    type: array<string>
+    default: []
+    description: "音效设计笔记"
+    affected_roles: [sound-designer]
+    affected_phases: [5]
+    version_added: "0.1.0"
+    breaking_change: false
+
+  - path: sound.narration_tone
+    type: string
+    default: ""
+    description: "旁白基调"
+    affected_roles: [sound-designer, writer]
+    affected_phases: [4, 5]
+    version_added: "0.1.0"
+    breaking_change: false
+
+  # --- vfx ---
+  - path: vfx.techniques
+    type: array<object>
+    default: []
+    description: "特效技法列表"
+    affected_roles: [vfx]
+    affected_phases: [6]
+    version_added: "0.1.0"
+    breaking_change: false
+
+  - path: vfx.transitions
+    type: array<object>
+    default: []
+    description: "转场设计"
+    affected_roles: [vfx]
+    affected_phases: [6]
+    version_added: "0.1.0"
+    breaking_change: false
+
+  - path: vfx.materials
+    type: array<object>
+    default: []
+    description: "材质库"
+    affected_roles: [vfx]
+    affected_phases: [6]
+    version_added: "0.1.0"
+    breaking_change: false
+
+  # --- storyboard ---
+  - path: storyboard
+    type: array<object>
+    default: []
+    description: "分镜面板数组 — 集成所有前期产出"
+    affected_roles: [director, art-director, dp, vfx]
+    affected_phases: [6]
+    version_added: "0.1.0"
+    breaking_change: false
+
+  - path: storyboard[].panel_id
+    type: integer
+    default: null
+    description: "分镜编号"
+    affected_roles: [director]
+    affected_phases: [6]
+    version_added: "0.1.0"
+    breaking_change: false
+
+  - path: storyboard[].prompt
+    type: string
+    default: ""
+    description: "AI 生图提示词"
+    affected_roles: [art-director]
+    affected_phases: [6]
+    version_added: "0.1.0"
+    breaking_change: false
+
+  # --- creative_pack ---
+  - path: creative_pack.comfyui_workflow
+    type: object
+    default: {}
+    description: "ComfyUI 工作流 JSON"
+    affected_roles: [vfx]
+    affected_phases: [7]
+    version_added: "0.1.0"
+    breaking_change: false
+
+  - path: creative_pack.hyperframes_config
+    type: object
+    default: {}
+    description: "HyperFrames 合成配置"
+    affected_roles: [director]
+    affected_phases: [7]
+    version_added: "0.1.0"
+    breaking_change: false
+
+  - path: creative_pack.kling_prompts
+    type: array<string>
+    default: []
+    description: "Kling 提示词"
+    affected_roles: [vfx]
+    affected_phases: [7]
+    version_added: "0.1.0"
+    breaking_change: false
+
+  # --- tuning_notes ---
+  - path: tuning_notes
+    type: array<object>
+    default: []
+    description: "调优建议 (category + note + priority)"
+    affected_roles: [director]
+    affected_phases: [7]
+    version_added: "0.1.0"
+    breaking_change: false
+
+  # --- _meta (traceability) ---
+  - path: _meta_per_section
+    type: object
+    default: { "revision": 1, "director_approved": false }
+    description: "追溯标记 — 每个 section 级的元信息。适用于所有顶层 section 的 _meta 子对象。"
+    affected_roles: [director]
+    affected_phases: [1, 2, 3, 4, 5, 6, 7]
+    version_added: "0.1.0"
+    breaking_change: false
+
+# --- 统计 ---
+# Total fields: 50
+# Affected by director: 16 fields
+# Affected by writer: 11 fields
+# Affected by dp: 14 fields
+# Affected by art-director: 12 fields
+# Affected by vfx: 10 fields
+# Affected by sound-designer: 7 fields

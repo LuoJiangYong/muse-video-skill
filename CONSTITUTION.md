@@ -118,7 +118,13 @@ muse-video/
 │       ├── studio-ad-full/      # Complete studio ad project (all phases)
 │       └── sci-fi-short/        # Complete sci-fi short project (all phases)
 │
-└── .gitignore
+├── metadata/                    ← METADATA SYSTEM. Field-level, file-level, dependency-level tracking.
+│   ├── registry.yaml            # File registry: every file with status, dependencies, owner
+│   ├── fields.yaml              # Field metadata: every JSON field with type, default, affected roles
+│   ├── dependencies.yaml        # Dependency graph: upstream→downstream with impact summaries
+│   └── CHANGELOG.md             # Version history with migration guides
+│
+├── .gitignore
 ```
 
 ---
@@ -206,7 +212,68 @@ USER: "帮我做一支赛博朋克手机广告"
 
 ---
 
-## Versioning
+## 元数据治理 METADATA GOVERNANCE
+
+> 三层元数据体系是 Skill 长期可维护性的基础设施。**任何文件/字段的新增、修改、删除必须同步更新对应元数据。**
+
+### 三层结构
+
+| 层级 | 文件 | 回答的问题 |
+|------|------|-----------|
+| **文件级** | `metadata/registry.yaml` | 「有哪些文件？各自什么状态？谁依赖谁？」 |
+| **字段级** | `metadata/fields.yaml` | 「改了 Schema 的 X 字段，哪些角色和阶段会受影响？」 |
+| **依赖级** | `metadata/dependencies.yaml` | 「改了文件 X，需要重测哪些文件？影响等级是什么？」 |
+
+### 更新纪律
+
+```
+每次 git commit 涉及实质性改动时：
+
+1. 文件增删改 → 更新 metadata/registry.yaml
+   - 新文件：加一行（path + role + phase + status + dependencies + dependents）
+   - 删文件：移除对应行 + 检查 dependents 列表中是否还有引用
+   - 改文件：评估 status（not_started → draft → complete / needs_update）
+
+2. Schema 字段增删改 → 更新 metadata/fields.yaml
+   - 新字段：加一行（path + type + default + affected_roles + affected_phases）
+   - 删字段：移除对应行 + 标注 version_added 和 breaking_change: true
+   - 改字段：更新对应行 + 如果类型变化，标注 breaking_change: true
+
+3. 依赖关系变化 → 更新 metadata/dependencies.yaml
+   - 新增依赖：加一对 upstream → downstream + impact 评级
+   - 删除依赖：移除对应行
+   - 影响等级：BREAKING > HIGH > MEDIUM > LOW
+
+4. 版本发布 → 更新 metadata/CHANGELOG.md
+   - 记录：新增/修改/删除 + 影响分析 + 迁移指南
+```
+
+### 快速查询模板
+
+**「我要改 X 文件，会影响什么？」**
+```bash
+# 查 registry 的 dependents → 列出所有直接下游
+# 查 dependencies 的 downstream → 列出所有间接下游 + 影响等级
+```
+
+**「我要改 Schema 的 Y 字段，会影响什么？」**
+```bash
+# 查 fields 的 affected_roles → 列出受影响角色
+# 查 fields 的 affected_phases → 列出受影响阶段
+# 查 dependencies 的上游是 schema 的条目 → 列出受影响脚本
+```
+
+### 自检清单
+
+- [ ] `registry.yaml` 中的 status 与文件实际状态一致
+- [ ] `registry.yaml` 中的 dependencies/dependents 与 `dependencies.yaml` 互洽
+- [ ] `fields.yaml` 中的字段列表与 `project-state.json` Schema 完全同步
+- [ ] 没有 `dependencies.yaml` 中「死链接」（指向不存在文件的依赖）
+- [ ] `CHANGELOG.md` 中最近一条 entry 的版本号与 git tag 一致
+
+---
+
+## 版本管理
 
 - This constitution supersedes all prior design documents for this skill.
 - Amendments require: (a) documented reason, (b) impact analysis on existing files, (c) commit with `docs: constitution amendment — <reason>`.
