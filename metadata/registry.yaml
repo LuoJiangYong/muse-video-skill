@@ -230,7 +230,7 @@ files:
   - path: scripts/moodboard_compare.py
     role: script
     phase: 3
-    status: not_started
+    status: complete
     dependencies: [assets/schemas/project-state.json]
     dependents: []
     owner: scripts
@@ -239,7 +239,7 @@ files:
   - path: scripts/export_html.py
     role: script
     phase: 3
-    status: not_started
+    status: complete
     dependencies: [assets/schemas/project-state.json, assets/templates/export/script-literary.html, assets/templates/export/script-storyboard.html]
     dependents: []
     owner: scripts
@@ -248,7 +248,7 @@ files:
   - path: scripts/export_xlsx.py
     role: script
     phase: 3
-    status: not_started
+    status: complete
     dependencies: [assets/schemas/project-state.json, assets/templates/export/script-tech.xlsx]
     dependents: []
     owner: scripts
@@ -370,5 +370,5 @@ files:
 # Phase 0 (complete): 2
 # Phase 1 (complete): 7
 # Phase 2 (complete): 16
-# Phase 3 (not_started): 12
+# Phase 3 (complete): 12
 # Phase 4 (not_started): 2
