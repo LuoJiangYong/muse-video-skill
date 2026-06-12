@@ -203,8 +203,8 @@ files:
   - path: scripts/format_script.py
     role: script
     phase: 3
-    status: not_started
-    dependencies: [assets/schemas/project-state.json]
+    status: complete
+    dependencies: [assets/schemas/project-state.json, assets/templates/script.md]
     dependents: [scripts/prompt_assembler.py]
     owner: scripts
     description: "剧本格式化：scene array → 标准好莱坞剧本格式"
@@ -212,8 +212,8 @@ files:
   - path: scripts/storyboard_grid.py
     role: script
     phase: 3
-    status: not_started
-    dependencies: [assets/schemas/project-state.json]
+    status: complete
+    dependencies: [assets/schemas/project-state.json, assets/templates/storyboard.md]
     dependents: [scripts/prompt_assembler.py]
     owner: scripts
     description: "分镜网格生成：storyboard array → 2×3/3×3 网格布局"
