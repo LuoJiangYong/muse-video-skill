@@ -123,6 +123,15 @@ files:
     owner: case-library
     description: "环太平洋 完整拆解（Guillermo del Toro, 16+ 技法 × 5 角色维度, 重量感运动+霓虹雨夜+机械物理模拟=巨型机甲标杆）"
 
+  - path: references/cases/OLDSPICE-MAN.md
+    role: case
+    phase: 7
+    status: complete
+    dependencies: [references/cases/_TEMPLATE.md]
+    dependents: [references/cases/INDEX.md]
+    owner: case-library
+    description: "Old Spice The Man Your Man Could Smell Like 完整拆解（Tom Kuntz, 14+ 技法 × 5 角色维度, 单镜头喜剧+荒诞推销+打破第四面墙=病毒广告里程碑）"
+
   # --- Roles (Phase 2) ---
   - path: references/roles/director.md
     role: role-doc
@@ -429,7 +438,7 @@ files:
     description: "版本变更日志：每次修改的动机、影响、迁移指南"
 
 # --- 统计 ---
-# Total files: 46
+# Total files: 47
 # Phase 0 (complete): 2
 # Phase 1 (complete): 7
 # Phase 2 (complete): 16
@@ -437,3 +446,4 @@ files:
 # Phase 4 (complete): 2
 # Phase 5 (complete): 4
 # Phase 6 (complete): 3
+# Phase 7 (in-progress): 1

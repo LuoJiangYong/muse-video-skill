@@ -18,6 +18,7 @@
 | WKW-ML | 花样年华 | film | 2000 | 王家卫 | custom | studio-ad | 留白叙事, 重复结构, 框架构图, 色彩叙事, 慢快门步印, 旗袍叙事 |
 | WANDERING-E | 流浪地球 | film | 2019 | 郭帆 | sci-fi | product-demo | 巨物尺度, 集体英雄主义, 等离子蓝, 行星发动机, 低频嗡鸣, 中国民乐融合 |
 | PACIFIC-RIM | 环太平洋 | film | 2013 | Guillermo del Toro | sci-fi | logo-animation | 重量感运动, 霓虹雨夜, 双人共驾, 机械物理, 怪兽设计, 雨水粒子 |
+| OLDSPICE-MAN | The Man Your Man Could Smell Like | commercial | 2010 | Tom Kuntz | studio-ad | product-demo | 单镜头喜剧, 连续转场, 荒诞推销, 打破第四面墙, 病毒传播 |
 
 ### 类型枚举
 
@@ -59,6 +60,10 @@
 | 怪兽分级 | PACIFIC-RIM |
 | 最后希望 | PACIFIC-RIM |
 | 同步叙事 | PACIFIC-RIM |
+| 无缝口头转场 | OLDSPICE-MAN |
+| 打破第四面墙 | OLDSPICE-MAN |
+| 荒诞逻辑链 | OLDSPICE-MAN |
+| 喜剧节奏公式 | OLDSPICE-MAN |
 
 ### 镜头语言 (→ DP)
 
@@ -84,6 +89,9 @@
 | 重量感运动 | PACIFIC-RIM |
 | 驾驶舱调度 | PACIFIC-RIM |
 | 雨中景深 | PACIFIC-RIM |
+| 连续单镜头错觉 | OLDSPICE-MAN |
+| 身体即产品载体 | OLDSPICE-MAN |
+| 快速场景切换节奏 | OLDSPICE-MAN |
 
 ### 色彩/美术 (→ Art Director)
 
@@ -101,6 +109,9 @@
 | 怪兽设计原则 | PACIFIC-RIM |
 | 霓虹雨夜调色 | PACIFIC-RIM |
 | Jaeger 文化设计 | PACIFIC-RIM |
+| 高对比场景色彩 | OLDSPICE-MAN |
+| 白色视觉锚点 | OLDSPICE-MAN |
+| 色彩温度递进 | OLDSPICE-MAN |
 
 ### 特效语言 (→ VFX)
 
@@ -121,6 +132,9 @@
 | 机械物理模拟 | PACIFIC-RIM |
 | 怪兽流体特效 | PACIFIC-RIM |
 | 全息 UI | PACIFIC-RIM |
+| 帧匹配转场缝合 | OLDSPICE-MAN |
+| 道具场景快速替换 | OLDSPICE-MAN |
+| 产品延迟揭示 | OLDSPICE-MAN |
 
 ### 声音设计 (→ Sound Designer)
 
@@ -138,6 +152,9 @@
 | 关节机械音 | PACIFIC-RIM |
 | 怪兽吼叫叠加 | PACIFIC-RIM |
 | 电吉他交响 | PACIFIC-RIM |
+| 单口相声式旁白 | OLDSPICE-MAN |
+| 喜剧timing静默 | OLDSPICE-MAN |
+| 男中音权威亲密 | OLDSPICE-MAN |
 
 ### 创意广告专属 (→ Studio-Ad, Product-Demo)
 
@@ -149,6 +166,10 @@
 | 品牌精神 | NIKE-YCS |
 | 舞蹈编排 | APPLE-WH |
 | 非人类主角 | COSMOS-L |
+| 荒诞夸大策略 | OLDSPICE-MAN |
+| 病毒一句话公式 | OLDSPICE-MAN |
+| 幽默推销模型 | OLDSPICE-MAN |
+| 打破第四面墙广告 | OLDSPICE-MAN |
 
 ---
 
@@ -158,9 +179,9 @@
 
 | 场景类型 | 强相关案例 | 可参考案例 |
 |----------|----------|-----------|
-| studio-ad | APPLE-WH, APPLE-DB | BR2049, NIKE-YCS |
+| studio-ad | APPLE-WH, APPLE-DB, OLDSPICE-MAN | BR2049, NIKE-YCS |
 | logo-animation | NIKE-YCS, PACIFIC-RIM | APPLE-WH |
-| product-demo | NIKE-YCS, APPLE-DB, COSMOS-L | APPLE-WH |
+| product-demo | NIKE-YCS, APPLE-DB, COSMOS-L, OLDSPICE-MAN | APPLE-WH |
 | sci-fi | BR2049, COSMOS-L, WANDERING-E, PACIFIC-RIM | — |
 | custom (art-film) | WKW-ML | — |
 
@@ -176,11 +197,13 @@
 | surreal | APPLE-WH, COSMOS-L |
 | epic | BR2049, NIKE-YCS, WANDERING-E, PACIFIC-RIM |
 | intimate | BR2049, WKW-ML |
-| energetic | NIKE-YCS, APPLE-DB, PACIFIC-RIM |
+| energetic | NIKE-YCS, APPLE-DB, PACIFIC-RIM, OLDSPICE-MAN |
 | dreamy | APPLE-WH, COSMOS-L, WKW-ML |
 | gritty | BR2049, WANDERING-E, PACIFIC-RIM |
 | nostalgic | WKW-ML |
 | melancholic | WKW-ML |
+| humorous | OLDSPICE-MAN |
+| absurd | OLDSPICE-MAN |
 
 ---
 
@@ -190,12 +213,12 @@
 
 | 角色 | 必看案例 | 推荐案例 |
 |------|---------|---------|
-| Writer (编剧) | BR2049, WKW-ML, WANDERING-E, PACIFIC-RIM | NIKE-YCS |
-| DP (摄影指导) | BR2049, APPLE-WH, WKW-ML, WANDERING-E, PACIFIC-RIM | COSMOS-L |
-| Art Director (美术) | BR2049, APPLE-WH, WKW-ML, WANDERING-E, PACIFIC-RIM | COSMOS-L |
-| VFX Supervisor (特效) | BR2049, APPLE-WH, WKW-ML, WANDERING-E, PACIFIC-RIM | COSMOS-L |
-| Sound Designer (声音) | BR2049, WKW-ML, WANDERING-E, PACIFIC-RIM | NIKE-YCS |
-| 广告创意综合 | APPLE-DB, NIKE-YCS | APPLE-WH |
+| Writer (编剧) | BR2049, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN | NIKE-YCS |
+| DP (摄影指导) | BR2049, APPLE-WH, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN | COSMOS-L |
+| Art Director (美术) | BR2049, APPLE-WH, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN | COSMOS-L |
+| VFX Supervisor (特效) | BR2049, APPLE-WH, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN | COSMOS-L |
+| Sound Designer (声音) | BR2049, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN | NIKE-YCS |
+| 广告创意综合 | APPLE-DB, NIKE-YCS, OLDSPICE-MAN | APPLE-WH |
 
 ---
 
@@ -240,4 +263,4 @@
 
 ---
 
-*最后更新：2026-06-12 | 案例总数：8（Phase 6: WKW-ML + WANDERING-E + PACIFIC-RIM 全部完成）*
+*最后更新：2026-06-12 | 案例总数：9（Phase 7-A: OLDSPICE-MAN 完成）*
