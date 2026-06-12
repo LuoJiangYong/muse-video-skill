@@ -17,6 +17,7 @@
 || COSMOS-L | Cosmos Laundromat | short-film | 2015 | Blender Foundation | sci-fi | product-demo | 材质渲染, 自然光, 角色动画, 环境叙事, 非人类主角 |
 || WKW-ML | 花样年华 | film | 2000 | 王家卫 | custom | studio-ad | 留白叙事, 重复结构, 框架构图, 色彩叙事, 慢快门步印, 旗袍叙事 |
 || WANDERING-E | 流浪地球 | film | 2019 | 郭帆 | sci-fi | product-demo | 巨物尺度, 集体英雄主义, 等离子蓝, 行星发动机, 低频嗡鸣, 中国民乐融合 |
+|| PACIFIC-RIM | 环太平洋 | film | 2013 | Guillermo del Toro | sci-fi | logo-animation | 重量感运动, 霓虹雨夜, 双人共驾, 机械物理, 怪兽设计, 雨水粒子 |
 
 ### 类型枚举
 
@@ -54,6 +55,10 @@
 | 父子双线叙事 | WANDERING-E |
 | 灾难阶梯 | WANDERING-E |
 | 牺牲主题 | WANDERING-E |
+| 双人共驾 | PACIFIC-RIM |
+| 怪兽分级 | PACIFIC-RIM |
+| 最后希望 | PACIFIC-RIM |
+| 同步叙事 | PACIFIC-RIM |
 
 ### 镜头语言 (→ DP)
 
@@ -76,6 +81,9 @@
 | 广角畸变 | WANDERING-E |
 | 第一视角穿越 | WANDERING-E |
 | 零重力调度 | WANDERING-E |
+| 重量感运动 | PACIFIC-RIM |
+| 驾驶舱调度 | PACIFIC-RIM |
+| 雨中景深 | PACIFIC-RIM |
 
 ### 色彩/美术 (→ Art Director)
 
@@ -90,6 +98,9 @@
 | 场景色调对照 | WKW-ML |
 | 五域色调体系 | WANDERING-E |
 | 地下城烟火气 | WANDERING-E |
+| 怪兽设计原则 | PACIFIC-RIM |
+| 霓虹雨夜调色 | PACIFIC-RIM |
+| Jaeger 文化设计 | PACIFIC-RIM |
 
 ### 特效语言 (→ VFX)
 
@@ -107,6 +118,9 @@
 | 地球冻结 | WANDERING-E |
 | 大气抽离 | WANDERING-E |
 | 运载车集群 | WANDERING-E |
+| 机械物理模拟 | PACIFIC-RIM |
+| 怪兽流体特效 | PACIFIC-RIM |
+| 全息 UI | PACIFIC-RIM |
 
 ### 声音设计 (→ Sound Designer)
 
@@ -121,6 +135,9 @@
 | 冰裂高频 | WANDERING-E |
 | 中国民乐融合 | WANDERING-E |
 | 多语言广播 | WANDERING-E |
+| 关节机械音 | PACIFIC-RIM |
+| 怪兽吼叫叠加 | PACIFIC-RIM |
+| 电吉他交响 | PACIFIC-RIM |
 
 ### 创意广告专属 (→ Studio-Ad, Product-Demo)
 
@@ -142,9 +159,9 @@
 | 场景类型 | 强相关案例 | 可参考案例 |
 |----------|----------|-----------|
 | studio-ad | APPLE-WH, APPLE-DB | BR2049, NIKE-YCS |
-| logo-animation | NIKE-YCS | APPLE-WH |
+| logo-animation | NIKE-YCS, PACIFIC-RIM | APPLE-WH |
 | product-demo | NIKE-YCS, APPLE-DB, COSMOS-L | APPLE-WH |
-| sci-fi | BR2049, COSMOS-L, WANDERING-E | — |
+| sci-fi | BR2049, COSMOS-L, WANDERING-E, PACIFIC-RIM | — |
 | custom (art-film) | WKW-ML | — |
 
 ---
@@ -154,14 +171,14 @@
 | 风格/情绪 | 案例 ID |
 |-----------|---------|
 || cyberpunk | BR2049 |
-|| cyberpunk-adjacent | WANDERING-E |
+|| cyberpunk-adjacent | WANDERING-E, PACIFIC-RIM |
 | minimalist | APPLE-DB, BR2049 |
 | surreal | APPLE-WH, COSMOS-L |
-| epic | BR2049, NIKE-YCS, WANDERING-E |
+|| epic | BR2049, NIKE-YCS, WANDERING-E, PACIFIC-RIM |
 | intimate | BR2049, WKW-ML |
-| energetic | NIKE-YCS, APPLE-DB |
+| energetic | NIKE-YCS, APPLE-DB, PACIFIC-RIM |
 | dreamy | APPLE-WH, COSMOS-L, WKW-ML |
-|| gritty | BR2049, WANDERING-E |
+|| gritty | BR2049, WANDERING-E, PACIFIC-RIM |
 || nostalgic | WKW-ML |
 || melancholic | WKW-ML |
 
@@ -173,11 +190,11 @@
 
 | 角色 | 必看案例 | 推荐案例 |
 |------|---------|---------|
-|| Writer (编剧) | BR2049, WKW-ML, WANDERING-E | NIKE-YCS |
-| DP (摄影指导) | BR2049, APPLE-WH, WKW-ML, WANDERING-E | COSMOS-L |
-| Art Director (美术) | BR2049, APPLE-WH, WKW-ML, WANDERING-E | COSMOS-L |
-|| VFX Supervisor (特效) | BR2049, APPLE-WH, WKW-ML, WANDERING-E | COSMOS-L |
-|| Sound Designer (声音) | BR2049, WKW-ML, WANDERING-E | NIKE-YCS |
+|| Writer (编剧) | BR2049, WKW-ML, WANDERING-E, PACIFIC-RIM | NIKE-YCS |
+| DP (摄影指导) | BR2049, APPLE-WH, WKW-ML, WANDERING-E, PACIFIC-RIM | COSMOS-L |
+| Art Director (美术) | BR2049, APPLE-WH, WKW-ML, WANDERING-E, PACIFIC-RIM | COSMOS-L |
+|| VFX Supervisor (特效) | BR2049, APPLE-WH, WKW-ML, WANDERING-E, PACIFIC-RIM | COSMOS-L |
+|| Sound Designer (声音) | BR2049, WKW-ML, WANDERING-E, PACIFIC-RIM | NIKE-YCS |
 | 广告创意综合 | APPLE-DB, NIKE-YCS | APPLE-WH |
 
 ---
@@ -222,4 +239,4 @@
 
 ---
 
-*最后更新：2026-06-12 | 案例总数：7（Phase 6 进行中: WKW-ML + WANDERING-E 已添加）*
+*最后更新：2026-06-12 | 案例总数：8（Phase 6: WKW-ML + WANDERING-E + PACIFIC-RIM 全部完成）*

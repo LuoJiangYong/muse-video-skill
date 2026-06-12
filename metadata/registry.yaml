@@ -114,6 +114,15 @@ files:
     owner: case-library
     description: "流浪地球 完整拆解（郭帆, 16+ 技法 × 5 角色维度, 巨物尺度+集体英雄主义+五域色调体系=中国硬科幻标杆）"
 
+  - path: references/cases/PACIFIC-RIM.md
+    role: case
+    phase: 6
+    status: complete
+    dependencies: [references/cases/_TEMPLATE.md]
+    dependents: [references/cases/INDEX.md]
+    owner: case-library
+    description: "环太平洋 完整拆解（Guillermo del Toro, 16+ 技法 × 5 角色维度, 重量感运动+霓虹雨夜+机械物理模拟=巨型机甲标杆）"
+
   # --- Roles (Phase 2) ---
   - path: references/roles/director.md
     role: role-doc
@@ -420,11 +429,11 @@ files:
     description: "版本变更日志：每次修改的动机、影响、迁移指南"
 
 # --- 统计 ---
-# Total files: 45
+# Total files: 46
 # Phase 0 (complete): 2
 # Phase 1 (complete): 7
 # Phase 2 (complete): 16
 # Phase 3 (complete): 12
 # Phase 4 (complete): 2
 # Phase 5 (complete): 4
-# Phase 6 (in progress): 2
+# Phase 6 (complete): 3
