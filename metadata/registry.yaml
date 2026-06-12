@@ -73,27 +73,27 @@ files:
   - path: references/roles/writer.md
     role: role-doc
     phase: 2
-    status: not_started
+    status: complete
     dependencies: [CONSTITUTION.md]
-    dependents: [SKILL.md]
+    dependents: [SKILL.md, references/scenes/product-demo.md]
     owner: writer
     description: "编剧角色：叙事结构库、对白技巧、情绪节奏、logline 生成"
 
   - path: references/roles/dp.md
     role: role-doc
     phase: 2
-    status: not_started
+    status: complete
     dependencies: [CONSTITUTION.md, references/roles/director.md]
-    dependents: [SKILL.md]
+    dependents: [SKILL.md, references/scenes/studio-ad.md, references/scenes/product-demo.md]
     owner: dp
     description: "摄影指导角色：镜头语言、灯光方案、运镜类型、构图网格"
 
   - path: references/roles/art-director.md
     role: role-doc
     phase: 2
-    status: not_started
+    status: complete
     dependencies: [CONSTITUTION.md]
-    dependents: [SKILL.md]
+    dependents: [SKILL.md, references/scenes/studio-ad.md, references/scenes/logo-animation.md, references/scenes/sci-fi.md, references/media/image-gen-guide.md]
     owner: art-director
     description: "美术指导角色：色彩理论、风格库、世界观构建、人物造型"
 
