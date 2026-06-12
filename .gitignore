@@ -1,0 +1,35 @@
+# Git
+.git/
+*.pyc
+__pycache__/
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project outputs (creative packs are deliverables, not source)
+output/
+*.mp4
+*.png
+*.jpg
+!assets/examples/**/*.png
+!assets/examples/**/*.jpg
+
+# Environment
+.env
+.env.local
+
+# Node (if HyperFrames integration is added later)
+node_modules/
+.hyperframes/

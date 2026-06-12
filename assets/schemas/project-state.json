@@ -1,0 +1,303 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hermes-agent.nousresearch.com/skills/muse-video/project-state",
+  "title": "Muse Video Project State",
+  "description": "Single source of truth flowing between all roles in the Muse Video creative pipeline. Every role reads from and writes to this schema.",
+  "type": "object",
+  "required": ["project", "director_notes"],
+  "properties": {
+    "project": {
+      "type": "object",
+      "description": "Core project metadata — populated during Phase 1 (需求沟通).",
+      "required": ["title", "scene_type"],
+      "properties": {
+        "title": { "type": "string", "description": "Project working title." },
+        "scene_type": { 
+          "type": "string", 
+          "enum": ["studio-ad", "logo-animation", "product-demo", "sci-fi", "custom"],
+          "description": "Scene type — determines which references/scenes/<type>.md to load."
+        },
+        "aspect_ratio": { "type": "string", "examples": ["16:9", "9:16", "1:1", "21:9"] },
+        "duration_est": { "type": "string", "description": "Estimated duration (e.g., '30s', '60s', '3min')." },
+        "genre": { "type": "string", "description": "Creative genre (e.g., 'cyberpunk', 'minimalist', 'cinematic')." },
+        "platform": { "type": "string", "description": "Target platform (e.g., 'douyin', 'youtube', 'website-hero', 'tv')." },
+        "language": { "type": "string", "default": "zh-CN", "description": "Primary content language." }
+      }
+    },
+    "director_notes": {
+      "type": "object",
+      "description": "Director's creative vision and decisions — the North Star for all roles.",
+      "required": ["vision"],
+      "properties": {
+        "vision": { "type": "string", "description": "One-paragraph creative vision statement." },
+        "tone": { "type": "string", "description": "Emotional tone keywords (e.g., 'epic, intimate, mysterious')." },
+        "constraints": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Hard constraints (e.g., 'must include product logo in first 3s', 'no rapid cuts')."
+        },
+        "decisions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "phase": { "type": "string" },
+              "decision": { "type": "string" },
+              "rationale": { "type": "string" }
+            }
+          },
+          "description": "Key creative decisions with rationale."
+        },
+        "_meta": {
+          "type": "object",
+          "properties": {
+            "role": { "type": "string", "default": "director" },
+            "revision": { "type": "integer", "default": 1 },
+            "director_approved": { "type": "boolean", "default": true }
+          }
+        }
+      }
+    },
+    "script": {
+      "type": "object",
+      "description": "Script output from Writer + DP — populated during Phase 4 (脚本).",
+      "properties": {
+        "logline": { "type": "string", "description": "One-sentence story summary." },
+        "structure": { "type": "string", "description": "Narrative structure (e.g., '3-act', 'hero's journey', 'montage')." },
+        "scenes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["scene_id", "duration"],
+            "properties": {
+              "scene_id": { "type": "integer" },
+              "scene_title": { "type": "string" },
+              "duration": { "type": "string", "description": "Duration in seconds or beats." },
+              "location": { "type": "string" },
+              "time_of_day": { "type": "string" },
+              "dialogue": { "type": "string" },
+              "action": { "type": "string", "description": "Character actions and blocking." },
+              "camera": {
+                "type": "object",
+                "description": "DP's camera direction for this scene.",
+                "properties": {
+                  "shot_type": { "type": "string" },
+                  "movement": { "type": "string" },
+                  "lens": { "type": "string" },
+                  "lighting": { "type": "string" },
+                  "composition_notes": { "type": "string" }
+                }
+              },
+              "vfx_notes": { "type": "string", "description": "VFX-specific notes for this scene." },
+              "sound_notes": { "type": "string", "description": "Sound design notes for this scene." }
+            }
+          }
+        },
+        "_meta": {
+          "type": "object",
+          "properties": {
+            "writer_revision": { "type": "integer", "default": 1 },
+            "dp_revision": { "type": "integer", "default": 1 },
+            "director_approved": { "type": "boolean", "default": false }
+          }
+        }
+      }
+    },
+    "visual_dev": {
+      "type": "object",
+      "description": "Visual development output from Art Director — populated during Phase 3 (美术定调+人物设定, now merged as '视觉开发').",
+      "properties": {
+        "palette": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "hex": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
+              "usage": { "type": "string", "description": "How this color is used (e.g., 'primary bg', 'accent', 'text')." }
+            }
+          }
+        },
+        "mood": { "type": "string", "description": "Visual mood description." },
+        "style_refs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "ref_type": { "type": "string", "enum": ["film", "artist", "photographer", "game", "other"] },
+              "name": { "type": "string" },
+              "description": { "type": "string", "description": "What to borrow from this reference." }
+            }
+          }
+        },
+        "characters": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "role": { "type": "string", "description": "Protagonist, antagonist, supporting, etc." },
+              "traits": { "type": "string", "description": "Visual traits (age, build, hair, clothing, accessories)." },
+              "mood": { "type": "string", "description": "Emotional expression direction." },
+              "ref_image_prompt": { "type": "string", "description": "AI image generation prompt for this character." },
+              "consistency_notes": { "type": "string", "description": "Key features to maintain across all panels." }
+            }
+          }
+        },
+        "image_refs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "prompt": { "type": "string" },
+              "generated_url": { "type": "string" },
+              "approved": { "type": "boolean" },
+              "notes": { "type": "string" }
+            }
+          },
+          "description": "Generated reference images for art direction approval."
+        },
+        "_meta": {
+          "type": "object",
+          "properties": {
+            "revision": { "type": "integer", "default": 1 },
+            "director_approved": { "type": "boolean", "default": false }
+          }
+        }
+      }
+    },
+    "cinematography": {
+      "type": "object",
+      "description": "DP's global cinematography direction.",
+      "properties": {
+        "camera_style": { "type": "string" },
+        "lighting_philosophy": { "type": "string" },
+        "lens_preference": { "type": "string" },
+        "color_grading": { "type": "string" },
+        "movement_language": { "type": "string", "description": "e.g., 'handheld intimate', 'steadicam smooth', 'dolly precision'." },
+        "_meta": {
+          "type": "object",
+          "properties": {
+            "revision": { "type": "integer", "default": 1 },
+            "director_approved": { "type": "boolean", "default": false }
+          }
+        }
+      }
+    },
+    "sound": {
+      "type": "object",
+      "description": "Sound Designer's direction.",
+      "properties": {
+        "music_style": { "type": "string" },
+        "music_refs": { "type": "array", "items": { "type": "string" } },
+        "sfx_notes": { "type": "array", "items": { "type": "string" } },
+        "narration_tone": { "type": "string" },
+        "narration_language": { "type": "string" },
+        "silence_usage": { "type": "string", "description": "How and when to use silence." },
+        "_meta": {
+          "type": "object",
+          "properties": {
+            "revision": { "type": "integer", "default": 1 },
+            "director_approved": { "type": "boolean", "default": false }
+          }
+        }
+      }
+    },
+    "vfx": {
+      "type": "object",
+      "description": "VFX Supervisor's direction.",
+      "properties": {
+        "techniques": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "usage": { "type": "string" },
+              "scene_ids": { "type": "array", "items": { "type": "integer" } }
+            }
+          }
+        },
+        "transitions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "from_scene": { "type": "integer" },
+              "to_scene": { "type": "integer" },
+              "type": { "type": "string" },
+              "description": { "type": "string" }
+            }
+          }
+        },
+        "materials": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "properties": { "type": "string" },
+              "scene_ids": { "type": "array", "items": { "type": "integer" } }
+            }
+          }
+        },
+        "_meta": {
+          "type": "object",
+          "properties": {
+            "revision": { "type": "integer", "default": 1 },
+            "director_approved": { "type": "boolean", "default": false }
+          }
+        }
+      }
+    },
+    "storyboard": {
+      "type": "array",
+      "description": "Final storyboard panels — the integration point of all prior phases.",
+      "items": {
+        "type": "object",
+        "required": ["panel_id", "scene_id"],
+        "properties": {
+          "panel_id": { "type": "integer" },
+          "scene_id": { "type": "integer" },
+          "layout": { "type": "string", "enum": ["wide", "close-up", "medium", "detail", "establishing"] },
+          "description": { "type": "string" },
+          "prompt": { "type": "string", "description": "AI image generation prompt for this panel." },
+          "character_ids": { "type": "array", "items": { "type": "integer" } },
+          "camera_notes": { "type": "string" },
+          "vfx_notes": { "type": "string" },
+          "generated_url": { "type": "string" },
+          "approved": { "type": "boolean", "default": false },
+          "_meta": {
+            "type": "object",
+            "properties": {
+              "revision": { "type": "integer", "default": 1 },
+              "director_approved": { "type": "boolean", "default": false }
+            }
+          }
+        }
+      }
+    },
+    "creative_pack": {
+      "type": "object",
+      "description": "Final assembled output — ready for downstream tools.",
+      "properties": {
+        "comfyui_workflow": { "type": "object", "description": "ComfyUI-compatible workflow JSON." },
+        "hyperframes_config": { "type": "object", "description": "HyperFrames composition config." },
+        "kling_prompts": { "type": "array", "items": { "type": "string" } },
+        "runway_prompts": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "tuning_notes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "category": { "type": "string", "enum": ["color", "pacing", "vfx", "sound", "composition", "other"] },
+          "note": { "type": "string" },
+          "priority": { "type": "string", "enum": ["critical", "high", "medium", "low", "nice-to-have"] }
+        }
+      },
+      "description": "Director's final tuning and optimization notes."
+    }
+  }
+}
