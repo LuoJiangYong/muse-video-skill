@@ -16,6 +16,7 @@
 | APPLE-DB | Don't Blink | commercial | 2019 | — | product-demo | studio-ad | 高速剪辑, 产品密度, 节奏递增, 极简旁白, 功能叙事 |
 || COSMOS-L | Cosmos Laundromat | short-film | 2015 | Blender Foundation | sci-fi | product-demo | 材质渲染, 自然光, 角色动画, 环境叙事, 非人类主角 |
 || WKW-ML | 花样年华 | film | 2000 | 王家卫 | custom | studio-ad | 留白叙事, 重复结构, 框架构图, 色彩叙事, 慢快门步印, 旗袍叙事 |
+|| WANDERING-E | 流浪地球 | film | 2019 | 郭帆 | sci-fi | product-demo | 巨物尺度, 集体英雄主义, 等离子蓝, 行星发动机, 低频嗡鸣, 中国民乐融合 |
 
 ### 类型枚举
 
@@ -49,6 +50,10 @@
 | 重复结构 | WKW-ML |
 | 未完成情感 | WKW-ML |
 | 时代背景隐喻 | WKW-ML |
+| 集体英雄主义 | WANDERING-E |
+| 父子双线叙事 | WANDERING-E |
+| 灾难阶梯 | WANDERING-E |
+| 牺牲主题 | WANDERING-E |
 
 ### 镜头语言 (→ DP)
 
@@ -67,6 +72,10 @@
 | 浅景深孤立 | WKW-ML |
 | 镜面反射 | WKW-ML |
 | 极端低角度 | WKW-ML |
+| 巨物尺度对比 | WANDERING-E |
+| 广角畸变 | WANDERING-E |
+| 第一视角穿越 | WANDERING-E |
+| 零重力调度 | WANDERING-E |
 
 ### 色彩/美术 (→ Art Director)
 
@@ -79,6 +88,8 @@
 | 旗袍色彩叙事 | WKW-ML |
 | 墙纸视觉密度 | WKW-ML |
 | 场景色调对照 | WKW-ML |
+| 五域色调体系 | WANDERING-E |
+| 地下城烟火气 | WANDERING-E |
 
 ### 特效语言 (→ VFX)
 
@@ -92,6 +103,10 @@
 | 步印模拟 | WKW-ML |
 | 雨夜霓虹 | WKW-ML |
 | 烟雾氛围层 | WKW-ML |
+| 行星发动机火焰 | WANDERING-E |
+| 地球冻结 | WANDERING-E |
+| 大气抽离 | WANDERING-E |
+| 运载车集群 | WANDERING-E |
 
 ### 声音设计 (→ Sound Designer)
 
@@ -102,6 +117,10 @@
 | 动态节奏 | NIKE-YCS |
 | 音乐锚点 | WKW-ML |
 | 对白省略 | WKW-ML |
+| 低频嗡鸣 | WANDERING-E |
+| 冰裂高频 | WANDERING-E |
+| 中国民乐融合 | WANDERING-E |
+| 多语言广播 | WANDERING-E |
 
 ### 创意广告专属 (→ Studio-Ad, Product-Demo)
 
@@ -125,7 +144,7 @@
 | studio-ad | APPLE-WH, APPLE-DB | BR2049, NIKE-YCS |
 | logo-animation | NIKE-YCS | APPLE-WH |
 | product-demo | NIKE-YCS, APPLE-DB, COSMOS-L | APPLE-WH |
-| sci-fi | BR2049, COSMOS-L | — |
+| sci-fi | BR2049, COSMOS-L, WANDERING-E | — |
 | custom (art-film) | WKW-ML | — |
 
 ---
@@ -134,14 +153,15 @@
 
 | 风格/情绪 | 案例 ID |
 |-----------|---------|
-| cyberpunk | BR2049 |
+|| cyberpunk | BR2049 |
+|| cyberpunk-adjacent | WANDERING-E |
 | minimalist | APPLE-DB, BR2049 |
 | surreal | APPLE-WH, COSMOS-L |
-| epic | BR2049, NIKE-YCS |
-|| intimate | BR2049, WKW-ML |
+| epic | BR2049, NIKE-YCS, WANDERING-E |
+| intimate | BR2049, WKW-ML |
 | energetic | NIKE-YCS, APPLE-DB |
 | dreamy | APPLE-WH, COSMOS-L, WKW-ML |
-|| gritty | BR2049 |
+|| gritty | BR2049, WANDERING-E |
 || nostalgic | WKW-ML |
 || melancholic | WKW-ML |
 
@@ -153,11 +173,11 @@
 
 | 角色 | 必看案例 | 推荐案例 |
 |------|---------|---------|
-|| Writer (编剧) | BR2049, WKW-ML | NIKE-YCS |
-| DP (摄影指导) | BR2049, APPLE-WH, WKW-ML | COSMOS-L |
-| Art Director (美术) | BR2049, APPLE-WH, WKW-ML | COSMOS-L |
-|| VFX Supervisor (特效) | BR2049, APPLE-WH, WKW-ML | COSMOS-L |
-|| Sound Designer (声音) | BR2049, WKW-ML | NIKE-YCS |
+|| Writer (编剧) | BR2049, WKW-ML, WANDERING-E | NIKE-YCS |
+| DP (摄影指导) | BR2049, APPLE-WH, WKW-ML, WANDERING-E | COSMOS-L |
+| Art Director (美术) | BR2049, APPLE-WH, WKW-ML, WANDERING-E | COSMOS-L |
+|| VFX Supervisor (特效) | BR2049, APPLE-WH, WKW-ML, WANDERING-E | COSMOS-L |
+|| Sound Designer (声音) | BR2049, WKW-ML, WANDERING-E | NIKE-YCS |
 | 广告创意综合 | APPLE-DB, NIKE-YCS | APPLE-WH |
 
 ---
@@ -202,4 +222,4 @@
 
 ---
 
-*最后更新：2026-06-12 | 案例总数：6（Phase 6 进行中: WKW-ML 已添加）*
+*最后更新：2026-06-12 | 案例总数：7（Phase 6 进行中: WKW-ML + WANDERING-E 已添加）*
