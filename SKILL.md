@@ -1,6 +1,6 @@
 ---
 name: muse-video
-description: "When the user asks to 策划/构思/设计/写脚本/画分镜 for a video project — e.g. '帮我策划一个广告创意' '这个产品演示视频怎么拍' '帮我写科幻短片的分镜脚本' '给我这个品牌TVC的美术方向'。Not for actual video rendering/compositing (route to HyperFrames) or AI image/video generation (route to ComfyUI)."
+description: "When the user asks to 策划/构思/设计/写脚本/画分镜 for a video project — e.g. '帮我策划一个广告创意' '这个产品演示视频怎么拍' '帮我写科幻短片的分镜脚本' '给我这个品牌TVC的美术方向'。Not for actual video rendering/compositing or AI image/video generation."
 version: 0.8.0
 author: luojiangyong
 license: MIT
@@ -14,7 +14,7 @@ metadata:
 # Muse Video — AI 视频前期策划引擎
 
 > **定位**：产出 Creative Package（剧本 + 分镜 + 美术 + 提示词），由用户导入下游工具制作。
-> **不做**：实际视频渲染（→ HyperFrames）、AI 生图/生视频（→ ComfyUI / image_gen）。
+> **不做**：实际视频渲染、AI 生图/生视频。如有 HyperFrames/ComfyUI 等下游工具可对接；如无，产出策划案供手动制作。
 > **宪法**：加载 `CONSTITUTION.md` 了解 5 条设计原则 + 数据流 + 禁止模式。
 
 ## 路由决策树
@@ -22,8 +22,8 @@ metadata:
 ```
 用户请求视频相关创作
         │
-        ├─ "我做了一个视频，帮我修改/加特效/加字幕" → 这不是本 Skill，路由到 HyperFrames
-        ├─ "帮我生成一个视频/图片" → 这不是本 Skill，路由到 ComfyUI / image_gen
+        ├─ "我做了一个视频，帮我修改/加特效/加字幕" → 这不是本 Skill。如已配置 HyperFrames 等视频合成工具可路由；否则告知用户本 Skill 产出分镜脚本供参考。
+        ├─ "帮我生成一个视频/图片" → 这不是本 Skill。如已配置 ComfyUI/image_gen 可在视觉阶段按需调用；否则用文字描述替代。
         │
         └─ "帮我策划/设计/构思一个视频" → ✅ 激活本 Skill
                 │
@@ -75,9 +75,11 @@ metadata:
 
 ## 下游对接
 
+> 以下为可选对接——取决于用户已配置的工具链。如未配置，Creative Package 可作手动拍摄/后期参考。
+
 产出 Creative Package JSON 后，提示用户可对接：
-- `[HyperFrames]` → HTML 视频合成（场景、动画、字幕、配乐）
-- `[ComfyUI]` → AI 图片/视频生成（分镜图、动态片段）
+- `[HyperFrames]` → HTML 视频合成（场景、动画、字幕、配乐）——如已安装
+- `[ComfyUI]` → AI 图片/视频生成（分镜图、动态片段）——如已安装
 - Kling / Runway / Pika → 第三方 AI 视频工具
 - 手动制作 → 用导出的 HTML/Excel 作为拍摄参考
 
