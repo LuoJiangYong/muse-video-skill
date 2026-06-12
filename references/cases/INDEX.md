@@ -19,6 +19,7 @@
 | WANDERING-E | 流浪地球 | film | 2019 | 郭帆 | sci-fi | product-demo | 巨物尺度, 集体英雄主义, 等离子蓝, 行星发动机, 低频嗡鸣, 中国民乐融合 |
 | PACIFIC-RIM | 环太平洋 | film | 2013 | Guillermo del Toro | sci-fi | logo-animation | 重量感运动, 霓虹雨夜, 双人共驾, 机械物理, 怪兽设计, 雨水粒子 |
 | OLDSPICE-MAN | The Man Your Man Could Smell Like | commercial | 2010 | Tom Kuntz | studio-ad | product-demo | 单镜头喜剧, 连续转场, 荒诞推销, 打破第四面墙, 病毒传播 |
+| JOHNLEWIS-PENGUIN | Monty the Penguin | commercial | 2014 | Dougal Wilson | studio-ad | product-demo | 圣诞叙事, 情感蓄力, 儿童视角, CGI角色, 节日音乐 |
 
 ### 类型枚举
 
@@ -64,6 +65,11 @@
 | 打破第四面墙 | OLDSPICE-MAN |
 | 荒诞逻辑链 | OLDSPICE-MAN |
 | 喜剧节奏公式 | OLDSPICE-MAN |
+| 情感蓄力结构 | JOHNLEWIS-PENGUIN |
+| 儿童视角 | JOHNLEWIS-PENGUIN |
+| 反转结局 | JOHNLEWIS-PENGUIN |
+| 无产品叙事 | JOHNLEWIS-PENGUIN |
+| 非人类情感代言 | JOHNLEWIS-PENGUIN |
 
 ### 镜头语言 (→ DP)
 
@@ -92,6 +98,10 @@
 | 连续单镜头错觉 | OLDSPICE-MAN |
 | 身体即产品载体 | OLDSPICE-MAN |
 | 快速场景切换节奏 | OLDSPICE-MAN |
+| 儿童视线高度摄影 | JOHNLEWIS-PENGUIN |
+| CGI实拍融合 | JOHNLEWIS-PENGUIN |
+| 温暖家庭光线 | JOHNLEWIS-PENGUIN |
+| 人格化角色动画 | JOHNLEWIS-PENGUIN |
 
 ### 色彩/美术 (→ Art Director)
 
@@ -112,6 +122,10 @@
 | 高对比场景色彩 | OLDSPICE-MAN |
 | 白色视觉锚点 | OLDSPICE-MAN |
 | 色彩温度递进 | OLDSPICE-MAN |
+| 英国家庭圣诞色 | JOHNLEWIS-PENGUIN |
+| 冷暖对比叙事 | JOHNLEWIS-PENGUIN |
+| 金色时刻释放 | JOHNLEWIS-PENGUIN |
+| 企鹅人格化设计 | JOHNLEWIS-PENGUIN |
 
 ### 特效语言 (→ VFX)
 
@@ -135,6 +149,10 @@
 | 帧匹配转场缝合 | OLDSPICE-MAN |
 | 道具场景快速替换 | OLDSPICE-MAN |
 | 产品延迟揭示 | OLDSPICE-MAN |
+| CGI角色动画 | JOHNLEWIS-PENGUIN |
+| 身体语言情感系统 | JOHNLEWIS-PENGUIN |
+| 灯光匹配合成 | JOHNLEWIS-PENGUIN |
+| 羽毛SSS渲染 | JOHNLEWIS-PENGUIN |
 
 ### 声音设计 (→ Sound Designer)
 
@@ -155,6 +173,10 @@
 | 单口相声式旁白 | OLDSPICE-MAN |
 | 喜剧timing静默 | OLDSPICE-MAN |
 | 男中音权威亲密 | OLDSPICE-MAN |
+| 翻唱编排策略 | JOHNLEWIS-PENGUIN |
+| 无对白音乐叙事 | JOHNLEWIS-PENGUIN |
+| 静默品牌登场 | JOHNLEWIS-PENGUIN |
+| 翻唱nostalgia触发 | JOHNLEWIS-PENGUIN |
 
 ### 创意广告专属 (→ Studio-Ad, Product-Demo)
 
@@ -170,6 +192,10 @@
 | 病毒一句话公式 | OLDSPICE-MAN |
 | 幽默推销模型 | OLDSPICE-MAN |
 | 打破第四面墙广告 | OLDSPICE-MAN |
+| 情感蓄力公式 | JOHNLEWIS-PENGUIN |
+| 节日礼物叙事 | JOHNLEWIS-PENGUIN |
+| 非人类角色共情 | JOHNLEWIS-PENGUIN |
+| 品牌隐形策略 | JOHNLEWIS-PENGUIN |
 
 ---
 
@@ -179,9 +205,9 @@
 
 | 场景类型 | 强相关案例 | 可参考案例 |
 |----------|----------|-----------|
-| studio-ad | APPLE-WH, APPLE-DB, OLDSPICE-MAN | BR2049, NIKE-YCS |
+| studio-ad | APPLE-WH, APPLE-DB, OLDSPICE-MAN, JOHNLEWIS-PENGUIN | BR2049, NIKE-YCS |
 | logo-animation | NIKE-YCS, PACIFIC-RIM | APPLE-WH |
-| product-demo | NIKE-YCS, APPLE-DB, COSMOS-L, OLDSPICE-MAN | APPLE-WH |
+| product-demo | NIKE-YCS, APPLE-DB, COSMOS-L, OLDSPICE-MAN, JOHNLEWIS-PENGUIN | APPLE-WH |
 | sci-fi | BR2049, COSMOS-L, WANDERING-E, PACIFIC-RIM | — |
 | custom (art-film) | WKW-ML | — |
 
@@ -198,12 +224,13 @@
 | epic | BR2049, NIKE-YCS, WANDERING-E, PACIFIC-RIM |
 | intimate | BR2049, WKW-ML |
 | energetic | NIKE-YCS, APPLE-DB, PACIFIC-RIM, OLDSPICE-MAN |
-| dreamy | APPLE-WH, COSMOS-L, WKW-ML |
+| dreamy | APPLE-WH, COSMOS-L, WKW-ML, JOHNLEWIS-PENGUIN |
 | gritty | BR2049, WANDERING-E, PACIFIC-RIM |
-| nostalgic | WKW-ML |
+| nostalgic | WKW-ML, JOHNLEWIS-PENGUIN |
 | melancholic | WKW-ML |
 | humorous | OLDSPICE-MAN |
 | absurd | OLDSPICE-MAN |
+| heartwarming | JOHNLEWIS-PENGUIN |
 
 ---
 
@@ -213,12 +240,12 @@
 
 | 角色 | 必看案例 | 推荐案例 |
 |------|---------|---------|
-| Writer (编剧) | BR2049, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN | NIKE-YCS |
-| DP (摄影指导) | BR2049, APPLE-WH, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN | COSMOS-L |
-| Art Director (美术) | BR2049, APPLE-WH, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN | COSMOS-L |
-| VFX Supervisor (特效) | BR2049, APPLE-WH, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN | COSMOS-L |
-| Sound Designer (声音) | BR2049, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN | NIKE-YCS |
-| 广告创意综合 | APPLE-DB, NIKE-YCS, OLDSPICE-MAN | APPLE-WH |
+| Writer (编剧) | BR2049, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN | NIKE-YCS |
+| DP (摄影指导) | BR2049, APPLE-WH, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN | COSMOS-L |
+| Art Director (美术) | BR2049, APPLE-WH, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN | COSMOS-L |
+| VFX Supervisor (特效) | BR2049, APPLE-WH, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN | COSMOS-L |
+| Sound Designer (声音) | BR2049, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN | NIKE-YCS |
+| 广告创意综合 | APPLE-DB, NIKE-YCS, OLDSPICE-MAN, JOHNLEWIS-PENGUIN | APPLE-WH |
 
 ---
 
@@ -263,4 +290,4 @@
 
 ---
 
-*最后更新：2026-06-12 | 案例总数：9（Phase 7-A: OLDSPICE-MAN 完成）*
+*最后更新：2026-06-12 | 案例总数：10（Phase 7-B: JOHNLEWIS-PENGUIN 完成）*

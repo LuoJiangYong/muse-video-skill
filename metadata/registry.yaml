@@ -132,6 +132,15 @@ files:
     owner: case-library
     description: "Old Spice The Man Your Man Could Smell Like 完整拆解（Tom Kuntz, 14+ 技法 × 5 角色维度, 单镜头喜剧+荒诞推销+打破第四面墙=病毒广告里程碑）"
 
+  - path: references/cases/JOHNLEWIS-PENGUIN.md
+    role: case
+    phase: 7
+    status: complete
+    dependencies: [references/cases/_TEMPLATE.md]
+    dependents: [references/cases/INDEX.md]
+    owner: case-library
+    description: "John Lewis Monty the Penguin 完整拆解（Dougal Wilson, 15+ 技法 × 5 角色维度, 情感蓄力+CGI角色+翻唱策略=圣诞广告标杆）"
+
   # --- Roles (Phase 2) ---
   - path: references/roles/director.md
     role: role-doc
@@ -438,7 +447,7 @@ files:
     description: "版本变更日志：每次修改的动机、影响、迁移指南"
 
 # --- 统计 ---
-# Total files: 47
+# Total files: 48
 # Phase 0 (complete): 2
 # Phase 1 (complete): 7
 # Phase 2 (complete): 16
@@ -446,4 +455,4 @@ files:
 # Phase 4 (complete): 2
 # Phase 5 (complete): 4
 # Phase 6 (complete): 3
-# Phase 7 (in-progress): 1
+# Phase 7 (in-progress): 2
