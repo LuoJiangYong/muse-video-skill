@@ -156,16 +156,16 @@ files:
   - path: references/pipelines/default.md
     role: pipeline
     phase: 2
-    status: not_started
-    dependencies: [CONSTITUTION.md, references/roles/director.md]
-    dependents: [SKILL.md]
+    status: complete
+    dependencies: [CONSTITUTION.md]
+    dependents: [SKILL.md, references/pipelines/fast-track.md, references/roles/director.md]
     owner: pipeline
     description: "标准 7 阶段管线：每阶段的角色激活、产出、审核规则、loop 限制"
 
   - path: references/pipelines/fast-track.md
     role: pipeline
     phase: 2
-    status: not_started
+    status: complete
     dependencies: [CONSTITUTION.md, references/pipelines/default.md]
     dependents: [SKILL.md]
     owner: pipeline
