@@ -231,6 +231,15 @@ files:
     owner: case-library
     description: "Koyaanisqatsi 完整拆解（Godfrey Reggio, 15+ 技法 × 5 角色维度, 蒙太奇即论点+延时摄影叙事+Philip Glass极简主义配乐=纯影像叙事的终极实验）"
 
+  - path: references/cases/LOUVRE-MAP.md
+    role: case
+    phase: 8
+    status: complete
+    dependencies: [references/cases/_TEMPLATE.md]
+    dependents: [references/cases/INDEX.md]
+    owner: case-library
+    description: "Louvre×MAP 展览宣传片完整拆解（2024, 16+ 技法 × 5 角色维度, 猫视角叙事+双城蒙太奇+反射转场+蓝金双色=文化展览宣传片的电影化革命）"
+
   # --- Roles (Phase 2) ---
   - path: references/roles/director.md
     role: role-doc
@@ -556,7 +565,7 @@ files:
     description: "版本变更日志：每次修改的动机、影响、迁移指南"
 
 # --- 统计 ---
-# Total files: 59
+# Total files: 60
 # Phase 0 (complete): 2
 # Phase 1 (complete): 7
 # Phase 2 (complete): 16
