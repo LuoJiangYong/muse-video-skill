@@ -6,6 +6,25 @@
 
 ---
 
+## [0.15.0] — 2026-06-15
+
+### 新增 — IPHONE17PRO 案例（iPhone 17 Pro 产品介绍 × 制造过程叙事 × 3C工业美学）
+
+**案例新增：IPHONE17PRO — Introducing iPhone 17 Pro**
+- 类型：commercial（3C产品介绍片）
+- 25+ 技法 × 5 角色维度 × 4 创意策略维度
+- 核心技法：制造过程叙事, 工业设计自述, 铝合金CNC微距, 内部透视运镜, 子弹时间阵列, Unibody一体成型CGI, 均热板气液循环可视化, Genlock多机位同步, 工业拟音驱动节奏, 女VP自述旁白
+- 特征：3:57, 5 段落结构（制造工艺→核心性能→耐用测试→影像实战→成品展示）, Molly Anderson VP出镜解说, 3款钛金属配色
+- 来源：YouTube 官方视频通过 video_analyze 两轮深度分析
+- 独特价值：首个3C产品制造过程案例、首个Unibody一体成型工艺案例、首个VP真人代言案例、首个Genlock技术案例
+
+**元数据更新**
+- metadata/registry.yaml：+9 行, Total files: 64→65, Phase 8: 7→8
+- references/cases/INDEX.md：+1 主注册表行, +5 叙事技法, +6 镜头技法, +3 色彩技法, +5 特效技法, +4 声音技法, +4 创意广告技法, +1 风格标签(cinematic), 4 风格扩充, 6 角色维度扩充
+- SKILL.md：version 0.14.0→0.15.0, 案例 24→25
+
+**统计**：案例 24→25 (film×4, commercial×17, short-film×1, music-video×1, animation×1, documentary×1)，新增 cinematic 风格标签 ✅
+
 ## [0.14.0] — 2026-06-15
 
 ### 新增 — PUDONG-CAT 案例（橘猫POV × Wes Anderson美学 × AI生成 × 城市文明）

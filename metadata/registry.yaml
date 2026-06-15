@@ -276,6 +276,15 @@ files:
     owner: case-library
     description: "文明浦东橘猫宣传片完整拆解（2024, 20+ 技法 × 5 角色维度, 猫视角POV+韦斯安德森美学+AI生成+去政务化叙事+绝对对称构图=城市文明宣传的去政务化革命）"
 
+  - path: references/cases/IPHONE17PRO.md
+    role: case
+    phase: 8
+    status: complete
+    dependencies: [references/cases/_TEMPLATE.md]
+    dependents: [references/cases/INDEX.md]
+    owner: case-library
+    description: "iPhone 17 Pro 产品介绍影片完整拆解（2025, 25+ 技法 × 5 角色维度, 制造过程叙事+Unibody一体成型CGI+铝合金CNC微距+Genlock多机位同步+女VP自述旁白=3C产品工业美学巅峰）"
+
   # --- Roles (Phase 2) ---
   - path: references/roles/director.md
     role: role-doc
@@ -601,7 +610,7 @@ files:
     description: "版本变更日志：每次修改的动机、影响、迁移指南"
 
 # --- 统计 ---
-# Total files: 64
+# Total files: 65
 # Phase 0 (complete): 2
 # Phase 1 (complete): 7
 # Phase 2 (complete): 16
@@ -610,5 +619,5 @@ files:
 # Phase 5 (complete): 4
 # Phase 6 (complete): 3
 # Phase 7 (complete): 9
-# Phase 8 (complete): 7
+# Phase 8 (complete): 8
 # Phase 9 (complete): 2
