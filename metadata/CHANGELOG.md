@@ -6,6 +6,25 @@
 
 ---
 
+## [0.16.0] — 2026-06-15
+
+### 新增 — MACBOOK-NEO 案例（MacBook Neo 产品介绍 × 解构重组叙事 × 手部交互 × $599）
+
+**案例新增：MACBOOK-NEO — Hello, MacBook Neo**
+- 类型：commercial（3C产品介绍片）
+- 25+ 技法 × 5 角色维度 × 4 创意策略维度
+- 核心技法：解构重组叙事, 价格锚点叙事, 手部交互运镜, 定格装配镜头, 零件飞入装配CGI, 图标实体化动画, 虚实手部交互合成, 四色年轻化色谱, 温暖男声旁白
+- 特征：3:50, 4款配色（Citrus/Blush/Indigo/Silver）, A18 Pro芯片, 16小时续航, $599起售价, 手部占比约40%画面
+- 来源：YouTube 官方视频通过 video_analyze 两轮深度分析
+- 独特价值：首个入门级产品案例、首个价格锚点策略案例、首个手部交互驱动案例、首个四色年轻化策略案例
+
+**元数据更新**
+- metadata/registry.yaml：+9 行, Total files: 65→66, Phase 8: 8→9
+- references/cases/INDEX.md：+1 主注册表行, +4 叙事技法, +5 镜头技法, +3 色彩技法, +5 特效技法, +4 声音技法, +4 创意广告技法, 5 风格扩充, 6 角色维度扩充
+- SKILL.md：version 0.15.0→0.16.0
+
+**统计**：案例 25→26 (film×4, commercial×18, short-film×1, music-video×1, animation×1, documentary×1)
+
 ## [0.15.0] — 2026-06-15
 
 ### 新增 — IPHONE17PRO 案例（iPhone 17 Pro 产品介绍 × 制造过程叙事 × 3C工业美学）

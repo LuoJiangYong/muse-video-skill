@@ -285,6 +285,15 @@ files:
     owner: case-library
     description: "iPhone 17 Pro 产品介绍影片完整拆解（2025, 25+ 技法 × 5 角色维度, 制造过程叙事+Unibody一体成型CGI+铝合金CNC微距+Genlock多机位同步+女VP自述旁白=3C产品工业美学巅峰）"
 
+  - path: references/cases/MACBOOK-NEO.md
+    role: case
+    phase: 8
+    status: complete
+    dependencies: [references/cases/_TEMPLATE.md]
+    dependents: [references/cases/INDEX.md]
+    owner: case-library
+    description: "MacBook Neo 产品介绍影片完整拆解（2025, 25+ 技法 × 5 角色维度, 解构重组叙事+手部交互运镜+零件飞入装配CGI+四色年轻化色谱+价格锚点叙事=$599入门本的产品叙事革命）"
+
   # --- Roles (Phase 2) ---
   - path: references/roles/director.md
     role: role-doc
@@ -610,7 +619,7 @@ files:
     description: "版本变更日志：每次修改的动机、影响、迁移指南"
 
 # --- 统计 ---
-# Total files: 65
+# Total files: 66
 # Phase 0 (complete): 2
 # Phase 1 (complete): 7
 # Phase 2 (complete): 16
@@ -619,5 +628,5 @@ files:
 # Phase 5 (complete): 4
 # Phase 6 (complete): 3
 # Phase 7 (complete): 9
-# Phase 8 (complete): 8
+# Phase 8 (complete): 9
 # Phase 9 (complete): 2
