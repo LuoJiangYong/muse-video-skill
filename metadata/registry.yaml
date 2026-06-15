@@ -240,6 +240,15 @@ files:
     owner: case-library
     description: "Louvre×MAP 展览宣传片完整拆解（2024, 16+ 技法 × 5 角色维度, 猫视角叙事+双城蒙太奇+反射转场+蓝金双色=文化展览宣传片的电影化革命）"
 
+  - path: references/cases/LJZ-COFFEE.md
+    role: case
+    phase: 8
+    status: complete
+    dependencies: [references/cases/_TEMPLATE.md]
+    dependents: [references/cases/INDEX.md]
+    owner: case-library
+    description: "陆家嘴咖啡文化节十周年宣传片完整拆解（2025, 20+ 技法 × 5 角色维度, 微缩城市叙事+地标符号化+移轴摄影+液体合成融合+咖啡色谱=微缩模型艺术的商业叙事革命）"
+
   # --- Roles (Phase 2) ---
   - path: references/roles/director.md
     role: role-doc
@@ -565,7 +574,7 @@ files:
     description: "版本变更日志：每次修改的动机、影响、迁移指南"
 
 # --- 统计 ---
-# Total files: 60
+# Total files: 61
 # Phase 0 (complete): 2
 # Phase 1 (complete): 7
 # Phase 2 (complete): 16
@@ -574,5 +583,5 @@ files:
 # Phase 5 (complete): 4
 # Phase 6 (complete): 3
 # Phase 7 (complete): 9
-# Phase 8 (complete): 3
+# Phase 8 (complete): 4
 # Phase 9 (complete): 2
