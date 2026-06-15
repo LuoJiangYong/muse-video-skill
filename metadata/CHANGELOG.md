@@ -6,6 +6,25 @@
 
 ---
 
+## [0.14.0] — 2026-06-15
+
+### 新增 — PUDONG-CAT 案例（橘猫POV × Wes Anderson美学 × AI生成 × 城市文明）
+
+**案例新增：PUDONG-CAT — 文明浦东·橘猫篇**
+- 类型：commercial（城市文明宣传片）
+- 20+ 技法 × 5 角色维度 × 4 创意策略维度
+- 核心技法：文明行为叙事, AI生成叙事, 韦斯安德森叙事美学, 绝对对称构图体系, 平面化运镜, 多分屏蒙太奇, 韦斯安德森马卡龙色谱, 多AI管线素材融合, 去政务化文明叙事
+- 特征：1:20, 16 个场景, 全 AI 生成（Kling/Luma/Runway）, 橘猫为文明代言人, 7 次分屏蒙太奇
+- 来源：本地视频文件通过 video_analyze 两轮深度分析
+- 独特价值：首个 AI 生成宣传片案例、首个 Wes Anderson 美学案例、首个去政务化政府传播案例
+
+**元数据更新**
+- metadata/registry.yaml：+7 行, Total files: 63→64, Phase 8: 6→7
+- references/cases/INDEX.md：+1 主注册表行, +3 叙事技法(含动物代言人/猫视角POV/地标符号化合并), +5 镜头技法, +3 色彩技法, +4 特效技法, +4 声音技法, +4 创意广告技法, +1 风格标签(whimsical), 4 风格扩充
+- SKILL.md：version 0.13.0→0.14.0
+
+**统计**：案例 23→24 (film×4, commercial×16, short-film×1, music-video×1, animation×1, documentary×1)，新增 whimsical 风格标签 ✅
+
 ## [0.13.0] — 2026-06-15
 
 ### 新增 — BJIFF-SWIFT 案例（雨燕POV × 北京地标 × 电影嵌套 × 北影节）
