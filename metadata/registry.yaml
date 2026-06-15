@@ -249,6 +249,15 @@ files:
     owner: case-library
     description: "陆家嘴咖啡文化节十周年宣传片完整拆解（2025, 20+ 技法 × 5 角色维度, 微缩城市叙事+地标符号化+移轴摄影+液体合成融合+咖啡色谱=微缩模型艺术的商业叙事革命）"
 
+  - path: references/cases/VOLCENGINE-FL.md
+    role: case
+    phase: 8
+    status: complete
+    dependencies: [references/cases/_TEMPLATE.md]
+    dependents: [references/cases/INDEX.md]
+    owner: case-library
+    description: "火山引擎Force Link武汉巡展宣传片完整拆解（2024, 20+ 技法 × 5 角色维度, POV过山车叙事+赛博国潮色谱+全CG管线+文化符号巨型化+国乐EDM融合=AI发布会的超现实邀请函）"
+
   # --- Roles (Phase 2) ---
   - path: references/roles/director.md
     role: role-doc
@@ -574,7 +583,7 @@ files:
     description: "版本变更日志：每次修改的动机、影响、迁移指南"
 
 # --- 统计 ---
-# Total files: 61
+# Total files: 62
 # Phase 0 (complete): 2
 # Phase 1 (complete): 7
 # Phase 2 (complete): 16
@@ -583,5 +592,5 @@ files:
 # Phase 5 (complete): 4
 # Phase 6 (complete): 3
 # Phase 7 (complete): 9
-# Phase 8 (complete): 4
+# Phase 8 (complete): 5
 # Phase 9 (complete): 2

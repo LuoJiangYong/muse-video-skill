@@ -6,6 +6,25 @@
 
 ---
 
+## [0.12.0] — 2026-06-15
+
+### 新增 — VOLCENGINE-FL 案例（POV过山车 × 武汉地标 × 赛博国潮 × AI发布会）
+
+**案例新增：VOLCENGINE-FL — 火山引擎 Force Link AI 创新巡展·武汉站宣传片**
+- 类型：commercial（AI发布会宣传片）
+- 20+ 技法 × 5 角色维度 × 4 创意策略维度
+- 核心技法：POV过山车叙事, 时空穿越叙事, 文化符号巨型化叙事, AI能力隐喻叙事, 全程POV主观镜头, 赛博国潮色谱, 全CG POV过山车管线, 国乐+EDM融合
+- 特征：1:04, 13 个武汉地标场景, 全程无打断POV, 暖→冷→暖 5段色温切换, 编钟→电子递进音轨
+- 来源：本地视频文件通过 video_analyze 两轮深度分析（需 ffmpeg 压缩后分析）
+- 独特价值：首个全CG POV过山车案例、首个赛博国潮风格案例、首个AI发布会邀请式叙事案例
+
+**元数据更新**
+- metadata/registry.yaml：+7 行（1 案例 entry），Total files: 61→62, Phase 8: 4→5
+- references/cases/INDEX.md：+1 主注册表行, +4 叙事技法(含地标符号化合并), +5 镜头技法, +4 色彩技法, +4 特效技法, +4 声音技法, +4 创意广告技法, +1 风格标签(futuristic), 6 风格扩充
+- SKILL.md：version 0.11.0→0.12.0
+
+**统计**：案例 21→22 (film×4, commercial×14, short-film×1, music-video×1, animation×1, documentary×1)，新增 futuristic 风格标签 ✅
+
 ## [0.11.0] — 2026-06-15
 
 ### 新增 — LJZ-COFFEE 案例（微缩模型 × 咖啡节 × 城市品牌叙事）
