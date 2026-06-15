@@ -31,8 +31,8 @@ dependencies:
 
   # --- Pipeline → SKILL.md ---
   - upstream: references/pipelines/default.md
-    downstream: [SKILL.md, references/pipelines/fast-track.md]
-    impact: "MEDIUM — 管线阶段变更需同步更新 SKILL.md 的阶段激活逻辑。"
+    downstream: [SKILL.md, references/pipelines/fast-track.md, metadata/phase_gates.yaml]
+    impact: "MEDIUM — 管线阶段变更需同步更新 SKILL.md 的阶段激活逻辑和 phase_gates.yaml 的门禁规则。"
 
   - upstream: references/pipelines/fast-track.md
     downstream: [SKILL.md]
@@ -119,6 +119,15 @@ dependencies:
   - upstream: assets/templates/export/script-tech.xlsx
     downstream: [scripts/export_xlsx.py]
     impact: "LOW"
+
+  # --- Phase Gates → validate_state ---
+  - upstream: metadata/phase_gates.yaml
+    downstream: [scripts/validate_state.py]
+    impact: "HIGH — 门禁规则变更直接影响所有阶段的验证行为。修改后必须用示例 project-state 测试全部阶段。"
+
+  - upstream: assets/schemas/project-state.json
+    downstream: [scripts/validate_state.py]
+    impact: "MEDIUM — Schema 字段路径变更可能需要更新 phase_gates.yaml 中的 field path。"
 
   # --- Metadata → Constitution ---
   - upstream: metadata/registry.yaml

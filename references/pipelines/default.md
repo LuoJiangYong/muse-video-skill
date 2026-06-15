@@ -54,6 +54,9 @@ Phase 7: 组装+调优         → prompt_assembler.py 产出 Creative Pack
 
 ### 操作序列
 
+0. **【门禁检查】** 运行 `python scripts/validate_state.py --phase 2`
+   - 如 BLOCKED → 输出阻塞原因（通常是 Phase 1 的 project.* 或 director_notes.vision 未填写），回到 Phase 1 补充
+   - 如 PASS → 继续
 1. Writer 加载 `references/roles/writer.md` → 叙事结构库
 2. Writer 读取 `director_notes.vision`，生成 logline + synopsis + narrative_structure
 3. Writer 将产出写入 Project State JSON `script.*` 字段
@@ -77,6 +80,9 @@ Phase 7: 组装+调优         → prompt_assembler.py 产出 Creative Pack
 
 ### 操作序列
 
+0. **【门禁检查】** 运行 `python scripts/validate_state.py --phase 3`
+   - 如 BLOCKED → 输出阻塞原因，回到 Phase 2 完成 Writer 产出后再试
+   - 如 PASS → 继续
 1. Art Director 加载 `references/roles/art-director.md` → 色调规则 + 风格库
 2. 如用户提到案例 → 加载对应案例的色彩/美术段
 3. Art Director 产出色调方案（含 hex 值）、风格方向、情绪参考
@@ -101,6 +107,9 @@ Phase 7: 组装+调优         → prompt_assembler.py 产出 Creative Pack
 
 ### 操作序列
 
+0. **【门禁检查】** 运行 `python scripts/validate_state.py --phase 4`
+   - 如 BLOCKED → 输出阻塞原因（通常是 Phase 3 的 visual_dev 色调方案未完成），回到 Phase 3 完成后再试
+   - 如 PASS → 继续
 1. Writer 基于 Phase 2 的叙事结构，为每个场景补充：对白 / 动作描述 / 时长估算
 2. DP 加载 `references/roles/dp.md` → 镜头语言 + 灯光模板
 3. DP 为每个场景的每个镜头补充：shot type / movement / lens / lighting setup
@@ -125,6 +134,9 @@ Phase 7: 组装+调优         → prompt_assembler.py 产出 Creative Pack
 
 ### 操作序列
 
+0. **【门禁检查】** 运行 `python scripts/validate_state.py --phase 5`
+   - 如 BLOCKED → 输出阻塞原因（通常是 Phase 4 的 script.scenes 或 cinematography 未完成），回到 Phase 4 完成后再试
+   - 如 PASS → 继续
 1. Sound Designer 加载 `references/roles/sound-designer.md`
 2. 读取每个场景的情绪基调 → 匹配配乐风格 → 映射音效类型
 3. 产出声音方向（不是最终音轨，是方向性指导）
@@ -148,6 +160,9 @@ Phase 7: 组装+调优         → prompt_assembler.py 产出 Creative Pack
 
 ### 操作序列
 
+0. **【门禁检查】** 运行 `python scripts/validate_state.py --phase 6`
+   - 如 BLOCKED → 输出阻塞原因（通常是 Phase 5 的 sound.music_style 未填写），回到 Phase 5 完成后再试
+   - 如 PASS → 继续
 1. 为每个脚本场景生成 1-3 个关键分镜 panel
 2. 每个 panel 从 Project State JSON 中提取对应信息：
    - script（对白/动作）→ panel.description
@@ -176,6 +191,9 @@ Phase 7: 组装+调优         → prompt_assembler.py 产出 Creative Pack
 
 ### 操作序列
 
+0. **【门禁检查】** 运行 `python scripts/validate_state.py --phase 7`
+   - 如 BLOCKED → 输出阻塞原因（分镜未完成/未审批/缺失），回到 Phase 6 修复后再试
+   - 如 PASS → 继续
 1. 检查 Project State JSON 完整性：所有 `_meta.director_approved` = true
 2. 运行 `scripts/prompt_assembler.py` → 产出 Creative Pack JSON
 3. Director 添加 `tuning_notes.*`：调色建议 / 节奏调整 / 特效微调 / 最终确认

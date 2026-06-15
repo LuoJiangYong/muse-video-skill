@@ -1,0 +1,92 @@
+# Phase Gates — 阶段门禁规则
+#
+# 每个阶段的进入条件。validate_state.py 的规则源。
+# 修改管线阶段时同步更新此文件。
+#
+# 字段说明:
+#   requires_approved_sections: 进入此阶段前，这些 JSON section 的 _meta.director_approved 必须为 true
+#   required_fields:           硬门禁 — 字段为空则 BLOCKED
+#   warn_if_empty:             软提醒 — 字段为空则 WARNING，不阻塞
+
+gates:
+  phase_2:
+    description: "Phase 2（内容梳理）"
+    requires_approved_sections:
+      - director_notes       # Phase 1 产出
+    required_fields:
+      - project.title
+      - project.scene_type
+      - director_notes.vision
+    warn_if_empty:
+      - project.aspect_ratio
+      - project.duration_est
+      - project.platform
+
+  phase_3:
+    description: "Phase 3（视觉开发）"
+    requires_approved_sections:
+      - director_notes       # Phase 1
+      - script               # Phase 2（logline + structure + scenes outline）
+    required_fields:
+      - script.logline
+      - script.structure
+      - script.scenes
+    warn_if_empty:
+      - project.genre
+      - director_notes.tone
+
+  phase_4:
+    description: "Phase 4（脚本）"
+    requires_approved_sections:
+      - director_notes       # Phase 1
+      - script               # Phase 2（内容框架已审批）
+      - visual_dev           # Phase 3
+    required_fields:
+      - visual_dev.palette
+      - visual_dev.mood
+    warn_if_empty:
+      - visual_dev.style_refs
+      - visual_dev.characters
+
+  phase_5:
+    description: "Phase 5（声音方向）"
+    requires_approved_sections:
+      - director_notes       # Phase 1
+      - script               # Phase 2 + Phase 4
+      - visual_dev           # Phase 3
+      - cinematography       # Phase 4（DP）
+    required_fields:
+      - script.scenes
+    warn_if_empty:
+      - cinematography.camera_style
+
+  phase_6:
+    description: "Phase 6（分镜）"
+    requires_approved_sections:
+      - director_notes       # Phase 1
+      - script               # Phase 2 + Phase 4
+      - visual_dev           # Phase 3
+      - cinematography       # Phase 4
+      - sound                # Phase 5
+    required_fields:
+      - sound.music_style
+      - sound.narration_tone
+    warn_if_empty:
+      - sound.sfx_notes
+
+  phase_7:
+    description: "Phase 7（组装+调优）"
+    requires_approved_sections:
+      - director_notes       # Phase 1
+      - script               # Phase 2 + Phase 4
+      - visual_dev           # Phase 3
+      - cinematography       # Phase 4
+      - sound                # Phase 5
+      - vfx                  # Phase 6
+    required_fields:
+      - storyboard
+    # storyboard panels 的 _meta 检查是 requires_approved_sections 之外的特殊逻辑
+    # 每个 panel 的 _meta.director_approved 都必须为 true
+    requires_all_panels_approved: true
+    warn_if_empty:
+      - vfx.techniques

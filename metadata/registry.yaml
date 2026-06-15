@@ -472,6 +472,25 @@ files:
     owner: examples
     description: "「最后的记忆贩」完整科幻短片案例（8场景+8分镜+BR2049深度引用+所有脚本产出）"
 
+  # --- Phase Gates (Phase 9) ---
+  - path: metadata/phase_gates.yaml
+    role: metadata
+    phase: 9
+    status: complete
+    dependencies: [references/pipelines/default.md]
+    dependents: [scripts/validate_state.py]
+    owner: metadata
+    description: "阶段门禁规则：每个 phase 的进入条件（approved 链 + 必填字段 + 建议字段）"
+
+  - path: scripts/validate_state.py
+    role: script
+    phase: 9
+    status: complete
+    dependencies: [metadata/phase_gates.yaml, assets/schemas/project-state.json]
+    dependents: []
+    owner: scripts
+    description: "阶段门禁验证：检查 Project State 是否满足进入指定 phase 的条件"
+
   # --- Metadata (self-referential) ---
   - path: metadata/registry.yaml
     role: metadata
@@ -510,7 +529,7 @@ files:
     description: "版本变更日志：每次修改的动机、影响、迁移指南"
 
 # --- 统计 ---
-# Total files: 54
+# Total files: 56
 # Phase 0 (complete): 2
 # Phase 1 (complete): 7
 # Phase 2 (complete): 16
@@ -519,3 +538,4 @@ files:
 # Phase 5 (complete): 4
 # Phase 6 (complete): 3
 # Phase 7 (complete): 9
+# Phase 9 (complete): 2

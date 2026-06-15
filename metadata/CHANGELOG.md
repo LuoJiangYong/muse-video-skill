@@ -6,6 +6,41 @@
 
 ---
 
+## [0.9.0] — 2026-06-15
+
+### 新增 — Phase 9: 阶段门禁验证系统
+
+**metadata/phase_gates.yaml — 门禁规则声明**
+- 6 个阶段的进入条件（phase_2 ~ phase_7）
+- 每个阶段定义：requires_approved_sections（前置 section 的 _meta.director_approved 链）、required_fields（硬门禁）、warn_if_empty（软提醒）
+- 声明式 YAML，validate_state.py 的规则源
+
+**scripts/validate_state.py — 门禁验证脚本**
+- CLI 工具：`python scripts/validate_state.py --input <project-state.json> --phase <2-7> [--quiet]`
+- 检查内容：section 审批链完整性、必填字段非空、建议字段提醒、storyboard panel 审批完整性（phase_7）
+- 输出格式：Agent 可操作的结构化输出（BLOCKERS / WARNINGS / INFO 分层）
+- 退出码：0=PASS（可进入阶段），1=BLOCKED（需修复前置阶段）
+
+**references/pipelines/default.md — 管线文档更新**
+- Phase 2-7 的「操作序列」各加第 0 步：门禁检查
+- 阻塞时指明返回到哪个前置阶段修复
+- Phase 7 的门禁替代了原来手动的 `_meta.director_approved` checklist（第 1 步保留作为双重确认）
+
+**元数据更新**
+- metadata/registry.yaml：+2 行（phase_gates.yaml + validate_state.py），Total files: 54→56
+- metadata/dependencies.yaml：+2 对依赖关系（phase_gates→validate_state / schema→validate_state），default.md 的 downstream 新增 phase_gates.yaml
+
+### 影响范围
+- 新增文件：metadata/phase_gates.yaml、scripts/validate_state.py（2 个）
+- 修改文件：metadata/registry.yaml、metadata/dependencies.yaml、references/pipelines/default.md、metadata/CHANGELOG.md（4 个）
+- 下游影响：无。validate_state.py 是纯读数工具，不修改任何现有文件。
+
+### 迁移指南
+- 无需迁移。两个示例 project-state.json 均已通过全部阶段的验证（exit_code=0）。
+- 管线执行中新增强制的门禁步骤，Agent 需在进入 Phase 2-7 前先运行验证脚本。
+
+---
+
 ## [0.8.1] — 2026-06-12
 
 ### 文档增强 — README + 生图指南 + 工具矩阵
