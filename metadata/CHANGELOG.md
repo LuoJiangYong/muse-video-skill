@@ -6,7 +6,34 @@
 
 ---
 
-## [0.9.0] — 2026-06-15
+## [0.10.0] — 2026-06-15
+
+### 新增 — Phase 8: 3 案例 × 3 新类型（music-video / animation / documentary）
+
+**案例新增：OKGO-TOM — OK Go "The One Moment" (music-video)**
+- 开 music-video 类型首例
+- 17+ 技法 × 5 角色维度 × 6 创意策略维度
+- 核心技法：极压时间叙事, 超高速摄影6000fps, 精密计时链318事件, 音乐可视化叙事, 零CGI全实拍
+- 特征：4.2s 实时→4min 慢放, 单镜头一次性工程, 破坏即创作
+
+**案例新增：PIPER — Pixar "Piper" (animation)**
+- 开 animation 类型首例
+- 17+ 技法 × 5 角色维度
+- 核心技法：无对白成长叙事, 照片级渲染, 微观史诗, 羽毛SSS次表面散射, Foley替对白
+- 特征：6min 无对白, 奥斯卡最佳动画短片 2017, 暖色+photorealistic 风格
+
+**案例新增：KOYAANISQATSI — "Koyaanisqatsi" (documentary)**
+- 开 documentary 类型首例
+- 15+ 技法 × 5 角色维度
+- 核心技法：蒙太奇即论点, 延时摄影叙事, Philip Glass极简主义配乐, 无主角史诗叙事, 工业vs自然对立
+- 特征：86min 无对白无旁白, 纯影像+音乐, 1982年胶片纯实拍
+
+**元数据更新**
+- metadata/registry.yaml：+24 行（3 案例 entries），Total files: 56→59
+- references/cases/INDEX.md：+3 主注册表行, +13 叙事技法, +11 镜头技法, +8 色彩技法, +9 特效技法, +9 声音技法, +2 创意广告技法, +5 风格标签, 角色维度表全部更新
+- SKILL.md：version 0.9.0→0.10.0
+
+**统计**：案例 16→19 (film×4, commercial×11, short-film×1, music-video×1, animation×1, documentary×1)，类型 5/8→8/8 全覆盖 ✅
 
 ### 新增 — Phase 9: 阶段门禁验证系统
 

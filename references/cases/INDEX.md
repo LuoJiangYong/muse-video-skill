@@ -26,6 +26,9 @@
 | GUINNESS-SURFER | Surfer / 冲浪者 | commercial | 1999 | Jonathan Glazer | studio-ad | product-demo | 品牌隐喻, 等待的史诗, 黑白冲浪, 文学旁白, 无产品广告 |
 | APPLE-1984 | 1984 / 一九八四 | commercial | 1984 | Ridley Scott | sci-fi | studio-ad | 反乌托邦, 品牌宣言, 敌我冲突, 电影级广告, 超级碗 |
 | IKEA-LAMP | Lamp / 台灯 | commercial | 2003 | Spike Jonze | studio-ad | product-demo | 物的人类化, 情感反转, 黑色幽默, 反广告, 打破第四面墙 |
+| OKGO-TOM | The One Moment | music-video | 2016 | Damian Kulash | product-demo | studio-ad | 超高速摄影, 精密计时, 单镜头实拍, 色彩爆炸, 破坏即创作 |
+| PIPER | 鹬 | animation | 2016 | Alan Barillaro / Pixar | custom | sci-fi | 无对白叙事, 照片级渲染, 微观史诗, 非人类主角, 海浪摄影 |
+| KOYAANISQATSI | 失衡生活 | documentary | 1982 | Godfrey Reggio | custom | sci-fi | 延时摄影, 慢动作人群, 无对白叙事, 极简音乐, 工业vs自然 |
 
 ### 类型枚举
 
@@ -100,6 +103,19 @@
 | 情感反转陷阱 | IKEA-LAMP |
 | 反广告叙事 | IKEA-LAMP |
 | 诗意→讽刺切换 | IKEA-LAMP |
+| 极压时间叙事 | OKGO-TOM |
+| 破坏即创作 | OKGO-TOM |
+| 音乐可视化叙事 | OKGO-TOM |
+| 单镜头工程叙事 | OKGO-TOM |
+| 反MV叙事 | OKGO-TOM |
+| 无对白成长叙事 | PIPER |
+| 试错学习结构 | PIPER |
+| 环境即导师 | PIPER |
+| 微观史诗 | PIPER |
+| 蒙太奇即论点 | KOYAANISQATSI |
+| 无主角史诗叙事 | KOYAANISQATSI |
+| 循环结构叙事 | KOYAANISQATSI |
+| 工业vs自然对立 | KOYAANISQATSI |
 
 ### 镜头语言 (→ DP)
 
@@ -155,6 +171,17 @@
 | POV台灯视角 | IKEA-LAMP |
 | 雨夜情绪摄影 | IKEA-LAMP |
 | 导演直面镜头 | IKEA-LAMP |
+| 超高速摄影6000fps | OKGO-TOM |
+| 多机位同步复现 | OKGO-TOM |
+| 精确帧匹配编舞 | OKGO-TOM |
+| 静态广角凝视 | OKGO-TOM |
+| 超低角度主观摄影 | PIPER |
+| 海浪主观镜头 | PIPER |
+| 呼吸感手持模拟 | PIPER |
+| 延时摄影叙事 | KOYAANISQATSI |
+| 航拍地景即角色 | KOYAANISQATSI |
+| 静态凝视镜头 | KOYAANISQATSI |
+| 反射式构图 | KOYAANISQATSI |
 
 ### 色彩/美术 (→ Art Director)
 
@@ -194,6 +221,14 @@
 | 白色红色自由符号 | APPLE-1984 |
 | 冷蓝雨夜vs暖黄室内 | IKEA-LAMP |
 | 诚实服装色 | IKEA-LAMP |
+| 原色爆炸色谱 | OKGO-TOM |
+| 灰度→彩色渐变 | OKGO-TOM |
+| 沙色暖金体系 | PIPER |
+| 水下泡泡世界冷蓝 | PIPER |
+| 逆光羽翼半透明 | PIPER |
+| 自然暖色vs工业冷灰 | KOYAANISQATSI |
+| 都市霓虹夜景 | KOYAANISQATSI |
+| 褪色档案质感 | KOYAANISQATSI |
 
 ### 特效语言 (→ VFX)
 
@@ -235,6 +270,15 @@
 | 背投屏幕实拍 | APPLE-1984 |
 | 铝热剂爆炸实拍 | APPLE-1984 |
 | 无特效即特效 | IKEA-LAMP |
+| 零CGI全实拍 | OKGO-TOM |
+| 精密计时链318事件 | OKGO-TOM |
+| 概率管理单镜头 | OKGO-TOM |
+| 羽毛SSS次表面散射 | PIPER |
+| 沙粒粒子模拟 | PIPER |
+| 水/泡沫流体模拟 | PIPER |
+| 纯实拍零后期合成 | KOYAANISQATSI |
+| 胶片时代延时控制 | KOYAANISQATSI |
+| 光学叠化转场 | KOYAANISQATSI |
 
 ### 声音设计 (→ Sound Designer)
 
@@ -276,6 +320,15 @@
 | 频段释放叙事 | APPLE-1984 |
 | 极情绪钢琴硬切断 | IKEA-LAMP |
 | 理性dry旁白 | IKEA-LAMP |
+| 音乐即时间线 | OKGO-TOM |
+| 时间拉伸听觉设计 | OKGO-TOM |
+| 沉默即呼吸 | OKGO-TOM |
+| 无对白拟音叙事 | PIPER |
+| 微观听觉视角 | PIPER |
+| 海浪声音弧线 | PIPER |
+| Philip Glass极简主义配乐 | KOYAANISQATSI |
+| 工业声音采样 | KOYAANISQATSI |
+| 合唱人声即旁白 | KOYAANISQATSI |
 
 ### 创意广告专属 (→ Studio-Ad, Product-Demo)
 
@@ -313,6 +366,8 @@
 | 反广告的广告 | IKEA-LAMP |
 | 消费主义自嘲 | IKEA-LAMP |
 | 第四面墙温和爆破 | IKEA-LAMP |
+| 病毒MV公式 | OKGO-TOM |
+| 品牌隐形策略 | OKGO-TOM |
 
 ---
 
@@ -322,11 +377,11 @@
 
 | 场景类型 | 强相关案例 | 可参考案例 |
 |----------|----------|-----------|
-| studio-ad | APPLE-WH, APPLE-DB, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT, HONDA-COG, GUINNESS-SURFER, APPLE-1984, IKEA-LAMP | BR2049, NIKE-YCS |
-| logo-animation | NIKE-YCS, PACIFIC-RIM | APPLE-WH |
-| product-demo | NIKE-YCS, APPLE-DB, COSMOS-L, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT, HONDA-COG, GUINNESS-SURFER, IKEA-LAMP | APPLE-WH |
-| sci-fi | BR2049, COSMOS-L, WANDERING-E, PACIFIC-RIM, APPLE-1984 | — |
-| custom (art-film) | WKW-ML | — |
+| studio-ad | APPLE-WH, APPLE-DB, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT, HONDA-COG, GUINNESS-SURFER, APPLE-1984, IKEA-LAMP | BR2049, NIKE-YCS, OKGO-TOM |
+| logo-animation | NIKE-YCS, PACIFIC-RIM | APPLE-WH, OKGO-TOM |
+| product-demo | NIKE-YCS, APPLE-DB, COSMOS-L, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT, HONDA-COG, GUINNESS-SURFER, IKEA-LAMP, OKGO-TOM | APPLE-WH |
+| sci-fi | BR2049, COSMOS-L, WANDERING-E, PACIFIC-RIM, APPLE-1984 | KOYAANISQATSI |
+| custom (art-film) | WKW-ML, PIPER, KOYAANISQATSI | — |
 
 ---
 
@@ -338,17 +393,20 @@
 | cyberpunk-adjacent | WANDERING-E, PACIFIC-RIM, APPLE-1984 |
 | minimalist | APPLE-DB, BR2049, SONY-BALLS, VOLVO-SPLIT, HONDA-COG |
 | surreal | APPLE-WH, COSMOS-L, IKEA-LAMP |
-| epic | BR2049, NIKE-YCS, WANDERING-E, PACIFIC-RIM, SONY-BALLS, VOLVO-SPLIT, HONDA-COG, GUINNESS-SURFER, APPLE-1984 |
+| epic | BR2049, NIKE-YCS, WANDERING-E, PACIFIC-RIM, SONY-BALLS, VOLVO-SPLIT, HONDA-COG, GUINNESS-SURFER, APPLE-1984, KOYAANISQATSI |
 | intimate | BR2049, WKW-ML |
-| energetic | NIKE-YCS, APPLE-DB, PACIFIC-RIM, OLDSPICE-MAN, APPLE-1984 |
+| energetic | NIKE-YCS, APPLE-DB, PACIFIC-RIM, OLDSPICE-MAN, APPLE-1984, OKGO-TOM |
 | dreamy | APPLE-WH, COSMOS-L, WKW-ML, JOHNLEWIS-PENGUIN, SONY-BALLS, GUINNESS-SURFER |
 | gritty | BR2049, WANDERING-E, PACIFIC-RIM, GUINNESS-SURFER, APPLE-1984 |
 | nostalgic | WKW-ML, JOHNLEWIS-PENGUIN |
 | melancholic | WKW-ML, GUINNESS-SURFER, IKEA-LAMP |
 | humorous | OLDSPICE-MAN, IKEA-LAMP |
 | absurd | OLDSPICE-MAN, IKEA-LAMP |
-| heartwarming | JOHNLEWIS-PENGUIN |
-| poetic | GUINNESS-SURFER |
+| poetic | GUINNESS-SURFER, KOYAANISQATSI |
+| colorful | OKGO-TOM |
+| heartwarming | JOHNLEWIS-PENGUIN, PIPER |
+| photorealistic | PIPER |
+| contemplative | KOYAANISQATSI |
 
 ---
 
@@ -358,12 +416,12 @@
 
 | 角色 | 必看案例 | 推荐案例 |
 |------|---------|---------|
-| Writer (编剧) | BR2049, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT, HONDA-COG, GUINNESS-SURFER, APPLE-1984, IKEA-LAMP | NIKE-YCS |
-| DP (摄影指导) | BR2049, APPLE-WH, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT, HONDA-COG, GUINNESS-SURFER, APPLE-1984, IKEA-LAMP | COSMOS-L |
-| Art Director (美术) | BR2049, APPLE-WH, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT, HONDA-COG, GUINNESS-SURFER, APPLE-1984, IKEA-LAMP | COSMOS-L |
-| VFX Supervisor (特效) | BR2049, APPLE-WH, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT, HONDA-COG, GUINNESS-SURFER, APPLE-1984, IKEA-LAMP | COSMOS-L |
-| Sound Designer (声音) | BR2049, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT, HONDA-COG, GUINNESS-SURFER, APPLE-1984, IKEA-LAMP | NIKE-YCS |
-| 广告创意综合 | APPLE-DB, NIKE-YCS, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT, HONDA-COG, GUINNESS-SURFER, APPLE-1984, IKEA-LAMP | APPLE-WH |
+| Writer (编剧) | BR2049, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT, HONDA-COG, GUINNESS-SURFER, APPLE-1984, IKEA-LAMP, OKGO-TOM, PIPER, KOYAANISQATSI | NIKE-YCS |
+| DP (摄影指导) | BR2049, APPLE-WH, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT, HONDA-COG, GUINNESS-SURFER, APPLE-1984, IKEA-LAMP, OKGO-TOM, PIPER, KOYAANISQATSI | COSMOS-L |
+| Art Director (美术) | BR2049, APPLE-WH, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT, HONDA-COG, GUINNESS-SURFER, APPLE-1984, IKEA-LAMP, OKGO-TOM, PIPER, KOYAANISQATSI | COSMOS-L |
+| VFX Supervisor (特效) | BR2049, APPLE-WH, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT, HONDA-COG, GUINNESS-SURFER, APPLE-1984, IKEA-LAMP, OKGO-TOM, PIPER, KOYAANISQATSI | COSMOS-L |
+| Sound Designer (声音) | BR2049, WKW-ML, WANDERING-E, PACIFIC-RIM, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT, HONDA-COG, GUINNESS-SURFER, APPLE-1984, IKEA-LAMP, OKGO-TOM, PIPER, KOYAANISQATSI | NIKE-YCS |
+| 广告创意综合 | APPLE-DB, NIKE-YCS, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT, HONDA-COG, GUINNESS-SURFER, APPLE-1984, IKEA-LAMP | APPLE-WH, OKGO-TOM |
 
 ---
 
@@ -408,4 +466,4 @@
 
 ---
 
-*最后更新：2026-06-12 | 案例总数：16（Phase 7-H: IKEA-LAMP 完成 — 优先级2全部完成）*
+*最后更新：2026-06-15 | 案例总数：19（Phase 8: OKGO-TOM + PIPER + KOYAANISQATSI — music-video×1, animation×1, documentary×1）*

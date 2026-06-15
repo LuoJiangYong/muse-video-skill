@@ -204,6 +204,33 @@ files:
     owner: case-library
     description: "IKEA Lamp 完整拆解（Spike Jonze, 16+ 技法 × 5 角色维度, 反广告的广告+情感反转陷阱+物的人类化=元广告里程碑）"
 
+  - path: references/cases/OKGO-TOM.md
+    role: case
+    phase: 8
+    status: complete
+    dependencies: [references/cases/_TEMPLATE.md]
+    dependents: [references/cases/INDEX.md]
+    owner: case-library
+    description: "OK Go The One Moment 完整拆解（Damian Kulash, 17+ 技法 × 5 角色维度, 超高速摄影6000fps+精密计时318事件+破坏即创作=MV叙事的物理极限）"
+
+  - path: references/cases/PIPER.md
+    role: case
+    phase: 8
+    status: complete
+    dependencies: [references/cases/_TEMPLATE.md]
+    dependents: [references/cases/INDEX.md]
+    owner: case-library
+    description: "Pixar Piper 完整拆解（Alan Barillaro, 17+ 技法 × 5 角色维度, 无对白成长叙事+照片级渲染+微观史诗=动画叙事的极简主义革命）"
+
+  - path: references/cases/KOYAANISQATSI.md
+    role: case
+    phase: 8
+    status: complete
+    dependencies: [references/cases/_TEMPLATE.md]
+    dependents: [references/cases/INDEX.md]
+    owner: case-library
+    description: "Koyaanisqatsi 完整拆解（Godfrey Reggio, 15+ 技法 × 5 角色维度, 蒙太奇即论点+延时摄影叙事+Philip Glass极简主义配乐=纯影像叙事的终极实验）"
+
   # --- Roles (Phase 2) ---
   - path: references/roles/director.md
     role: role-doc
@@ -529,7 +556,7 @@ files:
     description: "版本变更日志：每次修改的动机、影响、迁移指南"
 
 # --- 统计 ---
-# Total files: 56
+# Total files: 59
 # Phase 0 (complete): 2
 # Phase 1 (complete): 7
 # Phase 2 (complete): 16
@@ -538,4 +565,5 @@ files:
 # Phase 5 (complete): 4
 # Phase 6 (complete): 3
 # Phase 7 (complete): 9
+# Phase 8 (complete): 3
 # Phase 9 (complete): 2
