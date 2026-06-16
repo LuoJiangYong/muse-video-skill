@@ -91,13 +91,13 @@ class Case:
         strong = [primary] if primary else []
         reference = [secondary] if secondary else []
 
-        # Merge extra relations
-        if "extra_strong" in scene_relations:
-            for s in scene_relations["extra_strong"]:
-                if s and s not in strong:
-                    strong.append(s)
-        if "extra_reference" in scene_relations:
-            for s in scene_relations["extra_reference"]:
+        # Merge extra relations (handle both [] and null)
+        extra_strong = scene_relations.get("extra_strong") or []
+        for s in extra_strong:
+            if s and s not in strong:
+                strong.append(s)
+        extra_reference = scene_relations.get("extra_reference") or []
+        for s in extra_reference:
                 if s and s not in reference:
                     reference.append(s)
 
