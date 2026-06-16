@@ -796,7 +796,6 @@
 | absurd | OLDSPICE-MAN, IKEA-LAMP |
 | poetic | GUINNESS-SURFER, KOYAANISQATSI, BJIFF-SWIFT, CHANEL-NO5-FILM |
 | playful | LJZ-COFFEE, MACBOOK-NEO, IPAD-AIR-M4, APPLE-FLASH, COCA-COLA-HAPPINESS-FACTORY, PIXAR-LOGO |
-| futuristic | VOLCENGINE-FL, IPHONE17PRO, IPHONE-AIR, APPLE-FLASH |
 | colorful | OKGO-TOM, LJZ-COFFEE, VOLCENGINE-FL, PUDONG-CAT, MACBOOK-NEO, IPAD-AIR-M4, APPLE-FLASH |
 | heartwarming | JOHNLEWIS-PENGUIN, PIPER, LJZ-COFFEE, APPLE-EDUCATION, PIXAR-LOGO |
 | photorealistic | PIPER |
@@ -806,7 +805,15 @@
 | immersive | MACHINE-HALLUCINATION |
 | meditative | MACHINE-HALLUCINATION, KOYAANISQATSI |
 | abstract | MACHINE-HALLUCINATION |
+| luxurious | CHANEL-NO5-FILM |
+| whimsical | COCA-COLA-HAPPINESS-FACTORY |
+| sleek | APPLE-EVENT-LOGO |
+| charming | PIXAR-LOGO |
 | futuristic | VOLCENGINE-FL, IPHONE17PRO, IPHONE-AIR, APPLE-FLASH, NIO-10TH-LOGO, APPLE-EVENT-LOGO |
+
+---
+
+## 五、角色维度 → 案例 Mapping
 
 > **默认规则**：全部案例覆盖 5 个角色维度（Writer / DP / Art Director / VFX Supervisor / Sound Designer）。
 > 具体案例推荐见 [§二 技法→案例表](#二技法--案例-mapping)，已按角色分节：
