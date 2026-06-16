@@ -17,7 +17,7 @@ techniques:
   narrative:
   - 极简旁白
   - 功能叙事
-  - 密度递增
+  - 密度递增结构
   cinematography:
   - 高速剪辑
   - 产品密度

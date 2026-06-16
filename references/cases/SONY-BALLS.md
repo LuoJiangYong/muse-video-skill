@@ -15,7 +15,7 @@ tags:
 - 无CG
 techniques:
   narrative:
-  - 无叙事纯视觉
+  - 无叙事纯视觉宣言
   - 产品隐喻
   - 色彩即主角
   - Show-Don't-Tell 极致
