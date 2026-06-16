@@ -1,7 +1,7 @@
 ---
 name: muse-video
 description: "When the user asks to 策划/构思/设计/写脚本/画分镜 for a video project — e.g. '帮我策划一个广告创意' '这个产品演示视频怎么拍' '帮我写科幻短片的分镜脚本' '给我这个品牌TVC的美术方向'。Not for actual video rendering/compositing or AI image/video generation."
-version: 0.24.0
+version: 0.25.0
 author: Hermes Agent + 钱多多
 license: MIT
 platforms: [linux, macos, windows]
@@ -70,8 +70,9 @@ metadata:
 - `COCA-COLA-HAPPINESS-FACTORY` → 快消CGI/全幻想世界/产品=神圣之物
 - `APPLE-EVENT-LOGO` → LOGO=事件品牌/单场次定制/17种风格系统
 - `PIXAR-LOGO` → LOGO=角色IP/物理喜剧/30年品牌IP
-- 更多案例见 `references/cases/INDEX.md` 交叉索引表
-- 发现新案例 → 按 `references/cases/_TEMPLATE.md` 拆解 + 更新 INDEX.md 全表
+- 更多案例见 `references/cases/INDEX.md` 交叉索引表（由 `scripts/build_index.py` 自动生成）
+- 发现新案例 → 按 `references/cases/_TEMPLATE.md` 拆解，填写 YAML frontmatter，运行 `python scripts/build_index.py --write`
+- **禁止手动编辑 INDEX.md** — 所有交叉引用从案例文件 frontmatter 自动生成
 
 ## 导出格式
 
@@ -96,6 +97,17 @@ metadata:
 - ❌ 在 SKILL.md 中放详细技法（→ references/cases/）
 - ❌ 在不加载案例的情况下引用案例技法
 - ❌ 承诺角色一致性（诚实告知这是 AI 的限制）
+- ❌ 手动编辑 INDEX.md — INDEX.md 由 `scripts/build_index.py` 从案例 frontmatter 自动生成
+
+## INDEX.md 自动化
+
+INDEX.md 由 `scripts/build_index.py` 从案例文件的 YAML frontmatter 自动生成。工作流：
+1. 新增/修改案例 → 编辑案例文件的 frontmatter
+2. `python scripts/build_index.py --check` → 校验
+3. `python scripts/build_index.py --write` → 重新生成 INDEX.md
+4. `git commit` 案例文件 + INDEX.md
+
+校验命令检查：frontmatter 有效性、必填字段完整性、技法命名一致性（自动检测相似名称）。
 
 ## 产出验证
 

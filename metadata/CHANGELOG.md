@@ -6,6 +6,78 @@
 
 ---
 
+## [0.25.0] — 2026-06-16
+
+### 重大变更 — INDEX.md 自动化（build_index.py）
+
+**背景**：INDEX.md 的 6 张交叉引用表（710+ 项手动映射）长期由 Agent 手动维护，每新增案例需修改 6-7 张表，经常出现遗漏、重复和技术名不一致。3 个 INDEX 修复 commit 证明了手动维护的不可持续性。
+
+**方案**：所有案例文件增加 YAML frontmatter，INDEX.md 由 `scripts/build_index.py` 自动生成。
+
+**新增文件**：
+- `scripts/build_index.py` — 核心索引生成脚本（604 行）
+  - 从案例 YAML frontmatter 读取元信息 + 技法标签 + 风格 + 场景关联
+  - 自动生成全部 6 张交叉引用表
+  - 内置校验器：检测命名不一致（编辑距离）、重复 ID、缺失必填字段
+  - 三种模式：`--check`（CI）、`--write`（生成）、`--diff`（预览）
+- `scripts/migrate_to_frontmatter.py` — 一次性迁移脚本（260 行）
+  - 解析 38 个旧案例的「元信息」表和「技法标签」段
+  - 自动生成 YAML frontmatter 并插入案例文件
+
+**修改文件**：
+- `references/cases/*.md` — 全部 38 个案例增加 YAML frontmatter
+  - 技法自动从旧格式迁移（解析成功率 100%）
+  - 清理 8 处 substring containment 命名不一致（如 "微观史诗"→"微观史诗叙事"）
+- `references/cases/INDEX.md` — 从手动变成自动生成产物（869→996 行）
+  - 新 INDEX.md 标注 "本文件由脚本自动生成，禁止手动编辑"
+  - SOP 更新为 `python scripts/build_index.py --write`
+- `SKILL.md` — v0.24.0→0.25.0，新增「INDEX.md 自动化」章节
+- `metadata/registry.yaml` — Total files 72→75, Phase 3: 12→13
+
+**案例 YAML frontmatter 格式**：
+```yaml
+---
+id: BR2049
+name: 银翼杀手2049
+type: film
+year: 2017
+director: Denis Villeneuve
+primary_scene: sci-fi
+secondary_scene: studio-ad
+tags: [巨物美学, 单一光源, 色彩叙事]
+techniques:
+  narrative: [沉默对白, 巨物美学叙事]
+  cinematography: [单一光源, 环形构图]
+  color: [色彩叙事, 雾霾黄+霓虹蓝]
+  vfx: [粒子氛围, 全息投影]
+  sound: [合成器低音+留白]
+  creative: []
+styles: [cyberpunk, epic, gritty, dreamy]
+scene_relations:
+  extra_strong: []
+  extra_reference: [studio-ad]
+---
+```
+
+**迁移指南**：
+- 已有案例：已自动迁移完毕，无需手动操作。
+- 新增案例：按 `_TEMPLATE.md` 创建后，运行 `python scripts/build_index.py --check && python scripts/build_index.py --write`。
+- 修改案例技法：编辑 frontmatter → 运行 build_index.py → commit 案例文件 + INDEX.md。
+- **禁止手动编辑 INDEX.md** — 所有数据来源于案例 frontmatter。
+
+**校验能力**：
+- ✅ 0 errors, 180 warnings（warnings 检测到 710+ 项技法中存在的命名漂移）
+- 8 处高置信度 substring containment 重复已修复
+- 剩余 180 条 warnings 大部分为跨角色技法共享通用词的误报（如 "无对白叙事" vs "无对白纯视觉叙事" 是不同技法）
+
+### 影响范围
+- 受影响文件：SKILL.md, INDEX.md, registry.yaml, CHANGELOG.md, 全部 38 个案例文件
+- 新增文件：scripts/build_index.py, scripts/migrate_to_frontmatter.py
+- 下游影响：无。INDEX.md 格式向后兼容，Agent 查询方式不变。
+- 工作流变化：新增案例时不再手动更新 6 张 INDEX 表 → 只需填写 YAML frontmatter + 运行脚本。
+
+---
+
 ## [0.24.0] — 2026-06-16
 
 ### 新增 — Phase 14-17: 4 案例（奢侈品×快消CGI×LOGO动画扩展）

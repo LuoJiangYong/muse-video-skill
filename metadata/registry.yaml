@@ -506,6 +506,15 @@ files:
     description: "下游工具选择矩阵：ComfyUI vs Kling vs Runway vs HyperFrames"
 
   # --- Scripts (Phase 3) ---
+  - path: scripts/build_index.py
+    role: script
+    phase: 3
+    status: complete
+    dependencies: [references/cases/]
+    dependents: [references/cases/INDEX.md]
+    owner: scripts
+    description: "INDEX.md 自动生成器：从案例 YAML frontmatter 生成全部 6 张交叉引用表"
+
   - path: scripts/format_script.py
     role: script
     phase: 3
@@ -691,11 +700,11 @@ files:
     description: "版本变更日志：每次修改的动机、影响、迁移指南"
 
 # --- 统计 ---
-# Total files: 72
+# Total files: 75
 # Phase 0 (complete): 2
 # Phase 1 (complete): 7
 # Phase 2 (complete): 16
-# Phase 3 (complete): 12
+# Phase 3 (complete): 13
 # Phase 4 (complete): 2
 # Phase 5 (complete): 4
 # Phase 6 (complete): 3
