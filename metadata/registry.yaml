@@ -357,6 +357,15 @@ files:
     owner: case-library
     description: "ACHROMA AI科幻短片完整拆解（2024, 11+ 技法 × 5 角色维度, 色彩隐喻叙事+AI全流程生成+扩散模型+风格迁移+Dune风格配乐+六段压缩叙事=AI原生电影叙事的先锋实验）"
 
+  - path: references/cases/NIO-10TH-LOGO.md
+    role: case
+    phase: 13
+    status: complete
+    dependencies: [references/cases/_TEMPLATE.md]
+    dependents: [references/cases/INDEX.md]
+    owner: case-library
+    description: "蔚来十周年LOGO演绎完整拆解（2024, 11+ 技法 × 5 角色维度, LOGO=叙事载体+3D材质连续变换+PBR渲染+O形传送门转场+IO=10创意=首个纯LOGO动画案例）"
+
   # --- Roles (Phase 2) ---
   - path: references/roles/director.md
     role: role-doc
