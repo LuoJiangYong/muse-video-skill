@@ -756,7 +756,7 @@
 
 ## 五、角色维度 → 案例 Mapping
 
-> **默认规则**：全部 32 个案例覆盖 5 个角色维度（Writer / DP / Art Director / VFX Supervisor / Sound Designer）。
+> **默认规则**：全部案例覆盖 5 个角色维度（Writer / DP / Art Director / VFX Supervisor / Sound Designer）。
 > 具体案例推荐见 [§二 技法→案例表](#二技法--案例-mapping)，已按角色分节：
 > - 叙事技法 → Writer
 > - 镜头语言 → DP
@@ -764,7 +764,7 @@
 > - 特效技法 → VFX Supervisor
 > - 声音设计 → Sound Designer
 >
-> **「广告创意综合」维度**：仅适用于 commercial 类型（23 个案例）。非 commercial 类型（film / short-film / experimental / animation / documentary / music-video / logo-animation，共 9 个案例）不参与此维度。按类型枚举自动筛选，无需手动维护。
+> **「广告创意综合」维度**：仅适用于 commercial 类型。其余类型（film / short-film / experimental / animation / documentary / music-video / logo-animation）不参与此维度。
 
 ---
 
