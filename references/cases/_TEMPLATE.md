@@ -7,7 +7,14 @@
 > - 每个角色段落用「技法名称：具体表现」的格式，让 Agent 能直接提取为角色 prompt 注入。
 > - 避免泛泛而谈（「色调很美」→ 无效）。给出可操作参数（「主色 #B85C38，强调暖橙与深蓝黑的对比」→ 有效）。
 > - 每个技法标注「适用场景」，让 Agent 知道什么时候引用这段。
-> - YAML frontmatter 中的技法名尽量简短（2-6 字），与已有案例命名保持一致（运行 `--check` 会检测相似名称）。
+> - YAML frontmatter 中的技法名尽量简短（2-6 字），与已有案例命名保持一致（`--check` 会检测相似名称）。
+>
+> **Frontmatter 字段说明**：
+> - `type` — film / commercial / short-film / music-video / experimental / animation / documentary / logo-animation
+> - `primary_scene` / `secondary_scene` — studio-ad / logo-animation / product-demo / sci-fi / custom（primary 自动视为 strong 关联，secondary 自动视为 reference）
+> - `techniques.creative` — 仅 commercial 类型填写，其他类型留 `[]`
+> - `styles` — 风格标签，格式 `[cyberpunk, epic, dreamy]`，可自由命名，`--check` 会输出已有风格
+> - `scene_relations.extra_strong/extra_reference` — 在 primary/secondary 之外的额外场景关联，通常留 `[]`
 
 ---
 
@@ -40,12 +47,8 @@ techniques:
     - 技法1
   creative: []
 
- # 风格标签，格式: [cyberpunk, epic, dreamy]
- # 可自由命名，已有风格运行 build_index.py --check 可见
 styles: []
 
- # 场景关联。primary_scene 自动视为 strong，secondary_scene 自动视为 reference
- # 以下声明额外的关联场景
 scene_relations:
   extra_strong: []
   extra_reference: []
