@@ -348,6 +348,15 @@ files:
     owner: case-library
     description: "Refik Anadol Machine Hallucination完整拆解（2019, 15+ 技法 × 5 角色维度, 数据叙事+非叙事纯视觉流+GAN潜空间连续生成+粒子数据场+AI数据雕塑渲染+声音驱动视觉同步=首个experimental实验影像案例）"
 
+  - path: references/cases/ACHROMA.md
+    role: case
+    phase: 12
+    status: complete
+    dependencies: [references/cases/_TEMPLATE.md]
+    dependents: [references/cases/INDEX.md]
+    owner: case-library
+    description: "ACHROMA AI科幻短片完整拆解（2024, 11+ 技法 × 5 角色维度, 色彩隐喻叙事+AI全流程生成+扩散模型+风格迁移+Dune风格配乐+六段压缩叙事=AI原生电影叙事的先锋实验）"
+
   # --- Roles (Phase 2) ---
   - path: references/roles/director.md
     role: role-doc
