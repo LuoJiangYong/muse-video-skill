@@ -312,6 +312,15 @@ files:
     owner: case-library
     description: "iPad Air M4 产品介绍影片完整拆解（2026, 20 技法 × 5 角色维度, 场景融入叙事+碎片化生活蒙太奇+紫色视觉锚点+屏幕自发光照明+遮挡式转场=随身创造力的生活叙事）"
 
+  - path: references/cases/APPLE-FLASH.md
+    role: case
+    phase: 9
+    status: complete
+    dependencies: [references/cases/_TEMPLATE.md]
+    dependents: [references/cases/INDEX.md]
+    owner: case-library
+    description: "Apple快闪产品美学双片对比拆解（2025, 20+ 技法 × 5 角色维度, 快闪美学+音乐驱动叙事+霓虹电子色谱+glitch转场+电子鼓打贝斯配乐+无旁白纯视听=AirPods Pro 3 + MacBook Neo all-new 超短片快闪公式）"
+
   # --- Roles (Phase 2) ---
   - path: references/roles/director.md
     role: role-doc

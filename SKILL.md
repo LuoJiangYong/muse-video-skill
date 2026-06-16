@@ -1,8 +1,8 @@
 ---
 name: muse-video
 description: "When the user asks to 策划/构思/设计/写脚本/画分镜 for a video project — e.g. '帮我策划一个广告创意' '这个产品演示视频怎么拍' '帮我写科幻短片的分镜脚本' '给我这个品牌TVC的美术方向'。Not for actual video rendering/compositing or AI image/video generation."
-version: 0.18.0
-author: luojiangyong
+version: 0.19.0
+author: Hermes Agent + 钱多多
 license: MIT
 platforms: [linux, macos, windows]
 metadata:
@@ -61,6 +61,8 @@ metadata:
 合并阶段 2+3+4 → 一稿过，跳过 Director 多轮审核。仅适用于简单需求。
 
 ## 案例引用
+
+> **案例库规模**：27 案例（film×4, commercial×21, short-film×1, music-video×1, animation×1, documentary×1），12 张交叉引用表，覆盖 23+ 风格标签。
 
 当案例匹配时，Agent 加载案例文件，将对应段落注入角色 prompt：
 - `BR2049` → sci-fi/赛博朋克的镜头+色彩+特效技法

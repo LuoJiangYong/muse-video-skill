@@ -6,6 +6,25 @@
 
 ---
 
+## [0.19.0] — 2026-06-16
+
+### 新增 — APPLE-FLASH 案例（Apple快闪产品美学 × AirPods Pro 3 + MacBook Neo all-new 双片对比）
+
+**案例新增：APPLE-FLASH — Apple快闪产品美学（双视频对比分析）**
+- 类型：commercial（超短片产品广告，合计1分23秒）
+- 20+ 技法 × 5 角色维度 × 5 创意策略维度
+- 核心技法：特征罗列叙事, 音乐驱动叙事, 无旁白纯视听叙事, 顶拍手部编舞, 身体即产品载体, 霓虹电子色谱, glitch数码故障转场, 抽象几何动画合成, 电子鼓打贝斯驱动, indie-pop配乐, 拟音同步打击
+- 特征：AirPods Pro 3 (48s, 281万播放) + MacBook Neo all-new (35s, 488万播放)，均无传统旁白，音乐驱动剪辑，文字叠加传递产品信息
+- 来源：YouTube 官方视频通过 video_analyze 两轮分析（H.264 编码，成功绕过 av1 陷阱）
+- 独特价值：首个合并双视频对比分析案例，提取 Apple 超短片「快闪公式」（音乐驱动+无旁白+文字覆盖+身体交互），展示同一套公式在可穿戴产品 vs 笔记本电脑上的差异化应用
+- 类型覆盖新增：commercial×21（总计 27 案例，类型枚举未变）
+
+### 关键教训
+
+- **video_analyze 可用于 H.264 编码视频**（此前认为 DeepSeek 不支持 video_analyze，实际是 av1 编码导致 400/413 错误）
+- **Android client 可绕过 YouTube bot 检测**（`--extractor-args "youtube:player_client=android"`）
+- **超短片（<1分钟）合并处理效率高**：两支配对短片拆解为一个案例，技法提取聚焦「共性公式」而非逐片重复
+
 ## [0.18.0] — 2026-06-15
 
 ### 新增 — IPAD-AIR-M4 案例（iPad Air M4 × 场景融入叙事 × 紫色视觉锚点 × M4）
