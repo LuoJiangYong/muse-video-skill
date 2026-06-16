@@ -6,6 +6,43 @@
 
 ---
 
+## [0.24.0] — 2026-06-16
+
+### 新增 — Phase 14-17: 4 案例（奢侈品×快消CGI×LOGO动画扩展）
+
+**CHANEL-NO5-FILM — Chanel No.5 "The Film"**
+- 类型：commercial — 案例库首个奢侈品案例
+- 203行 / 14+ 技法 × 5 角色维度 × 2 创意策略
+- 核心：明星叙事/逃离=产品隐喻, 音乐剧三幕, 反向灰姑娘, 金色时刻逆光, Debussy Clair de Lune, $33M媒介策略
+- 填补：奢侈品品类 0→1
+
+**COCA-COLA-HAPPINESS-FACTORY — Coca-Cola "Happiness Factory"**
+- 类型：commercial — 案例库首个纯CGI快消案例
+- 170行 / 13+ 技法 × 5 角色维度 × 2 创意策略
+- 核心：微观史诗, 产品=神圣之物, 全CGI世界构建, 五世界专属色谱, 无对白纯视觉, 流体+玻璃渲染
+- 填补：快消CGI品类扩展
+
+**APPLE-EVENT-LOGO — Apple Event 开场LOGO合集**
+- 类型：logo-animation — LOGO=事件品牌 案例
+- 169行 / 12+ 技法 × 5 角色维度 × 1 创意策略
+- 核心：LOGO=事件品牌, 单场次定制, 17种风格系统, 粒子/液态金属/手绘, 5秒=情感弧线
+- 填补：LOGO动画第二极（与NIO-10TH-LOGO对比）
+
+**PIXAR-LOGO — Pixar 开场LOGO (Luxo Jr.)**
+- 类型：logo-animation — LOGO=角色IP 案例
+- 145行 / 10+ 技法 × 5 角色维度 × 1 创意策略
+- 核心：LOGO=角色IP, 物理喜剧, 30年品牌IP, 三层声音签名, 每部电影定制
+- 填补：LOGO动画第三极（角色化）
+
+### 类型覆盖
+- commercial 23→25
+- logo-animation 1→3
+- 案例总数 32→38
+- 新增品类：奢侈品(1), 快消CGI(1), LOGO动画扩展(2)
+- LOGO动画三种哲学光谱完成：NIO(叙事载体) ↔ Apple(事件品牌) ↔ Pixar(角色IP)
+
+---
+
 ## [0.23.0] — 2026-06-16
 
 ### 新增 — NIO-10TH-LOGO 案例（蔚来十周年 × 3D动态图形 × LOGO=叙事载体）

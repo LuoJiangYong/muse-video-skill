@@ -691,7 +691,7 @@ files:
     description: "版本变更日志：每次修改的动机、影响、迁移指南"
 
 # --- 统计 ---
-# Total files: 68
+# Total files: 72
 # Phase 0 (complete): 2
 # Phase 1 (complete): 7
 # Phase 2 (complete): 16
@@ -700,5 +700,5 @@ files:
 # Phase 5 (complete): 4
 # Phase 6 (complete): 3
 # Phase 7 (complete): 9
-# Phase 8 (complete): 11
+# Phase 8 (complete): 15
 # Phase 9 (complete): 2
