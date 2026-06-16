@@ -321,6 +321,24 @@ files:
     owner: case-library
     description: "Apple快闪产品美学双片对比拆解（2025, 20+ 技法 × 5 角色维度, 快闪美学+音乐驱动叙事+霓虹电子色谱+glitch转场+电子鼓打贝斯配乐+无旁白纯视听=AirPods Pro 3 + MacBook Neo all-new 超短片快闪公式）"
 
+  - path: references/cases/APPLE-EDUCATION.md
+    role: case
+    phase: 10
+    status: complete
+    dependencies: [references/cases/_TEMPLATE.md]
+    dependents: [references/cases/INDEX.md]
+    owner: case-library
+    description: "Apple教育品牌片完整拆解（2025, 20+ 技法 × 5 角色维度, 教室微故事叙事+CGI鹦鹉隐喻+品牌使命叙事+产品退位叙事+自然光课堂摄影+原创indie-pop配乐=首个品牌使命型案例）"
+
+  - path: references/cases/APPLE-EVENT-HIGHLIGHTS.md
+    role: case
+    phase: 10
+    status: complete
+    dependencies: [references/cases/_TEMPLATE.md]
+    dependents: [references/cases/INDEX.md]
+    owner: case-library
+    description: "Apple九月发布会集锦完整拆解（2025, 20+ 技法 × 5 角色维度, 产品速览叙事+密度递增结构+女声非正式旁白+CGI内部透视+高能电子配乐+信息压缩策略=首个发布会集锦案例）"
+
   # --- Roles (Phase 2) ---
   - path: references/roles/director.md
     role: role-doc

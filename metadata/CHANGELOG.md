@@ -6,6 +6,30 @@
 
 ---
 
+## [0.20.0] — 2026-06-16
+
+### 新增 — APPLE-EDUCATION 案例（Apple教育品牌片 × 教室叙事 × CGI隐喻 × 品牌使命）
+
+**案例新增：APPLE-EDUCATION — Apple Education: Ready for every learning opportunity**
+- 类型：commercial（品牌使命型广告）
+- 20+ 技法 × 5 角色维度 × 4 创意策略维度
+- 核心技法：教室微故事叙事, CGI隐喻叙事(Amazona鹦鹉群), 品牌使命叙事, 产品退位叙事, 师生共创叙事, 自然光课堂摄影, 学生视线高度运镜, CGI鹦鹉群集成, 原创indie-pop配乐
+- 特征：1:47, 4553万播放, Ms. Charlene教师, 15-20名学生, CGI鹦鹉隐喻创造力, 零产品规格
+- 独特价值：首个品牌使命型案例（不同于3C产品介绍片和快闪广告）、首个CGI动物隐喻案例、首个教育场景案例、首个「产品退位=品牌上位」策略案例
+
+### 新增 — APPLE-EVENT-HIGHLIGHTS 案例（Apple九月发布会集锦 × 产品速览 × 密度叙事）
+
+**案例新增：APPLE-EVENT-HIGHLIGHTS — Catch up quick | Apple September event highlights**
+- 类型：commercial（发布会集锦型广告）
+- 20+ 技法 × 5 角色维度 × 4 创意策略维度
+- 核心技法：产品速览叙事, 密度递增结构, 产品对比排列, 女声非正式旁白, 无故事纯信息叙事, CGI内部透视, 多产品并列构图, 功能可视化动画, 女声快节奏旁白, 信息压缩策略
+- 特征：2:35, 255万播放, 7款产品(2分35秒), Tim Cook开场, 女声快节奏旁白(~190wpm), 46:1压缩比
+- 独特价值：首个发布会集锦案例、首个多产品速览格式案例、首个「无故事纯信息」叙事案例、与APPLE-EDUCATION形成「使命vs信息」「慢vs快」「情感vs功能」极端对照
+
+### 类型覆盖
+- commercial 20→23（新增教育品牌片×1 + 发布会集锦×1）
+- 案例总数：27→29
+
 ## [0.19.0] — 2026-06-16
 
 ### 新增 — APPLE-FLASH 案例（Apple快闪产品美学 × AirPods Pro 3 + MacBook Neo all-new 双片对比）
