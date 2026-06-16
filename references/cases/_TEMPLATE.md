@@ -1,15 +1,61 @@
 # _TEMPLATE.md — 案例拆解模板
 
-> 使用说明：复制此文件为 `references/cases/<id>.md`，按模板填写。完成后更新 `INDEX.md` 的所有相关表。
+> 使用说明：复制此文件为 `references/cases/<id>.md`，按模板填写。
+> 完成后运行 `python scripts/build_index.py --check && python scripts/build_index.py --write` 自动更新 INDEX.md。
 >
 > **写作原则**：
 > - 每个角色段落用「技法名称：具体表现」的格式，让 Agent 能直接提取为角色 prompt 注入。
 > - 避免泛泛而谈（「色调很美」→ 无效）。给出可操作参数（「主色 #B85C38，强调暖橙与深蓝黑的对比」→ 有效）。
 > - 每个技法标注「适用场景」，让 Agent 知道什么时候引用这段。
+> - YAML frontmatter 中的技法名尽量简短（2-6 字），与已有案例命名保持一致（运行 `--check` 会检测相似名称）。
 
 ---
 
 # 【案例名称】— 【一句话定位】
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     YAML FRONTMATTER — INDEX.md 的数据来源，必须填写。
+     修改后运行 python scripts/build_index.py --write 重新生成 INDEX.md
+     ═══════════════════════════════════════════════════════════════════════ -->
+---
+id: 【短标识符，如 BR2049】
+name: 【作品完整名称（中文/原文）】
+type: 【film / commercial / short-film / music-video / experimental / animation / documentary / logo-animation】
+year: 【YYYY】
+director: 【导演/工作室】
+primary_scene: 【studio-ad / logo-animation / product-demo / sci-fi / custom】
+secondary_scene: 【同上】
+tags: 【逗号分隔，3-8 个关键词】
+
+techniques:
+  narrative:     # 叙事技法（→ Writer）
+    - 【技法1】
+    - 【技法2】
+  cinematography: # 镜头语言（→ DP）
+    - 【技法1】
+    - 【技法2】
+  color:         # 色彩/美术（→ Art Director）
+    - 【技法1】
+  vfx:           # 特效语言（→ VFX）
+    - 【技法1】
+  sound:         # 声音设计（→ Sound Designer）
+    - 【技法1】
+  creative:      # 创意广告专属（仅 commercial 类型填写，其他类型留 []）
+    - 【技法1】
+
+styles: 【情绪/风格标签，如 [cyberpunk, gritty, epic]】
+  # 可用风格（基于已有案例）：
+  # cyberpunk, cyberpunk-adjacent, minimalist, surreal, epic, intimate,
+  # energetic, dreamy, gritty, nostalgic, melancholic, humorous, absurd,
+  # poetic, playful, colorful, heartwarming, photorealistic, contemplative,
+  # elegant, AI-generated, immersive, meditative, abstract, luxurious,
+  # whimsical, sleek, charming, futuristic
+
+scene_relations:
+  extra_strong: []      # 额外强相关场景（primary_scene 自动视为 strong）
+  extra_reference: []   # 额外可参考场景（secondary_scene 自动视为 reference）
+---
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
 
 ## 元信息
 
@@ -17,7 +63,7 @@
 |------|-----|
 | ID | 短标识符，如 `BR2049` |
 | 名称 | 作品完整名称（中文/原文） |
-| 类型 | film / commercial / short-film / music-video / experimental / animation / documentary |
+| 类型 | film / commercial / short-film / music-video / experimental / animation / documentary / logo-animation |
 | 年份 | YYYY |
 | 导演/工作室 | |
 | 摄影师 | |
@@ -32,7 +78,8 @@
 
 ## 技法标签
 
-> 这些标签是 INDEX.md 交叉索引的依据。每项控制在 2-3 个词。
+> 此处为正文的技法概述（可包含详细描述）。INDEX.md 的交叉引用数据来源于上方 YAML frontmatter 的 `techniques:` 字段。
+> frontmatter 中技法名保持简短（2-6 字），此处可展开说明。
 
 - **叙事**：
 - **镜头**：
