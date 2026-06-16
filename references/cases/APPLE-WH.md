@@ -1,4 +1,50 @@
 # Welcome Home — 空间扭曲的感官幻觉
+---
+id: APPLE-WH
+name: Welcome Home / 欢迎回家
+type: commercial
+year: '2018'
+director: Spike Jonze
+primary_scene: studio-ad
+secondary_scene: product-demo
+tags:
+- 物理空间扭曲
+- 单镜头错觉
+- 色彩情绪分区
+- 舞蹈编排
+- 感官沉浸
+techniques:
+  narrative:
+  - 无对白叙事
+  - 身体驱动转场
+  - 微表情表演
+  cinematography:
+  - 单镜头错觉
+  - 空间扭曲跟拍
+  - 360° 环绕运动
+  - 微距产品凝视
+  color:
+  - 场景色调对照
+  - 色彩情绪分区
+  - 饱和度渐变
+  vfx:
+  - 超现实转场
+  - 物理空间拉伸
+  - 镜像无限反射
+  sound:
+  - 音乐驱动节奏
+  - 环境音景层次
+  - 产品声音焦点
+  creative:
+  - 产品隐形植入
+  - 感官体验替代功能叙述
+  - 艺术家背书
+styles: []
+scene_relations:
+  extra_strong: []
+  extra_reference: []
+---
+
 
 ## 元信息
 

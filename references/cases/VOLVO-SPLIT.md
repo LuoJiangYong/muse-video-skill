@@ -1,4 +1,55 @@
 # The Epic Split — 产品演示即表演 × 极简叙事的病毒公式
+---
+id: VOLVO-SPLIT
+name: The Epic Split / 史诗级劈叉
+type: commercial
+year: '2013'
+director: Andreas Nilsson
+primary_scene: product-demo
+secondary_scene: studio-ad
+tags:
+- 人体极限
+- 产品演示即表演
+- 极简叙事
+- 病毒传播
+- 一镜到底
+techniques:
+  narrative:
+  - 极简信息设计
+  - 产品演示即叙事
+  - 人生哲学旁白
+  - 信任证明结构
+  cinematography:
+  - 一镜到底航拍
+  - 对称史诗构图
+  - 黎明金色时刻
+  - 中远景固定机位
+  color:
+  - 晨曦暖金+金属银
+  - 三色极简调色
+  - 逆光剪影
+  - 产品色克制
+  vfx:
+  - 安全绳擦除
+  - 零CGI人体极限
+  - 实拍stunt
+  - 后期仅做减法
+  sound:
+  - 空灵女声反差
+  - 人生哲学旁白
+  - Enya安静配乐
+  - 信息层分离
+  creative:
+  - 产品演示即表演
+  - 病毒一句话公式
+  - 极限信任证明
+  - 极简信息密度
+styles: []
+scene_relations:
+  extra_strong: []
+  extra_reference: []
+---
+
 
 ## 元信息
 

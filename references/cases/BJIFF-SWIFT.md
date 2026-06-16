@@ -1,4 +1,56 @@
 # BJIFF-SWIFT — 雨燕POV×北京地标×电影工业=一座城市即一个片场的超现实宣言
+---
+id: BJIFF-SWIFT
+name: 第十六届北京国际电影节宣传片 / 16th Beijing International Film Festival Promo
+type: commercial
+year: '2024'
+director: —（北京国际电影节组委会委托制作）
+primary_scene: custom
+secondary_scene: studio-ad
+tags:
+- 雨燕POV
+- 电影嵌套
+- 北京地标
+- 影史致敬
+- 胶片物理化
+techniques:
+  narrative:
+  - 动物代言人叙事
+  - 电影嵌套叙事
+  - 影史致敬叙事
+  - 电影即城市
+  cinematography:
+  - 鸟瞰雨燕POV
+  - 穿梭式长镜头
+  - 胶片隧道穿梭
+  - 环绕地标拍摄
+  - 影院主观镜头
+  color:
+  - 三段式色调递进
+  - 电影年代分色
+  - 故宫金+胶片棕体系
+  - 暗调影院沉浸
+  vfx:
+  - CG雨燕+实景融合
+  - 建筑→电影设备变形
+  - 胶片物理化
+  - 场记板=CUT转场
+  sound:
+  - 片场同期声设计
+  - 经典电影原声采样
+  - 城市+电影声音叠加
+  - 影院呼吸感静默
+  creative:
+  - 电影节=城市即片场
+  - 雨燕=电影精神化身
+  - 影史传承叙事
+  - 「春天来北京看世界最好的电影」
+styles: []
+scene_relations:
+  extra_strong: []
+  extra_reference: []
+---
+
 
 ## 元信息
 

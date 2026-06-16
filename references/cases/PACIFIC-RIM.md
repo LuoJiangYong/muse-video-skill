@@ -1,4 +1,53 @@
 # 环太平洋 — 巨型机械的触觉重量
+---
+id: PACIFIC-RIM
+name: 环太平洋 / Pacific Rim
+type: film
+year: '2013'
+director: Guillermo del Toro
+primary_scene: sci-fi
+secondary_scene: logo-animation
+tags:
+- 巨型机甲
+- 怪兽设计
+- 雨夜战斗
+- 机械重量感
+- 驾驶舱同步
+techniques:
+  narrative:
+  - 双人共驾
+  - 怪兽分级
+  - 最后希望
+  - 同步叙事
+  cinematography:
+  - 重量感运动
+  - 低角度仰拍
+  - 驾驶舱调度
+  - 雨中景深
+  color:
+  - 香港霓虹雨夜
+  - 驾驶舱暖金
+  - 怪兽蓝血荧光
+  - 核反应堆蓝白
+  vfx:
+  - 机械物理模拟
+  - 雨水粒子
+  - 怪兽流体
+  - 全息 UI
+  - 城市破坏
+  sound:
+  - 关节机械音
+  - 怪兽吼叫
+  - 雨中层次
+  - 电吉他交响
+  creative:
+  - —
+styles: []
+scene_relations:
+  extra_strong: []
+  extra_reference: []
+---
+
 
 ## 元信息
 

@@ -1,4 +1,58 @@
 # APPLE-EVENT-LOGO — LOGO=事件品牌 × 单场次定制设计 × 17种风格的视觉系统
+---
+id: APPLE-EVENT-LOGO
+name: Apple Event 开场LOGO动画合集（2019-2024） / Apple Event Logo Animations Compilation
+type: logo-animation
+year: 2019-2024（持续进行中）
+director: Apple 内部设计团队（Apple Design Team / Marcom）
+primary_scene: logo-animation
+secondary_scene: studio-ad
+tags:
+- LOGO动画
+- 事件品牌化
+- 单场次定制
+- 粒子系统
+- 液态金属
+- 手绘线条
+- AR融合
+- 极简↔华丽双极
+techniques:
+  narrative:
+  - LOGO=事件品牌
+  - 概念先行/一句话锚点
+  - 无叙事纯视觉宣言
+  - 5秒=完整情感弧线
+  cinematography:
+  - LOGO 居中绝对构图
+  - 微观特写材质窥探
+  - 深度推拉进入LOGO内部
+  - 360°旋转展示
+  color:
+  - 每场专属配色方案
+  - 品牌色的「隐形」——极少直接使用六色苹果——而是「该事件的颜色即苹果的颜色」
+  - 暗黑背景=无限可能性
+  vfx:
+  - 3D材质变换
+  - AR/空间计算融合
+  - 手绘线条逐帧动画
+  - 物理模拟
+  - 多层深度合成
+  sound:
+  - 每场专属电子音轨
+  - SFX同步材质声音
+  - 无旁白纯视听
+  - 音效=材质定义器
+  creative:
+  - LOGO=事件营销第一枪
+  - 单场次定制=稀缺性
+  - 设计即媒体
+  - 预告片化LOGO
+styles: []
+scene_relations:
+  extra_strong: []
+  extra_reference: []
+---
+
 
 ## 元信息
 

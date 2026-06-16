@@ -1,4 +1,61 @@
 # APPLE-FLASH — 霓虹舞曲×手部编舞=Apple超短片的产品快闪美学（双视频对比分析）
+---
+id: APPLE-FLASH
+name: Apple快闪产品美学 — Introducing AirPods Pro 3 + The all-new MacBook Neo
+type: commercial
+year: '2025'
+director: Apple（内部制作团队）
+primary_scene: product-demo
+secondary_scene: studio-ad
+tags:
+- 快闪美学
+- 超短片
+- 音乐驱动
+- 文字叙事
+- 无旁白
+- 舞蹈/手部编舞
+techniques:
+  narrative:
+  - 特征罗列叙事
+  - 音乐驱动叙事
+  - 无旁白纯视听叙事
+  - 价格惊喜延迟揭示
+  - 双片对比叙事
+  cinematography:
+  - 顶拍手部编舞
+  - 身体即产品载体
+  - 快速节奏剪辑
+  - 微距产品悬浮
+  - 白色负空间构图
+  color:
+  - 霓虹电子色谱
+  - 四色机身轮换
+  - 白色极简负空间
+  - 霓虹色vs金属色对比
+  vfx:
+  - glitch数码故障转场
+  - 色彩通道分离
+  - 抽象几何动画合成
+  - 贴纸CGI叠加
+  - 产品悬浮旋转CGI
+  sound:
+  - 电子鼓打贝斯驱动
+  - indie-pop翻唱配乐
+  - 无旁白音乐叙事
+  - 拟音同步打击
+  - 人声片段嵌入
+  creative:
+  - 快闪记忆点
+  - 文字=信息层
+  - 颜色=情感层
+  - 入门价=惊喜锚定
+  - 身体/手=亲近感
+styles: []
+scene_relations:
+  extra_strong: []
+  extra_reference: []
+---
+
 
 ## 元信息
 

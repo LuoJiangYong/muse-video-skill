@@ -1,4 +1,56 @@
 # LJZ-COFFEE — 微缩模型×咖啡节=城市品牌叙事的物质化革命
+---
+id: LJZ-COFFEE
+name: 陆家嘴咖啡文化节十周年宣传片 / Lujiazui Coffee Festival 10th Anniversary
+type: commercial
+year: '2025'
+director: —（陆家嘴咖啡文化节组委会委托制作）
+primary_scene: studio-ad
+secondary_scene: custom
+tags:
+- 微缩模型
+- 移轴摄影
+- 咖啡城市
+- 地标艺术
+- 庆典叙事
+techniques:
+  narrative:
+  - 微缩城市叙事
+  - 地标符号化
+  - 品牌庆典叙事
+  - 逐镜元素递增
+  cinematography:
+  - 微缩俯拍移轴
+  - 固定细节凝视
+  - 跟拍微缩运动体
+  - 微距浅景深
+  - 多角度地标展示
+  color:
+  - 暖色调情感霸权
+  - 咖啡色谱体系
+  - 微缩材质还原
+  - 地标色保留+主题色注入
+  vfx:
+  - 液体合成+微缩融合
+  - 咖啡豆粒子散落
+  - 蒸汽烟雾微缩匹配
+  - 庆典粒子系统
+  sound:
+  - 器具拟音驱动节奏
+  - 城市环境音微缩化
+  - 庆典音效层次
+  - 无旁白品牌声音
+  creative:
+  - 城市即品牌载体
+  - 微缩模型传播力
+  - 地标情感绑定
+  - 庆典仪式感构建
+styles: []
+scene_relations:
+  extra_strong: []
+  extra_reference: []
+---
+
 
 ## 元信息
 

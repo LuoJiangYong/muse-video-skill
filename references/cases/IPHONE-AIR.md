@@ -1,4 +1,56 @@
 # IPHONE-AIR — 极致轻薄×悬浮美学×A19 Pro=Apple产品片的「薄即信仰」叙事
+---
+id: IPHONE-AIR
+name: iPhone Air 产品介绍影片 / Introducing iPhone Air
+type: commercial
+year: '2025'
+director: Apple（内部制作团队）
+primary_scene: product-demo
+secondary_scene: studio-ad
+tags:
+- 极致轻薄
+- 悬浮美学
+- A19 Pro
+- 工业解剖
+- 失重隐喻
+techniques:
+  narrative:
+  - 极致轻薄叙事
+  - 悬浮失重隐喻
+  - 工业解剖叙事
+  - 芯片聚光揭示
+  - 三段减薄递进
+  cinematography:
+  - 侧剖面零度视角
+  - 微距材质窥视
+  - 悬浮零重力运镜
+  - 荷兰角产品雕塑
+  - 指尖接触式构图
+  color:
+  - 冷调金属色谱
+  - 极简负空间留白
+  - 多色机身轮换
+  - 暗场高光反差
+  vfx:
+  - 爆炸分解CGI
+  - 芯片聚光灯渲染
+  - 慢动作悬浮合成
+  - 材质光泽层叠
+  sound:
+  - 电子氛围脉冲配乐
+  - 材质触感拟音
+  - 设计师自述旁白
+  creative:
+  - 薄即信仰
+  - 悬浮=技术革命
+  - 设计即品牌
+  - A19 Pro=心脏揭示
+styles: []
+scene_relations:
+  extra_strong: []
+  extra_reference: []
+---
+
 
 ## 元信息
 

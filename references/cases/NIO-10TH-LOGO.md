@@ -1,4 +1,59 @@
 # NIO-10TH-LOGO — 3D 动态图形 × LOGO=叙事载体 × 九大里程碑 = 品牌 LOGO 演绎的新标杆
+---
+id: NIO-10TH-LOGO
+name: 以10为灵感，蔚来十周年标识焕新 / NIO 10th Anniversary Logo Refresh
+type: logo-animation
+year: '2024'
+director: 蔚来（NIO 内部设计团队）
+primary_scene: logo-animation
+secondary_scene: studio-ad
+tags:
+- LOGO动画
+- 3D动态图形
+- 品牌里程碑
+- 十周年
+- 材质变换
+- 设计驱动
+- 无实拍CGI
+techniques:
+  narrative:
+  - LOGO=叙事载体
+  - 九大里程碑快切叙事
+  - 品牌价值观序列开场
+  - 材质=品牌身份隐喻
+  cinematography:
+  - LOGO 居中固定构图
+  - 推拉穿越 O 形传送门
+  - 360° 环绕展示材质
+  - 微距材质凝视
+  color:
+  - 里程碑专属色谱九段递进
+  - 日落紫橙开场渐变
+  - 全息彩虹科技色谱
+  - 品牌绿=可持续色谱
+  - 粉彩社区配色
+  vfx:
+  - 3D 材质连续变换
+  - O 形传送门转场
+  - 粒子系统+光线网络
+  - 真实物理渲染
+  - 字体动画节奏同步
+  sound:
+  - 电子驱动节拍配乐
+  - SFX 材质同步
+  - whoosh/金属碰撞/有机沙沙三层音效
+  - 无旁白纯视听
+  creative:
+  - LOGO=品牌宣言
+  - 设计驱动理念可视化
+  - 里程碑=品牌厚度
+  - 用户社区=终极里程碑
+styles: []
+scene_relations:
+  extra_strong: []
+  extra_reference: []
+---
+
 
 ## 元信息
 

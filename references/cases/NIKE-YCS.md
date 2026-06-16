@@ -1,4 +1,47 @@
 # You Can't Stop Us — 分屏匹配的史诗叙事
+---
+id: NIKE-YCS
+name: You Can't Stop Us / 你无法阻止我们
+type: commercial
+year: '2020'
+director: Oscar Hudson
+primary_scene: product-demo
+secondary_scene: logo-animation
+tags:
+- 分屏匹配
+- 档案素材
+- 隐喻剪辑
+- 动态节奏
+- 品牌精神
+techniques:
+  narrative:
+  - 隐喻剪辑
+  - 无旁白累积
+  - 集体叙事
+  cinematography:
+  - 分屏匹配
+  - 档案素材
+  - 动态节奏
+  color:
+  - 跨时空色调统一
+  - 肤色多样性
+  vfx:
+  - 分屏/画中画
+  - 动态匹配转场
+  sound:
+  - 动态节奏
+  - 声画对位
+  - 静默爆发
+  creative:
+  - 品牌精神
+  - 集体共鸣
+  - Slogan 落地
+styles: []
+scene_relations:
+  extra_strong: []
+  extra_reference: []
+---
+
 
 ## 元信息
 

@@ -1,4 +1,57 @@
 # PIXAR-LOGO — LOGO=角色 × 物理喜剧 × 39年未变的品牌IP终极典范
+---
+id: PIXAR-LOGO
+name: Pixar 开场LOGO（Luxo Jr.）/ Pixar Opening Logo — Luxo Jr.
+type: logo-animation
+year: 1986（Luxo Jr. 短片诞生）→ 1995（首次作为电影 LOGO 在《玩具总动员》出现）→ 至今（持续使用中）
+director: Pixar Animation Studios——John Lasseter（Luxo Jr. 短片导演），Pixar 内部团队（LOGO 动画）
+primary_scene: logo-animation
+secondary_scene: animation
+tags:
+- LOGO角色化
+- 物理喜剧
+- 无对白微叙事
+- 品牌IP化
+- Luxo Jr.
+- 跳跳灯
+- 30+年不变
+- 粉丝文化符号
+techniques:
+  narrative:
+  - LOGO=角色IP
+  - 无对白微叙事
+  - 物理喜剧叙事
+  - 片头=「演出开始」仪式
+  cinematography:
+  - 侧入→跳跟→反打
+  - 舞台聚光灯单光源
+  - 极简黑色背景
+  - 中景+特写交替
+  color:
+  - Pixar 蓝灰背景
+  - 纯白台灯
+  - 黑色 sans-serif 粗字标
+  vfx:
+  - 物理模拟跳跃
+  - 软体挤压变形
+  - 光源实时照明
+  - 每部电影定制视觉元素
+  sound:
+  - 机械弹簧 squeak+金属 hop+弹性 boing 三层声音签名
+  - 每部电影定制配乐
+  - 灯泡「click」=品牌句号
+  - 无对白纯声音叙事
+  creative:
+  - LOGO=品牌第一印象
+  - 角色=永久品牌大使
+  - 定制化=每部电影都「新」但 LOGO 不变
+  - 默片喜剧=跨文化无翻译
+styles: []
+scene_relations:
+  extra_strong: []
+  extra_reference: []
+---
+
 
 ## 元信息
 

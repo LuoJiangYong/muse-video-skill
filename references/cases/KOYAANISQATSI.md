@@ -1,4 +1,55 @@
 # Koyaanisqatsi — 86 分钟无对白 × Philip Glass 配乐 = 纯影像叙事的终极实验
+---
+id: KOYAANISQATSI
+name: Koyaanisqatsi / 失衡生活
+type: documentary
+year: '1982'
+director: Godfrey Reggio
+primary_scene: custom
+secondary_scene: sci-fi
+tags:
+- 延时摄影
+- 慢动作人群
+- 无对白叙事
+- Philip Glass 极简音乐
+- 工业vs自然
+techniques:
+  narrative:
+  - 蒙太奇即论点
+  - 无主角史诗叙事
+  - 循环结构叙事
+  - 工业vs自然对立
+  - 因果推论式剪辑
+  cinematography:
+  - 延时摄影叙事
+  - 慢动作人群编舞
+  - 航拍地景即角色
+  - 静态凝视镜头
+  - 反射式构图
+  color:
+  - 自然暖色vs工业冷灰
+  - 沙漠红/蓝天蓝
+  - 都市霓虹夜景
+  - 褪色档案质感
+  vfx:
+  - 纯实拍零后期合成
+  - 胶片时代延时控制
+  - 机内慢动作
+  - 光学叠化转场
+  sound:
+  - Philip Glass极简主义配乐
+  - 工业声音采样
+  - 合唱人声即旁白
+  - 无对白无解说
+  - 音乐即论点
+  creative:
+  - —
+styles: []
+scene_relations:
+  extra_strong: []
+  extra_reference: []
+---
+
 
 ## 元信息
 

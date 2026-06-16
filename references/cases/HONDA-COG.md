@@ -1,4 +1,53 @@
 # The Cog — 鲁布·戈德堡机械 × 零 CGI 的工程史诗
+---
+id: HONDA-COG
+name: The Cog / 齿轮
+type: commercial
+year: '2003'
+director: Antoine Bardou-Jacquet (Wieden+Kennedy 代理)
+primary_scene: product-demo
+secondary_scene: studio-ad
+tags:
+- 鲁布·戈德堡机械
+- 连锁反应
+- 产品零件即道具
+- 实拍无CG
+- 精密工程
+techniques:
+  narrative:
+  - 连锁反应叙事
+  - 产品零件即角色
+  - 多米诺悬念结构
+  - 完全无对白叙事
+  cinematography:
+  - 微距追踪
+  - 零件质感凝视
+  - 动态跟拍接力
+  - 静→动→静的史诗节奏
+  color:
+  - 白色极简空间
+  - 零件材质本色
+  - 零添加色彩
+  vfx:
+  - 零CGI全实拍
+  - 606次物理调度
+  - 精密计时链
+  - 真实重力/摩擦/磁力
+  sound:
+  - 零件撞击声即音乐
+  - 无配乐无旁白
+  - 机械节奏作曲
+  creative:
+  - 零件即品牌
+  - 工程精度=品质
+  - 失败606次=品牌执着
+  - 无整车展示
+styles: []
+scene_relations:
+  extra_strong: []
+  extra_reference: []
+---
+
 
 ## 元信息
 

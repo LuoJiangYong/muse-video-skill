@@ -1,4 +1,57 @@
 # PUDONG-CAT — 橘猫POV×韦斯安德森美学×AI生成=城市文明宣传的去政务化革命
+---
+id: PUDONG-CAT
+name: 文明浦东·橘猫篇 / Pudong Civility — The Cat's Journey
+type: commercial
+year: '2024'
+director: —（浦东新区新时代文明实践中心委托，AI 生成）
+primary_scene: custom
+secondary_scene: studio-ad
+tags:
+- 橘猫POV
+- 韦斯安德森
+- AI生成
+- 去政务化
+- 文明行为叙事
+techniques:
+  narrative:
+  - 动物代言人叙事
+  - 猫视角POV
+  - 文明行为叙事
+  - AI生成叙事
+  - 韦斯安德森叙事美学
+  cinematography:
+  - 绝对对称构图体系
+  - 平面化运镜
+  - 多分屏蒙太奇
+  - 遮罩框式转场
+  - 俯视桌面视角
+  color:
+  - 韦斯安德森马卡龙色谱
+  - AI素材色彩统一
+  - 夜景金蓝对比
+  - 薄荷绿底色
+  vfx:
+  - 多AI管线素材融合
+  - 超现实尺度匹配
+  - 猫形红绿灯动画
+  - 烟花粒子
+  sound:
+  - 复古波尔卡/华尔兹配乐
+  - 拟人化动物拟音
+  - 轻打击乐节奏同步
+  - 广播欢迎语开场
+  creative:
+  - 去政务化文明叙事
+  - AI=文明新表达
+  - 萌宠即文明代言人
+  - 分屏=生活方式并列
+styles: []
+scene_relations:
+  extra_strong: []
+  extra_reference: []
+---
+
 
 ## 元信息
 

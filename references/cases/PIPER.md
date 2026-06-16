@@ -1,4 +1,54 @@
 # Piper — 6 分钟无对白 × 照片级渲染 = 动画叙事的极简主义革命
+---
+id: PIPER
+name: Piper / 鹬
+type: animation
+year: '2016'
+director: Alan Barillaro / Pixar Animation Studios
+primary_scene: custom
+secondary_scene: sci-fi
+tags:
+- 无对白叙事
+- 照片级渲染
+- 非人类主角
+- 成长弧线
+- 海浪摄影
+techniques:
+  narrative:
+  - 无对白成长叙事
+  - 试错学习结构
+  - 环境即导师
+  - 非人类角色的拟人弧线
+  - 微观史诗
+  cinematography:
+  - 超低角度主观摄影
+  - 浅景深角色聚焦
+  - 海浪主观镜头
+  - 微距材质凝视
+  - 呼吸感手持模拟
+  color:
+  - 沙色暖金体系
+  - 水下泡泡世界冷蓝
+  - 逆光羽翼半透明
+  - 金色时刻释放
+  vfx:
+  - 羽毛SSS次表面散射
+  - 沙粒粒子模拟
+  - 水/泡沫流体模拟
+  - 自然光全局光照
+  sound:
+  - 无对白拟音叙事
+  - 微观听觉视角
+  - 海浪威胁→友好声音弧线
+  - 音乐情感引导
+  creative:
+  - —
+styles: []
+scene_relations:
+  extra_strong: []
+  extra_reference: []
+---
+
 
 ## 元信息
 

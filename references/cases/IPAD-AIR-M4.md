@@ -1,4 +1,56 @@
 # IPAD-AIR-M4 — 生活即创作×紫色视觉锚点×M4芯=Apple产品片的「随身创造力」叙事
+---
+id: IPAD-AIR-M4
+name: Introducing iPad Air with M4 / iPad Air M4 产品介绍影片
+type: commercial
+year: '2026'
+director: Apple（内部制作团队）
+primary_scene: product-demo
+secondary_scene: studio-ad
+tags:
+- 场景融入
+- 生活即创作
+- M4芯片
+- 紫色视觉锚点
+- Magic Keyboard
+techniques:
+  narrative:
+  - 场景融入叙事
+  - 碎片化生活蒙太奇
+  - 产品即场景配件
+  - 短时高压叙事
+  - 文字驱动叙事
+  cinematography:
+  - 低角度日常仰视
+  - 浅景深场景分离
+  - 屏幕自发光照明
+  - 荷兰角动态桌面
+  - 遮挡式场景转场
+  color:
+  - 紫色视觉锚点色谱
+  - 暖棕/金场景基调
+  - 暗场屏幕自发光对比
+  - 自然光=品牌光
+  vfx:
+  - 屏幕内容发光合成
+  - 场景实拍+产品合成
+  - 动态焦点切换
+  - '"AIR"字体3D渲染'
+  sound:
+  - 人声采样配乐
+  - 环境音自然融入
+  - 轻量拟音点缀
+  creative:
+  - iPad=场景配件
+  - 日常即创作
+  - 紫色=Air视觉签名
+  - M4=性能无声承诺
+styles: []
+scene_relations:
+  extra_strong: []
+  extra_reference: []
+---
+
 
 ## 元信息
 

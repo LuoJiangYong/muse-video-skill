@@ -1,4 +1,55 @@
 # ACHROMA — AI 科幻短片 × 色彩=希望隐喻 × 扩散模型视觉 = AI 原生电影叙事的先锋实验
+---
+id: ACHROMA
+name: ACHROMA / 失色
+type: short-film
+year: '2024'
+director: Grim Yacht Film
+primary_scene: sci-fi
+secondary_scene: custom
+tags:
+- AI生成短片
+- 科幻叙事
+- 色彩隐喻
+- 扩散模型
+- 风格迁移
+- Dune风格配乐
+techniques:
+  narrative:
+  - 色彩=希望隐喻叙事
+  - 六段压缩叙事弧线
+  - 去人类化入侵叙事
+  - 极简角色+宏大世界观
+  cinematography:
+  - AI生成虚拟运镜
+  - 低角度巨物摄影
+  - 高空俯瞰世界构建
+  - 浅景深表情捕捉
+  - 对称建筑构图
+  color:
+  - 彩色→灰阶渐变叙事
+  - 暖橙=希望色谱
+  - 自然饱和→完全去饱和转场
+  - AI色彩风格迁移
+  vfx:
+  - 扩散模型全流程生成
+  - 风格迁移色彩抽离
+  - 发光晶体CG渲染
+  - 外星巨舰合成
+  - AI morphing转场
+  sound:
+  - Dune风格宏伟配乐
+  - 女声空灵咏叹
+  - 音乐跟随叙事情绪递进
+  - 环境音氛围层
+  creative:
+  - —
+styles: []
+scene_relations:
+  extra_strong: []
+  extra_reference: []
+---
+
 
 ## 元信息
 

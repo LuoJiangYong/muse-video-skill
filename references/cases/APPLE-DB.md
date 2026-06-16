@@ -1,4 +1,48 @@
 # Don't Blink — 产品密度的极简暴力
+---
+id: APPLE-DB
+name: Don't Blink / 别眨眼
+type: commercial
+year: '2019'
+director: —（Apple 内部创意团队）
+primary_scene: product-demo
+secondary_scene: studio-ad
+tags:
+- 高速剪辑
+- 产品密度
+- 节奏递增
+- 极简旁白
+- 功能叙事
+techniques:
+  narrative:
+  - 极简旁白
+  - 功能叙事
+  - 密度递增
+  cinematography:
+  - 高速剪辑
+  - 产品密度
+  - 微距凝视
+  color:
+  - 极简色调
+  - 暗色产品台
+  - 品牌色点缀
+  vfx:
+  - 功能 UI 叠加
+  - 极速产品转场
+  sound:
+  - 节奏递增
+  - 极简音乐
+  - 旁白引导
+  creative:
+  - 产品密度
+  - 节奏递增
+  - 功能叙事
+styles: []
+scene_relations:
+  extra_strong: []
+  extra_reference: []
+---
+
 
 ## 元信息
 

@@ -1,4 +1,55 @@
 # The One Moment — 4.2 秒实时 × 超慢动作 = MV 叙事的物理极限
+---
+id: OKGO-TOM
+name: The One Moment / 这一刻
+type: music-video
+year: '2016'
+director: Damian Kulash（OK Go 主唱，独立执导）
+primary_scene: product-demo
+secondary_scene: studio-ad
+tags:
+- 超高速摄影
+- 精密计时
+- 单镜头实拍
+- 色彩爆炸
+- 破坏即创作
+techniques:
+  narrative:
+  - 极压时间叙事
+  - 破坏即创作
+  - 音乐可视化叙事
+  - 单镜头工程叙事
+  - 反MV叙事
+  cinematography:
+  - 超高速摄影6000fps
+  - 多机位同步复现
+  - 精确帧匹配编舞
+  - 静态广角凝视
+  color:
+  - 原色爆炸色谱
+  - 白色零空间
+  - 色彩分章节编组
+  - 灰度→彩色渐变
+  vfx:
+  - 零CGI全实拍
+  - 精密计时链318事件
+  - 概率管理单镜头
+  - 物理同步触发
+  sound:
+  - 音乐即时间线
+  - 打击乐同步音效
+  - 时间拉伸听觉设计
+  - 沉默即呼吸
+  creative:
+  - 病毒MV公式
+  - 工程即艺术
+  - 品牌隐形策略
+styles: []
+scene_relations:
+  extra_strong: []
+  extra_reference: []
+---
+
 
 ## 元信息
 

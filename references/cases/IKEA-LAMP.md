@@ -1,4 +1,51 @@
 # Lamp — 「反广告」的广告 × 打破叙事的黑色幽默
+---
+id: IKEA-LAMP
+name: Lamp / 台灯
+type: commercial
+year: '2003'
+director: Spike Jonze (Crispin Porter + Bogusky 代理)
+primary_scene: studio-ad
+secondary_scene: product-demo
+tags:
+- 物的人类化
+- 情感反转
+- 黑色幽默
+- 反消费主义
+- 打破第四面墙
+techniques:
+  narrative:
+  - 物的人类化
+  - 情感反转陷阱
+  - 打破第四面墙
+  - 反广告叙事
+  - 诗意→讽刺的调性切换
+  cinematography:
+  - POV 台灯视角
+  - 雨夜情绪摄影
+  - 手持亲密感
+  - Jonas 直面镜头
+  color:
+  - 冷蓝雨夜→暖黄室内
+  - 被遗弃的灰暗
+  - 瑞典设计的明快
+  vfx:
+  - 无特效
+  - 台灯的人格化靠镜头而非CGI
+  sound:
+  - 极情绪化的钢琴配乐→无音乐「理性」旁白
+  - 配乐嘲讽式切断
+  creative:
+  - 反广告的广告
+  - 消费主义自嘲
+  - 情感操控揭露
+  - 品牌=诚实的
+styles: []
+scene_relations:
+  extra_strong: []
+  extra_reference: []
+---
+
 
 ## 元信息
 

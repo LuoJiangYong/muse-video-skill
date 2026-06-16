@@ -1,4 +1,50 @@
 # 花样年华 — 王家卫美学的终极标本
+---
+id: WKW-ML
+name: 花样年华 / In the Mood for Love
+type: film
+year: '2000'
+director: 王家卫 (Wong Kar-wai)
+primary_scene: custom（艺术电影 / art-film）
+secondary_scene: studio-ad
+tags:
+- 港式怀旧
+- 色彩饱和
+- 慢快门步印
+- 框架构图
+- 旗袍叙事
+techniques:
+  narrative:
+  - 留白叙事
+  - 重复结构
+  - 未完成情感
+  - 时代背景隐喻
+  cinematography:
+  - 框架构图
+  - 慢快门步印
+  - 浅景深
+  - 镜面反射
+  - 极端低角度
+  color:
+  - 场景色调对照
+  - 旗袍色彩叙事
+  - 墙纸视觉密度
+  vfx:
+  - 步印模拟
+  - 雨夜霓虹
+  - 烟雾氛围层
+  sound:
+  - 音乐锚点
+  - 环境音优先
+  - 对白省略
+  creative:
+  - —
+styles: []
+scene_relations:
+  extra_strong: []
+  extra_reference: []
+---
+
 
 ## 元信息
 

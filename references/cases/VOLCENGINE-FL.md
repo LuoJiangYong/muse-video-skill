@@ -1,4 +1,56 @@
 # VOLCENGINE-FL — POV过山车×武汉地标×赛博国潮=AI发布会的超现实邀请函
+---
+id: VOLCENGINE-FL
+name: 火山引擎 Force Link AI 创新巡展·武汉站 宣传片 / Volcengine Force Link 2024 Wuhan
+type: commercial
+year: '2024'
+director: —（火山引擎委托制作，AI生成+CG合成）
+primary_scene: sci-fi
+secondary_scene: studio-ad
+tags:
+- POV过山车
+- 赛博国潮
+- 武汉地标
+- AI隐喻
+- 时空穿梭
+techniques:
+  narrative:
+  - POV过山车叙事
+  - 时空穿越叙事
+  - 文化符号巨型化叙事
+  - AI能力隐喻叙事
+  cinematography:
+  - 全程POV主观镜头
+  - 轨道引导构图
+  - 俯冲加速运动语言
+  - 360°螺旋旋转
+  - 减速停靠仪式感
+  color:
+  - 赛博国潮色谱
+  - 场景驱动色温切换
+  - 发光轨道变色体系
+  - 暖→冷→暖情感弧线
+  vfx:
+  - 全CG POV过山车管线
+  - 文化符号巨型化
+  - 时空隧道转场
+  - 金色轨道材质变换
+  sound:
+  - 国乐+EDM融合
+  - 编钟→电子递进音轨
+  - 场景专属音效主题
+  - 发布会现场声收束
+  creative:
+  - 发布会即目的地
+  - 城市文化=品牌厚度
+  - 过山车=AI体验隐喻
+  - 地标索引式邀请
+styles: []
+scene_relations:
+  extra_strong: []
+  extra_reference: []
+---
+
 
 ## 元信息
 

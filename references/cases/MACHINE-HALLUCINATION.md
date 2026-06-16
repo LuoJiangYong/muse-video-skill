@@ -1,4 +1,56 @@
 # MACHINE-HALLUCINATION — AI 数据雕塑 × 潜空间漫游 × 非叙事纯视觉流 = 实验影像的类型开山之作
+---
+id: MACHINE-HALLUCINATION
+name: Machine Hallucination / 机器幻觉
+type: experimental
+year: 2019（ARTECHOUSE New York 首展）
+director: Refik Anadol / Refik Anadol Studio
+primary_scene: custom
+secondary_scene: sci-fi
+tags:
+- AI数据雕塑
+- GAN潜空间
+- 粒子数据场
+- 非叙事纯视觉
+- 沉浸式投影
+- 机器幻觉
+techniques:
+  narrative:
+  - 数据叙事
+  - 非叙事纯视觉流
+  - 机器幻觉作为叙事结构
+  - 三章递进结构
+  - 去人类中心叙事
+  cinematography:
+  - 虚拟空间漫游运镜
+  - 数据密度透视
+  - 潜空间连续飞行
+  - 第一人称沉浸视角
+  - 无限纵深构图
+  color:
+  - 数据驱动色谱递进
+  - 灰阶→深蓝→有机色谱三章递进
+  - 粒子发光色谱
+  - 机器视觉色彩体系
+  vfx:
+  - GAN潜空间连续生成
+  - 粒子数据场
+  - 实时生成渲染
+  - AI数据雕塑
+  - 多面投影映射
+  sound:
+  - 环境电子氛围三章递进
+  - 空间音频生成式配乐
+  - 声音驱动视觉同步
+  - 无对白无旁白
+  creative:
+  - —
+styles: []
+scene_relations:
+  extra_strong: []
+  extra_reference: []
+---
+
 
 ## 元信息
 
