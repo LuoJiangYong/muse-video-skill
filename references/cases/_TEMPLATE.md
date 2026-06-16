@@ -40,12 +40,12 @@ techniques:
     - 技法1
   creative: []
 
-# 风格标签，格式: [cyberpunk, epic, dreamy]
-# 可自由命名，已有风格运行 build_index.py --check 可见
+ # 风格标签，格式: [cyberpunk, epic, dreamy]
+ # 可自由命名，已有风格运行 build_index.py --check 可见
 styles: []
 
-# 场景关联。primary_scene 自动视为 strong，secondary_scene 自动视为 reference
-# 以下声明额外的关联场景
+ # 场景关联。primary_scene 自动视为 strong，secondary_scene 自动视为 reference
+ # 以下声明额外的关联场景
 scene_relations:
   extra_strong: []
   extra_reference: []
