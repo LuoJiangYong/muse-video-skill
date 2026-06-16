@@ -1,7 +1,7 @@
 ---
 name: muse-video
 description: "When the user asks to 策划/构思/设计/写脚本/画分镜 for a video project — e.g. '帮我策划一个广告创意' '这个产品演示视频怎么拍' '帮我写科幻短片的分镜脚本' '给我这个品牌TVC的美术方向'。Not for actual video rendering/compositing or AI image/video generation."
-version: 0.23.0
+version: 0.24.0
 author: Hermes Agent + 钱多多
 license: MIT
 platforms: [linux, macos, windows]
@@ -62,10 +62,14 @@ metadata:
 
 ## 案例引用
 
-> **案例库规模**：32 案例（film×4, commercial×23, short-film×2, music-video×1, animation×1, documentary×1, experimental×1, logo-animation×1），12 张交叉引用表，覆盖 25+ 风格标签。
+> **案例库规模**：38 案例（film×4, commercial×25, short-film×2, music-video×1, animation×1, documentary×1, experimental×1, logo-animation×3），覆盖 25+ 风格标签。新增品类：奢侈品(1)、快消CGI(1)、LOGO动画扩展(2)。
 
 当案例匹配时，Agent 加载案例文件，将对应段落注入角色 prompt：
 - `BR2049` → sci-fi/赛博朋克的镜头+色彩+特效技法
+- `CHANEL-NO5-FILM` → 奢侈品/明星叙事/电影级TVC
+- `COCA-COLA-HAPPINESS-FACTORY` → 快消CGI/全幻想世界/产品=神圣之物
+- `APPLE-EVENT-LOGO` → LOGO=事件品牌/单场次定制/17种风格系统
+- `PIXAR-LOGO` → LOGO=角色IP/物理喜剧/30年品牌IP
 - 更多案例见 `references/cases/INDEX.md` 交叉索引表
 - 发现新案例 → 按 `references/cases/_TEMPLATE.md` 拆解 + 更新 INDEX.md 全表
 

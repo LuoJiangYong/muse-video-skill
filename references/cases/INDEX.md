@@ -44,6 +44,10 @@
 | MACHINE-HALLUCINATION | 机器幻觉 | experimental | 2019 | Refik Anadol | custom | sci-fi | 数据叙事, 非叙事纯视觉流, AI数据雕塑, GAN潜空间, 粒子数据场, 沉浸式投影 |
 | ACHROMA | 失色 | short-film | 2024 | Grim Yacht Film | sci-fi | custom | 色彩隐喻叙事, AI全流程生成, 扩散模型, 风格迁移, Dune风格配乐, 六段压缩叙事 |
 | NIO-10TH-LOGO | 以10为灵感，蔚来十周年标识焕新 | logo-animation | 2024 | NIO/蔚来 | logo-animation | studio-ad | 3D动态图形, LOGO=叙事载体, 材质变换, 九大里程碑, IO=10, PBR渲染 |
+| CHANEL-NO5-FILM | Chanel No.5 "The Film" | commercial | 2004 | Baz Luhrmann | studio-ad | product-demo | 明星叙事, 逃离=产品隐喻, 音乐剧三幕, 嗅觉锚, 反向灰姑娘, 电影级TVC, 奢侈品 |
+| COCA-COLA-HAPPINESS-FACTORY | Coca-Cola "Happiness Factory" | commercial | 2006 | W+K Amsterdam / Psyop | studio-ad | custom | 全CGI世界, 微观史诗, 产品=神圣之物, 无对白纯视觉, 有机机械, 流水线=冒险, 全球品牌 |
+| APPLE-EVENT-LOGO | Apple Event 开场LOGO合集 | logo-animation | 2019-2024 | Apple Design Team | logo-animation | studio-ad | LOGO=事件品牌, 单场次定制, 粒子/液态金属/手绘, 5秒=情感弧线, 17风格系统 |
+| PIXAR-LOGO | Pixar 开场LOGO (Luxo Jr.) | logo-animation | 1995-至今 | Pixar Animation Studios | logo-animation | animation | LOGO=角色IP, 物理喜剧, 品牌IP化, 每部电影定制, 30年不变, 默片微叙事 |
 
 ### 类型枚举
 
@@ -192,6 +196,19 @@
 | LOGO=叙事载体 | NIO-10TH-LOGO |
 | 九大里程碑快切叙事 | NIO-10TH-LOGO |
 | 品牌价值观序列开场 | NIO-10TH-LOGO |
+| 明星叙事/逃离=产品隐喻 | CHANEL-NO5-FILM |
+| 音乐剧式三幕结构 | CHANEL-NO5-FILM |
+| 产品=嗅觉锚 | CHANEL-NO5-FILM |
+| 反向灰姑娘叙事 | CHANEL-NO5-FILM |
+| 微观史诗叙事 | COCA-COLA-HAPPINESS-FACTORY |
+| 产品=神圣之物 | COCA-COLA-HAPPINESS-FACTORY |
+| 流水线=冒险旅程 | COCA-COLA-HAPPINESS-FACTORY |
+| LOGO=事件品牌 | APPLE-EVENT-LOGO |
+| 概念先行/一句话锚点 | APPLE-EVENT-LOGO |
+| 5秒=完整情感弧线 | APPLE-EVENT-LOGO |
+| LOGO=角色IP | PIXAR-LOGO |
+| 物理喜剧叙事 | PIXAR-LOGO |
+| 每部电影定制LOGO | PIXAR-LOGO |
 
 ### 镜头语言 (→ DP)
 
@@ -323,6 +340,14 @@
 | LOGO居中固定构图 | NIO-10TH-LOGO |
 | O形传送门转场 | NIO-10TH-LOGO |
 | 微距材质凝视 | NIO-10TH-LOGO |
+| 手持追逐vs稳态浪漫双摄影体系 | CHANEL-NO5-FILM |
+| 金色时刻逆光 | CHANEL-NO5-FILM |
+| 城市天际线=情感高度 | CHANEL-NO5-FILM |
+| 慢动作情感定格 | CHANEL-NO5-FILM |
+| 连续追踪伪长镜头(CGI) | COCA-COLA-HAPPINESS-FACTORY |
+| 微距vs宏大尺度交替 | COCA-COLA-HAPPINESS-FACTORY |
+| 深度推拉+材质凝视 | APPLE-EVENT-LOGO |
+| 侧入→跳跟→反打3机位 | PIXAR-LOGO |
 
 ### 色彩/美术 (→ Art Director)
 
@@ -413,6 +438,13 @@
 | 里程碑专属色谱九段递进 | NIO-10TH-LOGO |
 | 全息彩虹科技色谱 | NIO-10TH-LOGO |
 | 粉彩社区配色 | NIO-10TH-LOGO |
+| 双色世界法则(冷色名人vs暖色普通) | CHANEL-NO5-FILM |
+| 服装=角色弧色彩叙事 | CHANEL-NO5-FILM |
+| 五世界专属色谱(绿/蓝/粉/白/红) | COCA-COLA-HAPPINESS-FACTORY |
+| Coca-Cola红的克制→爆发 | COCA-COLA-HAPPINESS-FACTORY |
+| 每场专属配色方案(17+套独立色谱) | APPLE-EVENT-LOGO |
+| 黑色=无限可能性(舞台背景) | APPLE-EVENT-LOGO |
+| Pixar蓝灰渐变(#4A6FA5) | PIXAR-LOGO |
 
 ### 特效语言 (→ VFX)
 
@@ -519,6 +551,15 @@
 | 3D材质连续变换 | NIO-10TH-LOGO |
 | PBR真实物理渲染 | NIO-10TH-LOGO |
 | 粒子光线网络 | NIO-10TH-LOGO |
+| 无缝城市天际线合成 | CHANEL-NO5-FILM |
+| 钻石吊坠CGI增强 | CHANEL-NO5-FILM |
+| 全CGI幻想世界构建 | COCA-COLA-HAPPINESS-FACTORY |
+| 真实流体模拟+玻璃材质渲染 | COCA-COLA-HAPPINESS-FACTORY |
+| 程序化人群+布料模拟 | COCA-COLA-HAPPINESS-FACTORY |
+| 粒子系统+星场聚合LOGO | APPLE-EVENT-LOGO |
+| 液态金属材质(薄膜干涉) | APPLE-EVENT-LOGO |
+| 手绘线条逐帧动画 | APPLE-EVENT-LOGO |
+| 物理模拟跳跃+软体挤压 | PIXAR-LOGO |
 
 ### 声音设计 (→ Sound Designer)
 
@@ -620,6 +661,15 @@
 | 电子驱动节拍配乐 | NIO-10TH-LOGO |
 | SFX材质同步 | NIO-10TH-LOGO |
 | 品牌尾音设计 | NIO-10TH-LOGO |
+| Debussy Clair de Lune管弦改编 | CHANEL-NO5-FILM |
+| 声音监狱vs声音自由双世界 | CHANEL-NO5-FILM |
+| 文学化独白(耳语级) | CHANEL-NO5-FILM |
+| 单一进化管弦主题 | COCA-COLA-HAPPINESS-FACTORY |
+| 声效=世界定义器 | COCA-COLA-HAPPINESS-FACTORY |
+| 每场专属电子音轨 | APPLE-EVENT-LOGO |
+| SFX材质同步(金属/液体/粒子) | APPLE-EVENT-LOGO |
+| 三层声音签名(squeak+hop+boing) | PIXAR-LOGO |
+| 灯泡click=品牌句号 | PIXAR-LOGO |
 
 ### 创意广告专属 (→ Studio-Ad, Product-Demo)
 
@@ -704,6 +754,12 @@
 | 发布会→社交内容转化 | APPLE-EVENT-HIGHLIGHTS |
 | 女声非正式=可接近感 | APPLE-EVENT-HIGHLIGHTS |
 | 产品对比=购买决策工具 | APPLE-EVENT-HIGHLIGHTS |
+| 奢侈品=逃离现实的许可 | CHANEL-NO5-FILM |
+| $33M媒介策略/广告=文化事件 | CHANEL-NO5-FILM |
+| 产品=情感内在属性(液态快乐) | COCA-COLA-HAPPINESS-FACTORY |
+| 全球品牌=文化无关叙事 | COCA-COLA-HAPPINESS-FACTORY |
+| LOGO=事件营销第一枪 | APPLE-EVENT-LOGO |
+| LOGO=品牌第一印象/仪式感 | PIXAR-LOGO |
 
 ---
 
@@ -713,8 +769,8 @@
 
 | 场景类型 | 强相关案例 | 可参考案例 |
 |----------|----------|-----------|
-| studio-ad | APPLE-WH, APPLE-DB, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT, HONDA-COG, GUINNESS-SURFER, APPLE-1984, IKEA-LAMP, LOUVRE-MAP | BR2049, NIKE-YCS, OKGO-TOM, IPHONE17PRO, MACBOOK-NEO, IPHONE-AIR, IPAD-AIR-M4, APPLE-FLASH, APPLE-EVENT-HIGHLIGHTS |
-| logo-animation | NIKE-YCS, PACIFIC-RIM, NIO-10TH-LOGO | APPLE-WH, OKGO-TOM |
+| studio-ad | APPLE-WH, APPLE-DB, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT, HONDA-COG, GUINNESS-SURFER, APPLE-1984, IKEA-LAMP, LOUVRE-MAP, CHANEL-NO5-FILM, COCA-COLA-HAPPINESS-FACTORY | BR2049, NIKE-YCS, OKGO-TOM, IPHONE17PRO, MACBOOK-NEO, IPHONE-AIR, IPAD-AIR-M4, APPLE-FLASH, APPLE-EVENT-HIGHLIGHTS |
+| logo-animation | NIKE-YCS, PACIFIC-RIM, NIO-10TH-LOGO, APPLE-EVENT-LOGO, PIXAR-LOGO | APPLE-WH, OKGO-TOM, CHANEL-NO5-FILM |
 | product-demo | NIKE-YCS, APPLE-DB, COSMOS-L, OLDSPICE-MAN, JOHNLEWIS-PENGUIN, SONY-BALLS, VOLVO-SPLIT, HONDA-COG, GUINNESS-SURFER, IKEA-LAMP, OKGO-TOM, IPHONE17PRO, MACBOOK-NEO, IPHONE-AIR, IPAD-AIR-M4, APPLE-FLASH, APPLE-EVENT-HIGHLIGHTS | APPLE-WH |
 | sci-fi | BR2049, COSMOS-L, WANDERING-E, PACIFIC-RIM, APPLE-1984, ACHROMA | KOYAANISQATSI, VOLCENGINE-FL, MACHINE-HALLUCINATION |
 | custom (art-film) | WKW-ML, PIPER, KOYAANISQATSI, LJZ-COFFEE, BJIFF-SWIFT, PUDONG-CAT, APPLE-EDUCATION, MACHINE-HALLUCINATION | — |
@@ -728,33 +784,29 @@
 | cyberpunk | BR2049 |
 | cyberpunk-adjacent | WANDERING-E, PACIFIC-RIM, APPLE-1984, VOLCENGINE-FL |
 | minimalist | APPLE-DB, BR2049, SONY-BALLS, VOLVO-SPLIT, HONDA-COG, IPHONE17PRO, IPHONE-AIR |
-| surreal | APPLE-WH, COSMOS-L, IKEA-LAMP, LJZ-COFFEE, VOLCENGINE-FL, PUDONG-CAT |
-| epic | BR2049, NIKE-YCS, WANDERING-E, PACIFIC-RIM, SONY-BALLS, VOLVO-SPLIT, HONDA-COG, GUINNESS-SURFER, APPLE-1984, KOYAANISQATSI, VOLCENGINE-FL, BJIFF-SWIFT, IPHONE17PRO |
+| surreal | APPLE-WH, COSMOS-L, IKEA-LAMP, LJZ-COFFEE, VOLCENGINE-FL, PUDONG-CAT, COCA-COLA-HAPPINESS-FACTORY |
+| epic | BR2049, NIKE-YCS, WANDERING-E, PACIFIC-RIM, SONY-BALLS, VOLVO-SPLIT, HONDA-COG, GUINNESS-SURFER, APPLE-1984, KOYAANISQATSI, VOLCENGINE-FL, BJIFF-SWIFT, IPHONE17PRO, CHANEL-NO5-FILM |
 | intimate | BR2049, WKW-ML, IPAD-AIR-M4 |
 | energetic | NIKE-YCS, APPLE-DB, PACIFIC-RIM, OLDSPICE-MAN, APPLE-1984, OKGO-TOM, VOLCENGINE-FL, APPLE-FLASH, APPLE-EVENT-HIGHLIGHTS |
-| dreamy | APPLE-WH, COSMOS-L, WKW-ML, JOHNLEWIS-PENGUIN, SONY-BALLS, GUINNESS-SURFER, LJZ-COFFEE, BJIFF-SWIFT, PUDONG-CAT, MACBOOK-NEO, IPHONE-AIR, IPAD-AIR-M4, ACHROMA |
+| dreamy | APPLE-WH, COSMOS-L, WKW-ML, JOHNLEWIS-PENGUIN, SONY-BALLS, GUINNESS-SURFER, LJZ-COFFEE, BJIFF-SWIFT, PUDONG-CAT, MACBOOK-NEO, IPHONE-AIR, IPAD-AIR-M4, ACHROMA, CHANEL-NO5-FILM, COCA-COLA-HAPPINESS-FACTORY |
 | gritty | BR2049, WANDERING-E, PACIFIC-RIM, GUINNESS-SURFER, APPLE-1984, ACHROMA |
 | nostalgic | WKW-ML, JOHNLEWIS-PENGUIN, BJIFF-SWIFT |
 | melancholic | WKW-ML, GUINNESS-SURFER, IKEA-LAMP |
 | humorous | OLDSPICE-MAN, IKEA-LAMP, PUDONG-CAT |
 | absurd | OLDSPICE-MAN, IKEA-LAMP |
-| poetic | GUINNESS-SURFER, KOYAANISQATSI, BJIFF-SWIFT |
-| playful | LJZ-COFFEE, MACBOOK-NEO, IPAD-AIR-M4, APPLE-FLASH |
+| poetic | GUINNESS-SURFER, KOYAANISQATSI, BJIFF-SWIFT, CHANEL-NO5-FILM |
+| playful | LJZ-COFFEE, MACBOOK-NEO, IPAD-AIR-M4, APPLE-FLASH, COCA-COLA-HAPPINESS-FACTORY, PIXAR-LOGO |
 | futuristic | VOLCENGINE-FL, IPHONE17PRO, IPHONE-AIR, APPLE-FLASH |
 | colorful | OKGO-TOM, LJZ-COFFEE, VOLCENGINE-FL, PUDONG-CAT, MACBOOK-NEO, IPAD-AIR-M4, APPLE-FLASH |
-| heartwarming | JOHNLEWIS-PENGUIN, PIPER, LJZ-COFFEE, APPLE-EDUCATION |
+| heartwarming | JOHNLEWIS-PENGUIN, PIPER, LJZ-COFFEE, APPLE-EDUCATION, PIXAR-LOGO |
 | photorealistic | PIPER |
 | contemplative | KOYAANISQATSI |
-| elegant | LOUVRE-MAP, BJIFF-SWIFT, MACBOOK-NEO, IPHONE-AIR, IPAD-AIR-M4, APPLE-FLASH, NIO-10TH-LOGO |
+| elegant | LOUVRE-MAP, BJIFF-SWIFT, MACBOOK-NEO, IPHONE-AIR, IPAD-AIR-M4, APPLE-FLASH, NIO-10TH-LOGO, CHANEL-NO5-FILM, APPLE-EVENT-LOGO |
 | AI-generated | ACHROMA |
 | immersive | MACHINE-HALLUCINATION |
 | meditative | MACHINE-HALLUCINATION, KOYAANISQATSI |
 | abstract | MACHINE-HALLUCINATION |
-| futuristic | VOLCENGINE-FL, IPHONE17PRO, IPHONE-AIR, APPLE-FLASH, NIO-10TH-LOGO |
-
----
-
-## 五、角色维度 → 案例 Mapping
+| futuristic | VOLCENGINE-FL, IPHONE17PRO, IPHONE-AIR, APPLE-FLASH, NIO-10TH-LOGO, APPLE-EVENT-LOGO |
 
 > **默认规则**：全部案例覆盖 5 个角色维度（Writer / DP / Art Director / VFX Supervisor / Sound Designer）。
 > 具体案例推荐见 [§二 技法→案例表](#二技法--案例-mapping)，已按角色分节：
@@ -807,4 +859,4 @@
 
 ---
 
-*最后更新：2026-06-16 | 案例总数：32（Phase 13: NIO-10TH-LOGO — 蔚来十周年LOGO演绎，首个纯LOGO动画案例）*
+*最后更新：2026-06-16 | 案例总数：38（Phase 14-17: CHANEL-NO5-FILM + COCA-COLA-HAPPINESS-FACTORY + APPLE-EVENT-LOGO + PIXAR-LOGO — 奢侈品×快消CGI×LOGO动画双案例）*
