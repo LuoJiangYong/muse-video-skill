@@ -339,6 +339,15 @@ files:
     owner: case-library
     description: "Apple九月发布会集锦完整拆解（2025, 20+ 技法 × 5 角色维度, 产品速览叙事+密度递增结构+女声非正式旁白+CGI内部透视+高能电子配乐+信息压缩策略=首个发布会集锦案例）"
 
+  - path: references/cases/MACHINE-HALLUCINATION.md
+    role: case
+    phase: 11
+    status: complete
+    dependencies: [references/cases/_TEMPLATE.md]
+    dependents: [references/cases/INDEX.md]
+    owner: case-library
+    description: "Refik Anadol Machine Hallucination完整拆解（2019, 15+ 技法 × 5 角色维度, 数据叙事+非叙事纯视觉流+GAN潜空间连续生成+粒子数据场+AI数据雕塑渲染+声音驱动视觉同步=首个experimental实验影像案例）"
+
   # --- Roles (Phase 2) ---
   - path: references/roles/director.md
     role: role-doc
