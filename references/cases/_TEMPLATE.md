@@ -13,49 +13,41 @@
 
 # 【案例名称】— 【一句话定位】
 
-<!-- ═══════════════════════════════════════════════════════════════════════
-     YAML FRONTMATTER — INDEX.md 的数据来源，必须填写。
-     修改后运行 python scripts/build_index.py --write 重新生成 INDEX.md
-     ═══════════════════════════════════════════════════════════════════════ -->
 ---
-id: 【短标识符，如 BR2049】
-name: 【作品完整名称（中文/原文）】
-type: 【film / commercial / short-film / music-video / experimental / animation / documentary / logo-animation】
-year: 【YYYY】
-director: 【导演/工作室】
-primary_scene: 【studio-ad / logo-animation / product-demo / sci-fi / custom】
-secondary_scene: 【同上】
-tags: 【逗号分隔，3-8 个关键词】
+id: SHORT-ID
+name: "作品完整名称（中文/原文）"
+type: film
+year: 'YYYY'
+director: "导演/工作室"
+primary_scene: studio-ad
+secondary_scene: studio-ad
+tags:
+  - 关键词1
+  - 关键词2
 
 techniques:
-  narrative:     # 叙事技法（→ Writer）
-    - 【技法1】
-    - 【技法2】
-  cinematography: # 镜头语言（→ DP）
-    - 【技法1】
-    - 【技法2】
-  color:         # 色彩/美术（→ Art Director）
-    - 【技法1】
-  vfx:           # 特效语言（→ VFX）
-    - 【技法1】
-  sound:         # 声音设计（→ Sound Designer）
-    - 【技法1】
-  creative:      # 创意广告专属（仅 commercial 类型填写，其他类型留 []）
-    - 【技法1】
+  narrative:
+    - 技法1
+    - 技法2
+  cinematography:
+    - 技法1
+    - 技法2
+  color:
+    - 技法1
+  vfx:
+    - 技法1
+  sound:
+    - 技法1
+  creative: []
 
-styles: 【情绪/风格标签，如 [cyberpunk, gritty, epic]】
-  # 可用风格（基于已有案例）：
-  # cyberpunk, cyberpunk-adjacent, minimalist, surreal, epic, intimate,
-  # energetic, dreamy, gritty, nostalgic, melancholic, humorous, absurd,
-  # poetic, playful, colorful, heartwarming, photorealistic, contemplative,
-  # elegant, AI-generated, immersive, meditative, abstract, luxurious,
-  # whimsical, sleek, charming, futuristic
+styles: []
+  # 填写格式: [cyberpunk, epic, dreamy]
+  # 可自由命名新风格，已有风格见 build_index.py --check 输出
 
 scene_relations:
-  extra_strong: []      # 额外强相关场景（primary_scene 自动视为 strong）
-  extra_reference: []   # 额外可参考场景（secondary_scene 自动视为 reference）
+  extra_strong: []       # 额外强相关场景（primary_scene 自动视为 strong）
+  extra_reference: []    # 额外可参考场景（secondary_scene 自动视为 reference）
 ---
-<!-- ═══════════════════════════════════════════════════════════════════════ -->
 
 ## 元信息
 
