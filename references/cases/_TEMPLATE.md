@@ -50,8 +50,8 @@ techniques:
 styles: []
 
 scene_relations:
-  extra_strong:
-  extra_reference:
+  extra_strong: []
+  extra_reference: []
 ---
 
 ## 元信息
