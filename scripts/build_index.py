@@ -119,19 +119,44 @@ class Case:
 # ─── Frontmatter parser ──────────────────────────────────────────────────────
 
 def parse_frontmatter(filepath: Path) -> Optional[dict]:
-    """Parse YAML frontmatter from a markdown file. Returns None if no frontmatter found."""
+    """Parse YAML frontmatter from a markdown file. Returns None if no frontmatter found.
+
+    Handles two formats:
+    1. Frontmatter at the very start:   ---\n...\n---\n
+    2. Frontmatter after title:        # Title\n---\n...\n---\n
+    """
     with open(filepath, "r", encoding="utf-8") as f:
         content = f.read()
 
-    if not content.startswith("---"):
+    # Find the first --- that opens a YAML block
+    # Look for --- at position 0, or after a # heading line
+    fm_start = -1
+    for match in re.finditer(r'(?m)^---\s*$', content):
+        pos = match.start()
+        # Accept if it's at position 0 or preceded by a heading line
+        if pos == 0:
+            fm_start = pos
+            break
+        # Check if preceding line is a # heading
+        before = content[:pos].rstrip()
+        prev_line = before.split("\n")[-1] if before else ""
+        if re.match(r'^# .+', prev_line):
+            fm_start = pos
+            break
+
+    if fm_start == -1:
         return None
 
-    # Find closing ---
-    end_idx = content.find("---", 3)
-    if end_idx == -1:
+    # Find closing --- (must be on its own line, after fm_start)
+    fm_open_end = content.index("\n", fm_start) + 1  # end of the opening --- line
+    rest = content[fm_open_end:]
+    close_match = re.search(r'(?m)^---\s*$', rest)
+    if not close_match:
         return None
 
-    yaml_str = content[3:end_idx].strip()
+    close_pos = fm_open_end + close_match.start()
+    yaml_str = content[fm_open_end:close_pos].strip()
+
     if not yaml_str:
         return None
 
