@@ -48,7 +48,7 @@ techniques:
   - 设计驱动理念可视化
   - 里程碑=品牌厚度
   - 用户社区=终极里程碑
-styles: []
+styles: [elegant, futuristic]
 scene_relations:
   extra_strong: []
   extra_reference: []

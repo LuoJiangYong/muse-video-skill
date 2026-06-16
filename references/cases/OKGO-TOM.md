@@ -44,7 +44,7 @@ techniques:
   - 病毒MV公式
   - 工程即艺术
   - 品牌隐形策略
-styles: []
+styles: [colorful, energetic]
 scene_relations:
   extra_strong: []
   extra_reference: []

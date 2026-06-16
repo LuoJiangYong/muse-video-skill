@@ -44,7 +44,7 @@ techniques:
   - 音乐即论点
   creative:
   - —
-styles: []
+styles: [contemplative, epic, meditative, poetic]
 scene_relations:
   extra_strong: []
   extra_reference: []

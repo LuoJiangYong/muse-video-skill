@@ -48,7 +48,7 @@ techniques:
   - 快乐=生产过程的本质而非结果
   - 机器=活体生态系统
   - 每一口=一个世界的祝福
-styles: []
+styles: [dreamy, playful, surreal, whimsical]
 scene_relations:
   extra_strong: []
   extra_reference: []

@@ -44,7 +44,7 @@ techniques:
   - 环境音氛围层
   creative:
   - —
-styles: []
+styles: [AI-generated, dreamy, gritty]
 scene_relations:
   extra_strong: []
   extra_reference: []

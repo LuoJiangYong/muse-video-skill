@@ -39,7 +39,7 @@ techniques:
   - 产品隐形植入
   - 感官体验替代功能叙述
   - 艺术家背书
-styles: []
+styles: [dreamy, surreal]
 scene_relations:
   extra_strong: []
   extra_reference: []

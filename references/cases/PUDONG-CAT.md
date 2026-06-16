@@ -46,7 +46,7 @@ techniques:
   - AI=文明新表达
   - 萌宠即文明代言人
   - 分屏=生活方式并列
-styles: []
+styles: [colorful, dreamy, humorous, surreal]
 scene_relations:
   extra_strong: []
   extra_reference: []

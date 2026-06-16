@@ -45,7 +45,7 @@ techniques:
   - 悬浮=技术革命
   - 设计即品牌
   - A19 Pro=心脏揭示
-styles: []
+styles: [dreamy, elegant, futuristic, minimalist]
 scene_relations:
   extra_strong: []
   extra_reference: []

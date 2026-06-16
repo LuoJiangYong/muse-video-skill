@@ -47,7 +47,7 @@ techniques:
   - 单场次定制=稀缺性
   - 设计即媒体
   - 预告片化LOGO
-styles: []
+styles: [elegant, futuristic, sleek]
 scene_relations:
   extra_strong: []
   extra_reference: []

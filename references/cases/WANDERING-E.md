@@ -41,7 +41,7 @@ techniques:
   - 多语言广播
   creative:
   - —
-styles: []
+styles: [cyberpunk-adjacent, epic, gritty]
 scene_relations:
   extra_strong: []
   extra_reference: []

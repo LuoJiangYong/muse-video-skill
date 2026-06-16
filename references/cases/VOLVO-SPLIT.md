@@ -44,7 +44,7 @@ techniques:
   - 病毒一句话公式
   - 极限信任证明
   - 极简信息密度
-styles: []
+styles: [epic, minimalist]
 scene_relations:
   extra_strong: []
   extra_reference: []

@@ -44,7 +44,7 @@ techniques:
   - 明星=普通人的欲望镜像
   - 产品=情感经历的嗅觉锚
   - 钻石No.5吊坠=产品即珠宝
-styles: []
+styles: [dreamy, elegant, epic, luxurious, poetic]
 scene_relations:
   extra_strong: []
   extra_reference: []

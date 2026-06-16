@@ -45,7 +45,7 @@ techniques:
   - 微缩模型传播力
   - 地标情感绑定
   - 庆典仪式感构建
-styles: []
+styles: [colorful, dreamy, heartwarming, playful, surreal]
 scene_relations:
   extra_strong: []
   extra_reference: []

@@ -43,7 +43,7 @@ techniques:
   - 音乐情感引导
   creative:
   - —
-styles: []
+styles: [heartwarming, photorealistic]
 scene_relations:
   extra_strong: []
   extra_reference: []

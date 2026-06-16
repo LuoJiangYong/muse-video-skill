@@ -45,7 +45,7 @@ techniques:
   - 无对白无旁白
   creative:
   - —
-styles: []
+styles: [abstract, immersive, meditative]
 scene_relations:
   extra_strong: []
   extra_reference: []

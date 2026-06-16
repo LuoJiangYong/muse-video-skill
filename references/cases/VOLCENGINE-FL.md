@@ -45,7 +45,7 @@ techniques:
   - 城市文化=品牌厚度
   - 过山车=AI体验隐喻
   - 地标索引式邀请
-styles: []
+styles: [colorful, cyberpunk-adjacent, energetic, epic, futuristic, surreal]
 scene_relations:
   extra_strong: []
   extra_reference: []

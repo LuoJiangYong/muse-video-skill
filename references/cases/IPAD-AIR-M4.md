@@ -45,7 +45,7 @@ techniques:
   - 日常即创作
   - 紫色=Air视觉签名
   - M4=性能无声承诺
-styles: []
+styles: [colorful, dreamy, elegant, intimate, playful]
 scene_relations:
   extra_strong: []
   extra_reference: []

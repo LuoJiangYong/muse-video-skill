@@ -48,7 +48,7 @@ techniques:
   - 艺术展览的「去门槛化」
   - 双城记的普世情感
   - 图案=记忆锚点
-styles: []
+styles: [elegant]
 scene_relations:
   extra_strong: []
   extra_reference: []

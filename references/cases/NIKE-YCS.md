@@ -36,7 +36,7 @@ techniques:
   - 品牌精神
   - 集体共鸣
   - Slogan 落地
-styles: []
+styles: [energetic, epic]
 scene_relations:
   extra_strong: []
   extra_reference: []

@@ -45,7 +45,7 @@ techniques:
   - 雨燕=电影精神化身
   - 影史传承叙事
   - 「春天来北京看世界最好的电影」
-styles: []
+styles: [dreamy, elegant, epic, nostalgic, poetic]
 scene_relations:
   extra_strong: []
   extra_reference: []

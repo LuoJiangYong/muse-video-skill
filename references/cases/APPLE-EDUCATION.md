@@ -47,7 +47,7 @@ techniques:
   - 产品退位=品牌上位
   - 教育场景=品牌场域
   - 师生=品牌代言人
-styles: []
+styles: [heartwarming]
 scene_relations:
   extra_strong: []
   extra_reference: []

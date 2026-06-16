@@ -45,7 +45,7 @@ techniques:
   - 节日礼物叙事
   - 非人类角色共情
   - 品牌隐形策略
-styles: []
+styles: [dreamy, heartwarming, nostalgic]
 scene_relations:
   extra_strong: []
   extra_reference: []

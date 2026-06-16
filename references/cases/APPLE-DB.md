@@ -37,7 +37,7 @@ techniques:
   - 产品密度
   - 节奏递增
   - 功能叙事
-styles: []
+styles: [energetic, minimalist]
 scene_relations:
   extra_strong: []
   extra_reference: []

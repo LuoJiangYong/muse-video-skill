@@ -40,7 +40,7 @@ techniques:
   - 直接对话感
   - 病毒一句话公式
   - 幽默推销模型
-styles: []
+styles: [absurd, energetic, humorous]
 scene_relations:
   extra_strong: []
   extra_reference: []

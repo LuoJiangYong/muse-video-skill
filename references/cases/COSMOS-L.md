@@ -35,7 +35,7 @@ techniques:
   - 音乐驱动情感
   creative:
   - —
-styles: []
+styles: [dreamy, surreal]
 scene_relations:
   extra_strong: []
   extra_reference: []

@@ -46,7 +46,7 @@ techniques:
   - 价格惊喜延迟揭示
   - 手触=亲近感
   - 四色=年轻化破圈
-styles: []
+styles: [colorful, dreamy, elegant, playful]
 scene_relations:
   extra_strong: []
   extra_reference: []

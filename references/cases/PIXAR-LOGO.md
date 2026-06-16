@@ -46,7 +46,7 @@ techniques:
   - 角色=永久品牌大使
   - 定制化=每部电影都「新」但 LOGO 不变
   - 默片喜剧=跨文化无翻译
-styles: []
+styles: [charming, heartwarming, playful]
 scene_relations:
   extra_strong: []
   extra_reference: []

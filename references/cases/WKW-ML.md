@@ -39,7 +39,7 @@ techniques:
   - 对白省略
   creative:
   - —
-styles: []
+styles: [dreamy, intimate, melancholic, nostalgic]
 scene_relations:
   extra_strong: []
   extra_reference: []

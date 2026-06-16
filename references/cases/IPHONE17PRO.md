@@ -48,7 +48,7 @@ techniques:
   - VP真人代言
   - 极限运动场景绑定
   - 好莱坞级功能展示
-styles: []
+styles: [epic, futuristic, minimalist]
 scene_relations:
   extra_strong: []
   extra_reference: []

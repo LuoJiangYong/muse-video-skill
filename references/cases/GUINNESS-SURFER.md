@@ -41,7 +41,7 @@ techniques:
   - 等待=品牌哲学
   - 史上最佳广告
   - 感官替代功能
-styles: []
+styles: [dreamy, epic, gritty, melancholic, poetic]
 scene_relations:
   extra_strong: []
   extra_reference: []

@@ -42,7 +42,7 @@ techniques:
   - 工程精度=品质
   - 失败606次=品牌执着
   - 无整车展示
-styles: []
+styles: [epic, minimalist]
 scene_relations:
   extra_strong: []
   extra_reference: []

@@ -48,7 +48,7 @@ techniques:
   - 发布会→社交内容转化
   - 女声非正式=可接近感
   - 产品对比=购买决策工具
-styles: []
+styles: [energetic]
 scene_relations:
   extra_strong: []
   extra_reference: []

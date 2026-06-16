@@ -42,7 +42,7 @@ techniques:
   - 电吉他交响
   creative:
   - —
-styles: []
+styles: [cyberpunk-adjacent, energetic, epic, gritty]
 scene_relations:
   extra_strong: []
   extra_reference: []

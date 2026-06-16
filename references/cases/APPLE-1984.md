@@ -44,7 +44,7 @@ techniques:
   - 敌我冲突公式
   - 一次性播出策略
   - 文化事件制造
-styles: []
+styles: [cyberpunk-adjacent, energetic, epic, gritty]
 scene_relations:
   extra_strong: []
   extra_reference: []

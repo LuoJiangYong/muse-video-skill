@@ -50,7 +50,7 @@ techniques:
   - 颜色=情感层
   - 入门价=惊喜锚定
   - 身体/手=亲近感
-styles: []
+styles: [colorful, elegant, energetic, futuristic, playful]
 scene_relations:
   extra_strong: []
   extra_reference: []

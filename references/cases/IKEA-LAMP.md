@@ -40,7 +40,7 @@ techniques:
   - 消费主义自嘲
   - 情感操控揭露
   - 品牌=诚实的
-styles: []
+styles: [absurd, humorous, melancholic, surreal]
 scene_relations:
   extra_strong: []
   extra_reference: []

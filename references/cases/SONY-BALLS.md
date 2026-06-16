@@ -45,7 +45,7 @@ techniques:
   - Show-Don't-Tell 极致
   - 色彩=产品信息
   - 无功能说明
-styles: []
+styles: [dreamy, epic, minimalist]
 scene_relations:
   extra_strong: []
   extra_reference: []
