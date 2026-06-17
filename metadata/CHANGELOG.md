@@ -85,6 +85,15 @@ scene_relations:
   - `extra_strong`/`extra_reference` 恢复 `[]` 占位（与 `styles`/`creative` 一致）
 - **build_index.py**：防御 `null` `scene_relations`（None → `[]`）
 
+## [0.25.1] — 2026-06-17
+
+### 场景类型硬校验
+
+- **build_index.py**：`validate()` 新增场景类型校验 —— `primary_scene` 非空且必须在 `SCENE_TYPES` 中，`secondary_scene` 非空同理
+- **WKW-ML.md**：`primary_scene` 从 `custom（艺术电影 / art-film）` → `custom`，"艺术电影"追加到 tags
+- **PIXAR-LOGO.md**：`secondary_scene` 从 `animation` → `studio-ad`（animation 是否加入 SCENE_TYPES 待后续决策）
+- **_TEMPLATE.md**：`primary_scene` / `secondary_scene` 说明行追加场景约束提示
+
 ---
 
 ## [0.24.0] — 2026-06-16

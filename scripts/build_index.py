@@ -221,6 +221,19 @@ def validate(cases: list[Case]) -> tuple[list[str], list[str]]:
         if not c.primary_scene:
             errors.append(f"  ✗ {c.id}: missing 'primary_scene'")
 
+    # Check scene type validity
+    for c in cases:
+        if c.primary_scene and c.primary_scene not in SCENE_TYPES:
+            errors.append(
+                f"  ✗ {c.id}: primary_scene '{c.primary_scene}' "
+                f"not in allowed scenes: {', '.join(SCENE_TYPES)}"
+            )
+        if c.secondary_scene and c.secondary_scene not in SCENE_TYPES:
+            errors.append(
+                f"  ✗ {c.id}: secondary_scene '{c.secondary_scene}' "
+                f"not in allowed scenes: {', '.join(SCENE_TYPES)}"
+            )
+
     # Check duplicate IDs
     ids = [c.id for c in cases]
     dupes = [id for id in set(ids) if ids.count(id) > 1]

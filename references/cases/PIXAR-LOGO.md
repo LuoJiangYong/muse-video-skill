@@ -6,7 +6,7 @@ type: logo-animation
 year: 1986（Luxo Jr. 短片诞生）→ 1995（首次作为电影 LOGO 在《玩具总动员》出现）→ 至今（持续使用中）
 director: Pixar Animation Studios——John Lasseter（Luxo Jr. 短片导演），Pixar 内部团队（LOGO 动画）
 primary_scene: logo-animation
-secondary_scene: animation
+secondary_scene: studio-ad
 tags:
   - LOGO角色化
   - 物理喜剧

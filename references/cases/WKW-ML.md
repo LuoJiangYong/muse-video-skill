@@ -5,7 +5,7 @@ name: 花样年华 / In the Mood for Love
 type: film
 year: '2000'
 director: 王家卫 (Wong Kar-wai)
-primary_scene: custom（艺术电影 / art-film）
+primary_scene: custom
 secondary_scene: studio-ad
 tags:
   - 港式怀旧
@@ -13,6 +13,7 @@ tags:
   - 慢快门步印
   - 框架构图
   - 旗袍叙事
+  - 艺术电影
 techniques:
   narrative:
     - 留白叙事

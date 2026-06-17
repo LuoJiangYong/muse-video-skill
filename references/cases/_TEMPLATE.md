@@ -12,6 +12,7 @@
 > **Frontmatter 字段说明**：
 > - `type` — film / commercial / short-film / music-video / experimental / animation / documentary / logo-animation
 > - `primary_scene` / `secondary_scene` — studio-ad / logo-animation / product-demo / sci-fi / custom（primary 自动视为 strong 关联，secondary 自动视为 reference）
+> - `primary_scene` / `secondary_scene` 只能从 SKILL.md 路由树定义的场景类型中选择，`--check` 会拒绝非法值。
 > - `techniques.creative` — 仅 commercial 类型填写，其他类型留 `[]`
 > - `styles` — 风格标签，格式 `[cyberpunk, epic, dreamy]`，可自由命名，`--check` 会输出已有风格
 > - `scene_relations.extra_strong/extra_reference` — 在 primary/secondary 之外的额外场景关联，通常留 `[]`

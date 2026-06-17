@@ -14,7 +14,7 @@
 | WANDERING-E | 流浪地球 / The Wandering Earth | film | 2019 | 郭帆 (Frant Gwo) | sci-fi | product-demo | 巨物工程, 冰冻末日, 集体主义科幻, 行星发动机, 地下城 |
 | BR2049 | 银翼杀手2049 / Blade Runner 2049 | film | 2017 | Denis Villeneuve | sci-fi | studio-ad | 赛博朋克, 巨物美学, 色彩叙事, 存在主义, 反乌托邦 |
 | PACIFIC-RIM | 环太平洋 / Pacific Rim | film | 2013 | Guillermo del Toro | sci-fi | logo-animation | 巨型机甲, 怪兽设计, 雨夜战斗, 机械重量感, 驾驶舱同步 |
-| WKW-ML | 花样年华 / In the Mood for Love | film | 2000 | 王家卫 (Wong Kar-wai) | custom | studio-ad | 港式怀旧, 色彩饱和, 慢快门步印, 框架构图, 旗袍叙事, 艺术电影 |
+| WKW-ML | 花样年华 / In the Mood for Love | film | 2000 | 王家卫 (Wong Kar-wai) | custom（艺术电影 / art-film） | studio-ad | 港式怀旧, 色彩饱和, 慢快门步印, 框架构图, 旗袍叙事 |
 | IPAD-AIR-M4 | Introducing iPad Air with M4 / iPad Air M4 产品介绍影片 | commercial | 2026 | Apple（内部制作团队） | product-demo | studio-ad | 场景融入, 生活即创作, M4芯片, 紫色视觉锚点, Magic Keyboard |
 | APPLE-EDUCATION | Apple Education: Ready for every learning opportunity / Apple 教育品牌片 | commercial | 2025 | Apple（内部制作团队） | custom | product-demo | 教育品牌片, 教室叙事, CGI隐喻, 品牌使命, 师生共创, 产品即工具 |
 | APPLE-EVENT-HIGHLIGHTS | Catch up quick | commercial | 2025 | Apple（内部制作团队） | product-demo | studio-ad | 发布会集锦, 产品速览, 女声旁白, 密度叙事, 7产品2分半, 信息压缩 |
@@ -48,7 +48,7 @@
 | MACHINE-HALLUCINATION | Machine Hallucination / 机器幻觉 | experimental | 2019（ARTECHOUSE New York 首展） | Refik Anadol / Refik Anadol Studio | custom | sci-fi | AI数据雕塑, GAN潜空间, 粒子数据场, 非叙事纯视觉, 沉浸式投影, 机器幻觉 |
 | NIO-10TH-LOGO | 以10为灵感，蔚来十周年标识焕新 / NIO 10th Anniversary Logo Refresh | logo-animation | 2024 | 蔚来（NIO 内部设计团队） | logo-animation | studio-ad | LOGO动画, 3D动态图形, 品牌里程碑, 十周年, 材质变换, 设计驱动 |
 | APPLE-EVENT-LOGO | Apple Event 开场LOGO动画合集（2019-2024） / Apple Event Logo Animations Compilation | logo-animation | 2019-2024（持续进行中） | Apple 内部设计团队（Apple Design Team / Marcom） | logo-animation | studio-ad | LOGO动画, 事件品牌化, 单场次定制, 粒子系统, 液态金属, 手绘线条 |
-| PIXAR-LOGO | Pixar 开场LOGO（Luxo Jr.）/ Pixar Opening Logo — Luxo Jr. | logo-animation | 1986（Luxo Jr. 短片诞生）→ 1995（首次作为电影 LOGO 在《玩具总动员》出现）→ 至今（持续使用中） | Pixar Animation Studios——John Lasseter（Luxo Jr. 短片导演），Pixar 内部团队（LOGO 动画） | logo-animation | studio-ad | LOGO角色化, 物理喜剧, 无对白微叙事, 品牌IP化, Luxo Jr., 跳跳灯 |
+| PIXAR-LOGO | Pixar 开场LOGO（Luxo Jr.）/ Pixar Opening Logo — Luxo Jr. | logo-animation | 1986（Luxo Jr. 短片诞生）→ 1995（首次作为电影 LOGO 在《玩具总动员》出现）→ 至今（持续使用中） | Pixar Animation Studios——John Lasseter（Luxo Jr. 短片导演），Pixar 内部团队（LOGO 动画） | logo-animation | animation | LOGO角色化, 物理喜剧, 无对白微叙事, 品牌IP化, Luxo Jr., 跳跳灯 |
 
 ### 类型枚举
 
@@ -929,11 +929,13 @@
 
 | 场景类型 | 强相关案例 | 可参考案例 |
 |------|------|------|
-| studio-ad | APPLE-WH, CHANEL-NO5-FILM, COCA-COLA-HAPPINESS-FACTORY, GUINNESS-SURFER, IKEA-LAMP, JOHNLEWIS-PENGUIN, LJZ-COFFEE, LOUVRE-MAP, OLDSPICE-MAN | BR2049, WKW-ML, APPLE-1984, APPLE-DB, APPLE-EVENT-HIGHLIGHTS, APPLE-FLASH, BJIFF-SWIFT, HONDA-COG, IPAD-AIR-M4, IPHONE-AIR, IPHONE17PRO, MACBOOK-NEO, PUDONG-CAT, SONY-BALLS, VOLCENGINE-FL, VOLVO-SPLIT, OKGO-TOM, APPLE-EVENT-LOGO, NIO-10TH-LOGO, PIXAR-LOGO |
+| studio-ad | APPLE-WH, CHANEL-NO5-FILM, COCA-COLA-HAPPINESS-FACTORY, GUINNESS-SURFER, IKEA-LAMP, JOHNLEWIS-PENGUIN, LJZ-COFFEE, LOUVRE-MAP, OLDSPICE-MAN | BR2049, WKW-ML, APPLE-1984, APPLE-DB, APPLE-EVENT-HIGHLIGHTS, APPLE-FLASH, BJIFF-SWIFT, HONDA-COG, IPAD-AIR-M4, IPHONE-AIR, IPHONE17PRO, MACBOOK-NEO, PUDONG-CAT, SONY-BALLS, VOLCENGINE-FL, VOLVO-SPLIT, OKGO-TOM, APPLE-EVENT-LOGO, NIO-10TH-LOGO |
 | logo-animation | APPLE-EVENT-LOGO, NIO-10TH-LOGO, PIXAR-LOGO | PACIFIC-RIM, NIKE-YCS |
 | product-demo | APPLE-DB, APPLE-EVENT-HIGHLIGHTS, APPLE-FLASH, HONDA-COG, IPAD-AIR-M4, IPHONE-AIR, IPHONE17PRO, MACBOOK-NEO, NIKE-YCS, SONY-BALLS, VOLVO-SPLIT, OKGO-TOM | WANDERING-E, APPLE-EDUCATION, APPLE-WH, CHANEL-NO5-FILM, GUINNESS-SURFER, IKEA-LAMP, JOHNLEWIS-PENGUIN, OLDSPICE-MAN, COSMOS-L |
 | sci-fi | BR2049, PACIFIC-RIM, WANDERING-E, APPLE-1984, VOLCENGINE-FL, ACHROMA, COSMOS-L | PIPER, KOYAANISQATSI, MACHINE-HALLUCINATION |
-| custom | WKW-ML, APPLE-EDUCATION, BJIFF-SWIFT, PUDONG-CAT, PIPER, KOYAANISQATSI, MACHINE-HALLUCINATION | COCA-COLA-HAPPINESS-FACTORY, LJZ-COFFEE, LOUVRE-MAP, ACHROMA |
+| custom | APPLE-EDUCATION, BJIFF-SWIFT, PUDONG-CAT, PIPER, KOYAANISQATSI, MACHINE-HALLUCINATION | COCA-COLA-HAPPINESS-FACTORY, LJZ-COFFEE, LOUVRE-MAP, ACHROMA |
+| animation | — | PIXAR-LOGO |
+| custom（艺术电影 / art-film） | WKW-ML | — |
 ---
 
 ## 四、风格/情绪 → 案例 Mapping
