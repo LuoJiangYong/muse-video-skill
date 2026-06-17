@@ -34,17 +34,17 @@ tags:
 
 techniques:
   narrative:
-    - 技法1
-    - 技法2
+  - 技法1
+  - 技法2
   cinematography:
-    - 技法1
-    - 技法2
+  - 技法1
+  - 技法2
   color:
-    - 技法1
+  - 技法1
   vfx:
-    - 技法1
+  - 技法1
   sound:
-    - 技法1
+  - 技法1
   creative: []
 
 styles: []
