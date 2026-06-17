@@ -33,3 +33,4 @@ output/
 # Node (if HyperFrames integration is added later)
 node_modules/
 .hyperframes/
+*.bak
