@@ -1,6 +1,6 @@
 # 案例索引 — Case Index
 
-> 影视作品 + 创意广告双轨收录。每新增一个案例 = 本文件由 `scripts/build_index.py` 自动生成。
+> 影视作品 + 创意广告双轨收录。每新增一个案例 → 本文件由 `scripts/build_index.py` 自动生成。
 >
 > **更新方式**：编辑案例文件的 YAML frontmatter → 运行 `python scripts/build_index.py --write`。
 > **禁止手动编辑此文件**——所有数据来源于案例文件 frontmatter。
@@ -1024,4 +1024,4 @@ python scripts/build_index.py --check
 
 ---
 
-*自动生成于 2026-06-16 | build_index.py v0.1.0 | 案例总数：38（—）*
+*自动生成于 2026-06-17 | build_index.py v0.1.0 | 案例总数：38（—）*

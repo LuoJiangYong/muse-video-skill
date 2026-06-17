@@ -15,7 +15,7 @@
 **方案**：所有案例文件增加 YAML frontmatter，INDEX.md 由 `scripts/build_index.py` 自动生成。
 
 **新增文件**：
-- `scripts/build_index.py` — 核心索引生成脚本（604 行）
+- `scripts/build_index.py` — 核心索引生成脚本（629 行）
   - 从案例 YAML frontmatter 读取元信息 + 技法标签 + 风格 + 场景关联
   - 自动生成全部 6 张交叉引用表
   - 内置校验器：检测命名不一致（编辑距离）、重复 ID、缺失必填字段
@@ -75,6 +75,15 @@ scene_relations:
 - 新增文件：scripts/build_index.py, scripts/migrate_to_frontmatter.py
 - 下游影响：无。INDEX.md 格式向后兼容，Agent 查询方式不变。
 - 工作流变化：新增案例时不再手动更新 6 张 INDEX 表 → 只需填写 YAML frontmatter + 运行脚本。
+
+### 后续修复 — v0.25.0 发布后（2026-06-17）
+
+- **build_index.py**：`=` → `→`（INDEX.md header 文案统一连接符风格）
+- **_TEMPLATE.md**（5 个 fix commit）：
+  - YAML frontmatter 格式修正：注释移出 frontmatter、缩进/行内注释清理、Block Style 规范化
+  - setext heading 渲染误判：行19 `---` → `***` + `extra_reference: []` 与 `---` 间加空行
+  - `extra_strong`/`extra_reference` 恢复 `[]` 占位（与 `styles`/`creative` 一致）
+- **build_index.py**：防御 `null` `scene_relations`（None → `[]`）
 
 ---
 

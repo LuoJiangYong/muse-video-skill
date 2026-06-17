@@ -501,7 +501,7 @@ def assemble_index(cases: list[Case], recent_ids: list[str] = None) -> str:
 
     sections = [
         "# 案例索引 — Case Index\n",
-        "> 影视作品 + 创意广告双轨收录。每新增一个案例 = 本文件由 `scripts/build_index.py` 自动生成。\n"
+        "> 影视作品 + 创意广告双轨收录。每新增一个案例 → 本文件由 `scripts/build_index.py` 自动生成。\n"
         ">\n"
         "> **更新方式**：编辑案例文件的 YAML frontmatter → 运行 `python scripts/build_index.py --write`。\n"
         "> **禁止手动编辑此文件**——所有数据来源于案例文件 frontmatter。\n",
