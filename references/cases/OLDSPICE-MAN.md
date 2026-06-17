@@ -8,38 +8,38 @@ director: Tom Kuntz（Wieden+Kennedy 代理）
 primary_scene: studio-ad
 secondary_scene: product-demo
 tags:
-- 单镜头喜剧
-- 连续转场
-- 荒诞推销
-- 打破第四面墙
-- 病毒传播
+  - 单镜头喜剧
+  - 连续转场
+  - 荒诞推销
+  - 打破第四面墙
+  - 病毒传播
 techniques:
   narrative:
-  - 无缝口头转场
-  - 打破第四面墙
-  - 荒诞逻辑链
-  - 喜剧节奏公式
+    - 无缝口头转场
+    - 打破第四面墙
+    - 荒诞逻辑链
+    - 喜剧节奏公式
   cinematography:
-  - 连续单镜头错觉
-  - 快速场景切换
-  - 身体即产品载体
+    - 连续单镜头错觉
+    - 快速场景切换
+    - 身体即产品载体
   color:
-  - 高对比场景色彩
-  - 纯白基准色调
-  - 产品黄金时刻
+    - 高对比场景色彩
+    - 纯白基准色调
+    - 产品黄金时刻
   vfx:
-  - 帧匹配缝合转场
-  - 场景道具快速替换
-  - 产品延迟揭示
+    - 帧匹配缝合转场
+    - 场景道具快速替换
+    - 产品延迟揭示
   sound:
-  - 男中音旁白节奏
-  - 无背景音乐
-  - 喜剧 timing 控制
+    - 男中音旁白节奏
+    - 无背景音乐
+    - 喜剧 timing 控制
   creative:
-  - 荒诞夸大策略
-  - 直接对话感
-  - 病毒一句话公式
-  - 幽默推销模型
+    - 荒诞夸大策略
+    - 直接对话感
+    - 病毒一句话公式
+    - 幽默推销模型
 styles: [absurd, energetic, humorous]
 scene_relations:
   extra_strong: []

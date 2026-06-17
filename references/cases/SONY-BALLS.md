@@ -8,43 +8,43 @@ director: Nicolai Fuglsig
 primary_scene: product-demo
 secondary_scene: studio-ad
 tags:
-- 色彩爆炸
-- 超大规模实拍
-- 纯视觉奇观
-- 音乐驱动
-- 无CG
+  - 色彩爆炸
+  - 超大规模实拍
+  - 纯视觉奇观
+  - 音乐驱动
+  - 无CG
 techniques:
   narrative:
-  - 无叙事纯视觉宣言
-  - 产品隐喻
-  - 色彩即主角
-  - Show-Don't-Tell 极致
+    - 无叙事纯视觉宣言
+    - 产品隐喻
+    - 色彩即主角
+    - Show-Don't-Tell 极致
   cinematography:
-  - 超高速摄影
-  - 广角全景
-  - 多机位调度
-  - 色彩分组编排
-  - 微距弹跳
+    - 超高速摄影
+    - 广角全景
+    - 多机位调度
+    - 色彩分组编排
+    - 微距弹跳
   color:
-  - 光谱顺序排列
-  - 灰色街景 vs 极度饱和色
-  - 色彩=产品功能
-  - Pantone 级纯色
+    - 光谱顺序排列
+    - 灰色街景 vs 极度饱和色
+    - 色彩=产品功能
+    - Pantone 级纯色
   vfx:
-  - 零 CGI 实拍
-  - 250K 弹力球物理
-  - 大规模现场调度
-  - 后期仅色彩分级
+    - 零 CGI 实拍
+    - 250K 弹力球物理
+    - 大规模现场调度
+    - 后期仅色彩分级
   sound:
-  - 音乐反差策略
-  - 柔美木吉他 vs 视觉爆炸
-  - 无音效设计
-  - 安静配乐革命
+    - 音乐反差策略
+    - 柔美木吉他 vs 视觉爆炸
+    - 无音效设计
+    - 安静配乐革命
   creative:
-  - 纯隐喻型广告
-  - Show-Don't-Tell 极致
-  - 色彩=产品信息
-  - 无功能说明
+    - 纯隐喻型广告
+    - Show-Don't-Tell 极致
+    - 色彩=产品信息
+    - 无功能说明
 styles: [dreamy, epic, minimalist]
 scene_relations:
   extra_strong: []

@@ -8,43 +8,43 @@ director: Dougal Wilson
 primary_scene: studio-ad
 secondary_scene: product-demo
 tags:
-- 圣诞叙事
-- 情感延迟释放
-- 儿童视角
-- CGI 角色
-- 节日音乐
+  - 圣诞叙事
+  - 情感延迟释放
+  - 儿童视角
+  - CGI 角色
+  - 节日音乐
 techniques:
   narrative:
-  - 情感蓄力结构
-  - 儿童视角
-  - 反转结局
-  - 无产品叙事
-  - 非人类情感代言
+    - 情感蓄力结构
+    - 儿童视角
+    - 反转结局
+    - 无产品叙事
+    - 非人类情感代言
   cinematography:
-  - 儿童视线高度摄影
-  - CGI 实拍融合
-  - 温暖家庭光线
-  - 人格化角色动画
+    - 儿童视线高度摄影
+    - CGI 实拍融合
+    - 温暖家庭光线
+    - 人格化角色动画
   color:
-  - 英国家庭暖色
-  - 户外冷蓝对比
-  - 金色时刻释放
-  - 圣诞装饰色谱
+    - 英国家庭暖色
+    - 户外冷蓝对比
+    - 金色时刻释放
+    - 圣诞装饰色谱
   vfx:
-  - CGI 企鹅角色动画
-  - 灯光匹配合成
-  - 情感表达身体语言
-  - 羽毛渲染
+    - CGI 企鹅角色动画
+    - 灯光匹配合成
+    - 情感表达身体语言
+    - 羽毛渲染
   sound:
-  - 翻唱编排策略
-  - 无对白音乐叙事
-  - 静默品牌登场
-  - nostalgia 音频触发
+    - 翻唱编排策略
+    - 无对白音乐叙事
+    - 静默品牌登场
+    - nostalgia 音频触发
   creative:
-  - 情感蓄力公式
-  - 节日礼物叙事
-  - 非人类角色共情
-  - 品牌隐形策略
+    - 情感蓄力公式
+    - 节日礼物叙事
+    - 非人类角色共情
+    - 品牌隐形策略
 styles: [dreamy, heartwarming, nostalgic]
 scene_relations:
   extra_strong: []

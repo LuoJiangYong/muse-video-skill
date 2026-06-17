@@ -8,39 +8,39 @@ director: 郭帆 (Frant Gwo)
 primary_scene: sci-fi
 secondary_scene: product-demo
 tags:
-- 巨物工程
-- 冰冻末日
-- 集体主义科幻
-- 行星发动机
-- 地下城
+  - 巨物工程
+  - 冰冻末日
+  - 集体主义科幻
+  - 行星发动机
+  - 地下城
 techniques:
   narrative:
-  - 集体英雄主义
-  - 父子双线
-  - 灾难阶梯
-  - 牺牲主题
+    - 集体英雄主义
+    - 父子双线
+    - 灾难阶梯
+    - 牺牲主题
   cinematography:
-  - 巨物尺度对比
-  - 广角畸变
-  - 第一视角穿越
-  - 零重力调度
+    - 巨物尺度对比
+    - 广角畸变
+    - 第一视角穿越
+    - 零重力调度
   color:
-  - 冰冻地表 vs 地下城
-  - 等离子蓝
-  - 木星威胁色
-  - 五域色调体系
+    - 冰冻地表 vs 地下城
+    - 等离子蓝
+    - 木星威胁色
+    - 五域色调体系
   vfx:
-  - 行星发动机
-  - 地球冻结
-  - 木星引力捕获
-  - 运载车集群
+    - 行星发动机
+    - 地球冻结
+    - 木星引力捕获
+    - 运载车集群
   sound:
-  - 低频嗡鸣
-  - 冰裂高频
-  - 中国民乐融合
-  - 多语言广播
+    - 低频嗡鸣
+    - 冰裂高频
+    - 中国民乐融合
+    - 多语言广播
   creative:
-  - —
+    - —
 styles: [cyberpunk-adjacent, epic, gritty]
 scene_relations:
   extra_strong: []

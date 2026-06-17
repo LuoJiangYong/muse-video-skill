@@ -8,46 +8,46 @@ director: Apple（Molly Anderson, VP Industrial Design 出镜解说）
 primary_scene: product-demo
 secondary_scene: studio-ad
 tags:
-- 铝合金Unibody
-- 制造过程叙事
-- A19 Pro
-- Genlock
-- 钛金属配色
+  - 铝合金Unibody
+  - 制造过程叙事
+  - A19 Pro
+  - Genlock
+  - 钛金属配色
 techniques:
   narrative:
-  - 制造过程叙事
-  - 工业设计自述
-  - 产品进化宣言
-  - 极限制测试叙事
-  - 三段式产品叙事
+    - 制造过程叙事
+    - 工业设计自述
+    - 产品进化宣言
+    - 极限制测试叙事
+    - 三段式产品叙事
   cinematography:
-  - 铝合金CNC微距
-  - 内部透视运镜
-  - 环绕产品摇镜
-  - 子弹时间阵列
-  - 热成像伪色镜头
-  - 遮挡转场运镜
+    - 铝合金CNC微距
+    - 内部透视运镜
+    - 环绕产品摇镜
+    - 子弹时间阵列
+    - 热成像伪色镜头
+    - 遮挡转场运镜
   color:
-  - 钛金属色谱体系
-  - 阳极氧化色彩渐变
-  - 工业冷调→竞技暖调转换
-  - 纯黑背景金属光泽
+    - 钛金属色谱体系
+    - 阳极氧化色彩渐变
+    - 工业冷调→竞技暖调转换
+    - 纯黑背景金属光泽
   vfx:
-  - Unibody一体成型CGI
-  - 均热板气液循环可视化
-  - 陶瓷盾牌刮擦模拟
-  - Genlock多机位同步
-  - 阳极氧化液体CGI
+    - Unibody一体成型CGI
+    - 均热板气液循环可视化
+    - 陶瓷盾牌刮擦模拟
+    - Genlock多机位同步
+    - 阳极氧化液体CGI
   sound:
-  - 工业拟音驱动节奏
-  - 机械加工ASMR
-  - 竞技场环境声切入
-  - 女VP自述旁白
+    - 工业拟音驱动节奏
+    - 机械加工ASMR
+    - 竞技场环境声切入
+    - 女VP自述旁白
   creative:
-  - 制造即品牌叙事
-  - VP真人代言
-  - 极限运动场景绑定
-  - 好莱坞级功能展示
+    - 制造即品牌叙事
+    - VP真人代言
+    - 极限运动场景绑定
+    - 好莱坞级功能展示
 styles: [epic, futuristic, minimalist]
 scene_relations:
   extra_strong: []

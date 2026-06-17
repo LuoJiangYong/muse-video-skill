@@ -8,42 +8,42 @@ director: Ridley Scott (Chiat\Day 代理)
 primary_scene: sci-fi
 secondary_scene: studio-ad
 tags:
-- 反乌托邦
-- 品牌宣言
-- 超级碗
-- 电影级广告
-- 敌我冲突
+  - 反乌托邦
+  - 品牌宣言
+  - 超级碗
+  - 电影级广告
+  - 敌我冲突
 techniques:
   narrative:
-  - 反乌托邦叙事
-  - 品牌宣言结构
-  - 敌我冲突模型
-  - 英雄之旅压缩
-  - 产品=武器
+    - 反乌托邦叙事
+    - 品牌宣言结构
+    - 敌我冲突模型
+    - 英雄之旅压缩
+    - 产品=武器
   cinematography:
-  - Ridley Scott 工业美学
-  - 队列vs个体
-  - Big Brother 超尺度屏幕
-  - 慢动作英雄冲锋
+    - Ridley Scott 工业美学
+    - 队列vs个体
+    - Big Brother 超尺度屏幕
+    - 慢动作英雄冲锋
   color:
-  - 蓝灰反乌托邦
-  - 蓝白屏幕统治
-  - 白色/红色自由
-  - 工业烟雾
+    - 蓝灰反乌托邦
+    - 蓝白屏幕统治
+    - 白色/红色自由
+    - 工业烟雾
   vfx:
-  - 巨大屏幕实拍
-  - 烟雾爆破实拍
-  - 铝热剂爆炸
-  - 1984年纯实拍VFX
+    - 巨大屏幕实拍
+    - 烟雾爆破实拍
+    - 铝热剂爆炸
+    - 1984年纯实拍VFX
   sound:
-  - 工业drone+静默
-  - 最后一句旁白
-  - 爆炸声=解放
+    - 工业drone+静默
+    - 最后一句旁白
+    - 爆炸声=解放
   creative:
-  - 品牌宣言型广告
-  - 敌我冲突公式
-  - 一次性播出策略
-  - 文化事件制造
+    - 品牌宣言型广告
+    - 敌我冲突公式
+    - 一次性播出策略
+    - 文化事件制造
 styles: [cyberpunk-adjacent, energetic, epic, gritty]
 scene_relations:
   extra_strong: []

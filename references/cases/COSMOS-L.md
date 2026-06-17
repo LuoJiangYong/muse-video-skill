@@ -8,33 +8,33 @@ director: Blender Foundation（Mathieu Auvray 导演）
 primary_scene: sci-fi
 secondary_scene: product-demo
 tags:
-- 材质渲染
-- 自然光
-- 角色动画
-- 环境叙事
-- 非人类主角
-techniques:
-  narrative:
-  - 环境叙事
-  - 非人类主角
-  - 无对白情感
-  cinematography:
-  - 自然光模拟
-  - 开篇巨物尺度
-  - 微距材质凝视
-  color:
-  - 场景色调对照
-  - 暖色科幻
-  vfx:
   - 材质渲染
   - 自然光
-  - 体积光效
+  - 角色动画
+  - 环境叙事
+  - 非人类主角
+techniques:
+  narrative:
+    - 环境叙事
+    - 非人类主角
+    - 无对白情感
+  cinematography:
+    - 自然光模拟
+    - 开篇巨物尺度
+    - 微距材质凝视
+  color:
+    - 场景色调对照
+    - 暖色科幻
+  vfx:
+    - 材质渲染
+    - 自然光
+    - 体积光效
   sound:
-  - 环境音优先
-  - 异世界音景
-  - 音乐驱动情感
+    - 环境音优先
+    - 异世界音景
+    - 音乐驱动情感
   creative:
-  - —
+    - —
 styles: [dreamy, surreal]
 scene_relations:
   extra_strong: []

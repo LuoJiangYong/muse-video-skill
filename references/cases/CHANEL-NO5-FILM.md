@@ -8,42 +8,42 @@ director: Baz Luhrmann（《红磨坊》《罗密欧与朱丽叶》）
 primary_scene: studio-ad
 secondary_scene: product-demo
 tags:
-- 奢侈品广告
-- 明星叙事
-- 逃离现实=产品隐喻
-- 电影级TVC
-- Clair de Lune
-- 音乐剧式节奏
-- Karl Lagerfeld服装
+  - 奢侈品广告
+  - 明星叙事
+  - 逃离现实=产品隐喻
+  - 电影级TVC
+  - Clair de Lune
+  - 音乐剧式节奏
+  - Karl Lagerfeld服装
 techniques:
   narrative:
-  - 明星叙事/逃离=产品隐喻
-  - 音乐剧式三幕结构
-  - 反向灰姑娘叙事
-  - 品牌=庇护所
+    - 明星叙事/逃离=产品隐喻
+    - 音乐剧式三幕结构
+    - 反向灰姑娘叙事
+    - 品牌=庇护所
   cinematography:
-  - 手持追逐 vs 稳态浪漫双摄影体系
-  - 金色时刻逆光
-  - 城市天际线=情感高度
-  - 慢动作情感定格
+    - 手持追逐 vs 稳态浪漫双摄影体系
+    - 金色时刻逆光
+    - 城市天际线=情感高度
+    - 慢动作情感定格
   color:
-  - 冷霓虹都市 vs 暖金屋顶双色世界
-  - 红毯高对比黑白爆闪
+    - 冷霓虹都市 vs 暖金屋顶双色世界
+    - 红毯高对比黑白爆闪
   vfx:
-  - 无缝数字天际线合成
-  - 慢动作升格
-  - 烟花=情感高潮视觉化
-  - 钻石项链CGI
+    - 无缝数字天际线合成
+    - 慢动作升格
+    - 烟花=情感高潮视觉化
+    - 钻石项链CGI
   sound:
-  - Debussy《Clair de Lune》管弦改编
-  - 心跳=情绪节拍器
-  - 城市噪音→寂静的情感降噪
-  - Kidman 文学化独白
+    - Debussy《Clair de Lune》管弦改编
+    - 心跳=情绪节拍器
+    - 城市噪音→寂静的情感降噪
+    - Kidman 文学化独白
   creative:
-  - 奢侈品=逃离现实的许可
-  - 明星=普通人的欲望镜像
-  - 产品=情感经历的嗅觉锚
-  - 钻石No.5吊坠=产品即珠宝
+    - 奢侈品=逃离现实的许可
+    - 明星=普通人的欲望镜像
+    - 产品=情感经历的嗅觉锚
+    - 钻石No.5吊坠=产品即珠宝
 styles: [dreamy, elegant, epic, luxurious, poetic]
 scene_relations:
   extra_strong: []

@@ -8,39 +8,39 @@ director: Jonathan Glazer (AMV BBDO 代理)
 primary_scene: studio-ad
 secondary_scene: product-demo
 tags:
-- 等待的史诗
-- 黑白冲浪
-- 品牌隐喻
-- 无产品广告
-- 文学化旁白
+  - 等待的史诗
+  - 黑白冲浪
+  - 品牌隐喻
+  - 无产品广告
+  - 文学化旁白
 techniques:
   narrative:
-  - 品牌隐喻叙事
-  - 等待即叙事
-  - 完全无产品
-  - Moby Dick 式文学旁白
+    - 品牌隐喻叙事
+    - 等待即叙事
+    - 完全无产品
+    - Moby Dick 式文学旁白
   cinematography:
-  - 黑白史诗摄影
-  - 浪头即角色
-  - 慢动作仪式感
-  - 巨浪与微人对比
+    - 黑白史诗摄影
+    - 浪头即角色
+    - 慢动作仪式感
+    - 巨浪与微人对比
   color:
-  - 纯黑白影像
-  - 高对比银盐美学
-  - 浪花白=Guinness 泡沫白
+    - 纯黑白影像
+    - 高对比银盐美学
+    - 浪花白=Guinness 泡沫白
   vfx:
-  - 浪中白马合成
-  - 真实巨浪实拍
-  - 慢动作升格
+    - 浪中白马合成
+    - 真实巨浪实拍
+    - 慢动作升格
   sound:
-  - Leftfield 黑暗电子驱动
-  - 文学旁白节奏
-  - 鼓点=心跳=等待
+    - Leftfield 黑暗电子驱动
+    - 文学旁白节奏
+    - 鼓点=心跳=等待
   creative:
-  - 纯隐喻型广告
-  - 等待=品牌哲学
-  - 史上最佳广告
-  - 感官替代功能
+    - 纯隐喻型广告
+    - 等待=品牌哲学
+    - 史上最佳广告
+    - 感官替代功能
 styles: [dreamy, epic, gritty, melancholic, poetic]
 scene_relations:
   extra_strong: []
