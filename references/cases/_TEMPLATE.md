@@ -16,7 +16,7 @@
 > - `styles` — 风格标签，格式 `[cyberpunk, epic, dreamy]`，可自由命名，`--check` 会输出已有风格
 > - `scene_relations.extra_strong/extra_reference` — 在 primary/secondary 之外的额外场景关联，通常留 `[]`
 
----
+***
 
 # 【案例名称】— 【一句话定位】
 
@@ -52,6 +52,7 @@ styles: []
 scene_relations:
   extra_strong: []
   extra_reference: []
+
 ---
 
 ## 元信息
