@@ -44,9 +44,10 @@ Phase 7: 组装+调优         → prompt_assembler.py 产出 Creative Pack
    - 预处理：`ffprobe` 检查 codec → av1 必须 `ffmpeg` 转 H.264（CRF 26-28）；检查文件大小 → >30MB 压缩至 720p
    - 下载失败 → 告警用户：「无法下载，能否提供本地文件 / 文字描述风格 / 其他链接？」。如用户三者都给不出 → 跳过拆解，继续步骤 3
 
-   **b. 逐镜头拆解（内部工作）**
+   **b. 逐镜头拆解 + 抽帧（内部工作）**
    - 调用 `video_analyze` 两遍：第一遍整体分析，第二遍逐镜头精确提取
    - 生成拉片表——格式见 `_TEMPLATE.md` §拉片附录 镜头序列总览（11列，与案例库同构）
+   - `ffmpeg` 逐镜头抽帧 → 分镜图内嵌到拉片表（`![]`(tmp/frame_XX.jpg)）
    - 拉片表为 Agent 工作草稿，不入 Project State
 
    **c. 拉片表校准**
@@ -57,7 +58,7 @@ Phase 7: 组装+调优         → prompt_assembler.py 产出 Creative Pack
    - 从拉片表中提取跨镜头的规律，归纳为 6 角色技法（条件性）：
      narrative / cinematography / color+scene / character（如有角色） / sound / vfx
    - 结构与静态案例 `techniques` 字段 1:1 对应（仅技法名 + 关键参数，不含拉片层细节）
-   - 角色需要帧参考时，从拉片表（已入 Project State）中按需选取时间码 → `ffmpeg -ss` 抽帧
+   - 拉片表（含抽帧）留存为临时文件，后续角色直接从中取帧参考，无需再抽
 
    **e. 技法摘要确认**
    - 向用户展示技法摘要，确认重点借鉴方向（哪个技法要 / 哪个忽略）
