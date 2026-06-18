@@ -279,4 +279,4 @@ python scripts/build_index.py --check --deps
 
 ---
 
-*Last amended: 2026-06-18. Author: Director-Agent (Hermes). v0.26.0 — 场景参数下沉 + SCENE_TYPES动态化 + 元数据工具化.*
+*Last amended: 2026-06-18. Author: Director-Agent (Hermes). v0.26.1 — Art Director 职责扩展：通用场景搭建（scene_composition）。*

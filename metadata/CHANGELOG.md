@@ -6,6 +6,42 @@
 
 ---
 
+## [0.26.1] — 2026-06-18
+
+### Art Director 职责扩展 — 通用场景搭建（scene_composition）
+
+**背景**：Phase 3 Art Director 产出色调/风格/情绪/人物/world_building，但 world_building 限定 sci-fi 场景。场景搭建（空间布局/核心道具/视觉重心）没有通用归属，散落在 Writer/DP 之间。
+
+**方案**：新增 `visual_dev.scene_composition[]` 作为 Phase 3 通用产出——Art Director 为每个场景定义前/中/远景布局、核心道具、视觉重心和深度策略。不限场景类型，sci-fi 项目的 world_building 在其上叠加。
+
+**变更概要**：
+
+| 类别 | 变更 |
+|------|------|
+| **art-director.md** | 职责表 + 新增 §场景搭建模板（JSON 模板 + 决策树 + 视觉重心优先级 + AD/DP 分工）；§世界观标注为叠加层；常见错误 + Agent prompt 更新 |
+| **default.md** | Phase 3 产出字段 + 操作序列步骤 3b；Phase 6 分镜消费点提及 scene_composition |
+| **fields.yaml** | 注册 `visual_dev.scene_composition` + `visual_dev.world_building`（补此前缺失条目） |
+
+**上游**：无（Phase 3 新增产出）
+**下游**：DP（构图焦点）、Phase 6 分镜（panel.art_direction）、Phase 7 组装（prompt_assembler 后续追加）
+**迁移**：无破坏性变更。现有 Project State JSON 无 scene_composition 字段，工具按空数组处理。
+
+### P1 收尾 — scene_composition 下游消费补全（7 点）
+
+| # | 消费点 | 变更 |
+|---|--------|------|
+| 1 | `default.md` Phase 3 step 1 | `色调规则 + 风格库` → `色调规则 + 风格库 + 场景搭建模板` |
+| 2 | `fast-track.md` 阶段A 产出 | `（色调+风格）` → `（色调+风格+场景搭建）` |
+| 3 | `phase_gates.yaml` Phase 4 warn_if_empty | 新增 `- visual_dev.scene_composition` |
+| 4 | `prompt_assembler.py` fill_template() | 新增 `expand_each` for `visual_dev.scene_composition` + `visual_dev.world_building` |
+| 4b | `prompt_assembler.py` _fallback_template() | 新增 §Visual Development（Scene Composition + World Building）渲染段 |
+| 5 | `dp.md` §角色定位 | 输入说明：Art Director 产出 → 含 scene_composition（视觉重心 → 构图决策） |
+| 5b | `dp.md` §构图决策树 | 前置消费引用：先读取 scene_composition 视觉重心/空间布局，构图在其上叠加 |
+| 6 | `scenes/sci-fi.md` §世界观规则模板 | 标注 scene_composition 是基础层，sci-fi 科技规则在其上叠加 |
+| 7 | `prompt_assembler.py` build_hyperframes_config() | scenes_cfg 新增 `spatial_layout/core_props/visual_focus/depth_strategy` 字段，通过 scene_composition lookup 填入 |
+
+---
+
 ## [0.26.0] — 2026-06-18
 
 ### 架构一致性优化 — 场景参数下沉 + SCENE_TYPES 动态化 + 元数据工具化

@@ -28,7 +28,7 @@
 
 ## 世界观规则模板
 
-> ART DIRECTOR 负责世界观构建（详见 `references/roles/art-director.md` 世界观构建模板）。此处聚焦 sci-fi 场景独有的科技规则和一致性检查。
+> ART DIRECTOR 负责世界观构建（详见 `references/roles/art-director.md` 世界观构建模板）。**scene_composition 是基础层**：先产每个场景的通用空间布局/核心道具/视觉重心/深度策略，再在上层叠加 sci-fi 科技规则和异化美感参数。此处聚焦 sci-fi 场景独有的科技规则和一致性检查。
 
 ### 科技水平声明（必填）
 

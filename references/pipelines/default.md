@@ -102,7 +102,7 @@ Phase 7: 组装+调优         → prompt_assembler.py 产出 Creative Pack
 | **激活角色** | Art Director（产出）→ Director（审核） |
 | **触发条件** | Phase 2 Director 审核通过 |
 | **输入** | director_notes.vision, script.logline, script.scenes[], project.genre, project.tone |
-| **产出** | visual_dev.color_palette[], visual_dev.style_direction, visual_dev.mood_references[], visual_dev.character_design[]（如有角色）, visual_dev.world_building（如 sci-fi 场景） |
+| **产出** | visual_dev.color_palette[], visual_dev.style_direction, visual_dev.mood_references[], visual_dev.scene_composition[]（每个场景的空间布局/核心道具/视觉重心）, visual_dev.character_design[]（如有角色）, visual_dev.world_building（在 scene_composition 之上叠加 sci-fi 规则） |
 | **Director 审核** | ✅ 必须审核 |
 | **Loop 规则** | ≤2 轮修改 |
 
@@ -111,11 +111,12 @@ Phase 7: 组装+调优         → prompt_assembler.py 产出 Creative Pack
 0. **【门禁检查】** 运行 `python scripts/validate_state.py --phase 3`
    - 如 BLOCKED → 输出阻塞原因，回到 Phase 2 完成 Writer 产出后再试
    - 如 PASS → 继续
-1. Art Director 加载 `references/roles/art-director.md` → 色调规则 + 风格库
+1. Art Director 加载 `references/roles/art-director.md` → 色调规则 + 风格库 + 场景搭建模板
 2. 如用户提到案例 → 加载对应案例的色彩/美术段
 3. Art Director 产出色调方案（含 hex 值）、风格方向、情绪参考
+3b. Art Director 为每个场景产 scene_composition：空间布局 / 核心道具 / 视觉重心 / 深度策略（通用，不限场景类型）
 4. 可选：调用 `image_gen` 生成 moodboard 参考图（如 ComfyUI 可用）
-5. Director 审核：色调是否匹配 vision？风格是否冲突？
+5. Director 审核：色调是否匹配 vision？风格是否冲突？场景空间是否合理、视觉重心是否清晰？
    - **Approve** → 进入 Phase 4
    - **Revise** → Art Director 调整后重交
    - **Reject** → 重新定调
@@ -195,7 +196,7 @@ Phase 7: 组装+调优         → prompt_assembler.py 产出 Creative Pack
 2. 每个 panel 从 Project State JSON 中提取对应信息：
    - script（对白/动作）→ panel.description
    - cinematography（镜头/灯光）→ panel.camera, panel.lighting
-   - visual_dev（色调/风格）→ panel.art_direction
+   - visual_dev（色调/风格/场景搭建）→ panel.art_direction
    - vfx（特效标注）→ panel.vfx_notes
 3. VFX 加载 `references/roles/vfx.md` → 为需要特效的 panel 补充材质/粒子/转场说明
 4. 为每个 panel 生成 `image_prompt`（可注入 image_gen 的完整 prompt）

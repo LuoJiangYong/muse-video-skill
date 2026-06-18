@@ -203,6 +203,10 @@ def fill_template(template: str, project_state: dict) -> str:
                          safe_list(visual_dev.get("characters")))
     result = expand_each(result, "visual_dev.image_refs",
                          safe_list(visual_dev.get("image_refs")))
+    result = expand_each(result, "visual_dev.scene_composition",
+                         safe_list(visual_dev.get("scene_composition")))
+    result = expand_each(result, "visual_dev.world_building",
+                         safe_list(visual_dev.get("world_building")))
     result = expand_each(result, "sound.music_refs",
                          [{"this": r} for r in safe_list(sound.get("music_refs"))])
     result = expand_each(result, "sound.sfx_notes",
@@ -276,13 +280,27 @@ def build_hyperframes_config(project_state: dict) -> dict:
     visual_dev = project_state.get("visual_dev", {})
     storyboard = project_state.get("storyboard", [])
 
+    # Build scene_composition lookup by scene_id
+    scene_comp_list = safe_list(visual_dev.get("scene_composition"))
+    comp_by_scene = {}
+    for sc in scene_comp_list:
+        sid = sc.get("scene_id")
+        if sid:
+            comp_by_scene[sid] = sc
+
     scenes_cfg = []
     for scene in safe_list(script.get("scenes")):
+        sid = scene.get("scene_id")
+        comp = comp_by_scene.get(sid, {})
         scenes_cfg.append({
-            "id": scene.get("scene_id"),
+            "id": sid,
             "title": scene.get("scene_title", "Untitled"),
             "duration": scene.get("duration", "5s"),
             "camera": scene.get("camera", {}),
+            "spatial_layout": comp.get("spatial_layout", ""),
+            "core_props": comp.get("core_props", ""),
+            "visual_focus": comp.get("visual_focus", ""),
+            "depth_strategy": comp.get("depth_strategy", ""),
         })
 
     return {
@@ -399,6 +417,23 @@ def _fallback_template() -> str:
 ### Scene {{scene_id}} — {{scene_title}}
 {{action}}
 
+{{/each}}
+
+## Visual Development
+**Mood:** {{visual_dev.mood}}
+
+### Scene Composition
+{{#each visual_dev.scene_composition}}
+- **Scene {{scene_id}}**
+  - Spatial Layout: {{spatial_layout}}
+  - Core Props: {{core_props}}
+  - Visual Focus: {{visual_focus}}
+  - Depth Strategy: {{depth_strategy}}
+{{/each}}
+
+### World Building
+{{#each visual_dev.world_building}}
+- **Layer {{layer}}**: {{description}}
 {{/each}}
 
 ## Storyboard ({{_panels_count}} panels)

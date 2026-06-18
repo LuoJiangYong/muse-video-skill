@@ -47,6 +47,7 @@ gates:
     warn_if_empty:
       - visual_dev.style_refs
       - visual_dev.characters
+      - visual_dev.scene_composition
 
   phase_5:
     description: "Phase 5（声音方向）"

@@ -298,6 +298,24 @@ fields:
     version_added: "0.1.0"
     breaking_change: false
 
+  - path: visual_dev.scene_composition
+    type: array<object>
+    default: []
+    description: "场景搭建 — 每个场景的空间布局（前中远景）、核心道具、视觉重心、深度策略"
+    affected_roles: [art-director, dp, director]
+    affected_phases: [3, 4, 6, 7]
+    version_added: "0.26.1"
+    breaking_change: false
+
+  - path: visual_dev.world_building
+    type: object
+    default: {}
+    description: "世界观视觉规则 — sci-fi/fantasy 项目在 scene_composition 之上叠加"
+    affected_roles: [art-director, director]
+    affected_phases: [3, 6, 7]
+    version_added: "0.26.1"
+    breaking_change: false
+
   # --- cinematography ---
   - path: cinematography.camera_style
     type: string
@@ -459,10 +477,10 @@ fields:
     breaking_change: false
 
 # --- 统计 ---
-# Total fields: 50
+# Total fields: 52
 # Affected by director: 16 fields
 # Affected by writer: 11 fields
-# Affected by dp: 14 fields
-# Affected by art-director: 12 fields
+# Affected by dp: 15 fields
+# Affected by art-director: 14 fields
 # Affected by vfx: 10 fields
 # Affected by sound-designer: 7 fields

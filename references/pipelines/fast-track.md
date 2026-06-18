@@ -41,7 +41,7 @@ conditions = [
 | **激活角色** | Writer + Art Director + DP（并行产出）→ Director（一次性审核） |
 | **触发条件** | Phase 1 用户确认方向后 |
 | **输入** | director_notes.vision, project.*（来自 Phase 1） |
-| **产出** | script.logline, script.synopsis, script.scenes[]（含对白+动作）, visual_dev.*（色调+风格）, cinematography.shot_list[]（每个场景的镜头） |
+| **产出** | script.logline, script.synopsis, script.scenes[]（含对白+动作）, visual_dev.*（色调+风格+场景搭建）, cinematography.shot_list[]（每个场景的镜头） |
 | **Director 审核** | ✅ 审核一次（合并后审核） |
 | **Loop 规则** | 1 轮修改（不是 2 轮） |
 
