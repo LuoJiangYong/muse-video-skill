@@ -77,7 +77,7 @@ Phase 7: 组装+调优         → prompt_assembler.py 产出 Creative Pack
 | **激活角色** | Writer（产出）→ Director（审核） |
 | **触发条件** | Phase 1 用户确认后 |
 | **输入** | director_notes.vision, project.genre, project.tone |
-| **产出** | script.logline, script.synopsis, script.narrative_structure, script.scenes[]（每个场景的 slug/setting/summary，不含具体对白） |
+| **产出** | script.logline, script.synopsis, script.narrative_structure, script.scenes[]（每个场景的 slug/setting/summary，不含具体对白）, script.character_bible[]（如有角色，定义 identity + voice） |
 | **Director 审核** | ✅ 必须审核 |
 | **Loop 规则** | ≤2 轮修改。第 2 轮后 Director 必须 approve（可带 conditions）或 reject 重启 |
 
@@ -88,6 +88,7 @@ Phase 7: 组装+调优         → prompt_assembler.py 产出 Creative Pack
    - 如 PASS → 继续
 1. Writer 加载 `references/roles/writer.md` → 叙事结构库
 2. Writer 读取 `director_notes.vision`，生成 logline + synopsis + narrative_structure
+2b. 如有角色需求（`director_notes.has_characters = true`）→ Writer 按 §角色身份定义 模板产出 `script.character_bible[]`（identity + voice）
 3. Writer 将产出写入 Project State JSON `script.*` 字段
 4. Director 审核（按 director.md 审核标准：通过/修改/拒绝）
    - **Approve** → 进入 Phase 3
@@ -102,7 +103,7 @@ Phase 7: 组装+调优         → prompt_assembler.py 产出 Creative Pack
 |------|------|
 | **激活角色** | Art Director（产出）→ Director（审核） |
 | **触发条件** | Phase 2 Director 审核通过 |
-| **输入** | director_notes.vision, script.logline, script.scenes[], project.genre, project.tone |
+| **输入** | director_notes.vision, script.logline, script.scenes[], script.character_bible[]（如有角色）, project.genre, project.tone |
 | **产出** | visual_dev.color_palette[], visual_dev.style_direction, visual_dev.mood_references[], visual_dev.scene_composition[]（每个场景的空间布局/核心道具/视觉重心）, visual_dev.character_design[]（如有角色）, visual_dev.world_building（在 scene_composition 之上叠加 sci-fi 规则） |
 | **Director 审核** | ✅ 必须审核 |
 | **Loop 规则** | ≤2 轮修改 |
