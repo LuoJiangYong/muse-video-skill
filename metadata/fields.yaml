@@ -252,6 +252,15 @@ fields:
     version_added: "0.1.0"
     breaking_change: false
 
+  - path: script.character_bible
+    type: array<object>
+    default: []
+    description: "角色身份定义（identity + voice）——Writer P2 产出，AD P3 翻译为视觉，Writer P4 + Sound P5 消费"
+    affected_roles: [writer, art-director, sound-designer]
+    affected_phases: [2, 3, 4, 5]
+    version_added: "0.27.0"
+    breaking_change: false
+
   # --- visual_dev ---
   - path: visual_dev.palette
     type: array<object>

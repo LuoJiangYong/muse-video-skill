@@ -6,6 +6,22 @@
 
 ---
 
+## [0.27.0] — 2026-06-18
+
+### 方案 A — 角色身份层（character_bible）跨角色闭环
+
+**背景**：`visual_dev.character_design[]` 只有视觉维度（visual_profile + wardrobe）。角色身份（性格/背景/动机/说话方式）不存在于任何结构化数据源。Writer P4、DP P4、Sound P5 各自从 visual_profile 逆推身份，产生不一致风险。根源在 Phase 2 Writer 产出场景时提到了角色但没有定义角色是谁——AD 在信息真空里做视觉设计。
+
+**方案**：Phase 2 Writer 新增产出 `script.character_bible[]`（identity + voice），AD P3 将其翻译为视觉，Writer P4 + Sound P5 以 character_bible 为权威源而非逆推 visual_profile。
+
+**修改文件**：
+
+| # | 文件 | 改动类型 | 核心变化 |
+|---|------|---------|---------|
+| **1** | `metadata/fields.yaml` | 新增 | `script.character_bible` 字段，affected_roles=[writer, art-director, sound-designer]，phases=[2,3,4,5] |
+
+---
+
 ## [0.26.3] — 2026-06-18
 
 ### P0 修正 + P1 — 角色消费全链路闭合（技法下沉架构版）
