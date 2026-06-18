@@ -424,7 +424,7 @@ scene_relations:
 |---|---------|--------|---------|------|
 | 1 | 镜头1 | 00:00.750 | 开场全景·引导线构图·平移运镜·微缩模型 | assets/LJZ-COFFEE/frame_01_opening.jpg |
 | 2 | 镜头6 | 00:10.000 | 唯一移动镜头·斜角构图·咖啡杯巴士 | assets/LJZ-COFFEE/frame_02_bus.jpg |
-| 3 | 镜头9 | 00:17.500 | 唯一推镜头·引导线构图·摩卡壶城堡·童话感 | assets/LJZ-COFFEE/frame_03_push.jpg |
+| 3 | 镜头4-5 | 00:08.000 | 摩卡壶城堡·城市街景·咖啡器具建筑化 | assets/LJZ-COFFEE/frame_03_push.jpg |
 | 4 | 镜头10 | 00:20.000 | 视觉高潮·拉花CG特效·奶白+咖啡棕 | assets/LJZ-COFFEE/frame_04_latteart.jpg |
 | 5 | 镜头11 | 00:23.000 | 唯一定格逆光·远景·暖橘+粉紫霞光·情感升华 | assets/LJZ-COFFEE/frame_05_sunset.jpg |
 | 6 | 镜头14 | 00:31.750 | 唯一转场·插画风格·品牌联结 | assets/LJZ-COFFEE/frame_06_transition.jpg |
