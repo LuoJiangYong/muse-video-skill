@@ -119,7 +119,7 @@
 
 ### 角色驱动对白
 
-> Agent 在 Phase 4 读到 `visual_dev.character_design[]` 后，按以下映射为每个角色定制对白风格。
+> Agent 在 Phase 4 读到 `script.character_bible[].voice` + `visual_dev.character_design[]` 后，按以下映射为每个角色定制对白风格。
 
 | 角色维度 | 对白映射 | 示例 |
 |---------|---------|------|

@@ -30,6 +30,7 @@
 | **10** | `sound-designer.md` Agent Prompt | 修正 | 消费从 character_design[] 改为 character_bible[].voice + character_design[] |
 | **11** | `default.md` Phase 2/3 | 同步 | Phase 2 产出表加 character_bible[]；Phase 3 输入表加 character_bible[]；Phase 2 操作序列加 2b 步骤 |
 | **12** | `scripts/prompt_assembler.py` | 新增 | expand_each 支持 script.character_bible |
+| **13** | `writer.md` §角色驱动对白 | 修正 | 技法段触发行从 `visual_dev.character_design[]` 改为 `character_bible[].voice + character_design[]`——与 Agent Prompt L266 对齐 |
 
 ---
 
