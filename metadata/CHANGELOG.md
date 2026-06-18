@@ -19,6 +19,9 @@
 | # | 文件 | 改动类型 | 核心变化 |
 |---|------|---------|---------|
 | **1** | `metadata/fields.yaml` | 新增 | `script.character_bible` 字段，affected_roles=[writer, art-director, sound-designer]，phases=[2,3,4,5] |
+| **2** | `writer.md` §宪法约束 | 修正 | 区分 P2/P4 角色：P2 读 vision→产出 character_bible，P4 读 character_bible+character_design |
+| **3** | `writer.md` §角色身份定义 | 新增 | identity 模板（archetype/personality/background/motivation/flaw/role_arc）+ voice 模板 + 字段消费关系表 |
+| **4** | `writer.md` Agent Prompt | 修正 | P2 加 character_bible 产出指令；P4 消费从 character_design[] 改为 character_bible[].voice + character_design[] |
 
 ---
 

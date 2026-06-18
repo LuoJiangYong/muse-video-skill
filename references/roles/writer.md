@@ -2,7 +2,7 @@
 
 > **定位**：故事的建筑师。Writer 负责将 Director 的 vision 转化为有结构、有节奏、有情感的故事骨架和文本。
 > **激活时机**：Phase 2（叙事结构）+ Phase 4（对白+动作）。标准管线中 Writer 在 Phase 2 和 Phase 4 各激活一次；快速管线中合并为一次。
-> **宪法约束**：Writer 只读 `director_notes.vision` + `project.*` + `visual_dev.character_design[]`（如有角色），不读取其他角色的产出（保持创作独立性）。
+> **宪法约束**：Writer P2 读 `director_notes.vision` + `project.*`，产出 `script.character_bible[]`（如有角色，定义 identity + voice）；Writer P4 读 `script.character_bible[]`（自己 P2 产出）+ `visual_dev.character_design[]`（AD P3 视觉翻译），不读取其他角色的产出（保持创作独立性）。
 
 ---
 
@@ -134,6 +134,52 @@
 
 ---
 
+## 角色身份定义
+
+> Agent 在 Phase 2 激活时，如 Director 的 vision 中存在角色需求（`director_notes.has_characters = true`），按以下模板为每个角色定义身份（identity）和声音画像（voice）。这是角色数据的权威源——后续 AD 将其翻译为视觉，Writer P4 和 Sound 以其为对白/声音的锚点。
+
+### 角色身份模板
+
+```json
+{
+  "character_id": "char_NN",
+  "name": "角色名",
+  "identity": {
+    "archetype": "沉默的探寻者 / 反英雄 / 导师 / 天真者 / ...",
+    "personality": "性格核心词 + 一句话说明（如：内敛、克制、表面冷漠但内心有未愈伤口）",
+    "background": "出身 + 经历（如：前军人，现独居于城市边缘的调查员）",
+    "motivation": "驱动角色的核心欲望（如：找到关于自己过去的真相）",
+    "flaw": "角色的核心缺陷——阻碍其达成目标的特质（如：不信任任何人，包括自己）",
+    "role_arc": "角色在本片中的变化轨迹（如：执行命令的工具 → 质疑身份 → 选择成为自己）"
+  },
+  "voice": {
+    "speech_style": "说话方式（如：短句、回避直接表达、用沉默替代回答）",
+    "pace": "语速（快/中/慢）+ 参照描述（如：慢 2-3字/秒，句间停顿长）",
+    "catchphrase": "口头禅或无（如：无——沉默是他的口头禅）",
+    "vocal_quality": "声音质感（如：低沉、沙哑、中气不足）"
+  }
+}
+```
+
+### 字段消费关系
+
+| 字段 | AD P3（视觉翻译） | Writer P4（对白） | Sound P5（声音签名） |
+|------|:---:|:---:|:---:|
+| archetype | ✅ 风格锚点 | ✅ 对白基调 | ✅ 配乐方向 |
+| personality | ✅ 色调映射 | ✅ 句式选择 | ✅ 乐器性格 |
+| background | ✅ 服装风格 | ✅ 措辞层级 | — |
+| motivation | — | ✅ 驱动力=对白内容 | ✅ 情绪曲线 |
+| flaw | ✅ 视觉标志 | ✅ 对话破绽 | ✅ 不和谐音程 |
+| role_arc | — | ✅ 对白演变 | ✅ 动机变奏 |
+| voice.* | — | ✅ 对白风格 | ✅ 音色+语速 |
+
+**应用规则**：
+- 每个角色必须填写完整的 identity + voice，无默认值——Writer 从 Director vision 推导
+- `archetype` 用于快速对齐各角色的理解（AD/Sound 只需看 archetype 就能把握基调）
+- `voice` 是 Wire P4 对白和 Sound P5 声音签名的直接输入——不再从 visual_profile 逆推
+
+---
+
 ## 情绪节奏公式
 
 ### 五段情绪曲线模板
@@ -216,10 +262,11 @@
 - 读取 director_notes.vision 获取场景地点/氛围——场景设定影响对白的语境和措辞（咖啡厅对白 ≠ 太空站对白）
 - 从叙事结构库中选择最佳结构（三段式/英雄之旅/蒙太奇/问题-解决/反转/情绪递进）
 - 使用 logline 模板生成 logline，确保包含四要素（主语+行动+冲突+赌注）
+- 如有角色需求（has_characters = true）→ 在 Phase 2 产出 script.character_bible[]，按 §角色身份定义 的模板为每个角色定义 identity 和 voice
+- Phase 4 对白时：读取 script.character_bible[].voice + visual_dev.character_design[]，按 §角色驱动对白 的映射表为每个角色定制对白风格——不再从 visual_profile 逆推身份
 - 控制对白密度：15s ≤ 2句，30s ≤ 4句，60s ≤ 8句
 - 每句对白 ≤ 15 字（中文），用动作替代陈述
 - 标注情绪曲线：每个场景标记预期的情绪强度（1-10）
-- 如有角色需求 → 读取 visual_dev.character_design[]，按 §角色驱动对白 的映射表为每个角色定制对白风格——确保不同角色的对白可从措辞/句式/节奏区分
 - 产出写入 Project State JSON → script.*
 - 加载 scene doc 获取场景特定情绪曲线（§情绪曲线），与通用技法结合使用
 
