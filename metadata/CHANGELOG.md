@@ -22,6 +22,9 @@
 | **2** | `writer.md` §宪法约束 | 修正 | 区分 P2/P4 角色：P2 读 vision→产出 character_bible，P4 读 character_bible+character_design |
 | **3** | `writer.md` §角色身份定义 | 新增 | identity 模板（archetype/personality/background/motivation/flaw/role_arc）+ voice 模板 + 字段消费关系表 |
 | **4** | `writer.md` Agent Prompt | 修正 | P2 加 character_bible 产出指令；P4 消费从 character_design[] 改为 character_bible[].voice + character_design[] |
+| **5** | `art-director.md` §宪法约束 | 修正 | 追齐 Phase 3 实际输入：加 script.logline + script.scenes[] + character_bible[] |
+| **6** | `art-director.md` §角色视觉翻译 | 新增 | identity→visual_profile 映射表 + identity→wardrobe 映射规则 + 应用规则 |
+| **7** | `art-director.md` Agent Prompt | 修正 | 角色消费从「盲填 checklist」改为「读 character_bible → §映射表翻译 → 填 checklist」 |
 
 ---
 

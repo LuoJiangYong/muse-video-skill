@@ -2,7 +2,7 @@
 
 > **定位**：视觉世界的造物主。Art Director 负责定调色板、选风格、塑造角色外观、构建世界观。一切「看得见的氛围」从这里开始。
 > **激活时机**：Phase 3（标准管线）/ 阶段 A（快速管线）。通常与 Writer 和 DP 共享 Director vision，但产出独立。
-> **宪法约束**：Art Director 只读 `director_notes.vision` + `project.*`，不读取 Writer 或 DP 的产出。
+> **宪法约束**：Art Director 读 `director_notes.vision` + `project.*` + `script.logline` + `script.scenes[]` + `script.character_bible[]`（如有角色）。不读取 DP 或 Sound 的产出。
 
 ---
 
@@ -244,6 +244,35 @@ Step 5: 生成 hex 值，写入 color_palette[]
 
 ---
 
+## 角色视觉翻译
+
+> Agent 在 Phase 3 读到 `script.character_bible[]` 后，将角色的身份（identity）翻译为视觉特征（visual_profile + wardrobe）。这是「谁 → 长什么样」的翻译层——AD 不再凭空创造角色外观，而是从 Writer 定义的身份出发。
+
+### identity → visual_profile 映射表
+
+| 身份维度 | 视觉翻译 | 示例 |
+|---------|---------|------|
+| **archetype** | 决定整体视觉基调——反英雄→暗色系+硬线条；天真者→柔光+圆润轮廓；导师→暖色调+权威感 | 沉默探寻者 → 深色风衣 + 低饱和度 + 疲惫眼窝 |
+| **personality** | 内敛→遮盖性服装（高领/长款）；张扬→暴露性服装（露肤/鲜艳）；克制→对称+秩序感；混乱→不对称+层次叠加 | 表面冷漠 → 高领遮颈 + 颜色不超过 3 种 |
+| **background** | 军人→机能风+伤疤；学院→正式剪裁+眼镜；街头→oversize+层次混搭；底层→旧化+修补痕迹 | 前军人 → 左眉疤痕 + 立领军装夹克 |
+| **flaw** | 不信任→始终穿防护性服装（手套/高领/墨镜）；傲慢→奢侈品标记；自卑→遮盖身体 | 不信任任何人 → 永远戴着皮手套，即使在室内 |
+| **role_arc** | 工具→服从者：制服+无个性；觉醒→质疑者：服装出现裂痕/不协调；自由→自主者：服装解放/颜色增加 | K 从全黑制服 → 深灰+一抹蓝色 |
+
+### identity → wardrobe 映射规则
+
+- 读取 `character_bible[].identity.background` → 决定 `wardrobe.style`（军人→机能风，学院→正式）
+- 读取 `character_bible[].identity.personality` → 决定 `wardrobe.color_palette`（内敛→≤3色+低饱和，张扬→多色+高对比）
+- 读取 `character_bible[].identity.flaw` → 决定 `wardrobe.avoid`（不信任→避免透明/暴露材质）
+- 读取 `character_bible[].identity.role_arc` → 决定服装演变方向（服从→质疑→自由 对应 制服→裂痕→解放）
+
+**应用规则**：
+- 先在 `script.character_bible[]` 中找到对应的 `character_id`，读取其 `identity`
+- 用映射表逐项翻译 identity 维度 → visual_profile / wardrobe 字段
+- `visual_profile.distinguishing_marks` 从 `identity.flaw` 或 `identity.background` 推导（伤疤/纹身/标志物）
+- 最终 `character_design[]` 的 `character_id` 必须与 `character_bible[]` 保持一致——这是跨阶段的角色关联键
+
+---
+
 ## 世界观构建模板
 
 > 在 scene_composition 之上叠加 sci-fi / fantasy 专属的世界规则。所有项目先在 §场景搭建 定义空间布局，sci-fi 项目再通过此模板追加科技/环境/自然规则。
@@ -309,7 +338,7 @@ Step 5: 生成 hex 值，写入 color_palette[]
 - 从风格库中选择最佳风格（可混合），提供提示词关键词
 - 为每个场景独立配色，确保全局色相偏差 ≤30°
 - 为每个场景产 scene_composition：空间布局（前/中/远景）+ 核心道具 + 视觉重心 + 深度策略
-- 如有角色需求 → 使用人物造型 checklist 逐项填充
+- 如有角色需求 → 读取 script.character_bible[]，按 §角色视觉翻译 的映射表将 identity 翻译为 visual_profile + wardrobe，再使用人物造型 checklist 填充完整
 - 如有 sci-fi/fantasy 需求 → 在 scene_composition 之上使用世界观构建模板叠加科技/环境规则
 - 产出写入 Project State JSON → visual_dev.*
 - 如 ComfyUI 可用 → 为关键场景生成 moodboard 参考图
