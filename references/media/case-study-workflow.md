@@ -144,7 +144,7 @@ In rare cases, a `patch` or `replace_all` operation can inadvertently write thes
 Root cause: fuzzy matching in `patch()` can match against the display-layer `NNN|` prefix when the old_string is imprecise.
 
 **Mechanism B: execute_code `read_file()` → `write_file()` write-back (2026-06-16 discovered)**
-When you use `from hermes_tools import read_file` inside an `execute_code` block, the returned content ALWAYS includes `NNN|` line-number prefixes. Writing this content back with `write_file()` embeds the prefixes as literal bytes on every single line. This is a much more severe form of corruption — it poisons every line, not just a few. See `references/batch-index-update.md` §Key rules for detection and fix.
+When you use `from hermes_tools import read_file` inside an `execute_code` block, the returned content ALWAYS includes `NNN|` line-number prefixes. Writing this content back with `write_file()` embeds the prefixes as literal bytes on every single line. This is a much more severe form of corruption — it poisons every line, not just a few.
 
 **Prevention for Mechanism B (execute_code):** Always use Python's built-in `open()` instead of `read_file()` when reading content that will be modified and written back. `open()` returns raw bytes without display-layer prefixes.
 
@@ -170,6 +170,33 @@ cat -A references/cases/INDEX.md | grep "^[0-9]"
 - Never use `replace_all` on INDEX.md unless all match contexts are verified identical
 - After every batch of INDEX.md patches, run the cat -A detection command
 - If corruption is found, fix immediately — don't defer to the next session
+
+### ★ Pitfall: Fuzzy patch matching can silently corrupt when anchors don't match exactly (2026-06-17 discovered)
+
+The `patch()` tool uses 9 fuzzy-matching strategies. When an `old_string` does NOT match the actual file content, the tool may still find a "close enough" match and apply a PARTIAL replacement. This produces **silent corruption** — the patch reports "OK" but the file is damaged.
+
+**Real session example (2026-06-17):**
+
+```python
+# Intended anchor: abstract → section header
+patch(base,
+    old_string="| abstract | MACHINE-HALLUCINATION |\n\n---\n\n## 五、角色维度 → 案例 Mapping",
+    new_string="| abstract | MACHINE-HALLUCINATION |\n| luxurious | ... |\n\n---\n\n## 五、角色维度 → 案例 Mapping")
+```
+
+**What actually happened**: The file had `| futuristic | ... |` between `| abstract |` and `---`, so the anchor did NOT match literally. Fuzzy matching found a close match, consumed the `## 五` section header, but the new style entries (`luxurious/whimsical/sleek/charming`) were NOT inserted. Result:
+- `## 五、角色维度 → 案例 Mapping` header lost
+- 4 new style entries silently missing
+- Patch reported "OK" — no error surfaced
+
+**Prevention — DO THIS BEFORE EVERY execute_code PATCH BATCH:**
+
+1. **Read the actual anchor region first** with `read_file()` to verify exact bytes
+2. **Copy-paste the actual content** into `old_string` — do NOT compose from memory
+3. **After all patches, run a verification script** that checks section headers present and new IDs appear
+4. **If any check fails, do NOT commit** — fix the corruption first
+
+**Do NOT trust `patch()` return value alone.** The tool may report "OK" for a fuzzy match that caused damage. Visual/script verification is mandatory.
 
 ### ★ Pitfall: INDEX.md replace_all causes duplicates on already-patched rows
 

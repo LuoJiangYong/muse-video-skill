@@ -14,7 +14,7 @@
 
 **修改**：
 - `CONSTITUTION.md`：版本号 v0.27.1 → v0.28.0，补全 v0.28.0 变更摘要
-- `references/batch-index-update.md`：从 skill registry 迁入项目 git 树，解除 `references/media/case-study-workflow.md` 死链接
+- `references/batch-index-update.md`：从 skill registry 迁入项目解除死链接，随后将独有内容（模糊匹配静默损坏陷阱）吸收到 `case-study-workflow.md`，文件删除
 - 验证：`build_index.py --check --deps` → 0 errors, 0 dead links ✓
 
 ### 参考视频拆解管线（Phase 1 步骤 2.5）— 完整闭环
