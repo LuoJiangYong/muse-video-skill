@@ -16,7 +16,7 @@
 - `SKILL.md` 路由树：新增「用户提供参考视频」分支，位置在案例匹配分支之前
 - `default.md` Phase 1：插入步骤 2.5（a→e），含视频获取/预处理/逐镜头拆解/拉片表校准/聚合确认
 - 聚合维度 6 个（条件性）：narrative / cinematography / color+scene / character / sound / vfx
-- 附加稀疏镜头索引（`shot_index[]`）：3-5 个关键参考帧时间码，角色按需 `ffmpeg -ss` 抽帧
+- 附加稀疏镜头索引（`shot_index[]`）：3-5 个关键参考帧时间码，角色按需 `ffmpeg -ss` 抽帧（**已删除**，见下方「全角色消费映射复核」）
 - 错误处理：下载失败告警+问替代方案，不降级不猜测
 
 ### 案例拉片层（Pull-Sheet Appendix）— 高质量案例深层录入
@@ -37,6 +37,8 @@
 - `references/cases/LJZ-COFFEE.md`：新增 §拉片附录（镜头序列总览 + 6 角色分段 + 分镜精选帧 + 消费映射速查），约 180 行，含 14 镜头的完整技术参数
 - `references/cases/assets/LJZ-COFFEE/frame_*.jpg`：14 张逐镜头关键帧
 - 校准流程固化：先拉片表→用户确认→再批量抽帧→vision_analyze 逐张验证（避免了此前 video_analyze 时间码偏差导致的内容-描述错位问题）
+- `_TEMPLATE.md` §拉片附录：基于 LJZ-COFFEE 实战经验大幅更新——总览表表格+分镜图内嵌，6角色分段细化（叙事节奏表格/镜头语言5子项/色调场景7列表/角色设计表格/音效置信度列/特效密度曲线），新增消费映射速查
+- 总览表格式迭代：列表→表格+分镜图内嵌（2次修正），移除表格下方备注块（纠正信息用★标注入单元格）
 
 **vision_analyze 纠正项**（6 处）：
 - 镜头 1 运镜：固定→缓推（透视汇聚线+浅景深确认）
@@ -52,8 +54,9 @@
 
 **修改**：
 - `_TEMPLATE.md` §消费映射速查：全角色复核——Writer 加 §角色设计序列 / DP 加 §角色设计序列 / AD 展开为色调+空间+道具+材质+光源+角色 / Sound 加 §角色设计序列 / VFX 加类型+时机+密度曲线
-- `default.md` §2.5b：拉片表列名内联替换为显式引用 `_TEMPLATE.md` §拉片附录 镜头序列总览（与案例库同构）
+- `default.md` §2.5b：拉片表列名内联替换为显式引用 `_TEMPLATE.md` §拉片附录 镜头序列总览（与案例库同构）；增加 `ffmpeg` 逐镜头抽帧（与案例库完全对齐，角色无需再按需 `ffmpeg -ss`）
 - `default.md` §2.5d/e：删除稀疏镜头索引（`shot_index[]`）。拉片表已入 Project State，角色直接从拉片表时间码按需抽帧，无需额外维护 3-5 帧预精选索引
+- `LJZ-COFFEE.md` §消费映射速查：对齐修正后模板（全角色补 §角色设计序列，AD 展开为 6 项，帧用途具体到技法要点）
 - `pull-sheet-layer-design.md`：**删除**。设计文档，不在运行时路径上，内容已被后续文件完全覆盖
 - `pull-sheet-implementation.md`：**删除**。校准工作流+格式合规已覆盖于 `_TEMPLATE.md`，`_TEMPLATE.md` 和 `LJZ-COFFEE.md` 中的引用同步移除
 - `skill_manage` 同步删除 AppData skill registry 中的副本
