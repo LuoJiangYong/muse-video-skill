@@ -94,6 +94,8 @@ muse-video/
 │       └── tool-matrix.md       # When to use ComfyUI vs Kling vs Runway vs HyperFrames
 │
 ├── scripts/                     ← DETERMINISTIC LOGIC. Agent calls, does not rewrite.
+│   ├── build_index.py           # Auto-generate INDEX.md from case YAML frontmatter
+│   ├── inventory.py             # Dynamic file registry — replaces static registry.yaml
 │   ├── format_script.py         # Input: scene array → Output: formatted shooting script
 │   ├── storyboard_grid.py       # Input: storyboard array → Output: grid layout (2×3, 3×3)
 │   ├── prompt_assembler.py      # Input: full Project State → Output: Creative Pack JSON
@@ -118,10 +120,8 @@ muse-video/
 │       ├── studio-ad-full/      # Complete studio ad project (all phases)
 │       └── sci-fi-short/        # Complete sci-fi short project (all phases)
 │
-├── metadata/                    ← METADATA SYSTEM. Field-level, file-level, dependency-level tracking.
-│   ├── registry.yaml            # File registry: every file with status, dependencies, owner
-│   ├── fields.yaml              # Field metadata: every JSON field with type, default, affected roles
-│   ├── dependencies.yaml        # Dependency graph: upstream→downstream with impact summaries
+├── metadata/                    ← METADATA. Tool-driven, minimal static footprint.
+│   ├── fields.yaml              # Field metadata: JSON field → affected roles + phases
 │   └── CHANGELOG.md             # Version history with migration guides
 │
 ├── .gitignore
@@ -214,61 +214,58 @@ USER: "帮我做一支赛博朋克手机广告"
 
 ## 元数据治理 METADATA GOVERNANCE
 
-> 三层元数据体系是 Skill 长期可维护性的基础设施。**任何文件/字段的新增、修改、删除必须同步更新对应元数据。**
+> 工具驱动的动态元数据：`scripts/inventory.py` 替代静态 `registry.yaml`，`scripts/build_index.py --check --deps` 替代 `dependencies.yaml`。`metadata/fields.yaml` 保留骨架（enum_values 标注为自动生成）。`metadata/CHANGELOG.md` 保留。
 
 ### 三层结构
 
-| 层级 | 文件 | 回答的问题 |
-|------|------|-----------|
-| **文件级** | `metadata/registry.yaml` | 「有哪些文件？各自什么状态？谁依赖谁？」 |
+| 层级 | 工具/文件 | 回答的问题 |
+|------|----------|-----------|
+| **文件级** | `scripts/inventory.py --json` | 「有哪些文件？按角色如何分类？」 |
 | **字段级** | `metadata/fields.yaml` | 「改了 Schema 的 X 字段，哪些角色和阶段会受影响？」 |
-| **依赖级** | `metadata/dependencies.yaml` | 「改了文件 X，需要重测哪些文件？影响等级是什么？」 |
+| **依赖级** | `scripts/build_index.py --check --deps` | 「改了文件 X，哪些文件引用了它？有无死链接？」 |
 
 ### 更新纪律
 
 ```
 每次 git commit 涉及实质性改动时：
 
-1. 文件增删改 → 更新 metadata/registry.yaml
-   - 新文件：加一行（path + role + phase + status + dependencies + dependents）
-   - 删文件：移除对应行 + 检查 dependents 列表中是否还有引用
-   - 改文件：评估 status（not_started → draft → complete / needs_update）
-
+1. 文件增删改 → inventory.py --json 自动反映（无需手动更新）
 2. Schema 字段增删改 → 更新 metadata/fields.yaml
    - 新字段：加一行（path + type + default + affected_roles + affected_phases）
-   - 删字段：移除对应行 + 标注 version_added 和 breaking_change: true
+   - 删字段：移除对应行 + 标注 breaking_change: true
    - 改字段：更新对应行 + 如果类型变化，标注 breaking_change: true
-
-3. 依赖关系变化 → 更新 metadata/dependencies.yaml
-   - 新增依赖：加一对 upstream → downstream + impact 评级
-   - 删除依赖：移除对应行
-   - 影响等级：BREAKING > HIGH > MEDIUM > LOW
-
+3. 依赖关系验证 → build_index.py --check --deps
+   - 自动检测 references/ 内的死链接（引用不存在的文件）
+   - 跳过模板占位符（含 < > 的引用）
 4. 版本发布 → 更新 metadata/CHANGELOG.md
    - 记录：新增/修改/删除 + 影响分析 + 迁移指南
 ```
 
 ### 快速查询模板
 
-**「我要改 X 文件，会影响什么？」**
+**「有哪些文件？」**
 ```bash
-# 查 registry 的 dependents → 列出所有直接下游
-# 查 dependencies 的 downstream → 列出所有间接下游 + 影响等级
+python scripts/inventory.py              # 按角色分类的摘要
+python scripts/inventory.py --json       # 全量 JSON
+python scripts/inventory.py --deps <file>  # 上下游引用
 ```
 
-**「我要改 Schema 的 Y 字段，会影响什么？」**
+**「有无死链接？」**
 ```bash
-# 查 fields 的 affected_roles → 列出受影响角色
-# 查 fields 的 affected_phases → 列出受影响阶段
-# 查 dependencies 的上游是 schema 的条目 → 列出受影响脚本
+python scripts/build_index.py --check --deps
+```
+
+**「改了 Schema 的 Y 字段，会影响什么？」**
+```bash
+# 查 fields.yaml 的 affected_roles → 列出受影响角色
+# 查 fields.yaml 的 affected_phases → 列出受影响阶段
 ```
 
 ### 自检清单
 
-- [ ] `registry.yaml` 中的 status 与文件实际状态一致
-- [ ] `registry.yaml` 中的 dependencies/dependents 与 `dependencies.yaml` 互洽
-- [ ] `fields.yaml` 中的字段列表与 `project-state.json` Schema 完全同步
-- [ ] 没有 `dependencies.yaml` 中「死链接」（指向不存在文件的依赖）
+- [ ] `inventory.py --json` 输出完整无报错
+- [ ] `build_index.py --check --deps` 0 errors + 0 dead links
+- [ ] `fields.yaml` 中的字段列表与实际 Schema 同步
 - [ ] `CHANGELOG.md` 中最近一条 entry 的版本号与 git tag 一致
 
 ---
@@ -281,4 +278,4 @@ USER: "帮我做一支赛博朋克手机广告"
 
 ---
 
-*Last amended: 2026-06-12. Author: Director-Agent (Hermes).*
+*Last amended: 2026-06-18. Author: Director-Agent (Hermes). v0.26.0 — 场景参数下沉 + SCENE_TYPES动态化 + 元数据工具化.*
