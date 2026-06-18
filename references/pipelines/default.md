@@ -11,7 +11,7 @@
 ```
 Phase 1: 需求沟通          → Director 访谈用户，确定基础参数
 Phase 2: 内容梳理          → Writer 生成叙事结构，Director 审核
-Phase 3: 视觉开发          → Art Director 定色调/风格，Director 审核
+Phase 3: 视觉开发          → Art Director 定色调/风格/场景搭建，Director 审核
 Phase 4: 脚本              → Writer→DP→Director 链式产出，含镜头语言
 Phase 5: 声音方向          → Sound Designer 定配乐/音效/旁白基调
 Phase 6: 分镜              → Storyboard 组装 + 生图 → Director 审核

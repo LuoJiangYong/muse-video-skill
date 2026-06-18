@@ -1,7 +1,7 @@
 ---
 name: muse-video
 description: "When the user asks to 策划/构思/设计/写脚本/画分镜 for a video project — e.g. '帮我策划一个广告创意' '这个产品演示视频怎么拍' '帮我写科幻短片的分镜脚本' '给我这个品牌TVC的美术方向'。Not for actual video rendering/compositing or AI image/video generation."
-version: 0.26.1
+version: 0.26.2
 author: Hermes Agent + 钱多多
 license: MIT
 platforms: [linux, macos, windows]
@@ -54,7 +54,7 @@ metadata:
 ### Default Pipeline（7 阶段，完整创作）
 1. **需求沟通**（Director）→ 确认比例/用途/场景/约束
 2. **内容梳理**（Writer + Director）→ 故事、场景、叙事结构
-3. **视觉开发**（Art Director + Director）→ 色调、风格、人物设定，调用 image_gen 生成参考图
+3. **视觉开发**（Art Director + Director）→ 色调、风格、场景、人物设定，调用 image_gen 生成参考图
 4. **脚本**（Writer → DP → Director review）→ 台词、镜头语言、动作、时长
 5. **声音方向**（Sound Designer）→ 配乐风格、音效、旁白基调
 6. **分镜**（Storyboard Assembly）→ 6/9 宫格分镜 + 对应提示词，调用 image_gen

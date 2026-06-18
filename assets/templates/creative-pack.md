@@ -104,6 +104,24 @@
 - `{{prompt}}` → {{generated_url}}（{{#if approved}}✅ 通过{{else}}⏳ 待审核{{/if}}）
 {{/each}}
 
+### 场景搭建
+{{#each visual_dev.scene_composition}}
+
+#### Scene {{scene_id}}
+| 层 | 内容 |
+|----|------|
+| **前景** | {{spatial_layout.foreground}} |
+| **中景** | {{spatial_layout.midground}} |
+| **远景** | {{spatial_layout.background}} |
+| **核心道具** | {{#each key_props}}{{name}}（{{material}}，{{placement}}）{{/each}} |
+| **视觉重心** | 第一注视点：{{visual_focus.primary}} → 第二注视点：{{visual_focus.secondary}} → 第三注视点：{{visual_focus.tertiary}} |
+| **视线路径** | {{visual_focus.eye_path}} |
+| **深度策略** | {{depth_strategy}} |
+
+> {{rationale}}
+
+{{/each}}
+
 ---
 
 ## 5. 摄影指导

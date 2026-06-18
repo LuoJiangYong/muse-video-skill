@@ -6,6 +6,42 @@
 
 ---
 
+## [0.26.2] — 2026-06-18
+
+### P0 — Writer/DP Agent Prompt 场景地点+角色消费；Director Vision 模板新增核心场景/地点
+
+**背景**：当前 Director Vision 模板无「在哪拍」字段。下游 Writer/DP 各自猜测场景，导致对白缺乏空间语境、灯光缺乏真实光源动机。角色同理——Director 说「有角色」→ Art Director 产出角色设计 → 但 Writer/DP 的 Agent Prompt 里没有消费角色设计的指令。
+
+**方案**：三文件联动，构建完整的「场景地点 → 角色 → 下游消费」逻辑链。
+
+| # | 文件 | 改动类型 | 核心变化 |
+|---|------|---------|---------|
+| **P0-1** | `writer.md` §Agent 注入 Prompt | 替换 | 「你必须」7→9 条（+场景地点消费、+角色对白风格匹配含年龄/性格/背景三维）；「你不得」4→5 条（+角色语气一致性反约束） |
+| **P0-2** | `dp.md` §Agent 注入 Prompt | 替换 | 「你必须」7→9 条（+场景地点→光源动机、+角色 visual_profile/wardrobe 四维消费）；「你不得」4→5 条（+忽略角色体型特征禁止项） |
+| **P0-3** | `director.md` §Vision 模板 | 插入 | 新增「核心场景/地点」段落（场景数量预估 + 场景 N 地点/氛围 + 场景约束），插入在「核心信息」与「风格参考」之间 |
+
+**设计原则**：
+```
+Director P1: "在哪拍" → 核心场景/地点
+  ├─→ Writer: 场景地点 → 对白语境（咖啡厅=近距离私密，太空站=空旷紧迫）
+  ├─→ DP:     场景地点 → 可用光源类型（室内/户外/太空）
+  └─→ Art Director: 地点锚点 → 空间布局真实依据
+
+Director P1: "有角色" → Art Director 产出 visual_dev
+  ├─→ Writer: 年龄/性格/背景 → 对白风格匹配
+  └─→ DP:    visual_profile/wardrobe → 构图角度/特写时机/灯光色温
+```
+
+**上游**：无（三个角色均可独立读取 director_notes.vision）
+**下游**：Writer Phase 2/4（对白生成）、DP Phase 4（镜头/灯光方案）
+**迁移**：无破坏性变更。新增字段不改变现有 Agent 行为，仅增强约束精度。
+
+### CHANGELOG 补录 — v0.26.1 场景文档视觉策略参数
+
+- 补录 commit `e090718`（4 scene docs + _TEMPLATE 补全 Art Director 视觉策略参数）到 v0.26.1 条目，原 CHANGELOG 仅记录了 art-director.md / default.md / fields.yaml 而遗漏场景文档变更。
+
+---
+
 ## [0.26.1] — 2026-06-18
 
 ### Art Director 职责扩展 — 通用场景搭建（scene_composition）
@@ -25,6 +61,22 @@
 **上游**：无（Phase 3 新增产出）
 **下游**：DP（构图焦点）、Phase 6 分镜（panel.art_direction）、Phase 7 组装（prompt_assembler 后续追加）
 **迁移**：无破坏性变更。现有 Project State JSON 无 scene_composition 字段，工具按空数组处理。
+
+### 场景文档视觉策略参数补全
+
+**背景**：Art Director Phase 3 新增 `scene_composition` 产出需要各场景类型提供配套的视觉策略参数（空间布局/深度策略/核心道具/色彩策略/材质方向/视觉重心优先级/空间情绪），供 Writer/DP/Sound Designer 按场景类型加载消费。
+
+| 文件 | 变更 |
+|------|------|
+| `scenes/sci-fi.md` | 新增 §视觉策略 子节（空间布局/深度策略/核心道具/色彩策略/材质方向/视觉重心优先级/空间情绪） |
+| `scenes/studio-ad.md` | 新增 §视觉策略 子节（同上 7 维） |
+| `scenes/product-demo.md` | 新增 §视觉策略 子节（同上 7 维） |
+| `scenes/logo-animation.md` | 新增 §视觉策略 子节（同上 7 维） |
+| `scenes/_TEMPLATE.md` | 新增视觉策略模板 + Agent 使用说明补 AD Phase 3 加载指令 |
+
+**上游**：Phase 3 Art Director scene_composition 产出
+**下游**：Writer/DP/Sound Designer 按场景类型加载角色参数时同步消费视觉策略
+**迁移**：无破坏性变更。现有 Project State JSON 无视觉策略字段，工具按空处理。
 
 ### P1 收尾 — scene_composition 下游消费补全（7 点）
 

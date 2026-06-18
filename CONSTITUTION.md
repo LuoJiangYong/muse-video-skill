@@ -279,4 +279,4 @@ python scripts/build_index.py --check --deps
 
 ---
 
-*Last amended: 2026-06-18. Author: Director-Agent (Hermes). v0.26.1 — Art Director 职责扩展：通用场景搭建（scene_composition）。*
+*Last amended: 2026-06-18. Author: Director-Agent (Hermes). v0.26.2 — P0: Writer/DP Agent Prompt 场景地点+角色消费；Director Vision 模板新增核心场景/地点段落。*
