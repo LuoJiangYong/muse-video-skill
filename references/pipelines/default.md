@@ -57,12 +57,11 @@ Phase 7: 组装+调优         → prompt_assembler.py 产出 Creative Pack
    - 从拉片表中提取跨镜头的规律，归纳为 6 角色技法（条件性）：
      narrative / cinematography / color+scene / character（如有角色） / sound / vfx
    - 结构与静态案例 `techniques` 字段 1:1 对应（仅技法名 + 关键参数，不含拉片层细节）
-   - **附加稀疏镜头索引**：从拉片表中挑 3-5 个关键参考帧（覆盖核心场景 + 关键技法处），记录 `{ scene, timecode, shot_type, reference_key }`
-     - 后续角色需要场景/构图/配色参考时，按需 `ffmpeg -ss <timecode> -frames:v 1` 抽帧 → `vision_analyze` 提取
+   - 角色需要帧参考时，从拉片表（已入 Project State）中按需选取时间码 → `ffmpeg -ss` 抽帧
 
    **e. 技法摘要确认**
-   - 向用户展示技法摘要 + 镜头索引列表，确认重点借鉴方向（哪个技法要 / 哪个忽略）
-   - 确认后写入 Project State：`reference_analysis.techniques`（技法摘要） + `reference_analysis.shot_index[]`（稀疏镜头索引）
+   - 向用户展示技法摘要，确认重点借鉴方向（哪个技法要 / 哪个忽略）
+   - 确认后写入 Project State：`reference_analysis.techniques`（技法摘要）
    - 写入 `_meta: { phase: 1, action: "reference_deconstruct" }`
 
 3. 如用户提到具体风格/案例 → 加载 `references/cases/INDEX.md` → 匹配案例 → 注入参考

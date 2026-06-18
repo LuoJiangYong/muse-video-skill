@@ -53,6 +53,7 @@
 **修改**：
 - `_TEMPLATE.md` §消费映射速查：全角色复核——Writer 加 §角色设计序列 / DP 加 §角色设计序列 / AD 展开为色调+空间+道具+材质+光源+角色 / Sound 加 §角色设计序列 / VFX 加类型+时机+密度曲线
 - `default.md` §2.5b：拉片表列名内联替换为显式引用 `_TEMPLATE.md` §拉片附录 镜头序列总览（与案例库同构）
+- `default.md` §2.5d/e：删除稀疏镜头索引（`shot_index[]`）。拉片表已入 Project State，角色直接从拉片表时间码按需抽帧，无需额外维护 3-5 帧预精选索引
 - `pull-sheet-layer-design.md`：**删除**。设计文档，不在运行时路径上，内容已被后续文件完全覆盖
 - `skill_manage` 同步删除 AppData skill registry 中的副本
 
