@@ -428,7 +428,7 @@ scene_relations:
 | 4 | 镜头10 | 00:20.000 | 视觉高潮·拉花CG特效·奶白+咖啡棕 | assets/LJZ-COFFEE/frame_04_latteart.jpg |
 | 5 | 镜头11 | 00:23.000 | 唯一定格逆光·远景·暖橘+粉紫霞光·情感升华 | assets/LJZ-COFFEE/frame_05_sunset.jpg |
 | 6 | 镜头14 | 00:31.750 | 唯一转场·插画风格·品牌联结 | assets/LJZ-COFFEE/frame_06_transition.jpg |
-| 7 | 镜头3 | 00:04.500 | 城市地标融合·东方明珠×牛奶搅拌站·创意节奏起点 | assets/LJZ-COFFEE/frame_07_pearl.jpg |
+| 7 | 镜头3-4 | 00:06.000 | 城市地标融合·东方明珠×牛奶搅拌站·咖啡器具创意起点 | assets/LJZ-COFFEE/frame_07_pearl.jpg |
 | 8 | 镜头7 | 00:13.000 | 文化融合核心·咖啡豆斗拱×中国馆·全片最具辨识度画面 | assets/LJZ-COFFEE/frame_08_pavilion.jpg |
 | 9 | 镜头12 | 00:26.000 | 叙事终点·十周年蛋糕塔×广场·庆典主题锚点 | assets/LJZ-COFFEE/frame_09_cake.jpg |
 
