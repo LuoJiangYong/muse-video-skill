@@ -267,6 +267,7 @@ python scripts/build_index.py --check --deps
 - [ ] `build_index.py --check --deps` 0 errors + 0 dead links
 - [ ] `fields.yaml` 中的字段列表与实际 Schema 同步
 - [ ] `CHANGELOG.md` 中最近一条 entry 的版本号与 git tag 一致
+- [ ] `SKILL.md` / `CONSTITUTION.md` / `CHANGELOG.md` 三个文件的版本号一致（升版本时最容易漏 SKILL.md）
 
 ---
 
