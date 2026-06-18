@@ -11,7 +11,7 @@
 >
 > **Frontmatter 字段说明**：
 > - `type` — film / commercial / short-film / music-video / experimental / animation / documentary / logo-animation
-> - `primary_scene` / `secondary_scene` — studio-ad / logo-animation / product-demo / sci-fi / custom（primary 自动视为 strong 关联，secondary 自动视为 reference）
+> - `primary_scene` / `secondary_scene` — 从 SKILL.md §路由决策树 定义的场景类型中选择。运行 `python scripts/build_index.py --list-scenes` 查看当前可用值。primary 自动视为 strong 关联，secondary 自动视为 reference。
 > - `primary_scene` / `secondary_scene` 只能从 SKILL.md 路由树定义的场景类型中选择，`--check` 会拒绝非法值。
 > - `techniques.creative` — 仅 commercial 类型填写，其他类型留 `[]`
 > - `styles` — 风格标签，格式 `[cyberpunk, epic, dreamy]`，可自由命名，`--check` 会输出已有风格
@@ -69,7 +69,7 @@ scene_relations:
 | 时长 | mm:ss |
 | 品牌/客户 | （广告片必填） |
 | 关键词 | 逗号分隔，3-5个 |
-| 主场景 | studio-ad / logo-animation / product-demo / sci-fi / custom |
+| 主场景 | 从 SKILL.md §路由决策树 定义的场景类型中选择。运行 `build_index.py --list-scenes` 查看可用值。 |
 | 辅场景 | 同上 |
 | 观看链接 | URL（可选但强烈建议） |
 

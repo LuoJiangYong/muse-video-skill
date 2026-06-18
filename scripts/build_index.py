@@ -38,7 +38,62 @@ CASE_TYPES = [
     "animation", "documentary", "experimental", "logo-animation",
 ]
 
-SCENE_TYPES = ["studio-ad", "logo-animation", "product-demo", "sci-fi", "custom"]
+# ─── SCENE_TYPES: parsed dynamically from SKILL.md routing tree ──────────────
+
+
+def parse_scene_types_from_skill_md(skill_md_path: Path) -> list[str]:
+    """Parse scene type identifiers from SKILL.md routing tree.
+
+    Reads lines matching:  │   scene-id: "中文触发词"
+    Falls back to hardcoded list on any failure.
+    """
+    hardcoded = ["studio-ad", "logo-animation", "product-demo", "sci-fi", "custom"]
+
+    try:
+        content = skill_md_path.read_text(encoding="utf-8")
+    except Exception as e:
+        print(f"⚠ Cannot read {skill_md_path} for scene type parsing: {e}",
+              file=sys.stderr)
+        print("  Falling back to hardcoded SCENE_TYPES.", file=sys.stderr)
+        return hardcoded
+
+    # Match lines like "                │   studio-ad:      \"广告/棚拍/TVC/品牌片\""
+    pattern = re.compile(r'^\s*│\s{3}([a-z][a-z0-9_-]+):\s')
+    scene_types = []
+    for line in content.splitlines():
+        m = pattern.match(line)
+        if m:
+            scene_types.append(m.group(1))
+
+    if not scene_types:
+        print("⚠ No scene types found in SKILL.md routing tree.",
+              file=sys.stderr)
+        print("  Falling back to hardcoded SCENE_TYPES.", file=sys.stderr)
+        return hardcoded
+
+    return scene_types
+
+
+def _resolve_skill_md_path() -> Path:
+    """Resolve SKILL.md path: try repo root then installed location."""
+    script_dir = Path(__file__).resolve().parent
+    skill_root = script_dir.parent
+
+    # Try repo root first
+    repo_path = skill_root / "SKILL.md"
+    if repo_path.exists():
+        return repo_path
+
+    # Try installed Hermes skills directory
+    installed = Path.home() / "AppData" / "Local" / "hermes" / "skills" / "creative" / "muse-video" / "SKILL.md"
+    if installed.exists():
+        return installed
+
+    return repo_path  # will fail gracefully in parse function
+
+
+SCENE_TYPES = parse_scene_types_from_skill_md(_resolve_skill_md_path())
+
 
 ROLE_LABELS = {
     "narrative": ("叙事技法", "Writer"),
@@ -565,11 +620,21 @@ def main():
         "--quiet", "-q", action="store_true",
         help="Suppress non-error output",
     )
+    parser.add_argument(
+        "--list-scenes", action="store_true",
+        help="List available scene types parsed from SKILL.md routing tree",
+    )
     args = parser.parse_args()
 
     # Determine paths
     script_dir = Path(__file__).resolve().parent
     skill_root = script_dir.parent
+
+    # --list-scenes: print scene types and exit
+    if args.list_scenes:
+        for s in SCENE_TYPES:
+            print(s)
+        return
     cases_dir = Path(args.cases_dir) if args.cases_dir else (skill_root / "references" / "cases")
     output_path = Path(args.output) if args.output else (cases_dir / "INDEX.md")
 
