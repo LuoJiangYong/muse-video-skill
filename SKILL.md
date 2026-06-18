@@ -78,6 +78,7 @@ metadata:
 - `PIXAR-LOGO` → LOGO=角色IP/物理喜剧/30年品牌IP
 - 更多案例见 `references/cases/INDEX.md` 交叉索引表（由 `scripts/build_index.py` 自动生成）
 - 发现新案例 → 按 `references/cases/_TEMPLATE.md` 拆解，填写 YAML frontmatter，运行 `python scripts/build_index.py --write`
+- 用户指定高质量案例 → 可附加拉片附录（逐镜头参数 + 精选分镜图），设计见 `references/pull-sheet-implementation.md`
 - **禁止手动编辑 INDEX.md** — 所有交叉引用从案例文件 frontmatter 自动生成
 
 ## 导出格式
