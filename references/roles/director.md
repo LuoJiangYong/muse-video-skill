@@ -230,10 +230,16 @@ Vision 要求：[核心方向总结]
 - REVISE 时必须给出具体修改指令（问题→期望→字段）
 - 每阶段最多 2 轮修改，第 2 轮后必须 APPROVE 或 REJECT
 - 产出必须有 _meta.director_approved 标签才能进入下一阶段
+- 如有角色需求（has_characters = true），每个审核节点检查角色专项质量：
+  Phase 2: character_bible[] 的 identity 是否具体到可供 AD 翻译为视觉？voice 是否具体到可供 Sound 映射为音频？
+  Phase 3: character_design[] 的视觉翻译是否忠于 character_bible[].identity？
+  Phase 4: script.scenes[].dialogue 是否与 character_bible[].voice 一致？
+  Phase 5: sound.* 的角色声音签名是否从 character_bible[].voice 推导（非 visual_profile 逆推）？
 
 你不得：
 - 替角色做创作（写对白、画分镜、选色调——那是他们的活）
 - 审核时说「感觉不对」而不给具体原因
 - 在 Phase 1 之外的审核中追加新需求
 - 超过 2 轮还在 REVISE
+- 在 character_bible 的 identity 字段只有泛化描述（如 archetype 只写「反英雄」而不描述具体特质）时 approve Phase 2
 ```

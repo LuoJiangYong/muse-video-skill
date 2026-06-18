@@ -54,8 +54,8 @@ Phase 7: 组装+调优         → prompt_assembler.py 产出 Creative Pack
    - 用户指正错误 → 修正后聚合；用户确认 → 进入聚合
 
    **d. 聚合为技法摘要**
-   - 从拉片表中提取跨镜头的规律，归纳为 5 角色技法：
-     narrative / cinematography / color / sound / vfx
+   - 从拉片表中提取跨镜头的规律，归纳为 6 角色技法（条件性）：
+     narrative / cinematography / color+scene / character（如有角色） / sound / vfx
    - 结构与静态案例 `techniques` 字段 1:1 对应（仅技法名 + 关键参数，不含拉片层细节）
 
    **e. 技法摘要确认**
@@ -91,6 +91,7 @@ Phase 7: 组装+调优         → prompt_assembler.py 产出 Creative Pack
 2b. 如有角色需求（`director_notes.has_characters = true`）→ Writer 按 §角色身份定义 模板产出 `script.character_bible[]`（identity + voice）
 3. Writer 将产出写入 Project State JSON `script.*` 字段
 4. Director 审核（按 director.md 审核标准：通过/修改/拒绝）
+   - 如有角色需求（has_characters = true），重点检查 character_bible[] 的 identity 是否具体、voice 是否可翻译
    - **Approve** → 进入 Phase 3
    - **Revise** → Writer 修改后重新提交（≤2 轮）
    - **Reject** → 重写 vision 后重启 Phase 2
@@ -119,6 +120,7 @@ Phase 7: 组装+调优         → prompt_assembler.py 产出 Creative Pack
 3b. Art Director 为每个场景产 scene_composition：空间布局 / 核心道具 / 视觉重心 / 深度策略（通用，不限场景类型）
 4. 可选：调用 `image_gen` 生成 moodboard 参考图（如 ComfyUI 可用）
 5. Director 审核：色调是否匹配 vision？风格是否冲突？场景空间是否合理、视觉重心是否清晰？
+   - 如有角色需求，额外检查：character_design[] 的视觉翻译是否忠于 character_bible[].identity（例：character_bible 说「内敛克制」，AD 不应给亮色暴露服装）
    - **Approve** → 进入 Phase 4
    - **Revise** → Art Director 调整后重交
    - **Reject** → 重新定调
@@ -146,6 +148,7 @@ Phase 7: 组装+调优         → prompt_assembler.py 产出 Creative Pack
 3. DP 为每个场景的每个镜头补充：shot type / movement / lens / lighting setup
 4. **注意**：Writer 和 DP 串行执行（DP 依赖 Writer 的场景结构，但 DP 不改对白）
 5. Director 审核：脚本节奏是否合理？镜头语言是否匹配情绪？
+   - 如有角色需求，额外检查：对白风格是否与 character_bible[].voice 一致？（不能所有角色同一种语气）
    - **Approve** → 进入 Phase 5
    - **Revise** → 标注问题，Writer/DP 分别修改
    - **Reject** → 回到 Phase 2 重写 vision（罕见）
@@ -172,6 +175,7 @@ Phase 7: 组装+调优         → prompt_assembler.py 产出 Creative Pack
 2. 读取每个场景的情绪基调 → 匹配配乐风格 → 映射音效类型
 3. 产出声音方向（不是最终音轨，是方向性指导）
 4. Director 审核：声音方向是否增强而非分散注意力？
+   - 如有角色需求，额外检查：配乐动机是否从 character_bible[].voice 推导（非 visual_profile 逆推）？每个角色是否有独立声音签名？
    - **Approve** → 进入 Phase 6
    - **Revise** → Sound Designer 调整
    - **Reject** → 重新定调

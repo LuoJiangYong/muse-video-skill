@@ -6,6 +6,23 @@
 
 ---
 
+## [0.27.1] — 2026-06-18
+
+### Director 门控角色专项审核覆盖
+
+**背景**：v0.27.0 全链路审计发现 Director 在 4 个门控点（Phase 2/3/4/5）缺乏角色专项审核指令。通用 APPROVE 条件不覆盖 identity 具体性/voice 可翻译性，存在系统性盲区。
+
+**修改**：
+- `director.md` Agent Prompt「你必须」：新增角色专项质量检查清单（4 个 Phase 各 1 条）
+- `director.md` Agent Prompt「你不得」：新增「character_bible identity 泛化时不得 approve Phase 2」
+- `default.md` Phase 2/3/4/5 审核节点：各追加 1 行角色专项检查提示
+
+### 其他
+
+- 新增 `audit-handoff-v0.27.0.md`：全链路审计 handoff 文件
+
+---
+
 ## [0.27.0] — 2026-06-18
 
 ### 方案 A — 角色身份层（character_bible）跨角色闭环
@@ -31,6 +48,18 @@
 | **11** | `default.md` Phase 2/3 | 同步 | Phase 2 产出表加 character_bible[]；Phase 3 输入表加 character_bible[]；Phase 2 操作序列加 2b 步骤 |
 | **12** | `scripts/prompt_assembler.py` | 新增 | expand_each 支持 script.character_bible |
 | **13** | `writer.md` §角色驱动对白 | 修正 | 技法段触发行从 `visual_dev.character_design[]` 改为 `character_bible[].voice + character_design[]`——与 Agent Prompt L266 对齐 |
+
+### 拆解管线聚合维度扩展 — 5→6 维度（条件性）
+
+**背景**：v0.27.0 完成角色消费全链路闭合后，拆解管线步骤 2.5d 的聚合维度暴露出两个缺口：① 缺角色维度（character）—— Writer P2 产 character_bible、Art Director P3 做 character_design、DP P4 和 Sound P5 也消费角色数据；② color 维度命名太窄——Art Director 现在管色调+场景搭建。
+
+**修改文件**：
+
+| # | 文件 | 改动 | 核心变化 |
+|---|------|------|---------|
+| **14** | `default.md` Phase 1 步骤 2.5d | 修正 | 聚合维度 `5→6`：`narrative / cinematography / color+scene / character（如有角色） / sound / vfx` |
+| **15** | `video-deconstruction-pipeline.md` | 同步 | 聚合维度对齐 default.md；`color+scene_composition`→`color+scene` 统一命名 |
+| **16** | `pull-sheet-layer-design.md` 实施要点 #6 | 更新 | 标记已完成，记录新维度列表和角色条件性提取逻辑 |
 
 ---
 
