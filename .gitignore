@@ -25,6 +25,7 @@ output/
 *.jpg
 !assets/examples/**/*.png
 !assets/examples/**/*.jpg
+!references/cases/assets/**/*.jpg
 
 # Environment
 .env
