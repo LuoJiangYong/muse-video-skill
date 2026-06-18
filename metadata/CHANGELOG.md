@@ -8,6 +8,15 @@
 
 ## [0.28.0] — 2026-06-18
 
+### 维护修复 — CONSTITUTION.md 版本号对齐 + 死链接修复 (2026-06-19)
+
+**背景**：build_index.py --check --deps 发现 1 个死链接；CONSTITUTION.md 版本号停留在 v0.27.1，与 SKILL.md/CHANGELOG 的 v0.28.0 不一致。
+
+**修改**：
+- `CONSTITUTION.md`：版本号 v0.27.1 → v0.28.0，补全 v0.28.0 变更摘要
+- `references/batch-index-update.md`：从 skill registry 迁入项目 git 树，解除 `references/media/case-study-workflow.md` 死链接
+- 验证：`build_index.py --check --deps` → 0 errors, 0 dead links ✓
+
 ### 参考视频拆解管线（Phase 1 步骤 2.5）— 完整闭环
 
 **背景**：用户提供参考视频（本地文件 / 可下载 URL）要求复刻时，缺乏从视频到技法摘要的结构化拆解流程。

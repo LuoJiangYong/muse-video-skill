@@ -279,4 +279,4 @@ python scripts/build_index.py --check --deps
 
 ---
 
-*Last amended: 2026-06-18. Author: Director-Agent (Hermes). v0.27.1 — Director 门控角色专项审核覆盖（4 门控点 + Agent Prompt）。v0.27.0 方案 A：角色身份层（character_bible）跨角色闭环。Writer P2 产出 script.character_bible[]（identity + voice），AD P3 翻译为视觉（§角色视觉翻译），Sound P5 以 voice 为权威源（§角色声音签名扩充）。*
+*Last amended: 2026-06-19. Author: Director-Agent (Hermes). v0.28.0 — 参考视频拆解管线（Phase 1 步骤 2.5）完整闭环；LJZ-COFFEE + PUDONG-CAT 两大拉片附录（42帧逐镜头分析）；全角色消费映射复核；拉片表格式与案例库同构；继承 v0.27.1 Director 门控角色专项审核覆盖 + v0.27.0 角色身份层（character_bible）跨角色闭环。*
