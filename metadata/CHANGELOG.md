@@ -14,7 +14,8 @@
 
 **修改**：
 - `CONSTITUTION.md`：版本号 v0.27.1 → v0.28.0，补全 v0.28.0 变更摘要
-- `references/batch-index-update.md`：从 skill registry 迁入项目解除死链接，随后将独有内容（模糊匹配静默损坏陷阱）吸收到 `case-study-workflow.md`，文件删除
+- `references/batch-index-update.md`：从 skill registry 迁入解除死链接 → 独有内容（模糊匹配陷阱）吸收到 `case-study-workflow.md` → 文件删除
+- `references/media/case-study-workflow.md`：瘦身 433→233 行（-46%），砍掉 INDEX.md 手动编辑历史内容（行号污染/批量 patch/管道一致性/AppData 同步等 200 行），重写文件头部明确运行时定位；保留视频获取分析 + 案例候选工具
 - 验证：`build_index.py --check --deps` → 0 errors, 0 dead links ✓
 
 ### 参考视频拆解管线（Phase 1 步骤 2.5）— 完整闭环
