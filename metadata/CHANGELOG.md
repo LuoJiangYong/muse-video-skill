@@ -57,8 +57,8 @@
 
 | # | 文件 | 改动 | 核心变化 |
 |---|------|------|---------|
-| **14** | `default.md` Phase 1 步骤 2.5d | 修正 | 聚合维度 `5→6`：`narrative / cinematography / color+scene / character（如有角色） / sound / vfx` |
-| **15** | `video-deconstruction-pipeline.md` | 同步 | 聚合维度对齐 default.md；`color+scene_composition`→`color+scene` 统一命名 |
+| **14** | `default.md` Phase 1 步骤 2.5b+d | 修正 | 2.5b 拉片表字段 `7→9`（调色→色调+场景、+角色、+特效）；2.5d 聚合维度 `5→6`：`narrative / cinematography / color+scene / character（如有角色） / sound / vfx`。拉片表字段与聚合维度形成 1:1 映射 |
+| **15** | `video-deconstruction-pipeline.md` | 同步 | 拉片表字段 + 聚合维度对齐 default.md；`color+scene_composition`→`color+scene` 统一命名 |
 | **16** | `pull-sheet-layer-design.md` 实施要点 #6 | 更新 | 标记已完成，记录新维度列表和角色条件性提取逻辑 |
 
 ---
