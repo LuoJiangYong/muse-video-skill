@@ -53,7 +53,7 @@ metadata:
 
 ### Default Pipeline（7 阶段，完整创作）
 1. **需求沟通**（Director）→ 确认比例/用途/场景/约束
-2. **内容梳理**（Writer + Director）→ 故事、场景、叙事结构
+2. **内容梳理**（Writer + Director）→ 故事、场景、人物、叙事结构
 3. **视觉开发**（Art Director + Director）→ 色调、风格、场景、人物设定，调用 image_gen 生成参考图
 4. **脚本**（Writer → DP → Director review）→ 台词、镜头语言、动作、时长
 5. **声音方向**（Sound Designer）→ 配乐风格、音效、旁白基调

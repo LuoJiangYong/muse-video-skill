@@ -46,6 +46,16 @@
 - 镜头 9 装置：摩卡壶→咖啡机手柄（Portafilter），手柄=透明小人通道
 - 镜头 6 运镜：固定→跟拍（背景 motion blur 确认）
 
+### 全角色消费映射复核 + 拆解管线模板化
+
+**背景**：LJZ-COFFEE 拉片附录实施后，发现 `_TEMPLATE.md` 的消费映射速查表存在系统性窄化——AD 只列了「色谱采样」、Writer/DP/Sound 漏了 §角色设计序列。同时 `pull-sheet-layer-design.md` 作为早期设计文档，内容已全部被 `pull-sheet-implementation.md` + `_TEMPLATE.md` 覆盖，且其消费映射表是漂移源头之一。
+
+**修改**：
+- `_TEMPLATE.md` §消费映射速查：全角色复核——Writer 加 §角色设计序列 / DP 加 §角色设计序列 / AD 展开为色调+空间+道具+材质+光源+角色 / Sound 加 §角色设计序列 / VFX 加类型+时机+密度曲线
+- `default.md` §2.5b：拉片表列名内联替换为显式引用 `_TEMPLATE.md` §拉片附录 镜头序列总览（与案例库同构）
+- `pull-sheet-layer-design.md`：**删除**。设计文档，不在运行时路径上，内容已被后续文件完全覆盖
+- `skill_manage` 同步删除 AppData skill registry 中的副本
+
 ### 架构迁移
 
 - `references/media/case-study-workflow.md`：从 AppData 副本迁入工作区（宪法 §Directory Layout 已预留 `media/` 为跨角色媒体知识）

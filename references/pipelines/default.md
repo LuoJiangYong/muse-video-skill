@@ -46,8 +46,8 @@ Phase 7: 组装+调优         → prompt_assembler.py 产出 Creative Pack
 
    **b. 逐镜头拆解（内部工作）**
    - 调用 `video_analyze` 两遍：第一遍整体分析，第二遍逐镜头精确提取
-   - 每镜头记录：时间码 / 景别 / 构图 / 运镜 / 色调+场景 / 音效 / 叙事功能 / 角色（如有）/ 特效（如有）
-   - 生成拉片表（Agent 工作草稿，不入 Project State）
+   - 生成拉片表——格式见 `_TEMPLATE.md` §拉片附录 镜头序列总览（11列，与案例库同构）
+   - 拉片表为 Agent 工作草稿，不入 Project State
 
    **c. 拉片表校准**
    - 向用户展示拉片表，请用户验证 AI 理解是否准确
