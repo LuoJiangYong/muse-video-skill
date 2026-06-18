@@ -592,6 +592,41 @@ def assemble_index(cases: list[Case], recent_ids: list[str] = None) -> str:
 
 # ─── CLI ─────────────────────────────────────────────────────────────────────
 
+def check_deps(skill_root: Path) -> list[str]:
+    """Check cross-file markdown references for dead links.
+
+    Scans references/ for inline file references like `references/roles/dp.md`
+    and verifies they exist on disk.
+    """
+    errors = []
+    ref_pattern = re.compile(r'`(references/[^`]+\.(?:md|py|yaml|json))`')
+
+    refs_dir = skill_root / "references"
+    if not refs_dir.exists():
+        return errors
+
+    for fpath in sorted(refs_dir.rglob("*.md")):
+        # Skip INDEX.md.bak
+        if fpath.suffix == ".bak":
+            continue
+        try:
+            content = fpath.read_text(encoding="utf-8")
+        except Exception:
+            continue
+
+        for m in ref_pattern.finditer(content):
+            ref = m.group(1)
+            # Skip template placeholders like <id>.md
+            if "<" in ref or ">" in ref:
+                continue
+            target = skill_root / ref
+            if not target.exists():
+                rel = fpath.relative_to(skill_root)
+                errors.append(f"  ✗ {rel}: dead link → {ref}")
+
+    return errors
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="Muse Video Skill — Auto-generate INDEX.md from case file frontmatter"
@@ -623,6 +658,10 @@ def main():
     parser.add_argument(
         "--list-scenes", action="store_true",
         help="List available scene types parsed from SKILL.md routing tree",
+    )
+    parser.add_argument(
+        "--deps", action="store_true",
+        help="Check cross-file references for dead links (implies --check)",
     )
     args = parser.parse_args()
 
@@ -661,6 +700,17 @@ def main():
 
     if not args.quiet:
         print(f"✓ Validation passed (0 errors, {len(warnings)} warnings)", file=sys.stderr)
+
+    # --deps: check cross-file references
+    if args.deps:
+        dep_errors = check_deps(skill_root)
+        if dep_errors:
+            print(f"\n❌ {len(dep_errors)} dead link(s):", file=sys.stderr)
+            for e in dep_errors:
+                print(e, file=sys.stderr)
+            sys.exit(1)
+        if not args.quiet:
+            print("✓ Dependency check passed (0 dead links)", file=sys.stderr)
 
     # Generate
     new_index = assemble_index(cases)

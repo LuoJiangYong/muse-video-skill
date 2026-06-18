@@ -18,10 +18,10 @@ fields:
   - path: project.scene_type
     type: enum
     default: "custom"
-    enum_values: [studio-ad, logo-animation, product-demo, sci-fi, custom]
+    # enum_values auto-generated from SKILL.md routing tree — run `build_index.py --list-scenes`
     description: "场景类型 — 决定加载哪个场景文档"
-    affected_roles: [director]
-    affected_phases: [1]
+    affected_roles: [director, writer, dp, sound-designer]
+    affected_phases: [1, 2, 4, 5]
     version_added: "0.1.0"
     breaking_change: false
 
