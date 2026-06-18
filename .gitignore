@@ -41,3 +41,4 @@ temp_videos/
 node_modules/
 .hyperframes/
 *.bak
+projects/
