@@ -194,7 +194,6 @@ scene_relations:
 ## 拉片附录（→ 精确复刻）
 
 > **仅高质量案例填写。** 用户认定案例质量极高时，Agent 进行逐镜头深层录入。
-> 设计规范见 `references/pull-sheet-implementation.md`。
 >
 > **分析流程**：video_analyze 两遍交叉 → 拉片表+时间码交用户确认 → ffmpeg 逐镜头抽帧 → vision_analyze 逐张验证内容-描述匹配 → 写入。
 > **关键原则**：先校准时间码再抽帧。video_analyze 的地标/建筑/运镜识别不可靠，必须 vision_analyze 逐帧核实。纠正项在对应单元格用 ★ 标注，不另写备注块。

@@ -319,7 +319,6 @@ scene_relations:
 > **分析日期**：2026-06-18
 > **方法**：video_analyze 两遍交叉 + ffmpeg 逐镜头抽帧 + vision_analyze 逐张内容-描述匹配
 > **校准状态**：✅ 用户确认时间码 + ✅ 逐帧验证（6/14 处纠正 video_analyze 错误）
-> **设计规范**：`references/pull-sheet-implementation.md`
 
 ### 镜头序列总览（按场景分组）
 
