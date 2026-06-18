@@ -29,6 +29,23 @@
 - 新建 `references/cases/assets/` 目录（分镜图存储）
 - 总览表按场景分组（方案 B），列名与拆解管线 2.5b 字段一致
 
+### LJZ-COFFEE 首个拉片附录 — 完整实施
+
+**背景**：首个高质量案例拉片附录实施。video_analyze 两遍交叉对比 + ffmpeg 逐镜头抽帧（14 张）+ vision_analyze 逐张内容-描述匹配。vision_analyze 发现 6 处 video_analyze 识别错误（地标/运镜/建筑），已在拉片表中标注修正。
+
+**修改**：
+- `references/cases/LJZ-COFFEE.md`：新增 §拉片附录（镜头序列总览 + 6 角色分段 + 分镜精选帧 + 消费映射速查），约 180 行，含 14 镜头的完整技术参数
+- `references/cases/assets/LJZ-COFFEE/frame_*.jpg`：14 张逐镜头关键帧
+- 校准流程固化：先拉片表→用户确认→再批量抽帧→vision_analyze 逐张验证（避免了此前 video_analyze 时间码偏差导致的内容-描述错位问题）
+
+**vision_analyze 纠正项**（6 处）：
+- 镜头 1 运镜：固定→缓推（透视汇聚线+浅景深确认）
+- 镜头 5 背景：上海大剧院→飞碟形建筑（梅赛德斯-奔驰文化中心风格）
+- 镜头 8 地标：陆家嘴环形天桥→独立粉锤（Tamper）形透明装置
+- 镜头 10 背景：上海博物馆→白色现代主义立方建筑+外滩建筑群
+- 镜头 9 装置：摩卡壶→咖啡机手柄（Portafilter），手柄=透明小人通道
+- 镜头 6 运镜：固定→跟拍（背景 motion blur 确认）
+
 ### 架构迁移
 
 - `references/media/case-study-workflow.md`：从 AppData 副本迁入工作区（宪法 §Directory Layout 已预留 `media/` 为跨角色媒体知识）
