@@ -35,6 +35,34 @@ Phase 7: 组装+调优         → prompt_assembler.py 产出 Creative Pack
 
 1. Director 加载 `references/roles/director.md` → vision 模板
 2. Director 访谈用户，逐项确认：画幅比例 / 预估时长 / 类型 / 情绪基调 / 目标平台
+
+2.5 **【参考视频拆解】** 如用户提供参考视频（消息中含本地文件路径 `*.mp4/*.mov` 或 YouTube/Bilibili 等可下载 URL）→ 触发以下子流程。文字描述不走此分支，走步骤 3 案例匹配。
+
+   **a. 获取 + 预处理**
+   - 本地文件：直接读取
+   - URL：`yt-dlp` 下载（Android client 防 bot 检测，复用 `case-study-workflow.md` 已有经验）
+   - 预处理：`ffprobe` 检查 codec → av1 必须 `ffmpeg` 转 H.264（CRF 26-28）；检查文件大小 → >30MB 压缩至 720p
+   - 下载失败 → 告警用户：「无法下载，能否提供本地文件 / 文字描述风格 / 其他链接？」。如用户三者都给不出 → 跳过拆解，继续步骤 3
+
+   **b. 逐镜头拆解（内部工作）**
+   - 调用 `video_analyze` 两遍：第一遍整体分析，第二遍逐镜头精确提取
+   - 每镜头记录：时间码 / 景别 / 构图 / 运镜 / 调色 / 音效 / 叙事功能
+   - 生成拉片表（Agent 工作草稿，不入 Project State）
+
+   **c. 拉片表校准**
+   - 向用户展示拉片表，请用户验证 AI 理解是否准确
+   - 用户指正错误 → 修正后聚合；用户确认 → 进入聚合
+
+   **d. 聚合为技法摘要**
+   - 从拉片表中提取跨镜头的规律，归纳为 5 角色技法：
+     narrative / cinematography / color / sound / vfx
+   - 结构与静态案例 `techniques` 字段 1:1 对应（仅技法名 + 关键参数，不含拉片层细节）
+
+   **e. 技法摘要确认**
+   - 向用户展示技法摘要，确认重点借鉴方向（哪个技法要 / 哪个忽略）
+   - 确认后写入 Project State（`reference_analysis` 字段，结构同静态案例数据）
+   - 写入 `_meta: { phase: 1, action: "reference_deconstruct" }`
+
 3. 如用户提到具体风格/案例 → 加载 `references/cases/INDEX.md` → 匹配案例 → 注入参考
 4. Director 将确认结果写入 `project.*` 和 `director_notes.*`
 5. 向用户复述确认后的参数，等待用户说「确认/开始/好」

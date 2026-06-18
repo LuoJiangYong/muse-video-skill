@@ -1,7 +1,7 @@
 ---
 name: muse-video
 description: "When the user asks to 策划/构思/设计/写脚本/画分镜 for a video project — e.g. '帮我策划一个广告创意' '这个产品演示视频怎么拍' '帮我写科幻短片的分镜脚本' '给我这个品牌TVC的美术方向'。Not for actual video rendering/compositing or AI image/video generation."
-version: 0.25.0
+version: 0.26.1
 author: Hermes Agent + 钱多多
 license: MIT
 platforms: [linux, macos, windows]
@@ -26,6 +26,12 @@ metadata:
         ├─ "帮我生成一个视频/图片" → 这不是本 Skill。如已配置 ComfyUI/image_gen 可在视觉阶段按需调用；否则用文字描述替代。
         │
         └─ "帮我策划/设计/构思一个视频" → ✅ 激活本 Skill
+                │
+                ├─ 用户提供参考视频（本地文件 / 可下载 URL）？
+                │   → 触发 Phase 1 拆解子流程（见 default.md §Phase 1 步骤 2.5）
+                │   → 逐镜头拆解为拉片表 → 用户校准 → 聚合为技法摘要
+                │   → 技法摘要写入 Project State，后续角色直接消费
+                │   → 下载失败：告警 + 问替代方案，不降级不猜测
                 │
                 ├─ 用户提到具体案例/风格？
                 │   → 加载 references/cases/INDEX.md
