@@ -1022,4 +1022,4 @@ python scripts/build_index.py --check
 
 ---
 
-*自动生成于 2026-06-17 | build_index.py v0.1.0 | 案例总数：38（—）*
+*自动生成于 2026-06-18 | build_index.py v0.1.0 | 案例总数：38（—）*

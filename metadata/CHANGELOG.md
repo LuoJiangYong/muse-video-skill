@@ -6,6 +6,48 @@
 
 ---
 
+## [0.26.0] — 2026-06-18
+
+### 架构一致性优化 — 场景参数下沉 + SCENE_TYPES 动态化 + 元数据工具化
+
+**背景**：CONSTITUTION 被反转——Role doc 持有场景特定参数表（dp.md L90-97 / writer.md L145-152 / sound-designer.md L78-85），而非 Scene doc 自包含。加场景需碰 8 文件，核心问题是必须项远超 2 个。
+
+**方案**：场景参数下沉到 scene doc、SCENE_TYPES 从硬编码改为 SKILL.md 路由树动态解析、手动 YAML 元数据替换为工具驱动。
+
+**变更概要**：
+
+| 类别 | 变更 |
+|------|------|
+| **场景参数下沉** | 4 个 scene doc 新增「角色参数」节（灯光策略 + 情绪曲线 + 音效密度）；3 个 role doc 删除场景参数表，替换为 scene doc 引用 |
+| **SCENE_TYPES 动态化** | `build_index.py` 从 SKILL.md 路由树解析场景类型（新增 `parse_scene_types_from_skill_md()`）；`_TEMPLATE.md` 场景值改为引用 SKILL.md |
+| **元数据工具化** | 新建 `scripts/inventory.py`（动态文件清单，替代 registry.yaml）；`build_index.py --check --deps`（死链接检测，替代 dependencies.yaml）；删除 `metadata/registry.yaml` + `dependencies.yaml`；`fields.yaml` enum_values 标注自动生成 |
+| **CONSTITUTION 修订** | 元数据治理章从手动 3-YAML → 工具驱动；Directory Layout 更新；版本号 bump |
+
+**新增文件**：
+- `scripts/inventory.py` — 动态文件清单（160 行，支持 --json / --deps / --list-roles）
+
+**删除文件**：
+- `metadata/registry.yaml` — 713 行手动文件注册表
+- `metadata/dependencies.yaml` — 149 行手动依赖图
+
+**修改文件**（共 12 个）：
+- `references/scenes/{studio-ad,product-demo,logo-animation,sci-fi}.md` — +120 行场景参数
+- `references/roles/{dp,writer,sound-designer}.md` — -24 行场景表，+9 行引用指令
+- `scripts/build_index.py` — +117 行（动态 SCENE_TYPES + --deps + --list-scenes）
+- `references/cases/_TEMPLATE.md` — 场景值引用 SKILL.md
+- `metadata/fields.yaml` — enum_values 自动生成，affected_roles/phases 修正
+- `CONSTITUTION.md` — 63 行修订
+- `SKILL.md` — 版本号 v0.25.1 → v0.26.0
+
+**影响**：
+- 加场景从 8 处 → 2 处（scene doc + SKILL.md 路由树加一行）
+- SCENE_TYPES 从 4 副本硬编码 → SKILL.md 路由树为唯一权威源
+- 元数据从手动维护 → 工具自动扫描
+
+**迁移指南**：
+- 无需迁移。所有 38 案例 frontmatter 未变，INDEX.md 生成结果一致。
+- 新增场景类型时：创建 `references/scenes/<type>.md` + 在 SKILL.md 路由树加一行 → `build_index.py --check` 自动识别。
+
 ## [0.25.0] — 2026-06-16
 
 ### 重大变更 — INDEX.md 自动化（build_index.py）
