@@ -30,6 +30,11 @@ output/
 .env
 .env.local
 
+# Temp / working files (agent artifacts, logs)
+.hermes/
+*.log
+.pytest_cache/
+
 # Node (if HyperFrames integration is added later)
 node_modules/
 .hyperframes/
