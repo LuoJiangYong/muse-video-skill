@@ -40,7 +40,7 @@ Phase 7: 组装+调优         → prompt_assembler.py 产出 Creative Pack
 
    **a. 获取 + 预处理**
    - 本地文件：直接读取
-   - URL：`yt-dlp` 下载（Android client 防 bot 检测，复用 `case-study-workflow.md` 已有经验）
+   - URL：`yt-dlp` 下载（Android client 防 bot 检测，复用 `references/media/case-study-workflow.md` 已有经验）
    - 预处理：`ffprobe` 检查 codec → av1 必须 `ffmpeg` 转 H.264（CRF 26-28）；检查文件大小 → >30MB 压缩至 720p
    - 下载失败 → 告警用户：「无法下载，能否提供本地文件 / 文字描述风格 / 其他链接？」。如用户三者都给不出 → 跳过拆解，继续步骤 3
 
