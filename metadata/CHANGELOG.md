@@ -55,6 +55,7 @@
 - `default.md` §2.5b：拉片表列名内联替换为显式引用 `_TEMPLATE.md` §拉片附录 镜头序列总览（与案例库同构）
 - `default.md` §2.5d/e：删除稀疏镜头索引（`shot_index[]`）。拉片表已入 Project State，角色直接从拉片表时间码按需抽帧，无需额外维护 3-5 帧预精选索引
 - `pull-sheet-layer-design.md`：**删除**。设计文档，不在运行时路径上，内容已被后续文件完全覆盖
+- `pull-sheet-implementation.md`：**删除**。校准工作流+格式合规已覆盖于 `_TEMPLATE.md`，`_TEMPLATE.md` 和 `LJZ-COFFEE.md` 中的引用同步移除
 - `skill_manage` 同步删除 AppData skill registry 中的副本
 
 ### 架构迁移
@@ -64,7 +65,7 @@
 
 ### 绑定
 
-- 拆解管线和拉片层分镜图：拆解管线不加分镜图（当场消费），拉片层按需抽帧（方案 A 稀疏索引）
+- 拆解管线和拉片层分镜图：拆解管线逐镜头抽帧（与案例库同构，default.md §2.5b），案例库预抽+内嵌
 
 ---
 
