@@ -195,6 +195,8 @@ def fill_template(template: str, project_state: dict) -> str:
                          safe_list(director_notes.get("decisions")))
     result = expand_each(result, "script.scenes",
                          safe_list(script.get("scenes")))
+    result = expand_each(result, "script.character_bible",
+                         safe_list(script.get("character_bible")))
     result = expand_each(result, "visual_dev.palette",
                          safe_list(visual_dev.get("palette")))
     result = expand_each(result, "visual_dev.style_refs",

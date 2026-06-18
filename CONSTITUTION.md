@@ -279,4 +279,4 @@ python scripts/build_index.py --check --deps
 
 ---
 
-*Last amended: 2026-06-18. Author: Director-Agent (Hermes). v0.26.3 — P0 修正 + P1：角色消费全链路闭合（技法下沉版）；Sound Designer 角色消费；has_characters 管线结构化；fields.yaml 消费声明修正。*
+*Last amended: 2026-06-18. Author: Director-Agent (Hermes). v0.27.0 — 方案 A：角色身份层（character_bible）跨角色闭环。Writer P2 产出 script.character_bible[]（identity + voice），AD P3 翻译为视觉（§角色视觉翻译），Sound P5 以 voice 为权威源（§角色声音签名扩充）。*

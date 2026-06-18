@@ -29,6 +29,7 @@
 | **9** | `sound-designer.md` §角色声音签名 | 扩充 | 新增 character_bible.voice→声音签名映射（权威源）；visual_profile 降为辅助维度（仅步音 Foley） |
 | **10** | `sound-designer.md` Agent Prompt | 修正 | 消费从 character_design[] 改为 character_bible[].voice + character_design[] |
 | **11** | `default.md` Phase 2/3 | 同步 | Phase 2 产出表加 character_bible[]；Phase 3 输入表加 character_bible[]；Phase 2 操作序列加 2b 步骤 |
+| **12** | `scripts/prompt_assembler.py` | 新增 | expand_each 支持 script.character_bible |
 
 ---
 
