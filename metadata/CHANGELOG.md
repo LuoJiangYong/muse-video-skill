@@ -66,6 +66,26 @@
 - `references/media/case-study-workflow.md`：从 AppData 副本迁入工作区（宪法 §Directory Layout 已预留 `media/` 为跨角色媒体知识）
 - `default.md` 步骤 2.5a 引用路径更新为 `references/media/case-study-workflow.md`
 
+### PUDONG-CAT 拉片附录 — 第二个完整拉片案例
+
+**背景**：用户指定 PUDONG-CAT（橘猫篇·303行技法层完整）补充逐镜头拉片分析。视频 80.9s, H.264 1080p 22MB。video_analyze ×2 + ffmpeg 28帧抽帧 + vision_analyze 逐张验证。vision_analyze 发现 9/28 处 video_analyze 识别错误（32%误识率），包括3处地标完全误认（迪士尼城堡/上海天文馆/Art Deco塔楼被误识为透明走廊/梅赛德斯中心/中华艺术宫）。
+
+**修改**：
+- `references/cases/PUDONG-CAT.md`：新增 §拉片附录（13组场景/28镜头/28分镜帧），约 340 行，含完整技术参数+9处vision纠正标注
+- `references/cases/assets/PUDONG-CAT/frame_*.jpg`：28 张逐镜头关键帧
+- 拉片表按 `_TEMPLATE.md` §拉片附录 标准格式
+
+**vision_analyze 纠正项**（9 处）：
+- 镜头 3 地面文字：有"PUDONG SHANGHAI"→无文字，仅东方明珠投影
+- 镜头 5 空间：电梯内→电梯厅（门外有呼梯按钮）
+- 镜头 8 建筑：透明走廊→上海迪士尼奇幻童话城堡
+- 镜头 9 建筑：梅赛德斯奔驰文化中心→上海天文馆（三体结构）
+- 镜头 10 建筑+姿态：中华艺术宫+猫站立→Art Deco塔楼+猫挂降落伞漂浮
+- 镜头 16 格式：四分屏四国美食→单帧全俯视红烧肉+米饭
+- 镜头 19 动作+元素：猫吹蒲公英+右侧有飞鸟→猫爪按压蒲公英，无飞鸟
+- 镜头 23 色调定性：全片暖色最高潮→冷色调主导（夜空深蓝#050A15占70%+面积）
+- 镜头 25 内容：双圆孔租房面试→猫眼虹膜超近特写（木纹视觉错觉）
+
 ### 绑定
 
 - 拆解管线和拉片层分镜图：拆解管线逐镜头抽帧（与案例库同构，default.md §2.5b），案例库预抽+内嵌
