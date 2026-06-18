@@ -284,8 +284,8 @@ fields:
     type: array<object>
     default: []
     description: "角色设定（name/role/traits/consistency_notes）"
-    affected_roles: [art-director, writer]
-    affected_phases: [3, 4, 6]
+    affected_roles: [art-director, writer, dp, sound-designer]
+    affected_phases: [3, 4, 5, 6]
     version_added: "0.1.0"
     breaking_change: false
 
@@ -483,4 +483,4 @@ fields:
 # Affected by dp: 15 fields
 # Affected by art-director: 14 fields
 # Affected by vfx: 10 fields
-# Affected by sound-designer: 7 fields
+# Affected by sound-designer: 8 fields

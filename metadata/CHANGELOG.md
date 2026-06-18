@@ -6,6 +6,43 @@
 
 ---
 
+## [0.26.3] — 2026-06-18
+
+### P0 修正 + P1 — 角色消费全链路闭合（技法下沉架构版）
+
+**背景**：v0.26.2 的 P0 在 Writer/DP Agent Prompt 中嵌入了角色消费的 HOW 细节（如「高瘦→低角度」「哑光→柔光」），违反了 `skill-maintenance.md` 陷阱 4b 的设计规则——Agent Prompt 应只声明 WHAT（读什么、参考哪节），HOW 细节应下沉到技法库子节。同时 P1（Sound Designer 角色消费 + has_characters 管线结构化）尚未执行。
+
+**方案**：从 `fields.yaml` 元数据修正出发，按 `skill-maintenance.md §四` 标准顺序执行全链路修正。
+
+**修改文件**：
+
+| # | 文件 | 改动类型 | 核心变化 |
+|---|------|---------|---------|
+| **1** | `metadata/fields.yaml` | 修正 | `visual_dev.characters` → `affected_roles` 加 dp+sound-designer，`affected_phases` 加 5；sound-designer 统计 7→8 |
+| **2** | `writer.md` §宪法约束 | 修正 | 读列表显式加 `visual_dev.character_design[]`（如有角色） |
+| **3** | `writer.md` §对白技巧 | 新增 | §角色驱动对白（年龄/性格/背景→对白映射表 + 应用规则） |
+| **4** | `writer.md` Agent prompt | 瘦身 | 角色消费 4 行 HOW 细节 → 1 行引用 `§角色驱动对白` |
+| **5** | `dp.md` §宪法约束 | 修正 | `visual_dev.*` 显式列出 `character_design[]` |
+| **6** | `dp.md` §灯光方案 | 新增 | §角色材质与灯光（哑光/亮面/透明/深色→灯光策略） |
+| **7** | `dp.md` §构图 | 新增 | §角色体型与构图角度（体型→构图 + 标志物→特写时机） |
+| **8** | `dp.md` Agent prompt | 瘦身 | 角色消费 5 行 HOW 细节 → 1 行引用两技法段 |
+| **9** | `sound-designer.md` §宪法约束 | 修正 | `visual_dev.*` 显式列出 `character_design[]` |
+| **10** | `sound-designer.md` §音效体系 | 新增 | §角色声音签名设计（性格/年龄/体型/口头禅→声音映射表） |
+| **11** | `sound-designer.md` Agent prompt | 重写 | +场景地点 ambience + 角色消费 1 行引用 + 声音同质化禁止 |
+| **12** | `default.md` Phase 1 | 新增 | 产出表加 `director_notes.has_characters`（bool/null）；操作序列加提取步骤 4b |
+| — | `director.md` | 未修改 | vision 模板已有「角色需求」字段，Agent prompt 保持 5 条干净 |
+
+**架构决策**：
+- 角色消费 HOW 细节从 Agent Prompt 移除，下沉到各 role doc 技法库子节（§角色驱动对白 / §角色材质与灯光 / §角色体型与构图角度 / §角色声音签名设计）
+- `has_characters` 由管线（default.md Phase 1）提取，不污染 Director Agent Prompt
+- 修正从 `fields.yaml` 元数据开始（声明消费者），而非从 Agent Prompt 打补丁
+
+**上游**：v0.26.2（P0：Writer/DP Agent Prompt 场景地点+角色消费初始版）
+**下游**：Writer Phase 4（对白）、DP Phase 4（镜头/灯光）、Sound Designer Phase 5（声音签名）
+**迁移**：无破坏性变更。技法段为新增内容，Agent Prompt 瘦身不改变行为语义。
+
+---
+
 ## [0.26.2] — 2026-06-18
 
 ### P0 — Writer/DP Agent Prompt 场景地点+角色消费；Director Vision 模板新增核心场景/地点

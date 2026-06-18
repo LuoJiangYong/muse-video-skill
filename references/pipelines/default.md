@@ -27,7 +27,7 @@ Phase 7: 组装+调优         → prompt_assembler.py 产出 Creative Pack
 | **激活角色** | Director（唯一） |
 | **触发条件** | 用户请求视频策划，路由到本管线 |
 | **输入** | 用户原始请求（自然语言） |
-| **产出** | Project State JSON：project.*（aspect_ratio, duration_est, genre, tone, platform）, director_notes.vision, director_notes.constraints |
+| **产出** | Project State JSON：project.*（aspect_ratio, duration_est, genre, tone, platform）, director_notes.vision, director_notes.constraints, director_notes.has_characters（bool/null，从 vision 模板「角色需求」字段提取） |
 | **Director 审核** | 本阶段自动通过（Director 自身执行，无需自审） |
 | **Loop 规则** | 无限制——此阶段是需求澄清，直到用户确认方向为止 |
 
@@ -65,6 +65,7 @@ Phase 7: 组装+调优         → prompt_assembler.py 产出 Creative Pack
 
 3. 如用户提到具体风格/案例 → 加载 `references/cases/INDEX.md` → 匹配案例 → 注入参考
 4. Director 将确认结果写入 `project.*` 和 `director_notes.*`
+4b. Agent 从 vision 模板提取结构化字段：director_notes.has_characters（「有角色」→true、「无角色」→false、「不确定」→null）
 5. 向用户复述确认后的参数，等待用户说「确认/开始/好」
 
 ---

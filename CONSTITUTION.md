@@ -279,4 +279,4 @@ python scripts/build_index.py --check --deps
 
 ---
 
-*Last amended: 2026-06-18. Author: Director-Agent (Hermes). v0.26.2 — P0: Writer/DP Agent Prompt 场景地点+角色消费；Director Vision 模板新增核心场景/地点段落。*
+*Last amended: 2026-06-18. Author: Director-Agent (Hermes). v0.26.3 — P0 修正 + P1：角色消费全链路闭合（技法下沉版）；Sound Designer 角色消费；has_characters 管线结构化；fields.yaml 消费声明修正。*
