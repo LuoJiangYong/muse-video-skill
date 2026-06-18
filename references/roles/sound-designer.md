@@ -2,7 +2,7 @@
 
 > **定位**：耳朵的建筑师。Sound Designer 决定观众的听觉体验——配乐风格、音效设计、旁白基调、以及最重要的：什么时候保持安静。
 > **激活时机**：Phase 5（标准管线，在脚本和视觉方向确定后）/ 阶段 B（快速管线）。
-> **宪法约束**：Sound Designer 读 `script.scenes[]` + `project.tone` + `visual_dev.*`（含 `character_design[]` 如有角色）。不产出最终音频文件——只产出「方向性指导」，由用户在下游工具中实现。
+> **宪法约束**：Sound Designer 读 `script.scenes[]` + `project.tone` + `script.character_bible[]`（如有角色）+ `visual_dev.*`（含 `character_design[]`）。不产出最终音频文件——只产出「方向性指导」，由用户在下游工具中实现。
 
 ---
 
@@ -80,17 +80,29 @@
 
 ### 角色声音签名设计
 
-> Agent 在 Phase 5 读到 `visual_dev.character_design[]` 后，为每个角色设计独立的声音签名——闭眼也能分辨谁在画面中。
+> Agent 在 Phase 5 读到 `script.character_bible[]` + `visual_dev.character_design[]` 后，为每个角色设计独立的声音签名。**voice 字段是声音签名的权威输入**——不再从 visual_profile 逆推性格和语速。visual_profile 的体型/标志物作为辅助维度。
+
+#### character_bible.voice → 声音签名（权威源）
+
+| voice 字段 | 声音映射 | 示例 |
+|-----------|---------|------|
+| **speech_style** | 短句+回避→大量静默+留白；直接+长句→密集对白+少停顿；打断式→短促打击乐穿插 | 回避直接表达 → 对白密度 ≤2句/场景，每句前留 1s 静默 |
+| **pace** | 慢(2-3字/秒)→legato弦乐+长混响；中(3-4字/秒)→自然节奏；快(4-5字/秒)→staccato+短促打击乐 | 慢速角色 → 配乐 tempo ≤80 BPM + 弦乐动机以全音符为主 |
+| **catchphrase** | 口头禅→转化为短乐句 stinger，每次出现用同一声音标记。无言口头禅→用环境音变化标记（如"沉默是他的口头禅"→角色登场时环境音降低 3dB） | 「交给我吧」→ 短促铜管 stinger；沉默→负空间手法 |
+| **vocal_quality** | 低沉沙哑→大提琴/低音单簧管动机；清亮高音→长笛/钢琴高音区；中气不足→留白+低频 pad 填充 | 沙哑 → 大提琴独奏动机 + 喉音 Foley |
+
+#### visual_profile → 声音签名（辅助维度）
 
 | 角色维度 | 声音映射 | 示例 |
 |---------|---------|------|
-| **性格** | 沉稳→大提琴/低音单簧管/legato；急躁→短促打击乐/高频脉冲/staccato；神秘→氛围pad+反向混响+颗粒合成；天真→木管高音区/钢琴高音/铃铛 | 沉稳角色入场→大提琴独奏动机；急躁角色说话→短促拨弦打断 |
-| **年龄** | 青年→语速快（4-5字/秒）、音调偏高；中年→语速正常（3-4字/秒）、音调中；老年→语速慢（2-3字/秒）、音调偏低、多停顿 | 青年旁白→紧凑少停顿；老年→句间留白更长 |
+| **性格**（visual_profile 逆推，以 character_bible.personality 为准） | 沉稳→大提琴/legato；急躁→短促打击乐/staccato；神秘→氛围pad+反向混响 | 仅当 character_bible 无 personality 时使用此回退 |
 | **体型/标志物** | 高瘦→轻盈高频步音；沉重→低频足音+衣物摩擦；金属义肢→机械伺服声+液压 | 沉重角色每次出场前 1-2 秒先听到脚步声 |
-| **口头禅** | 将口头禅转化为短乐句或音效标记，角色每次说出口头禅时配以同一声音标记 | 「交给我吧」→ 每次出现时配短促铜管 stinger |
+| **wardrobe.materials** | 皮革→摩擦声厚重；丝绸→沙沙声轻盈；金属配件→叮当声 | 步音 Foley 层参考 |
 
 **应用规则**：
-- 每个角色至少 1 个配乐动机 + 1 个音效标记
+- 先在 `script.character_bible[]` 中找到对应的 `character_id`，读取 `voice` 字段——这是权威源
+- 每个角色至少 1 个配乐动机（从 voice.speech_style + vocal_quality 推导）+ 1 个音效标记（从 voice.catchphrase 推导）
+- visual_profile 的体型/标志物用于补充步音 Foley 层，不作为配乐动机来源
 - 角色首次出场时完整呈现声音签名（配乐+音效同步）
 - 后续出场用声音签名碎片即可（如仅脚步声或配乐动机的三音片段）
 - 多角色同场时，主角配乐动机在前景，配角在背景
@@ -199,7 +211,7 @@
 - 读取 director_notes.vision 获取场景地点——环境音的基础（咖啡厅→杯碟碰撞+人群murmur、太空站→低频嗡鸣+金属应力），为每个场景建立真实的 ambience 层
 - 从配乐风格库中匹配最佳风格（给出 tempo 和 instrumentation）
 - 为每个场景建立 sfx_map（关键动作→音效类型）
-- 如有角色需求 → 读取 visual_dev.character_design[]，按 §角色声音签名设计 为每个角色分配独立的配乐动机和音效标记
+- 如有角色需求 → 读取 script.character_bible[].voice + visual_dev.character_design[]，按 §角色声音签名设计 为每个角色分配独立的配乐动机和音效标记——voice 是权威源，visual_profile 仅辅助步音 Foley
 - 使用旁白参数模板确定旁白基调（性别/语速/语调/距离感/混响）
 - 使用静默部署表规划每个场景的静默点（类型+时长+位置）
 - 提供可搜索的参考曲目关键词
