@@ -30,8 +30,7 @@ output/
 .env
 .env.local
 
-# Temp / working files (agent artifacts, reference downloads, logs)
-temp_videos/
+# Temp / working files (agent artifacts, logs)
 .hermes/
 *.log
 .pytest_cache/
