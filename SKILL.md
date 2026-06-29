@@ -69,18 +69,7 @@ metadata:
 
 ## 案例引用
 
-> **案例库规模**：38 案例（film×4, commercial×25, short-film×2, music-video×1, animation×1, documentary×1, experimental×1, logo-animation×3），覆盖 25+ 风格标签。新增品类：奢侈品(1)、快消CGI(1)、LOGO动画扩展(2)。
-
-当案例匹配时，Agent 加载案例文件，将对应段落注入角色 prompt：
-- `BR2049` → sci-fi/赛博朋克的镜头+色彩+特效技法
-- `CHANEL-NO5-FILM` → 奢侈品/明星叙事/电影级TVC
-- `COCA-COLA-HAPPINESS-FACTORY` → 快消CGI/全幻想世界/产品=神圣之物
-- `APPLE-EVENT-LOGO` → LOGO=事件品牌/单场次定制/17种风格系统
-- `PIXAR-LOGO` → LOGO=角色IP/物理喜剧/30年品牌IP
-- 更多案例见 `references/cases/INDEX.md` 交叉索引表（由 `scripts/build_index.py` 自动生成）
-- 发现新案例 → 按 `references/cases/_TEMPLATE.md` 拆解，填写 YAML frontmatter，运行 `python scripts/build_index.py --write`
-- 用户指定高质量案例 → 可附加拉片附录（逐镜头参数 + 精选分镜图），设计见 `references/cases/_TEMPLATE.md` §拉片附录
-- **禁止手动编辑 INDEX.md** — 所有交叉引用从案例文件 frontmatter 自动生成
+> 案例匹配 → 加载 `references/cases/INDEX.md`。新增案例 → `references/cases/_TEMPLATE.md`。索引由 `scripts/build_index.py` 自动生成，禁止手动编辑 INDEX.md。
 
 ## 导出格式
 
@@ -90,37 +79,12 @@ metadata:
 
 ## 下游对接
 
-> 以下为可选对接——取决于用户已配置的工具链。如未配置，Creative Package 可作手动拍摄/后期参考。
-
-产出 Creative Package JSON 后，提示用户可对接：
-- `[HyperFrames]` → HTML 视频合成（场景、动画、字幕、配乐）——如已安装
-- `[ComfyUI]` → AI 图片/视频生成（分镜图、动态片段）——如已安装
-- Kling / Runway / Pika → 第三方 AI 视频工具
-- 手动制作 → 用导出的 HTML/Excel 作为拍摄参考
-
-## 禁止事项
-
-- ❌ 跳过 Director 审核（每个阶段结束必须审核）
-- ❌ 3 轮以上修改（超过 2 轮 → 接受带备注或重启阶段）
-- ❌ 在 SKILL.md 中放详细技法（→ references/cases/）
-- ❌ 在不加载案例的情况下引用案例技法
-- ❌ 承诺角色一致性（诚实告知这是 AI 的限制）
-- ❌ 手动编辑 INDEX.md — INDEX.md 由 `scripts/build_index.py` 从案例 frontmatter 自动生成
+> 产出 Creative Package 后，按 `references/downstream-integration.md` 对接下游工具（HyperFrames / ComfyUI / Kling / 火山引擎 / etc.）。
 
 ## INDEX.md 自动化
 
-INDEX.md 由 `scripts/build_index.py` 从案例文件的 YAML frontmatter 自动生成。工作流：
-1. 新增/修改案例 → 编辑案例文件的 frontmatter
-2. `python scripts/build_index.py --check` → 校验
-3. `python scripts/build_index.py --write` → 重新生成 INDEX.md
-4. `git commit` 案例文件 + INDEX.md
-
-校验命令检查：frontmatter 有效性、必填字段完整性、技法命名一致性（自动检测相似名称）。
+> 见 `references/index-automation.md`。`build_index.py --check` 校验，`--write` 重新生成。禁止手动编辑。
 
 ## 产出验证
 
-- [ ] Project State JSON 完整（所有 phase 的 `_meta.director_approved` = true）
-- [ ] 每个角色产出有 `_meta` 追溯（role + revision）
-- [ ] 案例引用已加载（如果用户提到了风格参考）
-- [ ] Director 全程参与审核，无跳过阶段
-- [ ] 导出格式已按用户需求生成
+> 见 `references/meta/verification-checklist.md`。
