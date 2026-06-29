@@ -288,7 +288,8 @@ Phase 7: 组装+调优         → prompt_assembler.py 产出 Creative Pack
    - 如 BLOCKED → 输出阻塞原因（分镜未完成/未审批/缺失），回到 Phase 6 修复后再试
    - 如 PASS → 继续
 1. 检查 Project State JSON 完整性：所有 `_meta.director_approved` = true
-2. 运行 `scripts/prompt_assembler.py` → 产出 Creative Pack JSON
+2. 加载 `references/meta/verification-checklist.md` 逐项检查
+3. 运行 `scripts/prompt_assembler.py` → 产出 Creative Pack JSON
 3. Director 添加 `tuning_notes.*`：调色建议 / 节奏调整 / 特效微调 / 最终确认
 4. 按需运行 `scripts/export_html.py` / `scripts/export_xlsx.py` 生成导出文件
 5. 向用户交付，提示下游工具对接（HyperFrames / ComfyUI / Kling 等）
