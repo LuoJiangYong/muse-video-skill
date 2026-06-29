@@ -20,6 +20,18 @@
 
 **设计边界**：AD 保留「情绪→颜色」的抽象层级，visual_cause 为附加字段不替代 mood。完整词汇表（visual-vocabulary.md）留给 Phase 7.5 编译器开发时统一建立。
 
+### 审核严重度分类 — Director REVISE 三级标注 (commit 99ec965)
+
+**背景**：OpenMontage Reviewer Protocol — 当前 Director REVISE 不分轻重，逗号问题和色调全错消耗同等的 loop 配额。
+
+**修改**：
+- `references/roles/director.md`：
+  - 新增 §审核严重度级别：CRITICAL（阻塞性）/ SUGGESTION（质量性）/ NITPICK（打磨性）
+  - CRITICAL 2 轮后未修复 → REJECT；SUGGESTION 2 轮后未修复 → APPROVE with conditions
+  - NITPICK 不消耗 loop 配额——仅有 NITPICK 时直接 APPROVE
+  - REVISE 话术模板 + Agent Prompt 同步更新（finding 前加 `[严重度]` 标签）
+- `references/pipelines/default.md`：Loop 规则速查表新增「NITPICK 不消耗 loop」
+
 ### Phase 3.5 风格定样 — 条件性子阶段 (commit 1157885)
 
 **背景**：OpenMontage Sample-First 协议——phase 3 产出文字，用户 phase 6 才看到画面。如果风格跑偏，phase 4-5 白做。

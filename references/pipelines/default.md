@@ -300,6 +300,7 @@ Phase 7: 组装+调优         → prompt_assembler.py 产出 Creative Pack
 | 规则 | 说明 |
 |------|------|
 | **每阶段最多 2 轮修改** | Phase 2-6 统一适用。第 1 轮 Revise→修改重交；第 2 轮 Revise→Director 必须 approve（可带 conditions）或 reject 重启 |
+| **NITPICK 不消耗 loop** | 仅有 [NITPICK] 无 [CRITICAL]/[SUGGESTION] 的轮次不计入 2 轮配额——Director 应直接 APPROVE 附带 NITPICK |
 | **Reject 的后果** | 该阶段产出丢弃，回到该阶段的「触发条件」重新执行。不跨阶段回退 |
 | **Director 自身不审核** | Phase 1 和 Phase 7 是 Director 自行执行的阶段，无需自审 |
 | **Approve with conditions** | Director 可以 approve 但附加条件（如「色调 approve，但场景 3 的蓝色饱和度降低 10%」），条件在后续阶段执行 |

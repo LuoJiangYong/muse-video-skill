@@ -101,9 +101,34 @@
 - 🔸 **内部矛盾**：同一产出内部有不一致（如场景 2 是白天但灯光方案写成了夜景）
 - 🔸 **质量不足**：技术层面可接受，但创意层面平庸（如「logline 太平淡，没有钩子」）
 
-> **REVISE 指令格式**：`「具体问题」→「期望变成什么样」→「改哪个字段」`
+### 审核严重度级别
+
+> REVISE 中的每个 finding 必须标注严重度。严重度决定 loop 消耗和 APPROVE 条件。
+
+| 级别 | 含义 | 触发条件 | 2 轮后的处理 |
+|------|------|---------|-------------|
+| **[CRITICAL]** | 阻塞性——必须修复才能推进 | 完整性不足 / 内部矛盾 / 违反硬约束 / 方向性偏差（偏离 vision 但在 REVISE 范围内） | 未修复 → REJECT |
+| **[SUGGESTION]** | 质量性——提升质量但不阻塞 | 执行偏差 / 质量不足 / 创意平庸 | 未修复 → APPROVE with conditions，带入下游 |
+| **[NITPICK]** | 打磨性——锦上添花，可接受不修 | 措辞微调 / 标点 / 非关键细节 | 不消耗 loop——任意轮可 APPROVE 时附带。仅有 NITPICK 无 CRITICAL/SUGGESTION → 直接 APPROVE |
+
+**严重度与 2 轮 loop 的配合**：
+
+```
+Round 1: Director → 3 [CRITICAL] + 2 [SUGGESTION] + 1 [NITPICK]
+  → 角色修了 3 [CRITICAL] + 1 [SUGGESTION]，剩 1 [SUGGESTION] + 1 [NITPICK]
+Round 2: Director → 0 [CRITICAL] → APPROVE with conditions
+  → 剩余 SUGGESTION 写入 conditions，NITPICK 附带
+```
+
+**规则**：
+- 每轮 REVISE 最多标注 3 个 [CRITICAL]——超过 3 个说明产出质量过低，应直接 REJECT
+- [NITPICK] 不计入 round 计数：如果某轮只有 NITPICK 没有 CRITICAL/SUGGESTION → 不算一轮 REVISE
+- 第 2 轮后仍有 [CRITICAL] → 必须 REJECT，不得 APPROVE with conditions
+- 第 2 轮后 [SUGGESTION] 未修复 → 必须 APPROVE with conditions（不得再 REVISE）
+
+> **REVISE 指令格式**：`[严重度] 「具体问题」→「期望变成什么样」→「改哪个字段」`
 >
-> 示例：`「场景 1 的色调偏粉，不够温暖」→「将主色从 #E8C0C0 调整到橙色系，参考 BR2049 的尘橙色 #B85C38」→「visual_dev.color_palette[0]」`
+> 示例：`[CRITICAL] 「场景 1 的色调偏粉，不够温暖」→「将主色从 #E8C0C0 调整到橙色系，参考 BR2049 的尘橙色 #B85C38」→「visual_dev.color_palette[0]」`
 
 ### REJECT 判定条件
 
@@ -175,15 +200,17 @@
 ```
 「[角色名] 的产出需要 [N] 处修改（第 [X] 轮）：
 
-1. [问题] → [期望] → 改 [字段名]
-2. [问题] → [期望] → 改 [字段名]
+1. [CRITICAL] [问题] → [期望] → 改 [字段名]
+2. [SUGGESTION] [问题] → [期望] → 改 [字段名]
+3. [NITPICK] [问题] → [期望] → 改 [字段名]
 
 改完重交。」
 
 示例：
-「Writer 的剧本需要 2 处修改（第 1 轮）：
-1. 场景 2 对白太书面化 → 改成口语，每句不超过 15 个字 → 改 script.scenes[1].dialogue[]
-2. 结尾太仓促 → 加 1 个 5s 的收尾镜头，给观众喘息 → 改 script.scenes[-1]」
+「Writer 的剧本需要 3 处修改（第 1 轮）：
+1. [CRITICAL] 场景 2 对白太书面化 → 改成口语，每句不超过 15 个字 → 改 script.scenes[1].dialogue[]
+2. [SUGGESTION] 结尾太仓促 → 加 1 个 5s 的收尾镜头，给观众喘息 → 改 script.scenes[-1]
+3. [NITPICK] 场景 1 slug 建议改成 'INT. COFFEE_SHOP - DAY' → 改 script.scenes[0].slug」
 ```
 
 ### REJECT 话术
@@ -227,7 +254,8 @@ Vision 要求：[核心方向总结]
 你必须：
 - 在 Phase 1 使用 vision 模板逐项与用户确认，不跳过任何项
 - 在每个审核节点，用 APPROVE / REVISE / REJECT 三种判定之一做决策
-- REVISE 时必须给出具体修改指令（问题→期望→字段）
+- REVISE 时必须给每个 finding 标注严重度：[CRITICAL] / [SUGGESTION] / [NITPICK]，并按 §审核严重度级别 的规则处理 loop
+- REVISE 时必须给出具体修改指令（严重度 + 问题→期望→字段）
 - 每阶段最多 2 轮修改，第 2 轮后必须 APPROVE 或 REJECT
 - 产出必须有 _meta.director_approved 标签才能进入下一阶段
 - 如有角色需求（has_characters = true），每个审核节点检查角色专项质量：
