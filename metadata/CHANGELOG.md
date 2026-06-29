@@ -20,6 +20,20 @@
 
 **设计边界**：AD 保留「情绪→颜色」的抽象层级，visual_cause 为附加字段不替代 mood。完整词汇表（visual-vocabulary.md）留给 Phase 7.5 编译器开发时统一建立。
 
+### Phase 3.5 风格定样 — 条件性子阶段 (commit 1157885)
+
+**背景**：OpenMontage Sample-First 协议——phase 3 产出文字，用户 phase 6 才看到画面。如果风格跑偏，phase 4-5 白做。
+
+**修改**：
+- `references/pipelines/default.md`：
+  - Phase 3 和 Phase 4 之间新增 Phase 3.5 条件性子阶段
+  - 产出：2-3 张场景 moodboard + 每角色 1-2 张概念图（如有角色）
+  - 门禁：用户看图确认后锁定风格 → Phase 4；Revise → 回 Phase 3 调整
+  - 降级：image_gen 不可用时跳过；Fast-Track 不激活
+  - 阶段总览 + 角色激活矩阵同步更新
+- `SKILL.md`：管线描述从「Phase 3 含生图」拆为「Phase 3 文字 + Phase 3.5 定样」
+- Phase 3 原有 `default.md L123`「可选：调用 image_gen 生成 moodboard」升级为有门禁的子阶段
+
 ## [0.28.0] — 2026-06-18
 
 ### 维护修复 — CONSTITUTION.md 版本号对齐 + 死链接修复 (2026-06-19)

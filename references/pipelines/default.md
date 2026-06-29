@@ -12,6 +12,7 @@
 Phase 1: 需求沟通          → Director 访谈用户，确定基础参数
 Phase 2: 内容梳理          → Writer 生成叙事结构，Director 审核
 Phase 3: 视觉开发          → Art Director 定色调/风格/场景搭建，Director 审核
+Phase 3.5: 风格定样          → image_gen 生成场景 moodboard + 角色概念图，用户看图确认（条件性子阶段）
 Phase 4: 脚本              → Writer→DP→Director 链式产出，含镜头语言
 Phase 5: 声音方向          → Sound Designer 定配乐/音效/旁白基调
 Phase 6: 分镜              → Storyboard 组装 + 生图 → Director 审核
@@ -126,6 +127,61 @@ Phase 7: 组装+调优         → prompt_assembler.py 产出 Creative Pack
    - **Approve** → 进入 Phase 4
    - **Revise** → Art Director 调整后重交
    - **Reject** → 重新定调
+
+---
+
+### Phase 3.5: 风格定样（条件性子阶段）
+
+| 维度 | 内容 |
+|------|------|
+| **激活条件** | image_gen 可用（任一 provider 在线）。不可用则跳过，显式记录 `style_sample.skipped: true, reason: "no image_gen available"` |
+| **触发条件** | Phase 3 Director 审核通过 |
+| **输入** | visual_dev.color_palette[], visual_dev.style_direction, visual_dev.mood_references[], visual_dev.scene_composition[], visual_dev.character_design[]（如有角色） |
+| **产出** | style_sample.scenes[]（2-3 张场景 moodboard），style_sample.characters[]（如有角色，每角色 1-2 张概念图），style_sample.user_decision（approved / revise / skipped） |
+| **Director 审核** | 用户确认后 Director 记录决策 |
+| **Loop 规则** | ≤2 轮调整。Revise → 标注具体问题（如「场景 3 蓝色过冷」「角色服装与世界观不搭」）→ 回到 Phase 3 仅调整被标注维度，不需全量重做 |
+
+#### 操作序列
+
+1. **场景选择**：从 visual_dev.scene_composition[] 中选取 2-3 个代表性场景
+   - 必选：开场场景（定调）
+   - 必选：情绪转折/高潮场景（验证 mood→visual_cause 映射）
+   - 可选：结尾场景（验证全局一致性）
+2. **生成场景 moodboard**：调用 image_gen，每场景 1 张
+   - prompt 来源：style_direction 关键词 + color_palette hex 描述 + visual_cause + spatial_layout 概要
+   - 图片附带色板叠加信息（hex 值标注）
+3. **如有角色 → 生成角色概念图**（仅当 has_characters = true 且 character_design[] 非空）
+   - 每角色 2 张：面部肖像（face_features + distinguishing_marks）+ 全身造型（height_build + wardrobe + silhouette）
+   - prompt 使用与场景相同的 color_palette + style_direction——验证角色与场景的色彩一致性
+4. **呈现给用户**（结构化格式）：
+   ```
+   [风格定样]
+
+   场景 moodboard：
+   - [场景名]：[图片] + 色板 + visual_cause
+
+   角色概念（如有）：
+   - [角色名]：[面部肖像] [全身造型] + 设计来源
+
+   请确认：
+   - ✅ 色调/风格方向正确 → Phase 4
+   - 🔄 需要调整：[具体哪个场景/角色的哪个维度]
+   - ⏭ 跳过样本，直接进入 Phase 4（不推荐——Phase 6 返工成本更高）
+   ```
+5. **门禁**：
+   - Approved → `style_sample.user_decision = "approved"` → 进入 Phase 4
+   - Revise → 标注具体问题 → 回到 Phase 3 调整被标注维度 → 调整后重新定样（≤2 轮）
+   - Skipped（用户 insist）→ 显式警告：`「Phase 6 才发现风格跑偏的话，Phase 4-5 需重做」` → 记录后进入 Phase 4
+6. **成本透明**：生成前告知用户预算（2-4 张图 ≈ $0.02-0.10），用户确认后执行
+
+#### 跳过降级规则
+
+| 场景 | 行为 |
+|------|------|
+| image_gen 全不可用 | 跳过 Phase 3.5，`style_sample.skipped: true, reason: "no image_gen available"`。不阻塞管线 |
+| image_gen 可用，用户要求跳过 | Agent 必须推送警告后记录。用户 insist 后跳过 |
+| 角色图生成失败（但场景图成功） | 场景图正常定样，角色图标注 `generation_failed`，Phase 4 Writer 基于文字 character_design 继续 |
+| Fast-Track 管线 | Phase 3.5 不激活——快速管线默认接受首次 AD 产出 |
 
 ---
 
@@ -252,14 +308,14 @@ Phase 7: 组装+调优         → prompt_assembler.py 产出 Creative Pack
 
 ## 角色激活矩阵
 
-| 角色 | Phase 1 | Phase 2 | Phase 3 | Phase 4 | Phase 5 | Phase 6 | Phase 7 |
-|------|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|
-| Director | 🟢 执行 | 🟡 审核 | 🟡 审核 | 🟡 审核 | 🟡 审核 | 🟡 审核 | 🟢 执行 |
-| Writer | — | 🟢 产出 | — | 🟢 产出 | — | — | — |
-| Art Director | — | — | 🟢 产出 | — | — | — | — |
-| DP | — | — | — | 🟢 产出 | — | — | — |
-| Sound Designer | — | — | — | — | 🟢 产出 | — | — |
-| VFX | — | — | — | — | — | 🟢 产出 | — |
+| 角色 | Phase 1 | Phase 2 | Phase 3 | Phase 3.5 | Phase 4 | Phase 5 | Phase 6 | Phase 7 |
+|------|:-------:|:-------:|:-------:|:---------:|:-------:|:-------:|:-------:|:-------:|
+| Director | 🟢 执行 | 🟡 审核 | 🟡 审核 | 🟡 审核 | 🟡 审核 | 🟡 审核 | 🟡 审核 | 🟢 执行 |
+| Writer | — | 🟢 产出 | — | — | 🟢 产出 | — | — | — |
+| Art Director | — | — | 🟢 产出 | — | — | — | — | — |
+| DP | — | — | — | — | 🟢 产出 | — | — | — |
+| Sound Designer | — | — | — | — | — | 🟢 产出 | — | — |
+| VFX | — | — | — | — | — | — | 🟢 产出 | — |
 
 🟢 = 执行/产出 &nbsp;&nbsp; 🟡 = 审核 &nbsp;&nbsp; — = 不激活
 
