@@ -137,56 +137,97 @@ USER: "帮我做一支赛博朋克手机广告"
           ▼
 ┌─────────────────────────────────────────────────────┐
 │ SKILL.md — Router                                   │
-│ 1. Detect: scene type = studio-ad, mood = cyberpunk │
-│ 2. Load: scenes/studio-ad.md + pipelines/default.md │
+│ 1. Detect: scene type → route to pipeline           │
+│ 2. Load: scenes/<type>.md + pipelines/default.md    │
 │ 3. Init: Project State JSON (empty skeleton)        │
 └──────────────────────┬──────────────────────────────┘
                        │
                        ▼
 ┌──────────────────────────────────────────────────────┐
 │ PHASE 1: 需求沟通 (Director)                          │
-│ Director role loads → interviews user → fills:       │
-│   project.aspect_ratio, duration_est, genre, tone    │
+│ Director interviews user → fills:                    │
+│   project.* (aspect_ratio, duration_est, genre,      │
+│             tone, platform, audience)                │
 │   director_notes.vision, constraints                 │
-│ Output: Project State (phase 1 populated)             │
-└──────────────────────┬───────────────────────────────┘
-                       │
-                       ▼
-┌──────────────────────────────────────────────────────┐
-│ PHASE 2-3: 内容梳理 + 视觉开发 (Parallel)             │
-│ ┌──────────┐  ┌──────────┐  ┌──────────┐            │
-│ │ Writer   │  │Art Dir   │  │   DP     │            │
-│ │ script   │  │ palette  │  │ camera   │            │
-│ │ logline  │  │ mood     │  │ lighting │            │
-│ └────┬─────┘  └────┬─────┘  └────┬─────┘            │
-│      └──────────────┼─────────────┘                  │
-│                     ▼                                │
-│              Director Review                         │
-│         ┌──────┼──────┐                              │
-│      APPROVE REVISE REJECT                           │
-│         │      │       │                             │
-│         ▼      ▼       ▼                             │
-│       继续  角色修改  重新定调                         │
-│             (≤2轮loop)                                │
-└──────────────────────┬───────────────────────────────┘
-                       │
-                       ▼
-┌──────────────────────────────────────────────────────┐
-│ PHASE 4-5: 脚本 + 分镜 (Sequential)                   │
-│ Director approved script → DP adds camera direction   │
-│ → VFX adds effect notes → Storyboard assembly         │
-│ → Image generation for key panels → Director review   │
-└──────────────────────┬───────────────────────────────┘
-                       │
-                       ▼
-┌──────────────────────────────────────────────────────┐
-│ PHASE 6-7: 组装 + 调优                                │
-│ prompt_assembler.py: Project State → Creative Pack    │
-│ Sound Designer: music/SFX/narration references        │
-│ Director: final tuning notes (color, pacing, effects) │
+│   [Optional] 参考视频拆解 → reference_analysis        │
 │                                                       │
-│ OUTPUT: Creative Pack JSON + 分镜图集                  │
-│ → User exports to ComfyUI / HyperFrames / Kling       │
+│ Director 确认 → Phase 2                               │
+└──────────────────────┬───────────────────────────────┘
+                       │
+                       ▼
+┌──────────────────────────────────────────────────────┐
+│ PHASE 2: 内容梳理 (Writer → Director)                 │
+│ Writer reads director_notes.vision → produces:       │
+│   script.logline, synopsis, narrative_structure      │
+│   script.scenes[] (slug/setting/summary)             │
+│   script.character_bible[] (如有角色)                 │
+│                                                       │
+│ Director review → Phase 3                             │
+└──────────────────────┬───────────────────────────────┘
+                       │
+                       ▼
+┌──────────────────────────────────────────────────────┐
+│ PHASE 3: 视觉开发 (Art Director → Director)           │
+│ AD reads vision + scenes → produces:                 │
+│   visual_dev.color_palette[] (含 hex + visual_cause) │
+│   visual_dev.style_direction, mood_references[]      │
+│   visual_dev.scene_composition[] (空间/道具/视觉重心)  │
+│   visual_dev.character_design[] (如有角色)            │
+│                                                       │
+│ Director review → Phase 3.5 (如可用) 或 Phase 4       │
+└──────────────────────┬───────────────────────────────┘
+                       │
+                       ▼
+┌──────────────────────────────────────────────────────┐
+│ PHASE 3.5: 风格定样 (条件性 — image_gen 可用时)       │
+│ 2-3 场景 moodboard + 角色概念图 (如有)                │
+│   → 用户看图确认色调/风格方向                          │
+│   → Approved → Phase 4                               │
+│   → Revise → 回 Phase 3 调整                          │
+│   → image_gen 不可用 → 跳过，显式记录                  │
+└──────────────────────┬───────────────────────────────┘
+                       │
+                       ▼
+┌──────────────────────────────────────────────────────┐
+│ PHASE 4: 脚本 (Writer → DP → Director)                │
+│ Writer 基于 Phase 2 结构补充对白/动作/时长             │
+│   → DP 叠加镜头语言 (shot type/movement/lens/light)   │
+│   → 产出: script.scenes[].dialogue/action             │
+│           cinematography.shot_list/camera_notes       │
+│                                                       │
+│ Director review → Phase 5                             │
+└──────────────────────┬───────────────────────────────┘
+                       │
+                       ▼
+┌──────────────────────────────────────────────────────┐
+│ PHASE 5: 声音方向 (Sound Designer → Director)         │
+│ SD reads script + tone + visual_dev → produces:      │
+│   sound.music_style, sfx_map[], narration_tone       │
+│   sound.silence_strategy, reference_tracks[]         │
+│                                                       │
+│ Director review → Phase 6                             │
+└──────────────────────┬───────────────────────────────┘
+                       │
+                       ▼
+┌──────────────────────────────────────────────────────┐
+│ PHASE 6: 分镜 (Storyboard Assembly + VFX → Director)  │
+│ 集成全部前置产出 → 生成分镜 panel[]                    │
+│   每 panel 含: description / camera / lighting        │
+│               art_direction / vfx_notes / image_prompt│
+│   VFX 为需要特效的 panel 补充材质/粒子/转场            │
+│                                                       │
+│ Director review → Phase 7                             │
+└──────────────────────┬───────────────────────────────┘
+                       │
+                       ▼
+┌──────────────────────────────────────────────────────┐
+│ PHASE 7: 组装+调优 (Director)                         │
+│ prompt_assembler.py → Creative Pack JSON              │
+│ Director: tuning_notes (color/pacing/effects)         │
+│ export_html.py / export_xlsx.py → 导出文件            │
+│                                                       │
+│ OUTPUT: Creative Package → 下游工具对接                │
+│   (HyperFrames / ComfyUI / Kling / 火山引擎 / etc.)   │
 └──────────────────────────────────────────────────────┘
 ```
 
@@ -195,8 +236,9 @@ USER: "帮我做一支赛博朋克手机广告"
 1. **Project State JSON is the ONLY shared state.** Roles never communicate directly. They read state, produce output, write state.
 2. **Director is the gatekeeper.** No role output becomes "approved" without Director sign-off.
 3. **Max 2 revision loops per phase.** After two rounds of "revise", Director must either approve with notes or restart the phase.
-4. **Parallel phases are truly parallel.** Writer, Art Director, and DP work from the same Director brief simultaneously. They do NOT see each other's outputs until Director review — this preserves creative independence.
-5. **Storyboard is the integration point.** All prior outputs converge into the storyboard. Each panel links to: script scene, character, palette, camera direction, VFX note.
+4. **Phases are serial; Phase 4 has an internal chain.** Phases execute one at a time, each building on prior outputs. Within Phase 4 only, Writer → DP is a sequential chain: Writer produces dialogue first, then DP layers cinematography on top. No other phase has internal role chains.
+5. **Phase 3.5 is conditional.** Active only when image_gen is available. Skipped otherwise with explicit record. Fast-Track pipeline skips it entirely.
+6. **Storyboard is the integration point.** All prior outputs (script, cinematography, visual_dev, vfx) converge into Phase 6 storyboard panels.
 
 ---
 
@@ -279,4 +321,4 @@ python scripts/build_index.py --check --deps
 
 ---
 
-*Last amended: 2026-06-19. Author: Director-Agent (Hermes). v0.28.0 — 参考视频拆解管线（Phase 1 步骤 2.5）完整闭环；LJZ-COFFEE + PUDONG-CAT 两大拉片附录（42帧逐镜头分析）；全角色消费映射复核；拉片表格式与案例库同构；继承 v0.27.1 Director 门控角色专项审核覆盖 + v0.27.0 角色身份层（character_bible）跨角色闭环。*
+*Last amended: 2026-06-29. Author: Director-Agent (Hermes). v0.29.0 — 数据流图重写：反映实际 7+0.5 阶段串行管线（Phase 1→2→3→3.5→4→5→6→7）；修正"并行阶段"为"串行阶段+Phase 4 内 Writer→DP 链式"；新增 Phase 3.5 条件性子阶段规则。AD 角色文件新增 visual_cause 字段（CHAI 反主观化规则）。继承 v0.28.0 参考视频拆解管线 + 拉片附录 + 全角色消费映射 + character_bible 跨角色闭环。*
