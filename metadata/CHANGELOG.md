@@ -6,6 +6,20 @@
 
 ---
 
+## [0.29.0] — 2026-06-29
+
+### AD 角色文件 — CHAI 反主观化规则 (commit 048812d)
+
+**背景**：OpenMontage 架构分析发现其 Anti-Subjective Rule（CMU/Harvard CHAI 研究）——情绪形容词不约束像素，应替换为视觉原因参数。
+
+**修改**：
+- `references/roles/art-director.md`：
+  - 色调方案模板新增 `visual_cause` 字段，将情绪标签翻译为具体视觉参数（光的方向/色温/强度/大气效果），供 DP 和下游模型编译器直接消费
+  - 色调生成算法增加 Step 3b：情绪标签→视觉原因翻译→写入 visual_cause
+  - Agent Prompt「你不得」列表新增：禁止只用情绪形容词而不给视觉原因参数
+
+**设计边界**：AD 保留「情绪→颜色」的抽象层级，visual_cause 为附加字段不替代 mood。完整词汇表（visual-vocabulary.md）留给 Phase 7.5 编译器开发时统一建立。
+
 ## [0.28.0] — 2026-06-18
 
 ### 维护修复 — CONSTITUTION.md 版本号对齐 + 死链接修复 (2026-06-19)
