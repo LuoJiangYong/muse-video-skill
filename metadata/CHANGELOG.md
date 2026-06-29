@@ -20,7 +20,34 @@
 
 **设计边界**：AD 保留「情绪→颜色」的抽象层级，visual_cause 为附加字段不替代 mood。完整词汇表（visual-vocabulary.md）留给 Phase 7.5 编译器开发时统一建立。
 
-### 审核严重度分类 — Director REVISE 三级标注 (commit 99ec965)
+### Phase 3.5 风格定样 — 条件性子阶段 (commit 45e7546)
+
+**背景**：OpenMontage Sample-First 协议——phase 3 产出文字，用户 phase 6 才看到画面。如果风格跑偏，phase 4-5 白做。
+
+**修改**：
+- `references/pipelines/default.md`：Phase 3 和 Phase 4 之间新增 Phase 3.5 条件性子阶段——2-3 张场景 moodboard + 每角色 1-2 张概念图，用户看图确认后锁定风格
+- `SKILL.md`：管线描述拆为「Phase 3 文字 + Phase 3.5 定样」
+
+### CONSTITUTION 数据流图修正 — 实际管线同步 (commit 99ec965)
+
+**背景**：CON 数据流图自 v0.28.0 未更新，与实际 default.md 不一致（Phase 2-3 标注为并行但实际串行；Phase 4-5 合并但实际分开；缺少 Phase 3.5 和 Phase 5）。
+
+**修改**：
+- `CONSTITUTION.md`：数据流图全量重写为 8 阶段独立展开；规则 4「并行阶段」→「串行阶段+Phase 4 内链」；新增规则 5 Phase 3.5 条件性
+- `SKILL.md`：版本号 0.28.0 → 0.29.0
+
+### SKILL.md 瘦身 — 回归 ≤3,000 字符路由器 (commits f0e029d + d5e4172)
+
+**背景**：SKILL.md body 4,010 chars，超出宪法限额 34%。案例引用/下游对接/INDEX自动化/禁止事项/产出验证段是参考资料寄居在路由文件中。
+
+**修改**：
+- `SKILL.md`：4,010 → 2,664 chars（-34%）——5 个段缩为 1 行指针；禁止事项搬入 CON
+- `references/downstream-integration.md`（新建）：合成/视频/图片/音频/封面 5 类下游工具 + 选择指南
+- `references/meta/verification-checklist.md`（新建）：CRITICAL/SUGGESTION/NITPICK 三级交付验证清单
+- `CONSTITUTION.md`：Forbidden Patterns 7→12 条（含从 SKILL.md 迁入的 5 条 + 新增 2 轮上限）
+- `references/pipelines/default.md`：Phase 7 操作序列显式引用 verification-checklist.md（对抗式审查修复）
+
+### 审核严重度分类 — Director REVISE 三级标注 (commit 5923576)
 
 **背景**：OpenMontage Reviewer Protocol — 当前 Director REVISE 不分轻重，逗号问题和色调全错消耗同等的 loop 配额。
 
@@ -31,20 +58,6 @@
   - NITPICK 不消耗 loop 配额——仅有 NITPICK 时直接 APPROVE
   - REVISE 话术模板 + Agent Prompt 同步更新（finding 前加 `[严重度]` 标签）
 - `references/pipelines/default.md`：Loop 规则速查表新增「NITPICK 不消耗 loop」
-
-### Phase 3.5 风格定样 — 条件性子阶段 (commit 1157885)
-
-**背景**：OpenMontage Sample-First 协议——phase 3 产出文字，用户 phase 6 才看到画面。如果风格跑偏，phase 4-5 白做。
-
-**修改**：
-- `references/pipelines/default.md`：
-  - Phase 3 和 Phase 4 之间新增 Phase 3.5 条件性子阶段
-  - 产出：2-3 张场景 moodboard + 每角色 1-2 张概念图（如有角色）
-  - 门禁：用户看图确认后锁定风格 → Phase 4；Revise → 回 Phase 3 调整
-  - 降级：image_gen 不可用时跳过；Fast-Track 不激活
-  - 阶段总览 + 角色激活矩阵同步更新
-- `SKILL.md`：管线描述从「Phase 3 含生图」拆为「Phase 3 文字 + Phase 3.5 定样」
-- Phase 3 原有 `default.md L123`「可选：调用 image_gen 生成 moodboard」升级为有门禁的子阶段
 
 ## [0.28.0] — 2026-06-18
 
