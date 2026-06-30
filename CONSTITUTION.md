@@ -336,4 +336,4 @@ python scripts/build_index.py --check --deps
 
 ---
 
-*Last amended: 2026-06-29. Author: Director-Agent (Hermes). v0.30.0 — 新增 Phase 7.5 模型编译层（Model Compiler）：读取所有角色产出，编译为目标 AI 视频模型的调用指令（六段式 prompt + 多模态引用 + arkcli 命令 + 成本估算 + 质量标记）。编译器为只读消费者，不修改上游数据，不执行网络请求。继承 v0.29.0 Phase 3.5 条件性子阶段 + AD visual_cause 字段 + 参考视频拆解管线。*
+*Last amended: 2026-06-29. Author: Director-Agent (Hermes). v0.30.1 — Phase 6 分镜图生成从「可选」改为显式提醒用户确认；Phase 7 新增 HTML storyboard 确认门禁（四选项 + 默认，唯一最终确认关卡，参考图直接进入下游编译）；确认门禁支持三层修改（就地修改/定向重生成/完整回退）和 Loop 规则例外；新增 Phase 8 预留（下游工具引导，仅引导不执行）；信任链：用户确认的图 = 编译引用的图 = Seedance 使用的图。继承 v0.30.0 Phase 7.5 模型编译层。*

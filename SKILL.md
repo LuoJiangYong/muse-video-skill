@@ -1,7 +1,7 @@
 ---
 name: muse-video
 description: "When the user asks to 策划/构思/设计/写脚本/画分镜 for a video project — e.g. '帮我策划一个广告创意' '这个产品演示视频怎么拍' '帮我写科幻短片的分镜脚本' '给我这个品牌TVC的美术方向'。Not for actual video rendering/compositing or AI image/video generation."
-version: 0.30.0
+version: 0.30.1
 author: Hermes Agent + 钱多多
 license: MIT
 platforms: [linux, macos, windows]
@@ -51,16 +51,17 @@ metadata:
 
 ## 管线激活
 
-### Default Pipeline（8 阶段，完整创作）
+### Default Pipeline（8 阶段 + 1 预留，完整创作）
 1. **需求沟通**（Director）→ 确认比例/用途/场景/约束
 2. **内容梳理**（Writer + Director）→ 故事、场景、叙事结构
 3. **视觉开发**（Art Director + Director）→ 色调、风格、场景搭建、人物设定。含反主观化规则：情绪标签映射 visual_cause 字段（见 `references/anti-subjective-rule.md`）
 3.5 **风格定样**（条件性）→ image_gen 生成场景 moodboard + 角色概念图 → 用户看图确认 → 锁定风格方向。不可用时跳过
 4. **脚本**（Writer → DP → Director review）→ 台词、镜头语言、动作、时长
 5. **声音方向**（Sound Designer）→ 配乐风格、音效、旁白基调
-6. **分镜**（Storyboard Assembly）→ 6/9 宫格分镜 + 对应提示词，调用 image_gen
-7. **组装+调优**（Director）→ 运行 `scripts/prompt_assembler.py` 产出 Creative Pack
-7.5 **模型编译**（Model Compiler）→ Creative Package 编译为目标模型调用指令（六段式 prompt + 多模态引用 + arkcli 命令 + 成本估算）。仅 Seedance 2.0。
+6. **分镜**（Storyboard Assembly）→ 6/9 宫格分镜 + 显式询问用户是否调用 image_gen 生成分镜图
+7. **组装+调优**（Director）→ `prompt_assembler.py` 产出 Creative Pack → HTML storyboard 确认门禁（四选项 + 默认，唯一最终确认关卡）。参考图直接进入下游编译，确认即锁定
+7.5 **模型编译**（Model Compiler）→ Creative Package 编译为目标模型调用指令（六段式 prompt + 多模态引用 + arkcli 命令 + 成本估算）。仅 Seedance 2.0
+8 **下游工具引导**（预留）→ 工具选择与费用预估（不执行，建设时遵循「机场指示牌」原则）
 
 **每阶段**：角色产出 → Director 审核。通过 → 下一阶段。修改 ≤2 轮。拒绝 → 重启该阶段。
 **角色文件**：按需加载 `references/roles/<name>.md`，不一次全载入。
