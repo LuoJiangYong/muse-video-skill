@@ -336,4 +336,4 @@ python scripts/build_index.py --check --deps
 
 ---
 
-*Last amended: 2026-06-29. Author: Director-Agent (Hermes). v0.30.1 — Phase 6 分镜图生成从「可选」改为显式提醒用户确认；Phase 7 新增 HTML storyboard 确认门禁（四选项 + 默认，唯一最终确认关卡，参考图直接进入下游编译）；确认门禁支持三层修改（就地修改/定向重生成/完整回退）和 Loop 规则例外；新增 Phase 8 预留（下游工具引导，仅引导不执行）；信任链：用户确认的图 = 编译引用的图 = Seedance 使用的图。继承 v0.30.0 Phase 7.5 模型编译层。*
+*Last amended: 2026-06-29. Author: Director-Agent (Hermes). v0.30.2 — Phase 7 导出顺序修复：导出工具从确认门禁之前移到确认通过之后，显式询问用户选择导出格式（分镜技术表 Excel / 文学剧本 HTML / 视频封面），HTML storyboard 已在门禁中生成不重复导出。继承 v0.30.1 Phase 6/7 确认门禁 + Phase 8 预留。*
