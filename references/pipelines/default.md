@@ -17,6 +17,7 @@ Phase 4: 脚本              → Writer→DP→Director 链式产出，含镜头
 Phase 5: 声音方向          → Sound Designer 定配乐/音效/旁白基调
 Phase 6: 分镜              → Storyboard 组装 + 生图 → Director 审核
 Phase 7: 组装+调优         → prompt_assembler.py 产出 Creative Pack
+Phase 7.5: 模型编译        → Model Compiler 编译为模型调用指令（仅 Seedance 2.0）
 ```
 
 ---
@@ -293,6 +294,40 @@ Phase 7: 组装+调优         → prompt_assembler.py 产出 Creative Pack
 3. Director 添加 `tuning_notes.*`：调色建议 / 节奏调整 / 特效微调 / 最终确认
 4. 按需运行 `scripts/export_html.py` / `scripts/export_xlsx.py` 生成导出文件
 5. 向用户交付，提示下游工具对接（HyperFrames / ComfyUI / Kling 等）
+6. Phase 7 Director 确认 → 进入 Phase 7.5（模型编译）
+
+---
+
+## Phase 7.5: 模型编译
+
+| 维度 | 内容 |
+|------|------|
+| **激活角色** | Model Compiler |
+| **触发条件** | Phase 7 Creative Package 完成 + Director 确认 |
+| **输入** | Project State（script + cinematography + visual_dev + sound + storyboard） |
+| **产出** | model_compilation JSON（编译后的模型调用指令） |
+| **Director 审核** | 可选 — 编译器产出为确定性转换。用户可选择「信任编译器」跳过审查，或逐镜检查 prompt_trace |
+| **Loop 规则** | 不适用 — 编译为确定性转换，无创意判断。如用户对编译结果不满意 → 调整上游 Phase 3/4/5/6 产出后重新编译 |
+
+### 操作序列
+
+1. Model Compiler 加载 `references/model-compiler.md`
+2. 读取 Project State 中所有相关字段（见 model-compiler.md §输入）
+3. 检测 `target_model` → 跳转对应适配章节（当前仅 Seedance 2.0）
+4. 按编译规则逐镜生成 `model_compilation.shots[]`：
+   a. 六段式 prompt 编译（含 Narrative Anchor 保留规则）
+   b. 镜头运动术语翻译（双层查表：默认映射 + 场景覆盖 + movement_language 消歧）
+   c. 5 槽分配（三套策略自动选择：character_driven / product_driven / graphic_driven）
+   d. arkcli 命令生成（Windows 安全路径：Files API file_id + --extra-body，不用 --input @本地文件）
+   e. 质量标记（GOOD / DEGRADED / INSUFFICIENT）+ 成本估算
+5. 构建 video_ref 镜头链（`model_compilation.shot_chain`）
+6. 运行干跑验证清单（见 model-compiler.md §干跑验证清单）
+7. 输出编译摘要给用户（shot 数 / 预估成本 / 质量警告）
+8. 用户可选择：
+   - **信任输出** → 批准 `model_compilation._meta.director_approved = true`
+   - **逐镜检查** → 审查 `prompt_trace` → 批准
+   - **不满意** → 返回上游 Phase 调整后重新编译
+9. 如任何 shot 的 `_quality.overall = INSUFFICIENT` → **暂停**，要求用户确认后继续
 
 ---
 
@@ -310,14 +345,15 @@ Phase 7: 组装+调优         → prompt_assembler.py 产出 Creative Pack
 
 ## 角色激活矩阵
 
-| 角色 | Phase 1 | Phase 2 | Phase 3 | Phase 3.5 | Phase 4 | Phase 5 | Phase 6 | Phase 7 |
-|------|:-------:|:-------:|:-------:|:---------:|:-------:|:-------:|:-------:|:-------:|
-| Director | 🟢 执行 | 🟡 审核 | 🟡 审核 | 🟡 审核 | 🟡 审核 | 🟡 审核 | 🟡 审核 | 🟢 执行 |
-| Writer | — | 🟢 产出 | — | — | 🟢 产出 | — | — | — |
-| Art Director | — | — | 🟢 产出 | — | — | — | — | — |
-| DP | — | — | — | — | 🟢 产出 | — | — | — |
-| Sound Designer | — | — | — | — | — | 🟢 产出 | — | — |
-| VFX | — | — | — | — | — | — | 🟢 产出 | — |
+| 角色 | Phase 1 | Phase 2 | Phase 3 | Phase 3.5 | Phase 4 | Phase 5 | Phase 6 | Phase 7 | Phase 7.5 |
+|------|:-------:|:-------:|:-------:|:---------:|:-------:|:-------:|:-------:|:-------:|:---------:|
+| Director | 🟢 执行 | 🟡 审核 | 🟡 审核 | 🟡 审核 | 🟡 审核 | 🟡 审核 | 🟡 审核 | 🟢 执行 | 🟡 审核 |
+| Writer | — | 🟢 产出 | — | — | 🟢 产出 | — | — | — | — |
+| Art Director | — | — | 🟢 产出 | — | — | — | — | — | — |
+| DP | — | — | — | — | 🟢 产出 | — | — | — | — |
+| Sound Designer | — | — | — | — | — | 🟢 产出 | — | — | — |
+| VFX | — | — | — | — | — | — | 🟢 产出 | — | — |
+| Model Compiler | — | — | — | — | — | — | — | — | 🟢 执行 |
 
 🟢 = 执行/产出 &nbsp;&nbsp; 🟡 = 审核 &nbsp;&nbsp; — = 不激活
 
@@ -330,3 +366,4 @@ Phase 7: 组装+调优         → prompt_assembler.py 产出 Creative Pack
 - Phase 5 可读取 Phase 4 的完整产出（声音需知道每个场景的情绪）
 - Phase 6 读取全部前置产出（集成点）
 - VFX 在 Phase 6 被激活，其标注叠加到分镜 panel 上
+- Phase 7.5 读取 Phase 3/4/5/6 的全部产出，不修改任何上游字段

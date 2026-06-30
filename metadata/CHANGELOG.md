@@ -6,6 +6,41 @@
 
 ---
 
+## [0.30.0] — 2026-06-29
+
+### Phase 7.5 模型编译层 — 新增 Model Compiler
+
+**背景**：Seedance 2.0 4K 实测验证——Creative Package（给人读的）和模型调用指令（给模型消费的）之间存在格式鸿沟。六段式 prompt 编译、5 槽分配、Files API file_id 管理、arkcli --extra-body 构造等操作每次都要手动完成，缺乏系统化机制。
+
+**宪法审计**：五原则全票通过（见 `references/model-compiler.md` §边界声明）。编译器为只读消费者，不修改上游数据，不执行网络请求。
+
+**新增**：
+- `references/model-compiler.md`（新建，~500 行）：编译器角色文件。含通用编译流程、六段式 prompt 模板、双层术语翻译表、三套 5 槽分配策略（character/product/graphic）、稀疏输入处理、Narrative Anchor 保留规则、质量标记（GOOD/DEGRADED/INSUFFICIENT）、干跑验证清单、Seedance 2.0 适配章节、扩展指南
+- `assets/schemas/project-state.json`：新增 `model_compilation` 字段（含 `file_registry` / `shots[]` / `shot_chain`）+ `$defs.trace_entry`
+- `references/pipelines/default.md`：新增完整 Phase 7.5 阶段定义（触发条件、操作序列、审核规则）；角色激活矩阵新增 Model Compiler 列；跨阶段依赖新增一行
+
+**修改**：
+- `SKILL.md`：管线描述 7→8 阶段，版本号 0.29.0→0.30.0
+- `CONSTITUTION.md`：数据流图新增 Phase 7.5 框，版本号同步
+- `metadata/fields.yaml`：注册 `model_compilation` 及其 4 个子字段
+- `references/volcano-engine-integration.md`：Muse Video 工作流图新增 Phase 7.5 编译层
+
+**删除**：
+- `references/seedance-model-compiler.md`：内容已完全吸收到 `model-compiler.md`
+
+**决策记录**（5/5 全票通过）：
+1. Fast-Track 不纳入 Phase 7.5（编译层仅 default pipeline）
+2. prompt_trace 存主 JSON（MVP 阶段可追溯性优先）
+3. Phase 7 确认后自动进入编译
+4. INSUFFICIENT 质量级别暂停等用户确认
+5. seedance-model-compiler.md 直接删除
+
+**影响范围**：0 个现有角色文件受影响。Fast-Track 管线不受影响。已有项目向后兼容（`model_compilation` 字段 optional）。
+
+**迁移**：无破坏性变更。现有项目跳过 Phase 7.5 即可。
+
+---
+
 ## [0.29.0] — 2026-06-29
 
 ### AD 角色文件 — CHAI 反主观化规则 (commit 048812d)

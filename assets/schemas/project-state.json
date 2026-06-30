@@ -287,6 +287,121 @@
         "runway_prompts": { "type": "array", "items": { "type": "string" } }
       }
     },
+    "model_compilation": {
+      "type": "object",
+      "description": "Model Compiler output — Phase 7.5. Compiles Creative Package into model-specific execution instructions. Read-only consumer of upstream data. Does not execute network requests.",
+      "properties": {
+        "_meta": {
+          "type": "object",
+          "properties": {
+            "compiler_version": { "type": "string", "default": "1.0.0" },
+            "target_model": { "type": "string" },
+            "source_phases": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Phases whose outputs were consumed (e.g., [\"script\", \"cinematography\", \"visual_dev\", \"sound\", \"storyboard\"])"
+            },
+            "director_approved": { "type": "boolean", "default": false }
+          }
+        },
+        "target_model": {
+          "type": "string",
+          "description": "Target AI video model ID",
+          "enum": ["doubao-seedance-2-0-260128"]
+        },
+        "file_registry": {
+          "type": "object",
+          "description": "Uploaded reference image file_id registry. Each entry maps a logical name to its Files API file_id and local path backup.",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "file_id": { "type": "string", "description": "Volcengine Files API file_id (e.g., file-20260623-xxx)" },
+              "local_path": { "type": "string", "description": "Local file path for re-upload if file_id expires" },
+              "role": { "type": "string", "enum": ["reference_image", "first_frame", "last_frame"] },
+              "weight": { "type": "number", "minimum": 0, "maximum": 1, "description": "reference_image_weight (0.0-1.0). Character anchor: 0.8-1.0, scene mood: 0.5-0.7, style: 0.4-0.5" }
+            }
+          }
+        },
+        "shots": {
+          "type": "array",
+          "description": "Compiled shot instructions",
+          "items": {
+            "type": "object",
+            "required": ["shot_id", "compiled_prompt"],
+            "properties": {
+              "shot_id": { "type": "string", "description": "Shot identifier (e.g., S01)" },
+              "scene_id": { "type": "integer", "description": "Corresponding scene in script.scenes[]" },
+              "duration": { "type": "integer", "minimum": 4, "description": "Duration in seconds. Seedance 2.0 minimum: 4s" },
+              "resolution": { "type": "string", "enum": ["480p", "720p", "1080p", "4k"], "description": "Output resolution" },
+              "compiled_prompt": { "type": "string", "description": "Compiled 6-segment prompt ready for model consumption" },
+              "prompt_trace": {
+                "type": "object",
+                "description": "Optional — segment-level traceability from source fields to compiled text. Director may delete after review to reduce schema size.",
+                "properties": {
+                  "subject": { "$ref": "#/$defs/trace_entry" },
+                  "action": { "$ref": "#/$defs/trace_entry" },
+                  "scene": { "$ref": "#/$defs/trace_entry" },
+                  "camera": { "$ref": "#/$defs/trace_entry" },
+                  "lighting": { "$ref": "#/$defs/trace_entry" },
+                  "style": { "$ref": "#/$defs/trace_entry" }
+                }
+              },
+              "multimodal_refs": {
+                "type": "object",
+                "description": "Model-agnostic multimodal reference mapping. File IDs resolved via file_registry at execution time.",
+                "properties": {
+                  "first_frame_ref": { "type": "string" },
+                  "last_frame_ref": { "type": "string" },
+                  "image_refs": { "type": "array", "items": { "type": "string" } },
+                  "video_ref": { "type": "string" },
+                  "audio_ref": { "type": "string" }
+                }
+              },
+              "slot_allocation": {
+                "type": "object",
+                "description": "5-slot allocation result for Seedance 2.0 image_ref",
+                "properties": {
+                  "strategy": { "type": "string", "enum": ["character_driven", "product_driven", "graphic_driven"] },
+                  "allocated": {
+                    "type": "array",
+                    "description": "Allocated slots (P0→P4)",
+                    "items": { "type": "object" }
+                  },
+                  "overflow": {
+                    "type": "array",
+                    "description": "References that exceeded the 5-slot limit",
+                    "items": { "type": "object" }
+                  }
+                }
+              },
+              "arkcli_command": { "type": "string", "description": "Ready-to-execute arkcli command (text only, not auto-executed)" },
+              "estimated_tokens": { "type": "integer", "description": "Estimated token consumption for this shot" },
+              "estimated_cost_cny": { "type": "string", "description": "Estimated cost in CNY (approximate)" },
+              "_quality": {
+                "type": "object",
+                "description": "Compilation quality assessment",
+                "properties": {
+                  "overall": { "type": "string", "enum": ["GOOD", "DEGRADED", "INSUFFICIENT"] },
+                  "warnings": { "type": "array", "items": { "type": "string" } }
+                }
+              }
+            }
+          }
+        },
+        "shot_chain": {
+          "type": "object",
+          "description": "video_ref chain for shot-to-shot style consistency (Seedance 2.0 only)",
+          "properties": {
+            "strategy": { "type": "string", "description": "e.g., 'video_ref_chain'" },
+            "chain": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Ordered chain entries (e.g., 'S01 → S02 (video_ref=S01)')"
+            }
+          }
+        }
+      }
+    },
     "tuning_notes": {
       "type": "array",
       "items": {
@@ -298,6 +413,17 @@
         }
       },
       "description": "Director's final tuning and optimization notes."
+    }
+  },
+  "$defs": {
+    "trace_entry": {
+      "type": "object",
+      "description": "Segment-level traceability: maps a compiled prompt segment back to its source field and original text.",
+      "properties": {
+        "source": { "type": "string", "description": "Project State field path (e.g., 'script.scenes[0].action')" },
+        "original": { "type": "string", "description": "Original text from source (verbatim)" },
+        "compiled": { "type": "string", "description": "Compiled/translated text for model consumption" }
+      }
     }
   }
 }

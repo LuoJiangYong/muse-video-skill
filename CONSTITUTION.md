@@ -226,7 +226,17 @@ USER: "帮我做一支赛博朋克手机广告"
 │ Director: tuning_notes (color/pacing/effects)         │
 │ export_html.py / export_xlsx.py → 导出文件            │
 │                                                       │
-│ OUTPUT: Creative Package → 下游工具对接                │
+│ ┌──────────────────────────────────────────────────────┐
+│ PHASE 7.5: 模型编译 (Model Compiler)                  │
+│ 读取所有角色产出 → 编译为目标模型调用指令               │
+│ 产出: model_compilation（含 compiled_prompt +         │
+│       multimodal_refs + arkcli_cmd + 质量标记）        │
+│                                                       │
+│ 不修改上游数据，不执行网络请求                          │
+└──────────────────────┬───────────────────────────────┘
+                       │
+                       ▼
+OUTPUT: Creative Package → 下游工具对接                │
 │   (HyperFrames / ComfyUI / Kling / 火山引擎 / etc.)   │
 └──────────────────────────────────────────────────────┘
 ```
@@ -326,4 +336,4 @@ python scripts/build_index.py --check --deps
 
 ---
 
-*Last amended: 2026-06-29. Author: Director-Agent (Hermes). v0.29.0 — 数据流图重写：反映实际 7+0.5 阶段串行管线（Phase 1→2→3→3.5→4→5→6→7）；修正"并行阶段"为"串行阶段+Phase 4 内 Writer→DP 链式"；新增 Phase 3.5 条件性子阶段规则。AD 角色文件新增 visual_cause 字段（CHAI 反主观化规则）。继承 v0.28.0 参考视频拆解管线 + 拉片附录 + 全角色消费映射 + character_bible 跨角色闭环。*
+*Last amended: 2026-06-29. Author: Director-Agent (Hermes). v0.30.0 — 新增 Phase 7.5 模型编译层（Model Compiler）：读取所有角色产出，编译为目标 AI 视频模型的调用指令（六段式 prompt + 多模态引用 + arkcli 命令 + 成本估算 + 质量标记）。编译器为只读消费者，不修改上游数据，不执行网络请求。继承 v0.29.0 Phase 3.5 条件性子阶段 + AD visual_cause 字段 + 参考视频拆解管线。*

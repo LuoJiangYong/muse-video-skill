@@ -465,6 +465,43 @@ fields:
     version_added: "0.1.0"
     breaking_change: false
 
+  # --- model_compilation ---
+  - path: model_compilation.target_model
+    type: enum
+    default: "doubao-seedance-2-0-260128"
+    description: "目标 AI 视频模型 ID"
+    affected_roles: [model-compiler]
+    affected_phases: [7.5]
+    version_added: "0.30.0"
+    breaking_change: false
+
+  - path: model_compilation.file_registry
+    type: object
+    default: {}
+    description: "Files API 上传的 file_id 注册表（含 local_path 备份）"
+    affected_roles: [model-compiler]
+    affected_phases: [7.5]
+    version_added: "0.30.0"
+    breaking_change: false
+
+  - path: model_compilation.shots
+    type: array<object>
+    default: []
+    description: "编译后的镜头指令数组（含 compiled_prompt / prompt_trace / multimodal_refs / slot_allocation / arkcli_command）"
+    affected_roles: [model-compiler]
+    affected_phases: [7.5]
+    version_added: "0.30.0"
+    breaking_change: false
+
+  - path: model_compilation.shot_chain
+    type: object
+    default: {}
+    description: "video_ref 镜头链（跨镜风格继承，Seedance 2.0 专用）"
+    affected_roles: [model-compiler]
+    affected_phases: [7.5]
+    version_added: "0.30.0"
+    breaking_change: false
+
   # --- tuning_notes ---
   - path: tuning_notes
     type: array<object>
