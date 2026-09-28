@@ -16,7 +16,7 @@
 
 ### 2. 低耦合 LOW COUPLING — Change one without touching others.
 
-- Adding a new scene type (`references/scenes/car-commercial.md`) requires ZERO changes to any role file or pipeline file.
+- Adding a new scene type (`references/scenes/<new-scene-type>.md`) requires ZERO changes to any role file or pipeline file.
 - Changing the Director's review criteria does not affect how the Writer generates scripts.
 - The Project State JSON schema is the ONLY interface between roles. Roles read from project state, write to project state. They never call each other directly.
 - SKILL.md routes to scenes and pipelines. It does NOT contain scene-specific logic.
@@ -97,6 +97,7 @@ muse-video/
 ├── scripts/                     ← DETERMINISTIC LOGIC. Agent calls, does not rewrite.
 │   ├── build_index.py           # Auto-generate INDEX.md from case YAML frontmatter
 │   ├── inventory.py             # Dynamic file registry — replaces static registry.yaml
+│   ├── validate_state.py        # Input: Project State + phase → Output: PASS/BLOCKED gate verdict
 │   ├── format_script.py         # Input: scene array → Output: formatted shooting script
 │   ├── storyboard_grid.py       # Input: storyboard array → Output: grid layout (2×3, 3×3)
 │   ├── prompt_assembler.py      # Input: full Project State → Output: Creative Pack JSON
@@ -123,6 +124,7 @@ muse-video/
 │
 ├── metadata/                    ← METADATA. Tool-driven, minimal static footprint.
 │   ├── fields.yaml              # Field metadata: JSON field → affected roles + phases
+│   ├── phase_gates.yaml         # Declarative phase-gate rules (validate_state.py rule source)
 │   └── CHANGELOG.md             # Version history with migration guides
 │
 ├── .gitignore

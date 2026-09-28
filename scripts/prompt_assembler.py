@@ -300,7 +300,8 @@ def build_hyperframes_config(project_state: dict) -> dict:
             "duration": scene.get("duration", "5s"),
             "camera": scene.get("camera", {}),
             "spatial_layout": comp.get("spatial_layout", ""),
-            "core_props": comp.get("core_props", ""),
+            # Note: renamed from legacy "core_props" (was a dead read); source is visual_dev.scene_composition[].key_props
+            "key_props": comp.get("key_props", ""),
             "visual_focus": comp.get("visual_focus", ""),
             "depth_strategy": comp.get("depth_strategy", ""),
         })
@@ -428,7 +429,7 @@ def _fallback_template() -> str:
 {{#each visual_dev.scene_composition}}
 - **Scene {{scene_id}}**
   - Spatial Layout: {{spatial_layout}}
-  - Core Props: {{core_props}}
+  - Core Props: {{key_props}}
   - Visual Focus: {{visual_focus}}
   - Depth Strategy: {{depth_strategy}}
 {{/each}}
