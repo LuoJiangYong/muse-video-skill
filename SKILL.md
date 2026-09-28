@@ -59,9 +59,9 @@ metadata:
 3.5 **风格定样**（条件性）→ image_gen 生成场景 moodboard + 角色概念图 → 用户看图确认 → 锁定风格方向。不可用时跳过
 4. **脚本**（Writer → DP → Director review）→ 台词、镜头语言、动作、时长
 5. **声音方向**（Sound Designer）→ 配乐风格、音效、旁白基调
-6. **分镜**（Storyboard Assembly）→ 6/9 宫格分镜 + 显式询问用户是否调用 image_gen 生成分镜图
-7. **组装+调优**（Director）→ `prompt_assembler.py` 产出 Creative Pack → HTML storyboard 确认门禁（四选项 + 默认，唯一最终确认关卡）。参考图直接进入下游编译，确认即锁定
-7.5 **模型编译**（Model Compiler）→ Creative Package 编译为目标模型调用指令（六段式 prompt + 多模态引用 + arkcli 命令 + 成本估算）。仅 Seedance 2.0
+6. **分镜**（Storyboard Assembly）→ 6/9 宫格分镜 + 显式询问用户是否调用 image_gen 生成分镜图 + 可选实景参考图获取（`references/free-image-sources.md`）
+7. **组装+调优**（Director）→ `prompt_assembler.py` 产出 Creative Pack → HTML storyboard 确认门禁（四选项 + 默认，唯一最终确认关卡）。参考图经顶层 `file_registry` 全链引用（不转述），确认即锁定
+7.5 **模型编译**（Model Compiler）→ 编译前先选模型（Phase 7 子步骤 6.5）；Creative Package 编译为模型调用指令（六段式 prompt + 多模态引用 + arkcli 命令 + 成本估算），导出编译预览 HTML 供用户二次确认。已适配 Seedance 2.0
 8 **下游工具引导**（预留）→ 工具选择与费用预估（不执行，建设时遵循「机场指示牌」原则）
 
 **每阶段**：角色产出 → Director 审核。通过 → 下一阶段。修改 ≤2 轮。拒绝 → 重启该阶段。
@@ -76,7 +76,7 @@ metadata:
 
 ## 导出格式
 
-`scripts/export_html.py` → 文学剧本 HTML（Courier 标准格式）/ 分镜展示 HTML（卡片网格）
+`scripts/export_html.py` → 文学剧本 HTML（Courier 标准格式）/ 分镜展示 HTML（卡片网格）/ 编译预览 HTML（`--literary` / `--storyboard` / `--compilation`）
 `scripts/export_xlsx.py` → 分镜技术表 Excel（镜号/景别/运动/灯光/VFX）
 用户说"导出剧本/分镜表" → 自动触发对应脚本。
 
