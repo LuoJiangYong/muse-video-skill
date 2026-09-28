@@ -6,6 +6,41 @@
 
 ---
 
+## [0.30.3] — 2026-06-30
+
+### 封面生成下游集成 — 补齐交叉引用与触发时机声明
+
+**背景**：封面生成（cover-design-guide）缺少触发时机、数据来源与费用属性的显式声明，下游集成文档未标注零费用。
+
+**修改**：
+- `references/cover-design-guide.md`：文件头更新——调用时机（Phase 7 确认门禁通过后步骤 7，用户显式选择生成）、数据来源（`project.*` / `visual_dev.*` / `storyboard[]`，Phase 7 确认时就绪）、不依赖 `model_compilation`（Phase 7.5）
+- `references/downstream-integration.md`：封面设计节增加触发时机说明 + 零费用标注
+- `references/pipelines/default.md`：Phase 7 步骤 7 封面选项增加「建议发布前生成」上下文提示
+- `SKILL.md`：版本 0.30.2→0.30.3
+
+**影响范围**：4 个文件（+10/−4），纯文档声明补充，无行为变化。
+
+**迁移**：无破坏性变更。
+
+---
+
+## [0.30.2] — 2026-06-30
+
+### Phase 7 导出顺序修复 — 导出移到确认门禁之后
+
+**背景**：导出步骤（分镜技术表 Excel / 文学剧本 HTML）原先位于 Phase 7 确认门禁之前（步骤 4），且未显式询问导出格式。
+
+**修改**：
+- `references/pipelines/default.md`：导出步骤从确认门禁前移到确认通过后（步骤 4→步骤 7）；显式询问用户选择导出格式（分镜技术表 Excel / 文学剧本 HTML / 视频封面）；HTML storyboard 已在门禁中生成，不重复导出；步骤编号全链更新（门禁 4→5→6→7 导出→8 Phase 7.5）
+- `SKILL.md`：版本 0.30.1→0.30.2
+- `CONSTITUTION.md`：版本号同步
+
+**影响范围**：3 个文件（+30/−12），导出时机与询问流程变更（随管线执行生效）。
+
+**迁移**：无破坏性变更。
+
+---
+
 ## [0.30.1] — 2026-06-29
 
 ### Phase 6/7 确认门禁 + Phase 8 预留
@@ -844,6 +879,10 @@ scene_relations:
 - SKILL.md：version 0.9.0→0.10.0
 
 **统计**：案例 16→19 (film×4, commercial×11, short-film×1, music-video×1, animation×1, documentary×1)，类型 5/8→8/8 全覆盖 ✅
+
+---
+
+## [0.9.0] — 2026-06-15
 
 ### 新增 — Phase 9: 阶段门禁验证系统
 

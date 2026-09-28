@@ -43,6 +43,7 @@ metadata:
                 │   product-demo:   "产品/演示/功能介绍/开箱"
                 │   sci-fi:         "科幻/Cyberpunk/未来/赛博"
                 │   custom:         无匹配 → 用通用流程
+                │   新增场景类型 → references/scenes/_TEMPLATE.md
                 │
                 └─ 检测复杂度：
                     1-2 场景 / 无角色 / 用户催快 → fast-track 管线
@@ -54,7 +55,7 @@ metadata:
 ### Default Pipeline（8 阶段 + 1 预留，完整创作）
 1. **需求沟通**（Director）→ 确认比例/用途/场景/约束
 2. **内容梳理**（Writer + Director）→ 故事、场景、叙事结构
-3. **视觉开发**（Art Director + Director）→ 色调、风格、场景搭建、人物设定。含反主观化规则：情绪标签映射 visual_cause 字段（见 `references/anti-subjective-rule.md`）
+3. **视觉开发**（Art Director + Director）→ 色调、风格、场景搭建、人物设定。含反主观化规则：情绪标签映射 visual_cause 字段（见 `references/roles/art-director.md`）
 3.5 **风格定样**（条件性）→ image_gen 生成场景 moodboard + 角色概念图 → 用户看图确认 → 锁定风格方向。不可用时跳过
 4. **脚本**（Writer → DP → Director review）→ 台词、镜头语言、动作、时长
 5. **声音方向**（Sound Designer）→ 配乐风格、音效、旁白基调
@@ -85,7 +86,7 @@ metadata:
 
 ## INDEX.md 自动化
 
-> 见 `references/index-automation.md`。`build_index.py --check` 校验，`--write` 重新生成。禁止手动编辑。
+> 见 `CONSTITUTION.md` §元数据治理。`build_index.py --check` 校验，`--write` 重新生成。禁止手动编辑。
 
 ## 产出验证
 

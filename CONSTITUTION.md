@@ -73,6 +73,7 @@ muse-video/
 │   │   └── sound-designer.md    # Music direction, SFX mapping, narration tone
 │   │
 │   ├── scenes/                  ← Scene-type-specific templates and constraints.
+│   │   ├── _TEMPLATE.md         # Scene file template — copy and fill for each new scene type
 │   │   ├── studio-ad.md         # Studio advertising: lighting, camera, props, talent
 │   │   ├── logo-animation.md    # Logo motion: material types, dynamic rhythm, brand rules
 │   │   ├── product-demo.md      # Product showcase: feature→shot mapping, B-roll, CTA
@@ -296,6 +297,7 @@ OUTPUT: Creative Package → 下游工具对接                │
    - 跳过模板占位符（含 < > 的引用）
 4. 版本发布 → 更新 metadata/CHANGELOG.md
    - 记录：新增/修改/删除 + 影响分析 + 迁移指南
+5. 脚本 VERSION（scripts/*.py 内常量）→ 与 skill 版本解耦，仅在脚本接口变更时 bump
 ```
 
 ### 命名约定（旧命名 deprecated）
@@ -340,4 +342,4 @@ python scripts/build_index.py --check --deps
 
 ---
 
-*Last amended: 2026-06-29. Author: Director-Agent (Hermes). v0.30.2 — Phase 7 导出顺序修复：导出工具从确认门禁之前移到确认通过之后，显式询问用户选择导出格式（分镜技术表 Excel / 文学剧本 HTML / 视频封面），HTML storyboard 已在门禁中生成不重复导出。继承 v0.30.1 Phase 6/7 确认门禁 + Phase 8 预留。*
+*Last amended: 2026-09-28. Author: Director-Agent (Hermes). v0.30.3 — 封面生成下游集成：cover-design-guide 文件头更新（Phase 7 步骤 7 触发 + 数据来源 + 不依赖 Phase 7.5），downstream-integration 封面节补触发时机说明 + 零费用标注，Phase 7 步骤 7 加「建议发布前生成」提示。继承 v0.30.2 Phase 7 导出顺序修复 + v0.30.1 Phase 6/7 确认门禁 + Phase 8 预留。*
