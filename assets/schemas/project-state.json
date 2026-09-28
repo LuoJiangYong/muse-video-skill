@@ -403,6 +403,22 @@
         "runway_prompts": { "type": "array", "items": { "type": "string" } }
       }
     },
+    "file_registry": {
+      "type": "object",
+      "description": "全管线参考图注册表（v0.31.0 从 model_compilation.file_registry 提升；optional）— Phase 1 起登记，全管线按逻辑名引用（file_id / local_path），不再重述参考图已有内容。",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "file_id": { "type": "string", "description": "Volcengine Files API file_id（未上传时为 'PENDING'）" },
+          "local_path": { "type": "string", "description": "本地文件路径——缩略图渲染来源 + file_id 失效后重传备份" },
+          "role": { "type": "string", "enum": ["reference_image", "first_frame", "last_frame"] },
+          "weight": { "type": "number", "minimum": 0, "maximum": 1, "description": "reference_image_weight（0.0-1.0）：角色锚点 0.8-1.0 / 场景 mood 0.5-0.7 / 风格 0.4-0.5" },
+          "source": { "type": "string", "enum": ["user", "generated", "search"], "description": "来源分类：用户提供 / 生图生成 / 网络搜索（含免版权与公开图库，2026-09-28 决策 1）" },
+          "credit": { "type": "string", "description": "来源署名（搜索源：作者/平台，溯源元数据）" },
+          "origin_url": { "type": "string", "description": "来源页 URL（搜索源可选）" }
+        }
+      }
+    },
     "model_compilation": {
       "type": "object",
       "description": "Model Compiler output — Phase 7.5. Compiles Creative Package into model-specific execution instructions. Read-only consumer of upstream data. Does not execute network requests.",
@@ -427,7 +443,7 @@
         },
         "file_registry": {
           "type": "object",
-          "description": "Uploaded reference image file_id registry. Each entry maps a logical name to its Files API file_id and local path backup.",
+          "description": "Uploaded reference image file_id registry. Each entry maps a logical name to its Files API file_id and local path backup. Legacy path — dual-read compatible: v0.31.0 promoted this registry to the top-level file_registry (authoritative); compilers read top-level first, falling back here.",
           "additionalProperties": {
             "type": "object",
             "properties": {

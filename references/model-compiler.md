@@ -10,7 +10,7 @@
 ## 边界声明
 
 1. **只读消费者**：编译器读取 Project State 的所有上游字段（script / cinematography / visual_dev / sound / storyboard），不修改任何上游产出。
-2. **不执行网络请求**：产出的 `arkcli_command` 是文本，不调用 `arkcli`。File Registry 中的 `file_id` 来自 Phase 3.5/6 或其他阶段的上传——编译器只引用，不上传。
+2. **不执行网络请求**：产出的 `arkcli_command` 是文本，不调用 `arkcli`。File Registry 中的 `file_id` 来自 Phase 3.5/6 或其他阶段的上传——编译器只引用，不上传。注册表双轨解析：优先读 Project State 顶层 `file_registry`（v0.31.0 起权威源），回退 `model_compilation.file_registry`（旧路径兼容）。
 3. **不替代创意判断**：编译器不会「修正」Writer 的场景描述或 DP 的运镜选择。它只做格式转换——中文术语→英文 prompt、分散字段→合并模板。
 4. **质量标记不阻塞**：遇到劣质输入时标记警告（GOOD/DEGRADED/INSUFFICIENT），但不回退上游阶段。`INSUFFICIENT` 级别暂停等用户确认。
 
@@ -36,6 +36,7 @@
 | `sound.music_style` | 配乐风格 | audio_config |
 | `sound.narration_tone` | 旁白基调 | audio_prompt |
 | `storyboard[]` | 分镜面板（含 prompt / camera_notes / vfx_notes） | multimodal_refs + 编译交叉校验 |
+| 顶层 `file_registry`（回退 `model_compilation.file_registry`） | 参考图注册表（file_id / local_path / source 溯源） | `multimodal_refs` 解析 + 干跑检查 |
 
 ---
 
@@ -49,7 +50,7 @@
   "model_compilation": {
     "_meta": { "compiler_version": "1.0.0", "target_model": "...", "director_approved": false },
     "target_model": "doubao-seedance-2-0-260128",
-    "file_registry": { /* file_id 映射表，含 local_path */ },
+    "file_registry": { /* 旧路径（双轨兼容）；权威源 = 顶层 file_registry */ },
     "shots": [ /* 每镜编译结果 */ ],
     "shot_chain": { /* video_ref 链 */ }
   }
