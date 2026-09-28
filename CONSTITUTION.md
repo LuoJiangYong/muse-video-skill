@@ -62,6 +62,7 @@ muse-video/
 │
 ├── CONSTITUTION.md              ← THIS FILE. Design law. Read first.
 ├── SKILL.md                     ← Thin center: routing, decisions, phase triggers. ≤3000 chars.
+├── README.md                    ← GitHub project page. Feature overview + quick start.
 │
 ├── references/                  ← THICK RADIATION. Domain knowledge, loaded on demand.
 │   ├── roles/                   ← Each role's expertise, prompt templates, quality standards.
@@ -83,16 +84,26 @@ muse-video/
 │   │   ├── INDEX.md             # Multi-dimensional cross-reference (技法×场景×风格×角色)
 │   │   ├── _TEMPLATE.md         # Case file template — copy and fill for each new case
 │   │   ├── BR2049.md            # Blade Runner 2049 — cyberpunk visual language
-│   │   └── ...                  # One file per case, infinite expansion
+│   │   ├── ...                  # One file per case, infinite expansion
+│   │   └── assets/              # Case frame captures (select cases, e.g. LJZ-COFFEE)
 │   │
 │   ├── pipelines/               ← WHEN to activate roles, in what order, with what loop rules.
 │   │   ├── default.md           # Standard 7-phase pipeline (full creative process)
 │   │   └── fast-track.md        # Accelerated pipeline for simple/single-scene requests
 │   │
-│   └── media/                   ← Cross-cutting media generation knowledge.
-│       ├── image-gen-guide.md   # Prompt engineering for AI image generation
-│       ├── character-consistency.md  # Strategies for character consistency (the hard problem)
-│       └── tool-matrix.md       # When to use ComfyUI vs Kling vs Runway vs HyperFrames
+│   ├── media/                   ← Cross-cutting media generation knowledge.
+│   │   ├── case-study-workflow.md  # Case study creation — video analysis & candidate discovery
+│   │   ├── image-gen-guide.md   # Prompt engineering for AI image generation
+│   │   ├── character-consistency.md  # Strategies for character consistency (the hard problem)
+│   │   └── tool-matrix.md       # When to use ComfyUI vs Kling vs Runway vs HyperFrames
+│   │
+│   ├── meta/                    ← Process quality gates — self-verification before delivery.
+│   │   └── verification-checklist.md  # Director's pre-delivery verification checklist
+│   │
+│   ├── cover-design-guide.md    # Video cover design spec (WeChat Channels / RED covers)
+│   ├── downstream-integration.md  # Post-package downstream tools (HyperFrames / ComfyUI / Kling / Ark)
+│   ├── model-compiler.md        # Phase 7.5 model compiler — creative output → model call instructions
+│   └── volcano-engine-integration.md  # Volcano Ark API guide (arkcli, Seedream / Seedance)
 │
 ├── scripts/                     ← DETERMINISTIC LOGIC. Agent calls, does not rewrite.
 │   ├── build_index.py           # Auto-generate INDEX.md from case YAML frontmatter

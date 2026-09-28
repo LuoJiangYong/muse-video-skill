@@ -23,6 +23,8 @@
 | **Pika** | 云端 API | 快速原型 | API key |
 | **ComfyUI** | 本地/云端 | SDXL/Flux/Wan/Hunyuan 图片+视频 | GPU ≥6GB 或 Comfy Cloud |
 
+> **完整对接指南**：arkcli 安装/登录、路由决策、关键 flags、接入陷坑与计费，见 `references/volcano-engine-integration.md`。
+
 ## AI 图片生成
 
 | 工具 | 类型 | 适用场景 | 前置条件 |
