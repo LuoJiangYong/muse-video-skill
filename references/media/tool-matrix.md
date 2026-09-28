@@ -83,7 +83,7 @@
 | Creative Package 字段 | 对应工具 | 如何输入 |
 |----------------------|---------|---------|
 | `storyboard.panels[].image_prompt` | ComfyUI | 直接作为 positive prompt 输入 |
-| `visual_dev.color_palette[]` | ComfyUI / HyperFrames | ComfyUI 用 color LUT；HyperFrames 用 CSS 变量 |
+| `visual_dev.palette[]` | ComfyUI / HyperFrames | ComfyUI 用 color LUT；HyperFrames 用 CSS 变量 |
 | `cinematography.shot_list[]` | 所有视频工具 | 作为镜头描述注入视频生成 prompt |
 | `script.scenes[]` | HyperFrames | 作为时间轴场景描述 |
 | `storyboard.panels[].camera` | HyperFrames / Kling | HyperFrames 用 CSS transform 模拟；Kling 用 camera control 描述 |

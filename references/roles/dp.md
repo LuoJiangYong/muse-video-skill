@@ -2,7 +2,7 @@
 
 > **定位**：镜头的掌控者。DP 负责决定「观众看到什么、怎么看、从哪个角度看」——每一个构图、每一次运镜、每一盏灯的决策。
 > **激活时机**：Phase 4（标准管线，在 Writer 产出的场景之上叠加镜头方向）/ 阶段 A（快速管线，与 Writer 和 Art Director 并行）。
-> **宪法约束**：DP 只看 `director_notes.vision` + `script.scenes[]`（结构）+ Art Director 的 `visual_dev.*`（色调方向 + 场景空间布局与视觉重心 + character_design[] 如有角色），不读取 VFX 或 Sound 的产出。
+> **宪法约束**：DP 只看 `director_notes.vision` + `script.scenes[]`（结构）+ Art Director 的 `visual_dev.*`（色调方向 + 场景空间布局与视觉重心 + characters[] 如有角色），不读取 VFX 或 Sound 的产出。
 
 ---
 
@@ -92,7 +92,7 @@
 
 ### 角色材质与灯光
 
-> Agent 在 Phase 4 读到 `character_design[].wardrobe.materials` 后，按材质调整灯光策略。
+> Agent 在 Phase 4 读到 `characters[].wardrobe.materials` 后，按材质调整灯光策略。
 
 | 材质类型 | 灯光策略 | 原因 |
 |---------|---------|------|
@@ -102,7 +102,7 @@
 | **深色/吸收性**（黑绒/深色牛仔） | 需要轮廓光分离主体与背景 | 深色面料吸收大部分光线，无轮廓光则「融入黑暗」 |
 
 **服装与场景色调关系**：
-- 读取 `character_design[].wardrobe.color_palette` → 判断与场景主色的关系
+- 读取 `characters[].wardrobe.color_palette` → 判断与场景主色的关系
 - 服装色与场景色互补 → 自然分离，灯光无需额外处理
 - 服装色与场景色相近 → 需要轮廓光或色彩对比（如暖色场景中给冷色轮廓光）分离角色
 
@@ -166,7 +166,7 @@
 
 ### 角色体型与构图角度
 
-> Agent 在 Phase 4 读到 `character_design[].visual_profile` 后，按体型和标志物调整构图。
+> Agent 在 Phase 4 读到 `characters[].visual_profile` 后，按体型和标志物调整构图。
 
 | 体型 | 构图角度 | 效果 | 注意 |
 |------|---------|------|------|
@@ -175,7 +175,7 @@
 | **中等匀称** | 标准人像角度（机位齐眼） | 自然、不做夸张 | — |
 
 **标志物与特写时机**：
-- 读取 `character_design[].visual_profile.distinguishing_marks`（伤疤/纹身/义肢/标志物）
+- 读取 `characters[].visual_profile.distinguishing_marks`（伤疤/纹身/义肢/标志物）
 - 角色首次出场时给标志物一个插入镜头（Insert shot）
 - 关键情绪转折点，标志物作为视觉锚点再次出现
 
@@ -236,7 +236,7 @@
 - 使用灯光方案模板给出 key/fill/rim 的具体参数和光源动机
 - 使用构图决策树确定每个镜头的构图方法
 - 使用运镜决策树决定是否需要运动及运动类型
-- 如有角色需求 → 读取 visual_dev.character_design[]：参照 §角色体型与构图角度 调整构图，参照 §角色材质与灯光 调整灯光方案，读取 wardrobe.color_palette 判断服装与场景的色调关系
+- 如有角色需求 → 读取 visual_dev.characters[]：参照 §角色体型与构图角度 调整构图，参照 §角色材质与灯光 调整灯光方案，读取 wardrobe.color_palette 判断服装与场景的色调关系
 - 产出写入 Project State JSON → cinematography.*
 - 加载 scene doc 获取场景特定灯光参数（§灯光策略），与通用技法结合使用
 

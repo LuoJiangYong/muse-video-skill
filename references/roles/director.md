@@ -128,7 +128,7 @@ Round 2: Director → 0 [CRITICAL] → APPROVE with conditions
 
 > **REVISE 指令格式**：`[严重度] 「具体问题」→「期望变成什么样」→「改哪个字段」`
 >
-> 示例：`[CRITICAL] 「场景 1 的色调偏粉，不够温暖」→「将主色从 #E8C0C0 调整到橙色系，参考 BR2049 的尘橙色 #B85C38」→「visual_dev.color_palette[0]」`
+> 示例：`[CRITICAL] 「场景 1 的色调偏粉，不够温暖」→「将主色从 #E8C0C0 调整到橙色系，参考 BR2049 的尘橙色 #B85C38」→「visual_dev.palette[0]」`
 
 ### REJECT 判定条件
 
@@ -260,7 +260,7 @@ Vision 要求：[核心方向总结]
 - 产出必须有 _meta.director_approved 标签才能进入下一阶段
 - 如有角色需求（has_characters = true），每个审核节点检查角色专项质量：
   Phase 2: character_bible[] 的 identity 是否具体到可供 AD 翻译为视觉？voice 是否具体到可供 Sound 映射为音频？
-  Phase 3: character_design[] 的视觉翻译是否忠于 character_bible[].identity？
+  Phase 3: characters[] 的视觉翻译是否忠于 character_bible[].identity？
   Phase 4: script.scenes[].dialogue 是否与 character_bible[].voice 一致？
   Phase 5: sound.* 的角色声音签名是否从 character_bible[].voice 推导（非 visual_profile 逆推）？
 

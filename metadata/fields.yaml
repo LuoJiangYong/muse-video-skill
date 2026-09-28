@@ -274,7 +274,7 @@ fields:
   - path: visual_dev.palette
     type: array<object>
     default: []
-    description: "色调方案（name + hex + usage）"
+    description: "色调方案 — swatch 条目（name+hex+usage）或场景级条目（scene_id+palette+color_temp 等），双风格并存"
     affected_roles: [art-director, dp]
     affected_phases: [3, 6]
     version_added: "0.1.0"
@@ -319,7 +319,7 @@ fields:
   - path: visual_dev.characters
     type: array<object>
     default: []
-    description: "角色设定（name/role/traits/consistency_notes）"
+    description: "角色设定 — 简结构（name/role/traits/consistency_notes）或富结构（character_id/visual_profile/wardrobe），双风格并存"
     affected_roles: [art-director, writer, dp, sound-designer]
     affected_phases: [3, 4, 5, 6]
     version_added: "0.1.0"

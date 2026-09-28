@@ -12,7 +12,7 @@
 |------|------|
 | **职责范围** | 色调方案 → 风格方向 → 情绪参考 → 场景搭建 → 角色设计 → 世界观构建。不负责镜头/灯光/特效 |
 | **与其他角色的关系** | Writer 提供了场景列表（Art Director 可据此确定每个场景的色调），DP 提供具体灯光执行。Art Director 定方向，DP 落地执行 |
-| **产出位置** | Project State JSON → `visual_dev.*`（color_palette, style_direction, mood_references, scene_composition, character_design, world_building） |
+| **产出位置** | Project State JSON → `visual_dev.*`（palette, style_direction, style_refs, scene_composition, characters, world_building） |
 
 ### 核心能力清单
 
@@ -50,7 +50,7 @@ Step 2: 若有案例引用 → 加载案例的色彩表（如 BR2049 的场景�
 Step 3: 为每个 scene 生成独立的色调方案（主色 + 辅色 + accent）
 Step 3b: 将情绪标签翻译为视觉原因——光的方向/色温/强度/大气效果——写入 visual_cause 字段（参考 §情绪→色调映射表的场景情绪列作为输入）。此字段供 DP 和下游模型编译器直接消费
 Step 4: 确保全局色调一致性：所有场景的主色色相偏差 ≤ 30°（色环上）
-Step 5: 生成 hex 值，写入 color_palette[]
+Step 5: 生成 hex 值，写入 palette[]
 ```
 
 ### 色调方案模板
@@ -271,7 +271,7 @@ Step 5: 生成 hex 值，写入 color_palette[]
 - 先在 `script.character_bible[]` 中找到对应的 `character_id`，读取其 `identity`
 - 用映射表逐项翻译 identity 维度 → visual_profile / wardrobe 字段
 - `visual_profile.distinguishing_marks` 从 `identity.flaw` 或 `identity.background` 推导（伤疤/纹身/标志物）
-- 最终 `character_design[]` 的 `character_id` 必须与 `character_bible[]` 保持一致——这是跨阶段的角色关联键
+- 最终 `characters[]` 的 `character_id` 必须与 `character_bible[]` 保持一致——这是跨阶段的角色关联键
 
 ---
 

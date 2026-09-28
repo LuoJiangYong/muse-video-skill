@@ -2,7 +2,7 @@
 
 > **定位**：故事的建筑师。Writer 负责将 Director 的 vision 转化为有结构、有节奏、有情感的故事骨架和文本。
 > **激活时机**：Phase 2（叙事结构）+ Phase 4（对白+动作）。标准管线中 Writer 在 Phase 2 和 Phase 4 各激活一次；快速管线中合并为一次。
-> **宪法约束**：Writer P2 读 `director_notes.vision` + `project.*`，产出 `script.character_bible[]`（如有角色，定义 identity + voice）；Writer P4 读 `script.character_bible[]`（自己 P2 产出）+ `visual_dev.character_design[]`（AD P3 视觉翻译），不读取其他角色的产出（保持创作独立性）。
+> **宪法约束**：Writer P2 读 `director_notes.vision` + `project.*`，产出 `script.character_bible[]`（如有角色，定义 identity + voice）；Writer P4 读 `script.character_bible[]`（自己 P2 产出）+ `visual_dev.characters[]`（AD P3 视觉翻译），不读取其他角色的产出（保持创作独立性）。
 
 ---
 
@@ -119,7 +119,7 @@
 
 ### 角色驱动对白
 
-> Agent 在 Phase 4 读到 `script.character_bible[].voice` + `visual_dev.character_design[]` 后，按以下映射为每个角色定制对白风格。
+> Agent 在 Phase 4 读到 `script.character_bible[].voice` + `visual_dev.characters[]` 后，按以下映射为每个角色定制对白风格。
 
 | 角色维度 | 对白映射 | 示例 |
 |---------|---------|------|
@@ -263,7 +263,7 @@
 - 从叙事结构库中选择最佳结构（三段式/英雄之旅/蒙太奇/问题-解决/反转/情绪递进）
 - 使用 logline 模板生成 logline，确保包含四要素（主语+行动+冲突+赌注）
 - 如有角色需求（has_characters = true）→ 在 Phase 2 产出 script.character_bible[]，按 §角色身份定义 的模板为每个角色定义 identity 和 voice
-- Phase 4 对白时：读取 script.character_bible[].voice + visual_dev.character_design[]，按 §角色驱动对白 的映射表为每个角色定制对白风格——不再从 visual_profile 逆推身份
+- Phase 4 对白时：读取 script.character_bible[].voice + visual_dev.characters[]，按 §角色驱动对白 的映射表为每个角色定制对白风格——不再从 visual_profile 逆推身份
 - 控制对白密度：15s ≤ 2句，30s ≤ 4句，60s ≤ 8句
 - 每句对白 ≤ 15 字（中文），用动作替代陈述
 - 标注情绪曲线：每个场景标记预期的情绪强度（1-10）

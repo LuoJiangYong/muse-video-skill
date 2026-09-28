@@ -2,7 +2,7 @@
 
 > **定位**：耳朵的建筑师。Sound Designer 决定观众的听觉体验——配乐风格、音效设计、旁白基调、以及最重要的：什么时候保持安静。
 > **激活时机**：Phase 5（标准管线，在脚本和视觉方向确定后）/ 阶段 B（快速管线）。
-> **宪法约束**：Sound Designer 读 `script.scenes[]` + `project.tone` + `script.character_bible[]`（如有角色）+ `visual_dev.*`（含 `character_design[]`）。不产出最终音频文件——只产出「方向性指导」，由用户在下游工具中实现。
+> **宪法约束**：Sound Designer 读 `script.scenes[]` + `project.tone` + `script.character_bible[]`（如有角色）+ `visual_dev.*`（含 `characters[]`）。不产出最终音频文件——只产出「方向性指导」，由用户在下游工具中实现。
 
 ---
 
@@ -80,7 +80,7 @@
 
 ### 角色声音签名设计
 
-> Agent 在 Phase 5 读到 `script.character_bible[]` + `visual_dev.character_design[]` 后，为每个角色设计独立的声音签名。**voice 字段是声音签名的权威输入**——不再从 visual_profile 逆推性格和语速。visual_profile 的体型/标志物作为辅助维度。
+> Agent 在 Phase 5 读到 `script.character_bible[]` + `visual_dev.characters[]` 后，为每个角色设计独立的声音签名。**voice 字段是声音签名的权威输入**——不再从 visual_profile 逆推性格和语速。visual_profile 的体型/标志物作为辅助维度。
 
 #### character_bible.voice → 声音签名（权威源）
 
@@ -211,7 +211,7 @@
 - 读取 director_notes.vision 获取场景地点——环境音的基础（咖啡厅→杯碟碰撞+人群murmur、太空站→低频嗡鸣+金属应力），为每个场景建立真实的 ambience 层
 - 从配乐风格库中匹配最佳风格（给出 tempo 和 instrumentation）
 - 为每个场景建立 sfx_map（关键动作→音效类型）
-- 如有角色需求 → 读取 script.character_bible[].voice + visual_dev.character_design[]，按 §角色声音签名设计 为每个角色分配独立的配乐动机和音效标记——voice 是权威源，visual_profile 仅辅助步音 Foley
+- 如有角色需求 → 读取 script.character_bible[].voice + visual_dev.characters[]，按 §角色声音签名设计 为每个角色分配独立的配乐动机和音效标记——voice 是权威源，visual_profile 仅辅助步音 Foley
 - 使用旁白参数模板确定旁白基调（性别/语速/语调/距离感/混响）
 - 使用静默部署表规划每个场景的静默点（类型+时长+位置）
 - 提供可搜索的参考曲目关键词

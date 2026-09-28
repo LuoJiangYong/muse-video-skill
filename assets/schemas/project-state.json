@@ -113,13 +113,34 @@
       "properties": {
         "palette": {
           "type": "array",
+          "description": "Color scheme — swatch entries (name/hex/usage) and/or per-scene entries (scene_id + palette + color_temp + mood + rationale); both styles coexist across projects.",
           "items": {
             "type": "object",
+            "description": "Palette entry — swatch style (name/hex/usage) or per-scene style (scene_id/palette/color_temp/mood/rationale).",
             "properties": {
               "name": { "type": "string" },
               "hex": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
               "usage": { "type": "string", "description": "How this color is used (e.g., 'primary bg', 'accent', 'text')." },
-              "visual_cause": { "type": "string", "description": "Mood → visual-cause translation (light direction / color temperature / intensity / atmospheric effects). Written by Art Director (Step 3b); consumed by DP and the model compiler." }
+              "visual_cause": { "type": "string", "description": "Mood → visual-cause translation (light direction / color temperature / intensity / atmospheric effects). Written by Art Director (Step 3b); consumed by DP and the model compiler." },
+              "scene_id": { "type": "integer", "description": "Scene number — for per-scene entries (matches script.scenes[].scene_id)." },
+              "scene_title": { "type": "string", "description": "Scene title — for per-scene entries." },
+              "color_temp": { "type": "string", "description": "Color temperature note (e.g., '5000K 晨光漫射' / '3200K golden backlight')." },
+              "mood": { "type": "string", "description": "Scene mood keywords for this palette entry." },
+              "palette": {
+                "type": "object",
+                "description": "Role → hex color map (per-scene style). Common roles: primary / secondary / accent / background / text_light / text_dark; domain-specific roles allowed.",
+                "properties": {
+                  "primary": { "type": "string" },
+                  "secondary": { "type": "string" },
+                  "accent": { "type": "string" },
+                  "background": { "type": "string" },
+                  "text_light": { "type": "string" },
+                  "text_dark": { "type": "string" }
+                },
+                "additionalProperties": true
+              },
+              "rationale": { "type": "string", "description": "Why this palette was chosen — narrative / emotional link." },
+              "reference": { "type": "string", "description": "Reference work cited for this palette (e.g., 'BR2049 — Los Angeles street tone')." }
             }
           }
         },
@@ -139,15 +160,57 @@
         },
         "characters": {
           "type": "array",
+          "description": "Character visual designs — simple entries (traits/consistency_notes) and/or rich entries (character_id + visual_profile + wardrobe + props + silhouette); both styles coexist across projects.",
           "items": {
             "type": "object",
+            "description": "Character entry — simple style or rich style (Art Director's visual translation of script.character_bible).",
             "properties": {
               "name": { "type": "string" },
               "role": { "type": "string", "description": "Protagonist, antagonist, supporting, etc." },
               "traits": { "type": "string", "description": "Visual traits (age, build, hair, clothing, accessories)." },
               "mood": { "type": "string", "description": "Emotional expression direction." },
               "ref_image_prompt": { "type": "string", "description": "AI image generation prompt for this character." },
-              "consistency_notes": { "type": "string", "description": "Key features to maintain across all panels." }
+              "consistency_notes": { "type": "string", "description": "Key features to maintain across all panels." },
+              "character_id": { "type": "string", "description": "Stable character key (e.g., 'char_01') — matches script.character_bible[].character_id (cross-phase link)." },
+              "visual_profile": {
+                "type": ["object", "array"],
+                "description": "Physical appearance — Art Director's translation of character_bible identity into visual features. Object form for single characters; array form for grouped characters (tagged sub-profiles, one per member).",
+                "properties": {
+                  "age_range": { "type": "string" },
+                  "gender_presentation": { "type": "string" },
+                  "height_build": { "type": "string" },
+                  "face_features": { "type": "string" },
+                  "hair": { "type": "string" },
+                  "eyes": { "type": "string" },
+                  "skin_tone": { "type": "string" },
+                  "distinguishing_marks": { "type": "string", "description": "Scars / tattoos / prosthetics / signature features — drives close-up timing." }
+                },
+                "items": {
+                  "type": "object",
+                  "description": "Tagged sub-profile for grouped characters (e.g., one per crowd member).",
+                  "properties": {
+                    "tag": { "type": "string" },
+                    "age_range": { "type": "string" },
+                    "features": { "type": "string" },
+                    "clothing": { "type": "string" }
+                  },
+                  "additionalProperties": true
+                }
+              },
+              "wardrobe": {
+                "type": "object",
+                "description": "Costume design — DP consumes materials for lighting and color contrast; Sound consumes materials for Foley.",
+                "properties": {
+                  "style": { "type": "string" },
+                  "color_palette": { "type": "array", "items": { "type": "string" }, "description": "Costume colors (hex)." },
+                  "key_pieces": { "type": "array", "items": { "type": "string" } },
+                  "materials": { "type": "array", "items": { "type": "string" }, "description": "Fabric / material list." },
+                  "avoid": { "type": "array", "items": { "type": "string" } }
+                }
+              },
+              "props": { "type": "array", "items": { "type": "string" }, "description": "Character-specific props." },
+              "silhouette": { "type": "string", "description": "Overall silhouette / shape language." },
+              "generation_notes": { "type": "string", "description": "AI image generation guidance for this character (scale, consistency strategy)." }
             }
           }
         },

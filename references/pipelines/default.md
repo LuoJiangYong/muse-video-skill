@@ -110,7 +110,7 @@ Phase 8: 下游工具引导      → 【预留】工具选择与费用预估（�
 | **激活角色** | Art Director（产出）→ Director（审核） |
 | **触发条件** | Phase 2 Director 审核通过 |
 | **输入** | director_notes.vision, script.logline, script.scenes[], script.character_bible[]（如有角色）, project.genre, project.tone |
-| **产出** | visual_dev.color_palette[], visual_dev.style_direction, visual_dev.mood_references[], visual_dev.scene_composition[]（每个场景的空间布局/核心道具/视觉重心）, visual_dev.character_design[]（如有角色）, visual_dev.world_building（在 scene_composition 之上叠加 sci-fi 规则） |
+| **产出** | visual_dev.palette[], visual_dev.style_direction, visual_dev.style_refs[], visual_dev.scene_composition[]（每个场景的空间布局/核心道具/视觉重心）, visual_dev.characters[]（如有角色）, visual_dev.world_building（在 scene_composition 之上叠加 sci-fi 规则） |
 | **Director 审核** | ✅ 必须审核 |
 | **Loop 规则** | ≤2 轮修改 |
 
@@ -125,7 +125,7 @@ Phase 8: 下游工具引导      → 【预留】工具选择与费用预估（�
 3b. Art Director 为每个场景产 scene_composition：空间布局 / 核心道具 / 视觉重心 / 深度策略（通用，不限场景类型）
 4. 可选：调用 `image_gen` 生成 moodboard 参考图（如 ComfyUI 可用）
 5. Director 审核：色调是否匹配 vision？风格是否冲突？场景空间是否合理、视觉重心是否清晰？
-   - 如有角色需求，额外检查：character_design[] 的视觉翻译是否忠于 character_bible[].identity（例：character_bible 说「内敛克制」，AD 不应给亮色暴露服装）
+   - 如有角色需求，额外检查：characters[] 的视觉翻译是否忠于 character_bible[].identity（例：character_bible 说「内敛克制」，AD 不应给亮色暴露服装）
    - **Approve** → 进入 Phase 4
    - **Revise** → Art Director 调整后重交
    - **Reject** → 重新定调
@@ -138,7 +138,7 @@ Phase 8: 下游工具引导      → 【预留】工具选择与费用预估（�
 |------|------|
 | **激活条件** | image_gen 可用（任一 provider 在线）。不可用则跳过，显式记录 `style_sample.skipped: true, reason: "no image_gen available"` |
 | **触发条件** | Phase 3 Director 审核通过 |
-| **输入** | visual_dev.color_palette[], visual_dev.style_direction, visual_dev.mood_references[], visual_dev.scene_composition[], visual_dev.character_design[]（如有角色） |
+| **输入** | visual_dev.palette[], visual_dev.style_direction, visual_dev.style_refs[], visual_dev.scene_composition[], visual_dev.characters[]（如有角色） |
 | **产出** | style_sample.scenes[]（2-3 张场景 moodboard），style_sample.characters[]（如有角色，每角色 1-2 张概念图），style_sample.user_decision（approved / revise / skipped） |
 | **Director 审核** | 用户确认后 Director 记录决策 |
 | **Loop 规则** | ≤2 轮调整。Revise → 标注具体问题（如「场景 3 蓝色过冷」「角色服装与世界观不搭」）→ 回到 Phase 3 仅调整被标注维度，不需全量重做 |
@@ -150,11 +150,11 @@ Phase 8: 下游工具引导      → 【预留】工具选择与费用预估（�
    - 必选：情绪转折/高潮场景（验证 mood→visual_cause 映射）
    - 可选：结尾场景（验证全局一致性）
 2. **生成场景 moodboard**：调用 image_gen，每场景 1 张
-   - prompt 来源：style_direction 关键词 + color_palette hex 描述 + visual_cause + spatial_layout 概要
+   - prompt 来源：style_direction 关键词 + palette hex 描述 + visual_cause + spatial_layout 概要
    - 图片附带色板叠加信息（hex 值标注）
-3. **如有角色 → 生成角色概念图**（仅当 has_characters = true 且 character_design[] 非空）
+3. **如有角色 → 生成角色概念图**（仅当 has_characters = true 且 characters[] 非空）
    - 每角色 2 张：面部肖像（face_features + distinguishing_marks）+ 全身造型（height_build + wardrobe + silhouette）
-   - prompt 使用与场景相同的 color_palette + style_direction——验证角色与场景的色彩一致性
+   - prompt 使用与场景相同的 palette + style_direction——验证角色与场景的色彩一致性
 4. **呈现给用户**（结构化格式）：
    ```
    [风格定样]
@@ -182,7 +182,7 @@ Phase 8: 下游工具引导      → 【预留】工具选择与费用预估（�
 |------|------|
 | image_gen 全不可用 | 跳过 Phase 3.5，`style_sample.skipped: true, reason: "no image_gen available"`。不阻塞管线 |
 | image_gen 可用，用户要求跳过 | Agent 必须推送警告后记录。用户 insist 后跳过 |
-| 角色图生成失败（但场景图成功） | 场景图正常定样，角色图标注 `generation_failed`，Phase 4 Writer 基于文字 character_design 继续 |
+| 角色图生成失败（但场景图成功） | 场景图正常定样，角色图标注 `generation_failed`，Phase 4 Writer 基于文字 characters 继续 |
 | Fast-Track 管线 | Phase 3.5 不激活——快速管线默认接受首次 AD 产出 |
 
 ---
