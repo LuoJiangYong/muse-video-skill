@@ -299,7 +299,7 @@ Phase 8: 下游工具引导      → 【预留】工具选择与费用预估（�
 3. Director 添加 `tuning_notes.*`：调色建议 / 节奏调整 / 特效微调 / 最终确认
 
 4. **【HTML Storyboard 确认门禁 — 唯一最终确认关卡】**
-   运行 `scripts/export_html.py --mode storyboard` 生成完整分镜预览 HTML。
+   运行 `scripts/export_html.py --storyboard <out.html>` 生成完整分镜预览 HTML。
    向用户展示 HTML storyboard 路径 + 关键参数摘要（总镜数 / 总时长 / 分辨率建议）。
    显式提示：「请查看 HTML storyboard，确认**分镜内容**（镜头顺序 / 构图描述 / 景别 / 运镜 / 时长 / 节奏）。HTML 排版为自动生成，仅用于快速预览，不代表最终视觉质量。**您确认的每一张参考图将直接进入 Phase 7.5 模型编译，最终喂给 AI 视频模型。**」
 
@@ -348,7 +348,7 @@ Phase 8: 下游工具引导      → 【预留】工具选择与费用预估（�
    │                                                             │
    │ 可选导出：                                                    │
    │ 📊 分镜技术表 Excel          — `export_xlsx.py` 镜号/景别/运镜/灯光/VFX │
-   │ 📜 文学剧本 HTML             — `export_html.py --mode script`    │
+   │ 📜 文学剧本 HTML             — `export_html.py --literary <out>` │
    │ 🎬 视频封面（3:4 视频号 / 4:3 小红书）— cover-design-guide.md      │
    │    建议在发布到视频号/小红书前生成。当前已具备所有封面素材（标题/标签  │
    │    /配色/关键帧），生成的 HTML 封面可直接截图使用。                   │
@@ -387,11 +387,13 @@ Phase 8: 下游工具引导      → 【预留】工具选择与费用预估（�
    e. 质量标记（GOOD / DEGRADED / INSUFFICIENT）+ 成本估算
 5. 构建 video_ref 镜头链（`model_compilation.shot_chain`）
 6. 运行干跑验证清单（见 model-compiler.md §干跑验证清单）
-7. 输出编译摘要给用户（shot 数 / 预估成本 / 质量警告）
-8. 用户可选择：
-   - **信任输出** → 批准 `model_compilation._meta.director_approved = true`
-   - **逐镜检查** → 审查 `prompt_trace` → 批准
-   - **不满意** → 返回上游 Phase 调整后重新编译
+7. 输出编译摘要 + **导出编译预览 HTML**：
+   - 运行 `python scripts/export_html.py --input <project-state.json> --compilation <out.html>` 渲染 `model_compilation`
+   - 向用户展示：HTML 路径 + 摘要（目标模型 / 总时长 / 预估成本 / 质量标记）
+8. **【用户二次确认 — 基于编译预览 HTML】**
+   核对：编译后 prompt（六段式）/ 参考图映射（image_ref ↔ file_registry）/ arkcli 命令 / 成本估算。
+   - **确认** → 批准 `model_compilation._meta.director_approved = true`（「信任编译器」可直接确认）
+   - **不满意** → 返回上游 Phase 调整后重新编译（原「逐镜检查 prompt_trace」并入本步核对范围）
 9. 如任何 shot 的 `_quality.overall = INSUFFICIENT` → **暂停**，要求用户确认后继续
 
 ---

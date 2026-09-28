@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{project.title}} — 编译预览（Phase 7.5）</title>
+<style>
+  /* ── 编译预览（Phase 7.5 模型编译最终核对）── */
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+  :root {
+    --bg: #faf9f5;
+    --card-bg: #ffffff;
+    --text: #141413;
+    --text-secondary: #666;
+    --accent: #cc785c;
+    --border: #e0ddd5;
+    --shadow: 0 1px 3px rgba(0,0,0,0.08);
+    --shadow-open: 0 4px 12px rgba(0,0,0,0.10);
+    --radius: 10px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text);
+    background: var(--bg);
+    padding: 2rem;
+  }
+
+  /* ── Header ── */
+  .header {
+    max-width: 1200px;
+    margin: 0 auto 1.5rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 2px solid var(--accent);
+  }
+
+  .header h1 { font-size: 1.75rem; font-weight: 700; margin-bottom: 0.3rem; }
+
+  .header .subtitle { font-size: 0.9rem; color: var(--text-secondary); }
+
+  .summary { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.9rem; }
+
+  .chip {
+    display: inline-block;
+    padding: 0.22em 0.85em;
+    border-radius: 999px;
+    background: #f0ede6;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  .chip.model { background: var(--accent); color: #fff; }
+  .chip.q-GOOD { background: #e6f4ea; color: #1e7f46; }
+  .chip.q-DEGRADED { background: #fdf3d8; color: #8a6d18; }
+  .chip.q-INSUFFICIENT { background: #fde8e8; color: #a33333; }
+
+  .hint { margin-top: 0.7rem; font-size: 0.85rem; color: var(--text-secondary); }
+  .hint b { color: var(--text); }
+
+  /* ── Shot cards ── */
+  main { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem; }
+
+  details.shot {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+
+  details.shot[open] { box-shadow: var(--shadow-open); }
+
+  summary.shot-head {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 0.8rem 1rem;
+    background: #f5f3ef;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  summary.shot-head::-webkit-details-marker { display: none; }
+
+  .shot-id { font-weight: 700; font-size: 1.05rem; color: var(--accent); min-width: 3.2em; }
+  .shot-meta { font-size: 0.85rem; color: var(--text-secondary); }
+  .shot-q { margin-left: auto; font-size: 0.85rem; font-weight: 700; }
+  .shot-q.q-GOOD { color: #1e7f46; }
+  .shot-q.q-DEGRADED { color: #8a6d18; }
+  .shot-q.q-INSUFFICIENT { color: #a33333; }
+
+  .shot-body { padding: 1rem; display: flex; flex-direction: column; gap: 1rem; }
+
+  .block h3 {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-secondary);
+    margin-bottom: 0.4rem;
+  }
+
+  pre {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.82rem;
+    line-height: 1.55;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.75rem 0.9rem;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  .ref-row {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    flex-wrap: wrap;
+    padding: 0.4rem 0;
+    border-bottom: 1px dashed var(--border);
+    font-size: 0.85rem;
+  }
+
+  .ref-row:last-child { border-bottom: none; }
+
+  .ref-idx { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-weight: 700; color: var(--accent); }
+  .ref-meta { color: var(--text-secondary); font-size: 0.8rem; }
+  .ref-pend { color: #8a6d18; font-weight: 600; font-size: 0.8rem; }
+  .ref-thumb { max-height: 72px; border-radius: 6px; border: 1px solid var(--border); }
+  .ref-empty { color: var(--text-secondary); font-size: 0.85rem; }
+
+  .warn-box {
+    background: #fdf3d8;
+    border: 1px solid #ecd9a0;
+    border-radius: 8px;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.85rem;
+  }
+
+  .warn-box ul { margin-left: 1.2em; }
+
+  .foot {
+    max-width: 1200px;
+    margin: 1.5rem auto 0;
+    text-align: center;
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+  }
+</style>
+</head>
+<body>
+
+  <header class="header">
+    <h1>{{project.title}} — 编译预览</h1>
+    <div class="subtitle">Phase 7.5 模型编译 · 最终核对 —— 您确认的内容将直接作为下游模型调用输入（方案 A 独立 HTML）</div>
+    <div class="summary">
+      <span class="chip model">🎯 {{compilation.target_model}}</span>
+      <span class="chip">⏱ {{compilation.total_duration}}</span>
+      <span class="chip">💰 {{compilation.est_cost}}</span>
+      <span class="chip q-{{compilation.worst_quality}}">🏷 {{compilation.worst_quality}}</span>
+    </div>
+    <p class="hint">请核对：<b>编译后 prompt（六段式）</b> / <b>参考图映射（image_ref ↔ file_registry）</b> / <b>arkcli 命令</b> / <b>成本估算</b>。质量标记非 GOOD 的镜头已自动展开。</p>
+  </header>
+
+  <main>
+{{#each model_compilation.shots}}
+    <details class="shot" {{#if _quality_open}}open{{/if}}>
+      <summary class="shot-head">
+        <span class="shot-id">{{shot_id}}</span>
+        <span class="shot-meta">scene {{scene_id}} · {{duration}}s · {{resolution}}</span>
+        <span class="shot-q q-{{_quality.overall}}">🏷 {{_quality.overall}}</span>
+      </summary>
+      <div class="shot-body">
+        <div class="block">
+          <h3>编译后 prompt（六段式）</h3>
+          <pre>{{compiled_prompt}}</pre>
+        </div>
+        <div class="block">
+          <h3>参考图映射（image_ref ↔ file_registry）</h3>
+          {{_refs_html}}
+        </div>
+        <div class="block">
+          <h3>arkcli 命令（仅文本，确认后由下游执行）</h3>
+          <pre>{{arkcli_command}}</pre>
+        </div>
+        <div class="block">
+          <h3>成本估算</h3>
+          <div class="shot-meta">预估 tokens：{{estimated_tokens}} · 预估成本：{{estimated_cost_cny}}</div>
+        </div>
+        {{#if _quality_warnings_html}}<div class="warn-box"><b>质量警告</b><ul>{{_quality_warnings_html}}</ul></div>{{/if}}
+      </div>
+    </details>
+{{/each}}
+  </main>
+
+  <div class="foot">Generated by Muse Video Skill · export_html.py v{{_version}} · {{_generated_at}}</div>
+
+</body>
+</html>

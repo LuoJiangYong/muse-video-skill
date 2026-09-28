@@ -113,7 +113,7 @@ muse-video/
 │   ├── storyboard_grid.py       # Input: storyboard array → Output: grid layout (2×3, 3×3)
 │   ├── prompt_assembler.py      # Input: full Project State → Output: Creative Pack JSON
 │   ├── moodboard_compare.py     # Input: 2+ visual directions → Output: comparison matrix
-│   ├── export_html.py           # Input: Project State JSON → Output: literary script HTML
+│   ├── export_html.py           # Input: Project State JSON → Output: literary / storyboard / compilation HTML
 │   └── export_xlsx.py           # Input: Project State JSON → Output: tech breakdown Excel
 │
 ├── assets/                      ← TEMPLATES, SCHEMAS, EXAMPLES, FONTS.
@@ -124,7 +124,8 @@ muse-video/
 │   │   └── export/              ← Export format templates (JSON → human-readable)
 │   │       ├── script-literary.html     # Literary script HTML (Courier, industry-standard)
 │   │       ├── script-storyboard.html   # Storyboard gallery HTML (card grid)
-│   │       └── script-tech.xlsx         # Technical breakdown Excel (camera, lighting, VFX)
+│   │       ├── script-tech.xlsx         # Technical breakdown Excel (camera, lighting, VFX)
+│   │       └── script-compilation.html  # Compilation preview HTML (Phase 7.5 — model call instructions)
 │   │
 │   ├── schemas/                 ← Data contracts.
 │   │   └── project-state.json   # Project State JSON Schema (THE interface between roles)
