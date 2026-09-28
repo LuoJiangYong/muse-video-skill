@@ -48,6 +48,10 @@
           },
           "description": "Key creative decisions with rationale."
         },
+        "has_characters": {
+          "type": ["boolean", "null"],
+          "description": "Character presence — tri-state: true / false / uncertain (=null). Extracted during Phase 1 from the vision template (default.md §Phase 1 step 4b)."
+        },
         "_meta": {
           "type": "object",
           "properties": {
@@ -105,7 +109,7 @@
     },
     "visual_dev": {
       "type": "object",
-      "description": "Visual development output from Art Director — populated during Phase 3 (美术定调+人物设定, now merged as '视觉开发').",
+      "description": "Visual development output from Art Director — populated during Phase 3 (美术定调+人物设定, now merged as '视觉开发'). Deprecated aliases (pre-v0.26, read-compat only): color_palette → palette, mood_references → style_refs, character_design → characters. New output must use the schema names.",
       "properties": {
         "palette": {
           "type": "array",
@@ -114,11 +118,14 @@
             "properties": {
               "name": { "type": "string" },
               "hex": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
-              "usage": { "type": "string", "description": "How this color is used (e.g., 'primary bg', 'accent', 'text')." }
+              "usage": { "type": "string", "description": "How this color is used (e.g., 'primary bg', 'accent', 'text')." },
+              "visual_cause": { "type": "string", "description": "Mood → visual-cause translation (light direction / color temperature / intensity / atmospheric effects). Written by Art Director (Step 3b); consumed by DP and the model compiler." }
             }
           }
         },
         "mood": { "type": "string", "description": "Visual mood description." },
+        "style_direction": { "type": "string", "description": "Style direction — feeds the 6-segment Style section (Phase 7.5 model compilation)." },
+        "visual_cause": { "type": "string", "description": "Project-level mood → visual-cause translation. Dual-write compatible with palette[].visual_cause — compilers read both (existing data compatibility)." },
         "style_refs": {
           "type": "array",
           "items": {
@@ -144,6 +151,52 @@
             }
           }
         },
+        "scene_composition": {
+          "type": "array",
+          "description": "Per-scene spatial arrangement — the 'missing layer' between palette and DP camera (Art Director Phase 3). Rendered by creative-pack.md and consumed by prompt_assembler.py.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "scene_id": { "type": "integer", "description": "Scene number — matches script.scenes[].scene_id." },
+              "scene_title": { "type": "string", "description": "Scene title (mirrors script.scenes[].scene_title)." },
+              "spatial_layout": {
+                "type": "object",
+                "description": "Layer structure — what is where in the frame.",
+                "properties": {
+                  "foreground": { "type": "string", "description": "Foreground elements — blur / framing / occlusion, providing depth." },
+                  "midground": { "type": "string", "description": "Midground subject — character / product / core action." },
+                  "background": { "type": "string", "description": "Background environment — atmosphere / buildings / sky / light source." }
+                }
+              },
+              "key_props": {
+                "type": "array",
+                "description": "Core props and their visual function.",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": { "type": "string" },
+                    "role": { "type": "string", "description": "Visual function: anchor / symbol / clue." },
+                    "material": { "type": "string" },
+                    "placement": { "type": "string", "description": "Position in frame (e.g., 'rule-of-thirds lower-right intersection')." }
+                  }
+                }
+              },
+              "visual_focus": {
+                "type": "object",
+                "description": "Fixation-point hierarchy.",
+                "properties": {
+                  "primary": { "type": "string", "description": "First fixation point — what the eye sees first." },
+                  "secondary": { "type": "string", "description": "Second fixation point." },
+                  "tertiary": { "type": "string", "description": "Third fixation point — environment / atmosphere elements." },
+                  "eye_path": { "type": "string", "description": "Eye path description (e.g., 'cup → up the arm → face → window light → back to cup')." }
+                }
+              },
+              "depth_strategy": { "type": "string", "description": "Depth strategy — shallow-DOF layering / linear perspective / color depth / atmospheric perspective / occlusion stacking." },
+              "rationale": { "type": "string", "description": "Why this spatial design — narrative / emotional link." }
+            }
+          }
+        },
+        "world_building": { "type": "object", "additionalProperties": true, "description": "World-building visual rules (sci-fi / fantasy), layered on top of scene_composition. Real data contains keys such as world_name / core_visual_principle. Tolerant definition — additionalProperties: true." },
         "image_refs": {
           "type": "array",
           "items": {

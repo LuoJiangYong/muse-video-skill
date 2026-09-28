@@ -107,6 +107,15 @@ fields:
     version_added: "0.1.0"
     breaking_change: false
 
+  - path: director_notes.has_characters
+    type: boolean/null
+    default: null
+    description: "角色存在性三态（true/false/不确定=null）——Phase 1 从 vision 模板提取步骤 4b"
+    affected_roles: [director, writer]
+    affected_phases: [1, 2]
+    version_added: "0.26.3"
+    breaking_change: false
+
   # --- script ---
   - path: script.logline
     type: string
@@ -271,6 +280,15 @@ fields:
     version_added: "0.1.0"
     breaking_change: false
 
+  - path: visual_dev.palette[].visual_cause
+    type: string
+    default: ""
+    description: "（可选）情绪→视觉原因翻译（光的方向/色温/强度/大气效果）——供 DP 与模型编译器直接消费；与 visual_dev.visual_cause 双写兼容"
+    affected_roles: [art-director, dp, model-compiler]
+    affected_phases: [3, 6, 7.5]
+    version_added: "0.29.0"
+    breaking_change: false
+
   - path: visual_dev.mood
     type: string
     default: ""
@@ -278,6 +296,15 @@ fields:
     affected_roles: [art-director]
     affected_phases: [3]
     version_added: "0.1.0"
+    breaking_change: false
+
+  - path: visual_dev.style_direction
+    type: string
+    default: ""
+    description: "风格方向——六段式 Style 段来源（模型编译器消费）"
+    affected_roles: [model-compiler]
+    affected_phases: [3, 7.5]
+    version_added: "0.2.0"
     breaking_change: false
 
   - path: visual_dev.style_refs
@@ -513,6 +540,8 @@ fields:
     breaking_change: false
 
   # --- _meta (traceability) ---
+  # 通用约定：适用于所有顶层 section 的 _meta 子对象；schema 中各 section 内联定义。
+  # （本条不指向单一字段路径——各 section 具体 _meta 键以 assets/schemas/project-state.json 为准）
   - path: _meta_per_section
     type: object
     default: { "revision": 1, "director_approved": false }

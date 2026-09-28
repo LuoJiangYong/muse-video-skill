@@ -169,10 +169,10 @@ USER: "帮我做一支赛博朋克手机广告"
 ┌──────────────────────────────────────────────────────┐
 │ PHASE 3: 视觉开发 (Art Director → Director)           │
 │ AD reads vision + scenes → produces:                 │
-│   visual_dev.color_palette[] (含 hex + visual_cause) │
-│   visual_dev.style_direction, mood_references[]      │
+│   visual_dev.palette[] (含 hex + visual_cause)       │
+│   visual_dev.style_direction, style_refs[]           │
 │   visual_dev.scene_composition[] (空间/道具/视觉重心)  │
-│   visual_dev.character_design[] (如有角色)            │
+│   visual_dev.characters[] (如有角色)                  │
 │                                                       │
 │ Director review → Phase 3.5 (如可用) 或 Phase 4       │
 └──────────────────────┬───────────────────────────────┘
@@ -297,6 +297,10 @@ OUTPUT: Creative Package → 下游工具对接                │
 4. 版本发布 → 更新 metadata/CHANGELOG.md
    - 记录：新增/修改/删除 + 影响分析 + 迁移指南
 ```
+
+### 命名约定（旧命名 deprecated）
+
+`color_palette` / `mood_references` / `character_design` 为 v0.26 前旧命名，已 deprecated：保留双轨读取兼容（既有项目数据零破坏），新产出统一用 schema 命名 `palette` / `style_refs` / `characters`。
 
 ### 快速查询模板
 
