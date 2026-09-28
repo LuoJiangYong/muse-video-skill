@@ -296,7 +296,7 @@ Phase 8: 下游工具引导      → 【预留】工具选择与费用预估（�
 1. 检查 Project State JSON 完整性：所有 `_meta.director_approved` = true
 2. 加载 `references/meta/verification-checklist.md` 逐项检查
 3. 运行 `scripts/prompt_assembler.py` → 产出 Creative Pack JSON
-3. Director 添加 `tuning_notes.*`：调色建议 / 节奏调整 / 特效微调 / 最终确认
+3b. Director 添加 `tuning_notes.*`：调色建议 / 节奏调整 / 特效微调 / 最终确认
 
 4. **【HTML Storyboard 确认门禁 — 唯一最终确认关卡】**
    运行 `scripts/export_html.py --storyboard <out.html>` 生成完整分镜预览 HTML。
@@ -338,7 +338,14 @@ Phase 8: 下游工具引导      → 【预留】工具选择与费用预估（�
    └─────────────────────────────────────────────────────────────────┘
 
 6. 确认通过 → Director 批准 storyboard._meta.director_approved = true
-   → 进入步骤 7（导出交付物）
+   → 进入步骤 6.5（模型选择）
+
+6.5 **【模型选择 — 编译前置】** 读取 `references/model-compiler.md` §模型选择：
+   - 已适配模型 ≥2 → 显式询问（最多 3 个候选 + 「帮我推荐」）；仅 1 个（当前）→ 告知并确认，不追问
+   - 未适配模型 → Agent 读取官方文档提炼参数后传入编译器（编译器保持「不执行网络请求」边界）
+   - 选择结果写入 `model_compilation.target_model`（同步 `_meta.target_model`）
+   - 子步骤说明：不占用审核 loop、不改变阶段总数
+   - 完成后 → 进入步骤 7（导出交付物）
 
 7. **【导出交付物 — 显式确认】**
    向用户展示可用的导出选项（HTML storyboard 已在确认门禁中生成，不重复）：
@@ -378,7 +385,7 @@ Phase 8: 下游工具引导      → 【预留】工具选择与费用预估（�
 
 1. Model Compiler 加载 `references/model-compiler.md`
 2. 读取 Project State 中所有相关字段（见 model-compiler.md §输入）
-3. 检测 `target_model` → 跳转对应适配章节（当前仅 Seedance 2.0）
+3. 检测 `target_model`（子步骤 6.5 选定）→ 跳转对应适配章节（当前仅 Seedance 2.0）
 4. 按编译规则逐镜生成 `model_compilation.shots[]`：
    a. 六段式 prompt 编译（含 Narrative Anchor 保留规则）
    b. 镜头运动术语翻译（双层查表：默认映射 + 场景覆盖 + movement_language 消歧）
