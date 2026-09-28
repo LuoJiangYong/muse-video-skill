@@ -266,6 +266,12 @@ Phase 8: 下游工具引导      → 【预留】工具选择与费用预估（�
    - vfx（特效标注）→ panel.vfx_notes
 3. VFX 加载 `references/roles/vfx.md` → 为需要特效的 panel 补充材质/粒子/转场说明
 4. 为每个 panel 生成 `image_prompt`（可注入 image_gen 的完整 prompt）
+4.5 **【实景参考图获取 — 可选】** 如分镜需要真实场景参照（地标 / 建筑 / 自然景观）且用户未提供实景照片：
+   - 按 `references/free-image-sources.md` 降级链搜索：Wikimedia Commons（免 key）→ Unsplash / Pexels / Pixabay（会话级 key）→ 兜底提示用户补充
+   - 命中 → 下载到 `projects/<name>/frames/`（不直接嵌远程 URL）→ 注册顶层 `file_registry`（source: "search" + credit）
+   - 图片可用于 panel 配图，并进入 Phase 7.5 `image_ref` 模型引用路径（2026-09-28 裁定）
+   - 限流纪律：≤10 次 API 调用/管线 + 同关键词 1h 缓存；超限不阻塞，降级为提示
+   - 未命中 → 提示用户提供照片，或 AI 生成 moodboard 代替（⚠️ 可能与实景存在偏差）
 5. **【显式确认：分镜图生成】** 向用户展示已组装的分镜面板摘要（panel 数量 / 关键画面描述 / 镜头参数）。
    询问用户：「是否调用 image_gen 为关键分镜面板生成参考图？（生成后 Phase 7 的 HTML storyboard 将包含实际画面预览）」
    - 选择「**生成**」→ 为 storyboard 中标记为 `layout: "wide"` 或 `"establishing"` 的 panel 生成配图
