@@ -6,6 +6,31 @@
 
 ---
 
+## [0.30.4] — 2026-09-28
+
+### Schema 还债收尾 + 治理残余清理 — 补记批次 A · 小修 N2-N5 · N6 对齐 · 布局补录
+
+**背景**：四轮审计确认 schema 与代码/模板/门禁三层失配、目录布局与磁盘现状漂移、旧命名残留于 7 个角色/管线文档。批次 A（`9cdc96c`）已补 5 处定义但未入本日志；本版完成全部剩余还债并统一补记。
+
+**补记（批次 A，9cdc96c）**：
+- `assets/schemas/project-state.json`：补 5 处定义——`director_notes.has_characters`（三态 bool/null）、`visual_dev.style_direction`、`palette[].visual_cause` + `visual_dev.visual_cause`（双写兼容）、`scene_composition`（完整子树）、`world_building`（宽容定义）
+- `CONSTITUTION.md`：数据流图命名对齐 + 旧命名 deprecated 声明
+- `metadata/fields.yaml`：注册 3 条（has_characters / style_direction / palette[].visual_cause）
+
+**修改（本版）**：
+- `assets/schemas/project-state.json`：`characters[]` 补 rich 结构（character_id / visual_profile / wardrobe / props / silhouette / generation_notes；visual_profile 支持单角色 object 与群体 array 双形态）；`palette[]` 补场景级结构（scene_id / scene_title / color_temp / mood / 嵌套 palette / rationale / reference）——swatch 与场景级双风格并存
+- 旧命名全仓统一（31 处 / 25 行 / 7 文件）：`color_palette→palette`、`mood_references→style_refs`、`character_design→characters`（4 处 `wardrobe.color_palette` 子字段保留）
+- `scripts/prompt_assembler.py`：`core_props` 死读修复——读数、输出键名、fallback 模板全统一为 `key_props`（两实测项目冒烟验证通过）
+- `CONSTITUTION.md`：目录布局补录 10 项（scripts/validate_state.py、metadata/phase_gates.yaml、README.md、references/meta/、cover-design-guide、downstream-integration、model-compiler、volcano-engine-integration、media/case-study-workflow、cases/assets）；car-commercial 悬空引用占位符化
+- `references/downstream-integration.md`：补 volcano-engine-integration 入链（补上缺失入链）
+- `metadata/fields.yaml`：palette/characters 描述更新（双风格标注）+ 删除未维护统计块
+
+**影响范围**：13 个文件（+118/−48，不含本条目）。schema 为 additive 双形态定义，其余为文档/注释级改动。
+
+**迁移**：无破坏性变更。旧命名保留双轨读取兼容（deprecated）；`key_props` 输出契约经全仓扫描确认无消费者破坏。
+
+---
+
 ## [0.30.3] — 2026-06-30
 
 ### 封面生成下游集成 — 补齐交叉引用与触发时机声明

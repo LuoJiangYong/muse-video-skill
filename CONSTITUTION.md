@@ -355,4 +355,4 @@ python scripts/build_index.py --check --deps
 
 ---
 
-*Last amended: 2026-09-28. Author: Director-Agent (Hermes). v0.30.3 — 封面生成下游集成：cover-design-guide 文件头更新（Phase 7 步骤 7 触发 + 数据来源 + 不依赖 Phase 7.5），downstream-integration 封面节补触发时机说明 + 零费用标注，Phase 7 步骤 7 加「建议发布前生成」提示。继承 v0.30.2 Phase 7 导出顺序修复 + v0.30.1 Phase 6/7 确认门禁 + Phase 8 预留。*
+*Last amended: 2026-09-28. Author: Director-Agent (Hermes). v0.30.4 — Schema 还债收尾：characters/palette 结构按实测补全（双形态）、旧命名 31 处统一至 schema 命名、core_props 死读修复（全链 key_props）、目录布局补录 10 项（含 README 与 references 根级文档）+ volcano 入链。继承 v0.30.3 封面生成下游集成 + v0.30.2 导出顺序修复 + v0.30.1 确认门禁 + Phase 8 预留。*
