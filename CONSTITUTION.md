@@ -358,4 +358,4 @@ python scripts/build_index.py --check --deps
 
 ---
 
-*Last amended: 2026-09-28. Author: Director-Agent (Hermes). v0.30.4 — Schema 还债收尾：characters/palette 结构按实测补全（双形态）、旧命名 31 处统一至 schema 命名、core_props 死读修复（全链 key_props）、目录布局补录 10 项（含 README 与 references 根级文档）+ volcano 入链。继承 v0.30.3 封面生成下游集成 + v0.30.2 导出顺序修复 + v0.30.1 确认门禁 + Phase 8 预留。*
+*Last amended: 2026-09-28. Author: Director-Agent (Hermes). v0.31.0（批次 C）—— 参考图引用链：file_registry 顶层提升（双轨兼容）+ 全链引用纪律（AD 步骤 0 / DP / 权威源迁入 / Phase 1 登记）+ validate_state Phase 3 WARNING（决策 4/B）；编译确认 HTML（--compilation 独立预览 + Phase 7.5 二次确认）；模型选择前置（子步骤 6.5）；免版权图源降级链（Wikimedia → key 源 → 兜底）。继承 v0.30.4 Schema 还债收尾 + v0.30.3 封面集成 + v0.30.2 导出顺序 + v0.30.1 确认门禁 + Phase 8 预留。*

@@ -6,6 +6,33 @@
 
 ---
 
+## [0.31.0] — 2026-09-28
+
+### 批次 C：参考图引用链 + 免版权图源 + 编译确认 + 模型选择前置
+
+**背景**：猫游广州实测反馈（2026-06-30）与四轮审计（§七-§十一）的三大优化——参考图全链路显式引用、免版权实景图源、Phase 7.5 编译确认 + 模型选择前置。批次 A/B 债务清偿后在干净基线上实施（决策 1-11 全数落地）。
+
+**新增**：
+- `assets/schemas/project-state.json`：顶层 `file_registry`（optional）——全管线参考图注册表（file_id / local_path / role / weight / source / credit / origin_url）；`model_compilation.file_registry` 保留为旧路径（双轨读取兼容）
+- `assets/templates/export/script-compilation.html`：编译预览确认页模板（独立 HTML，方案 A）
+- `references/free-image-sources.md`：免版权图源指南——搜索降级链（Wikimedia Commons 免 key → Unsplash/Pexels/Pixabay 会话级 key → 兜底提示用户补充）+ 来源标注 + 下载本地化纪律
+- `references/reference-image-over-text.md`：参考图引用链权威源（registry 迁入 + 新增「全管线执行纪律」节：逐 Phase 规则 + 编译器检测规则）
+
+**修改**：
+- `references/pipelines/default.md`：Phase 7.5 步骤 7-8 改造（导出编译预览 HTML → 用户二次确认）；Phase 7 子步骤 6.5（模型选择前置）；Phase 6 步骤 4.5（实景参考图获取，可选）；Phase 1 步骤 4c（参考照片登记）；`--mode` 旗标修正（→ `--storyboard` / `--literary`）；双 "3." 编号修正
+- `references/model-compiler.md`：§模型选择（编译前置）章节 + file_registry 双轨解析 + 输入表补行
+- `references/roles/{art-director,director,dp}.md`：参考图引用纪律（步骤 0 / Vision「参考照片」字段 / DP 不重述参考图内容）
+- `scripts/export_html.py`：`--compilation` 编译预览导出（v0.4.0）+ 模板引擎条件块修复（each 内嵌套 `{{#if}}` 与顶层 if/else——storyboard / literary 导出同受益：标记泄漏与失效条件块消除）
+- `scripts/validate_state.py`：Phase 3 WARNING——file_registry 含角色参考图（weight≥0.8）但 characters 未引用（非 BLOCKING，决策 4/B）
+- `SKILL.md`：管线描述四点更新（file_registry / 实景图源 / 模型选择 / 编译预览导出）。注：按用户 2026-09-28 指示不再强制 ≤3,000 字符（效果优先），本版净 +174（G4 处置更新）
+- `metadata/fields.yaml`：顶层 file_registry 注册 + 旧行双轨标注
+- `CONSTITUTION.md`：目录布局补录 3 项（script-compilation / free-image-sources / reference-image-over-text）
+
+**影响范围**：14 个文件（+685/−38，不含本条目）。全部为 additive / 缺陷修复类变更。
+
+**迁移**：无破坏性变更。file_registry 双轨读取兼容（旧项目 `model_compilation.file_registry` 零迁移；P0#9 迁移脚本不纳入）；旧命名 deprecated 双轨声明维持。
+
+---
 ## [0.30.4] — 2026-09-28
 
 ### Schema 还债收尾 + 治理残余清理 — 补记批次 A · 小修 N2-N5 · N6 对齐 · 布局补录
