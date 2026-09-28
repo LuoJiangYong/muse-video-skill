@@ -220,6 +220,58 @@ def check_storyboard_panels_approved(state: dict) -> tuple:
     return blocked_count == 0, blocked_count, total
 
 
+def check_reference_image_citation(state: dict) -> list:
+    """Phase 3 soft check (decision 4/B, v0.31.0) — non-blocking.
+
+    Warn when the file_registry carries character-anchor references
+    (weight >= 0.8, or weight missing) but visual_dev.characters never
+    cites any registry token (logical name / local_path filename / file_id).
+    """
+    registry = state.get("file_registry")
+    if not isinstance(registry, dict) or not registry:
+        mc = state.get("model_compilation")
+        registry = mc.get("file_registry") if isinstance(mc, dict) else None
+    if not isinstance(registry, dict) or not registry:
+        return []
+
+    characters = resolve_dotted(state, "visual_dev.characters")
+    if not isinstance(characters, list) or not characters:
+        return []
+
+    tokens, names = [], []
+    for name, entry in registry.items():
+        if not isinstance(entry, dict):
+            continue
+        weight = entry.get("weight")
+        if weight is not None:
+            try:
+                if float(weight) < 0.8:
+                    continue
+            except (TypeError, ValueError):
+                pass
+        names.append(str(name))
+        tokens.append(str(name))
+        local_path = entry.get("local_path")
+        if local_path:
+            tokens.append(str(local_path).replace("\\", "/").split("/")[-1])
+        file_id = entry.get("file_id")
+        if file_id and str(file_id).upper() != "PENDING":
+            tokens.append(str(file_id))
+
+    if not tokens:
+        return []
+
+    blob = json.dumps(characters, ensure_ascii=False)
+    if any(t and t in blob for t in tokens):
+        return []
+
+    return [
+        "file_registry 含角色参考图（" + ", ".join(names[:5]) + "）但 visual_dev.characters 未引用任何 "
+        "file_id/local_path —— 参考图引用纪律：角色视觉设定应引用参考图而非文字重述"
+        "（见 references/reference-image-over-text.md）"
+    ]
+
+
 def validate(state: dict, gate: dict, phase_key: str) -> dict:
     """Run all gate checks for a phase.
 
@@ -278,6 +330,10 @@ def validate(state: dict, gate: dict, phase_key: str) -> dict:
             result["warnings"].append(f"{field_path} — 建议填写（不阻塞）")
         else:
             result["info"].append(f"{field_path} — ✅ 已填写")
+
+    # ── 5. Phase 3 soft check — 参考图引用纪律（decision 4/B，非 BLOCKING）──
+    if phase_num == 3:
+        result["warnings"].extend(check_reference_image_citation(state))
 
     return result
 

@@ -246,4 +246,5 @@
 - 无视 Art Director 的色调方向（冷色调却给了 3200K 暖灯）
 - 替 VFX 做特效方案
 - 忽略角色体型特征——高瘦者和矮壮者用同一角度和构图，等于没看角色设计
+- 重述参考图已有内容——如顶层 `file_registry` 有参考图，运镜 / 构图描述只写参考图覆盖不到的部分（构图信息经 image_ref 传递；见 `references/reference-image-over-text.md`）
 ```

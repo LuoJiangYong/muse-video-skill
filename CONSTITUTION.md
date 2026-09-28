@@ -104,6 +104,7 @@ muse-video/
 │   ├── downstream-integration.md  # Post-package downstream tools (HyperFrames / ComfyUI / Kling / Ark)
 │   ├── free-image-sources.md    # Free image sourcing — search fallback chain (Wikimedia → key sources → user fallback)
 │   ├── model-compiler.md        # Phase 7.5 model compiler — creative output → model call instructions
+│   ├── reference-image-over-text.md  # Reference image over text — citation discipline (authoritative source)
 │   └── volcano-engine-integration.md  # Volcano Ark API guide (arkcli, Seedream / Seedance)
 │
 ├── scripts/                     ← DETERMINISTIC LOGIC. Agent calls, does not rewrite.

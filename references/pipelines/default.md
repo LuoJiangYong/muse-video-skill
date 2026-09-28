@@ -71,6 +71,7 @@ Phase 8: 下游工具引导      → 【预留】工具选择与费用预估（�
 3. 如用户提到具体风格/案例 → 加载 `references/cases/INDEX.md` → 匹配案例 → 注入参考
 4. Director 将确认结果写入 `project.*` 和 `director_notes.*`
 4b. Agent 从 vision 模板提取结构化字段：director_notes.has_characters（「有角色」→true、「无角色」→false、「不确定」→null）
+4c. 如用户提供了参考照片（vision 模板「参考照片」字段）→ 登记至顶层 `file_registry`（logical_name → local_path / role / source: "user"）
 5. 向用户复述确认后的参数，等待用户说「确认/开始/好」
 
 ---
