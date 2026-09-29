@@ -88,7 +88,7 @@ muse-video/
 │   │   └── assets/              # Case frame captures (select cases, e.g. LJZ-COFFEE)
 │   │
 │   ├── pipelines/               ← WHEN to activate roles, in what order, with what loop rules.
-│   │   ├── default.md           # Standard 7-phase pipeline (full creative process)
+│   │   ├── default.md           # Standard pipeline (8 phases + 1 reserved; full creative process)
 │   │   └── fast-track.md        # Accelerated pipeline for simple/single-scene requests
 │   │
 │   ├── media/                   ← Cross-cutting media generation knowledge.
@@ -176,8 +176,8 @@ USER: "帮我做一支赛博朋克手机广告"
 ┌──────────────────────────────────────────────────────┐
 │ PHASE 2: 内容梳理 (Writer → Director)                 │
 │ Writer reads director_notes.vision → produces:       │
-│   script.logline, synopsis, narrative_structure      │
-│   script.scenes[] (slug/setting/summary)             │
+│   script.logline, synopsis, structure                │
+│   script.scenes[] (scene_title/location/summary)     │
 │   script.character_bible[] (如有角色)                 │
 │                                                       │
 │ Director review → Phase 3                             │

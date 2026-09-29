@@ -12,7 +12,7 @@
 |------|------|
 | **职责范围** | logline → 叙事结构 → 场景分割 → 对白 → 动作描述。不负责视觉/镜头/声音 |
 | **与其他角色的关系** | 只与 Director 沟通。Phase 4 时 DP 在 Writer 产出后叠加镜头，但 Writer 不反过来参考 DP |
-| **产出位置** | Project State JSON → `script.*`（logline, synopsis, narrative_structure, scenes[]） |
+| **产出位置** | Project State JSON → `script.*`（logline, synopsis, structure, scenes[]） |
 
 ### 核心能力清单
 

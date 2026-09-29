@@ -1,4 +1,4 @@
-# 标准管线 — Default Pipeline（7 阶段）
+# 标准管线 — Default Pipeline（8 阶段 + 1 预留）
 
 > **定位**：这是完整创作流程的调度表。它定义 WHEN 激活哪个角色、产出什么、谁来审核——不定义 HOW（HOW 在 references/roles/ 中）。
 > **适用**：多场景项目 / 有角色设定 / 需要深度策划 / 用户未明确要求加速。
@@ -83,7 +83,7 @@ Phase 8: 下游工具引导      → 【预留】工具选择与费用预估（�
 | **激活角色** | Writer（产出）→ Director（审核） |
 | **触发条件** | Phase 1 用户确认后 |
 | **输入** | director_notes.vision, project.genre, project.tone |
-| **产出** | script.logline, script.synopsis, script.narrative_structure, script.scenes[]（每个场景的 slug/setting/summary，不含具体对白）, script.character_bible[]（如有角色，定义 identity + voice） |
+| **产出** | script.logline, script.synopsis, script.structure, script.scenes[]（每个场景的 scene_title/location/summary，不含具体对白）, script.character_bible[]（如有角色，定义 identity + voice） |
 | **Director 审核** | ✅ 必须审核 |
 | **Loop 规则** | ≤2 轮修改。第 2 轮后 Director 必须 approve（可带 conditions）或 reject 重启 |
 
@@ -93,7 +93,7 @@ Phase 8: 下游工具引导      → 【预留】工具选择与费用预估（�
    - 如 BLOCKED → 输出阻塞原因（通常是 Phase 1 的 project.* 或 director_notes.vision 未填写），回到 Phase 1 补充
    - 如 PASS → 继续
 1. Writer 加载 `references/roles/writer.md` → 叙事结构库
-2. Writer 读取 `director_notes.vision`，生成 logline + synopsis + narrative_structure
+2. Writer 读取 `director_notes.vision`，生成 logline + synopsis + structure
 2b. 如有角色需求（`director_notes.has_characters = true`）→ Writer 按 §角色身份定义 模板产出 `script.character_bible[]`（identity + voice）
 3. Writer 将产出写入 Project State JSON `script.*` 字段
 4. Director 审核（按 director.md 审核标准：通过/修改/拒绝）

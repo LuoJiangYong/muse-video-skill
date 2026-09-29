@@ -62,16 +62,16 @@ arkcli +gen --model doubao-seedance-2-0-260128 \
   --duration 10 --resolution 4k --ratio 16:9 --generate-audio --wait \
   "prompt"
 
-# 图生视频（用分镜图做首帧）
+# 图生视频（用分镜图做首帧；本地文件通道见 §接入陷坑与已验证方案）
 arkcli +gen --model doubao-seedance-1-5-pro-251215 \
-  --input @storyboard_S03.png --duration 5 --wait \
+  --input 'first:https://<公网可达图片URL>' --duration 5 --wait \
   "保持画面构图，镜头缓慢推进"
 
 # 快速迭代用草稿模式（更快更便宜）
 arkcli +gen --model doubao-seedance-1-5-pro-251215 --draft --duration 3 --wait "..."
 
 # 异步提交（不阻塞）+ 后续轮询
-arkcli +gen --model doubao-seedance-2-0 --duration 5 "..."  # → task_id
+arkcli +gen --model doubao-seedance-2-0-260128 --duration 5 "..."  # → task_id
 arkcli gen get <task_id>  # 下载完成后的视频
 arkcli gen list            # 查看所有异步任务
 ```
@@ -84,7 +84,7 @@ arkcli gen list            # 查看所有异步任务
 | `--duration <秒>` | 视频时长 |
 | `--wait` | 阻塞直到视频生成完成 |
 | `--draft` | 草稿模式：更快更便宜，迭代用 |
-| `--input @file` | 参考图片/视频（`@` 前缀 = 本地文件） |
+| `--input @file` | ⚠️ 参考图片/视频——`@` 前缀在 Windows 有解析 bug（v0.1.17-v1.0.1），见 §接入陷坑与已验证方案 |
 | `--input first:URL` | 首帧参考（远程 URL） |
 | `--generate-audio` | 生成同步音频 |
 | `--camera-fixed` | 锁定虚拟摄像机不动 |
@@ -109,6 +109,8 @@ arkcli gen list            # 查看所有异步任务
 ### ⚠️ --input @file Windows 路径 bug (v0.1.17-v1.0.1)
 
 `--input @file` 在 Windows 上将反斜杠路径转为 `file://D:\\...` URL 时解析失败（`invalid port` 错误）。**Workaround**: 用 HTTP URL 作为 --input 值（`--input "https://url/to/image.png"`）。模型可接受公网可达的 URL。也可用 Python SDK 通过 Base64 传图绕过此限制。`--input` 支持 role 前缀：`first:` / `last:` / `ref:` / `none:`。
+
+> **2026-09-29 实测更新**：图侧（Seedream）本地文件通道已钉定——`--input 'ref:file://D:/<正斜杠路径>'`（两斜杠）可用，三斜杠 `file:///` 与 `@` 形式均失败；详见 `references/image-gen-routing.md` §适配：Seedream。视频侧（`first:` / `last:` / `ref:`）的本地文件形式尚未实测——暂走公网 URL 或 Files API file_id。
 
 ### ⚠️ --ratio 2.39:1 不支持 seedance 2.0
 
@@ -192,7 +194,7 @@ client = Ark(
 
 # 图生视频（分镜关键帧 → 视频片段）
 response = client.responses.create(
-    model="doubao-seedance-2.0",
+    model="doubao-seedance-2-0-260128",
     input="赛博朋克城市夜景，镜头从地面缓慢上升，霓虹灯光在雨水中反射",
     video={
         "duration": 5,
@@ -203,7 +205,7 @@ response = client.responses.create(
 
 # 生分镜关键帧
 img_response = client.images.generate(
-    model="doubao-seedream-5.0",
+    model="doubao-seedream-5-0-260128",
     prompt="赛博朋克城市夜景，霓虹灯雨，低角度仰拍，16:9",
     size="1280x720"
 )
