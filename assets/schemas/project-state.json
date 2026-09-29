@@ -441,6 +441,32 @@
         "runway_prompts": { "type": "array", "items": { "type": "string" } }
       }
     },
+    "subtitles": {
+      "type": "array",
+      "description": "字幕层（批次 F2 / v0.34.0；optional）——与对白解耦的独立文本层：可单独迭代、可选择性存在；panel 为主挂载键（panel_id），scene_id 冗余兼容。编译产出字幕合成 spec（model_compilation.subtitles）；字幕不进 video prompt（模型文字渲染不可控，走后期烧录）。",
+      "items": {
+        "type": "object",
+        "properties": {
+          "subtitle_id": { "type": "string", "description": "字幕条目稳定 ID（如 sub_001）" },
+          "panel_id": { "type": "integer", "description": "挂载键——对应 storyboard panel 的 panel_id（一个 panel 可挂 0-N 条；Phase 6 绑定时填写；Phase 7 选项 B 重排时随 panel 移动）" },
+          "scene_id": { "type": "integer", "description": "冗余场景键（便于按场景过滤；可选）" },
+          "text_zh": { "type": "string", "description": "中文文本（language_mode 含 zh 时填写）" },
+          "text_en": { "type": "string", "description": "英文文本（language_mode 含 en 时填写）" },
+          "language_mode": { "type": "string", "enum": ["zh", "en", "bilingual"], "description": "语言模式（中 / 英 / 双语——双语时 text_zh + text_en 双填）" },
+          "font_family": { "type": "string", "enum": ["serif", "sans"], "description": "字体族（衬线 / 非衬线；预留扩展）" },
+          "position": { "type": "string", "enum": ["bottom", "top", "center"], "description": "视频出现位置（bottom 默认 / top / center）" },
+          "source": { "type": "string", "enum": ["dialogue", "narration", "design"], "description": "文案来源：dialogue 对白派生（默认；文本一致性纳入校验）/ narration 旁白同步 / design 手写设计性字幕" },
+          "timing_note": { "type": "string", "description": "时长备注（可选；最终时间轴为 panel 级颗粒度，下游按实际时长微调）" },
+          "speaker": { "type": "string", "description": "说话人/来源标注（可选，source=dialogue 时对应角色）" },
+          "_meta": {
+            "type": "object",
+            "properties": {
+              "revision": { "type": "integer", "default": 1 }
+            }
+          }
+        }
+      }
+    },
     "file_registry": {
       "type": "object",
       "description": "全管线参考图注册表（v0.31.0 从 model_compilation.file_registry 提升；optional）— Phase 1 起登记，全管线按逻辑名引用（file_id / local_path），不再重述参考图已有内容。批次 D（v0.32.0）起生图产物同登记：source: \"generated\"；panel 生成图 → role: \"first_frame\"，命名 first_frame_p<panel_id>；moodboard → role: \"reference_image\"。批次 F1（v0.33.0）起资产化：条目可选 asset 元数据（asset_type / asset_id / is_canonical）；无 asset 键时按既有命名约定解析（双轨兼容），协议见 references/reference-image-over-text.md §资产引用协议。",
@@ -584,6 +610,25 @@
                   "warnings": { "type": "array", "items": { "type": "string" } }
                 }
               }
+            }
+          }
+        },
+        "subtitles": {
+          "type": "array",
+          "description": "字幕合成 spec（批次 F2 / v0.34.0）——编译器将顶层 subtitles[] 编译为逐条时间轴+样式（不进 video prompt；下游后期烧录用）。时间轴按 shots 名义时长累计（panel 级颗粒度，nominal）。",
+          "items": {
+            "type": "object",
+            "properties": {
+              "subtitle_id": { "type": "string" },
+              "panel_id": { "type": "integer", "description": "对应 shots[].panel_id（挂载校验用）" },
+              "start_s": { "type": "number", "description": "名义开始时间（秒，按 shots[].duration 累计）" },
+              "end_s": { "type": "number", "description": "名义结束时间（秒）" },
+              "text_zh": { "type": "string" },
+              "text_en": { "type": "string" },
+              "language_mode": { "type": "string", "enum": ["zh", "en", "bilingual"] },
+              "font_family": { "type": "string", "enum": ["serif", "sans"] },
+              "position": { "type": "string", "enum": ["bottom", "top", "center"] },
+              "style_note": { "type": "string", "description": "烧录样式建议（如双语排版：中文主/英文副，字号比 ≈ 100:80）" }
             }
           }
         },

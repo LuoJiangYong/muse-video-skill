@@ -557,6 +557,25 @@ fields:
     version_added: "0.33.0"
     breaking_change: false
 
+  # --- subtitles (顶层 · v0.34.0) ---
+  - path: subtitles
+    type: array<object>
+    default: []
+    description: "字幕层（批次 F2 / v0.34.0）：与对白解耦的独立文本层——panel 为主挂载（panel_id）+ scene_id 冗余；条目含 text_zh / text_en、language_mode（zh/en/bilingual）、font_family（serif/sans）、position（bottom/top/center）、source（dialogue/narration/design）"
+    affected_roles: [writer, director, model-compiler]
+    affected_phases: [4, 6, 7]
+    version_added: "0.34.0"
+    breaking_change: false
+
+  - path: model_compilation.subtitles
+    type: array<object>
+    default: []
+    description: "字幕合成 spec（编译器输出，批次 F2 / v0.34.0）：逐条时间轴（nominal，按 shots.duration 累计）+ 样式 + 烧录建议；字幕不进 video prompt"
+    affected_roles: [model-compiler]
+    affected_phases: [7.5]
+    version_added: "0.34.0"
+    breaking_change: false
+
   # --- image_gen (顶层 · v0.32.0) ---
   - path: image_gen
     type: object
