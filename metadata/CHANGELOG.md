@@ -6,6 +6,31 @@
 
 ---
 
+## [0.33.0] — 2026-09-29
+
+### 批次 F1：参考图/生图产物资产化（需求 A）
+
+**背景**：三项新需求评估 18 项决策点全部获裁定（2026-09-29）；F1 = 需求 A「参考图与分镜生图资产化管理」——asset_type 分开枚举（character / product / key_shot / prop（预留））+ 资产生成门禁 + char_ / prod_ / shot_ / prop_ 命名。
+
+**改动**：
+- schema：`file_registry` 条目新增 `asset` 三键（全 optional additive）——`asset_type`（character 关键人物形象 / product 产品主体 / key_shot 关键分镜（含场景和道具）/ prop 关键道具（预留）；分开枚举、可扩展）、`asset_id`（char_ / prod_ / shot_ / prop_ 前缀）、`is_canonical`（代表图标记，每资产至多 1；角色优先级：用户原照 > 生成图）
+- fields.yaml：注册 `file_registry.asset`（version_added 0.33.0）
+- default.md：Phase 3.5 新增步骤 0.5「资产生成门禁」（候选清单 → 用户决策「是否生成 + 范围」）；步骤 3 补三视图资产化形式；新增 3b 产品资产图；步骤 3.5 补 `asset` 登记与 canonical 规则；Phase 6 步骤 5b 补 key_shot `asset` 键（`shot_p<panel_id>`）
+- image-gen-routing.md：注入规则补产品/道具资产行；登记回写补 asset 三键
+- model-compiler.md：5 槽 P4 补 canonical 道具解析；多模态引用映射补资产协议行
+- reference-image-over-text.md：新增 §资产引用协议（四类资产表 + canonical 优先级 + 双轨回退解析）
+- validate_state.py：新增 Phase 7 软检查 `check_asset_registry`（枚举合法性 / 前缀一致性 / canonical 唯一性；非阻塞）
+
+**双轨兼容**：无 `asset` 键的条目按既有命名约定解析（行为与 v0.32.x 一致）；旧命名（cat_ref 等）零破坏。
+
+**影响范围**：7 文件 +121/−9（不含本条目与版本矩阵）。
+
+**验证**：meta-schema (Draft 2020-12) ✓ · 双项目 wes-cat 0/0、guangzhou 0/0 ✓ · fields 69 路径解析（仅设计性 `_meta_per_section`）✓ · EOL 各文件约定保持 0 MIXED ✓ · py_compile ✓ · validate_state Phase 7 冒烟 + 资产检查正例 4/4 ✓ · build_index --check --deps 0/0 ✓
+
+**迁移**：无破坏性变更（全 additive）。
+
+---
+
 ## [0.32.1] — 2026-09-29
 
 ### 债务清偿批次 E：Schema script 段缺口群 + 文档一致性（扫描驱动）
