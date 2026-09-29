@@ -360,4 +360,4 @@ python scripts/build_index.py --check --deps
 
 ---
 
-*Last amended: 2026-09-29. Author: Director-Agent (Hermes). v0.34.0（批次 F2·字幕）—— 顶层 subtitles[] 解耦层（panel 挂载 + serif/sans · bottom/top/center · zh/en/bilingual）+ Phase 4 派生/审核 + Phase 6 绑定 + 故事板与编译预览渲染 + 字幕合成 spec（不进 video prompt，走后期烧录）+ 检查清单。继承 v0.33.0（批次 F1）资产三键 + 生成门禁 + 三视图/产品资产 + 编译 canonical 解析 + 资产引用协议 + v0.32.1（批次 E）债务清偿 + v0.32.0（批次 D）生图路由与适配 + 参考图注入 + 生图产物入编译链 + v0.31.0 参考图引用链 + 编译确认 + 模型选择前置 + v0.30.4 Schema 还债收尾 + v0.30.3 封面集成 + v0.30.2 导出顺序 + v0.30.1 确认门禁 + Phase 8 预留。*
+*Last amended: 2026-09-29. Author: Director-Agent (Hermes). v0.35.0（批次 F3·音频）—— audio-gen-routing.md（路线 R1-R4 + 首批适配 MiniMax Music 3.0 + 配音规划火山方舟）+ audio_gen 顶层字段（route/music/voice/sfx）+ sound.narration 对象化 + Phase 5 路线询问 / Phase 7.5 音频编译与引导（仅编译指令、不代生成）+ 声音命名漂移修正（sfx_notes / silence_usage / music_refs）+ 故事板声音区 + 校验扩展。继承 v0.34.0（批次 F2）字幕解耦层 + v0.33.0（批次 F1）资产化 + v0.32.1（批次 E）债务清偿 + v0.32.0（批次 D）生图路由与适配 + 参考图注入 + 生图产物入编译链 + v0.31.0 参考图引用链 + 编译确认 + 模型选择前置 + v0.30.4 Schema 还债收尾 + v0.30.3 封面集成 + v0.30.2 导出顺序 + v0.30.1 确认门禁 + Phase 8 预留。*

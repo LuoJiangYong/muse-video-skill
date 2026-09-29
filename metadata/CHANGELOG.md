@@ -6,6 +6,32 @@
 
 ---
 
+## [0.35.0] — 2026-09-29
+
+### 批次 F3：视频配乐与配音 — 可选路线 + 解耦（需求 C）
+
+**背景**：三项新需求裁定 C 组——路线询问 Phase 5 末尾（C1）；音轨文件 registry + 清单 audio_gen（C2）；新建 audio-gen-routing.md（C3）；执行边界＝仅编译指令 + 编译后询问引导；音乐首批适配 MiniMax Music 3.0；配音规划火山方舟·暂不测试（C4）；sound.narration 对象化（C5）；询问规则镜像 + 商用授权行（C6）；sound 命名漂移随批修正（D1）。
+
+**改动**：
+- **新增 `references/audio-gen-routing.md`**：§音频路线选择（R1 native / R2 external / R3 none / R4 mixed）+ §未适配模型处理 + §音轨登记规则 + §适配：MiniMax Music 3.0（📄 拟制·待专项）+ §适配：配音（火山方舟规划）+ 商用授权提示
+- schema：顶层 `audio_gen`（route / music{target_model, brief, segments} / voice{target_tool, params, lines} / sfx{sources} / _meta）；`sound.narration` 对象（8 参数）；`file_registry.asset.asset_type` 枚举 + `audio`
+- fields.yaml：audio_gen ×4 + sound.narration + sound 3 条补注册（music_refs / narration_language / silence_usage）+ file_registry.asset 描述更新
+- default.md：Phase 5 产出行命名修正 + 步骤 3b（音频路线询问）；Phase 7.5 输入/产出 + 步骤 4h + 步骤 7b（音频模型引导）
+- sound-designer.md：产出位置命名修正 + sfx_notes + 旁白模板对象化注记 + 音频生成 brief 能力
+- tool-matrix.md / CONSTITUTION（目录树 + 数据流框线）：命名漂移修正 + audio-gen-routing 入树
+- reference-image-over-text.md：资产协议表 + 音频资产行
+- model-compiler.md：输入表 + §音频编译（分支 + 对轨纪律）
+- validate_state.py：资产检查支持 `audio` 类型/前缀
+- script-storyboard.html + export_html.py：声音设计区（music / refs / narration / silence / sfx / 路线；无声音项目自动隐藏）
+
+**影响范围**：13 文件（12 改 + 1 新增）+317/−15（不含本条目与版本矩阵）。
+
+**验证**：meta-schema ✓ · 双项目 0/0 ✓ · fields 79 路径解析（余 1 设计性）✓ · EOL 0 MIXED ✓ · py_compile ×2 ✓ · 资产检查 audio 单元 1/1 ✓ · **渲染冒烟**（有/无声音双态：声音区正确显隐、0 占位符泄漏）✓ · build_index 0/0 ✓
+
+**迁移**：无破坏性变更（全 additive）；声音文档命名对齐实现（旧文档名 sfx_map / silence_strategy / reference_tracks 废止——测试项目旧数据不迁移，随 deprecated 双轨）。
+
+---
+
 ## [0.34.0] — 2026-09-29
 
 ### 批次 F2：视频字幕文案 — 解耦层 + 故事板联动（需求 B）
