@@ -52,6 +52,7 @@ def fill_html_template(template: str, project_state: dict, simple_extra: dict = 
     project = project_state.get("project", {})
     script = project_state.get("script", {})
     director_notes = project_state.get("director_notes", {})
+    sound = project_state.get("sound", {})
     storyboard = project_state.get("storyboard", [])
     if not isinstance(storyboard, list):
         storyboard = []
@@ -71,6 +72,14 @@ def fill_html_template(template: str, project_state: dict, simple_extra: dict = 
         "script._meta.writer_revision": safe_str(resolve_path(script, "_meta.writer_revision", "1")),
         "script._meta.dp_revision": safe_str(resolve_path(script, "_meta.dp_revision", "1")),
         "script._meta.director_approved": safe_str(resolve_path(script, "_meta.director_approved", "false")),
+        "sound.music_style": safe_str(sound.get("music_style")),
+        "sound.music_refs": ("；".join(str(x) for x in safe_list(sound.get("music_refs"))) or "—"),
+        "sound.sfx_notes": ("；".join(str(x) for x in safe_list(sound.get("sfx_notes"))) or "—"),
+        "sound.narration_tone": safe_str(sound.get("narration_tone")),
+        "sound.narration_language": safe_str(sound.get("narration_language")),
+        "sound.silence_usage": safe_str(sound.get("silence_usage")),
+        "audio_gen.route": safe_str((project_state.get("audio_gen") or {}).get("route")),
+        "sound._present": "true" if (sound or project_state.get("audio_gen")) else "",
         "_version": VERSION,
         "_generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "_panels_count": str(len(storyboard)),

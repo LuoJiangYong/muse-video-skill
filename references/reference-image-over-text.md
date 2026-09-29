@@ -36,6 +36,7 @@
 | 产品主体 | `product` | `prod_<slug>` | 三视图、顶视图等 | Phase 3.5（门禁选定） |
 | 关键分镜 | `key_shot` | `shot_p<panel_id>` | 分镜 panel 生成图 | Phase 6 步骤 5b |
 | 关键道具 | `prop` | `prop_<slug>` | 预留（暂不主动生成） | 预留 |
+| 音频资产 | `audio` | `audio_<slug>` | 音乐 / 配音 / 音效产物（按路线生成后登记——见 `audio-gen-routing.md`） | Phase 5 后（按路线） |
 
 - **canonical 优先级**：用户原照 > 生成图——生成图不得顶替用户原照充当 `image_ref`；每资产至多 1 张 canonical。
 - **枚举可扩展**：以上为「分开枚举、不全部罗列」的起始集合，新增按 additive 方式扩展（schema enum 追加）。

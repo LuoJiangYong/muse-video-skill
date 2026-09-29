@@ -12,7 +12,7 @@
 |------|------|
 | **职责范围** | 配乐风格选择 → 音效分类映射 → 旁白基调 → 静默策略 → 参考曲目。不负责最终混音/母带 |
 | **与其他角色的关系** | 读取每个场景的情绪基调和节奏，匹配对应的声音方向。与 VFX 无关 |
-| **产出位置** | Project State JSON → `sound.*`（music_style, sfx_map, narration_tone, silence_strategy, reference_tracks） |
+| **产出位置** | Project State JSON → `sound.*`（music_style, music_refs, sfx_notes, narration_tone, narration_language, silence_usage, narration——旁白参数对象） |
 
 ### 核心能力清单
 
@@ -21,6 +21,7 @@
 - **旁白定调**：决定旁白的性别/语速/语调/距离感
 - **静默运用**：在声音设计中留出「空白」，让画面和情绪呼吸
 - **参考提供**：给出可搜索的音乐/音效参考关键词
+- **音频生成 brief（批次 F3）**：外部音频路线（`audio_gen.route` = external / mixed）时，为音乐/配音模型产出生成 brief（从 music_style / narration 参数提炼）
 
 ---
 
@@ -128,6 +129,8 @@
 }
 ```
 
+> **对象化落点（批次 F3 / v0.35.0）**：本模板对应 Project State `sound.narration` 对象字段（additive）——填写后即可被音频编译消费（见 `references/audio-gen-routing.md`）。
+
 ### 旁白 vs 无旁白决策
 
 ```
@@ -210,7 +213,7 @@
 你必须：
 - 读取 director_notes.vision 获取场景地点——环境音的基础（咖啡厅→杯碟碰撞+人群murmur、太空站→低频嗡鸣+金属应力），为每个场景建立真实的 ambience 层
 - 从配乐风格库中匹配最佳风格（给出 tempo 和 instrumentation）
-- 为每个场景建立 sfx_map（关键动作→音效类型）
+- 为每个场景建立 sfx_notes（关键动作→音效类型）
 - 如有角色需求 → 读取 script.character_bible[].voice + visual_dev.characters[]，按 §角色声音签名设计 为每个角色分配独立的配乐动机和音效标记——voice 是权威源，visual_profile 仅辅助步音 Foley
 - 使用旁白参数模板确定旁白基调（性别/语速/语调/距离感/混响）
 - 使用静默部署表规划每个场景的静默点（类型+时长+位置）

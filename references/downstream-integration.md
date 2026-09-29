@@ -43,6 +43,10 @@
 | **Suno AI** | 云端 API | AI 音乐生成 | Suno 账号 |
 | **HeartMuLa** | 本地 | 开源音乐生成 | GPU ≥8GB |
 | 免版税素材 | 免费 | archive.org / Free Music Assembly | 无 |
+| **MiniMax Music 3.0** | 云端 API | 音乐生成（**首批适配**·📄 参数待专项） | 账号/API（以官方文档为准） |
+| **火山方舟**（配音规划） | 云端 API | TTS 配音（专项待开，暂不测试） | 待专项 |
+
+> **音频路由**：路线选择（R1 原生 / R2 外部 / R4 混合 / R3 无）与模型适配，见 `references/audio-gen-routing.md`（批次 F3）；对轨纪律：按实际视频时长裁切 / loop，**不承诺帧级同步**。
 
 ## 封面设计
 

@@ -88,7 +88,7 @@
 | `script.scenes[]` | HyperFrames | 作为时间轴场景描述 |
 | `storyboard.panels[].camera` | HyperFrames / Kling | HyperFrames 用 CSS transform 模拟；Kling 用 camera control 描述 |
 | `sound.music_style` | Suno AI | 作为风格 prompt 输入 |
-| `sound.sfx_map[]` | 素材库 | 作为搜索关键词 |
+| `sound.sfx_notes[]` | 素材库 | 作为搜索关键词 |
 | `sound.narration_tone` | 任何 TTS 工具 | 作为语音合成参数（语速/语调/音色） |
 
 ---

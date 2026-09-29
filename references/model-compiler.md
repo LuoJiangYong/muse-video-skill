@@ -3,7 +3,7 @@
 > **角色**：读取 Project State 中所有创意角色的产出，编译为目标 AI 视频模型的调用指令。不执行网络请求，不修改上游数据。
 > **边界声明**：本编译器产出模型调用指令**文本**（CLI 命令或 API JSON）。实际执行由 `volcengine-ark` skill 或用户手动完成。编译器是格式转换层，不是执行层。
 > **宪法位置**：`references/model-compiler.md` — 交叉关注点，非创意角色，放在 references 根目录。
-> **最后更新**：2026-09-29 | v0.34.0
+> **最后更新**：2026-09-29 | v0.35.0
 
 ---
 
@@ -35,6 +35,8 @@
 | `cinematography.movement_language` | 运动语言偏好 | 术语翻译消歧 |
 | `sound.music_style` | 配乐风格 | audio_config |
 | `sound.narration_tone` | 旁白基调 | audio_prompt |
+| `sound.narration` | 旁白参数（对象，批次 F3） | 配音生成指引 |
+| `audio_gen.route` | 音频路线（native / external / mixed / none，批次 F3） | 音频编译分支（`--generate-audio` 已有 / 音频生成指引） |
 | `storyboard[]` | 分镜面板（含 prompt / camera_notes / vfx_notes / generated_url / refs_used） | multimodal_refs（first_frame_ref 解析）+ 编译交叉校验 |
 | 顶层 `file_registry`（回退 `model_compilation.file_registry`） | 参考图注册表（file_id / local_path / source 溯源；含 first_frame_p<panel_id> 生成图条目） | `multimodal_refs` 解析 + 干跑检查 |
 
@@ -368,6 +370,18 @@ Seedance 2.0 每镜最多 5 张 `image_ref`。根据项目类型自动选择分�
 2. 样式透传：font_family / position / language_mode 原样透传；双语排版默认建议（中文主、英文副；副行字号 ≈ 主行 80%）写入 `style_note`
 3. 挂载校验：`subtitle.panel_id` 无对应 shot → `_quality` 警告「字幕 sub_XX 挂载孤儿」（非阻塞）；未绑定（panel_id 空）条目跳过并在摘要提示
 4. 下游烧录指引：spec 交付时附「按实际时长对齐」提示；SRT/ASS 导出列为后续可选（v0.34.0 未实现）
+
+---
+
+## 音频编译（批次 F3 / v0.35.0）
+
+> 按 `audio_gen.route` 分支编译（路线选择见 `references/audio-gen-routing.md`）；**执行边界 = 仅编译指令、不代生成**（2026-09-29 裁定）——实际生成由用户/下游执行；与宪法「不生成实际音频」边界一致。
+
+1. `route: "native"` → arkcli 命令已含 `--generate-audio`（Seedance 音画同步；无需额外产出）
+2. `route: "external"` / `"mixed"` → 产出「音频生成指令 + 对轨指引」：音乐（sound.music_style → 音乐模型 prompt；段落级切分清单 `audio_gen.music.segments`）、配音（`sound.narration` 参数 + 台词清单 → TTS 调用指引）、音效（`sound.sfx_notes` → 素材库关键词）；附「按实际视频时长对轨」提示（不承诺帧级同步）
+3. `route: "none"` → 跳过
+4. 编译完成后按 `audio-gen-routing.md` §音频路线选择 第 3 条，询问引导用户选定音乐/配音模型（首批音乐适配：MiniMax Music 3.0；配音规划：火山方舟——专项待开）
+5. 音轨产物（生成后）登记顶层 `file_registry`：`asset_type: "audio"`、`asset_id: "audio_<slug>"`（协议见 `references/reference-image-over-text.md` §资产引用协议）
 
 ---
 

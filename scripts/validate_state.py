@@ -320,12 +320,13 @@ def check_asset_registry(state: dict) -> list:
     if not isinstance(registry, dict) or not registry:
         return []
 
-    valid_types = ("character", "product", "key_shot", "prop")
+    valid_types = ("character", "product", "key_shot", "prop", "audio")
     prefixes = {
         "character": "char_",
         "product": "prod_",
         "key_shot": "shot_",
         "prop": "prop_",
+        "audio": "audio_",
     }
 
     warnings = []
@@ -341,13 +342,13 @@ def check_asset_registry(state: dict) -> list:
         if atype not in valid_types:
             warnings.append(
                 "file_registry[%s].asset.asset_type=%r 不在枚举内"
-                "（character / product / key_shot / prop）—— 见"
+                "（character / product / key_shot / prop / audio）—— 见"
                 " references/reference-image-over-text.md §资产引用协议" % (name, atype)
             )
         if not aid or not isinstance(aid, str):
             warnings.append(
                 "file_registry[%s].asset.asset_id 为空 —— 资产协议要求"
-                " char_ / prod_ / shot_ / prop_ 前缀 ID" % name
+                " char_ / prod_ / shot_ / prop_ / audio_ 前缀 ID" % name
             )
             continue
         if atype in prefixes and not aid.startswith(prefixes[atype]):

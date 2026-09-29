@@ -219,6 +219,36 @@
     color: #856404;
   }
 
+  /* ── Sound design panel ── */
+  .sound-panel {
+    max-width: 1200px;
+    margin: 2rem auto 0;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem 1.2rem;
+  }
+
+  .sound-panel h2 {
+    font-size: 1rem;
+    margin-bottom: 0.6rem;
+    color: var(--accent);
+  }
+
+  .sound-panel .sound-row {
+    display: flex;
+    gap: 0.6rem;
+    font-size: 0.85rem;
+    margin-bottom: 0.35rem;
+    line-height: 1.5;
+  }
+
+  .sound-panel .sound-k {
+    flex: 0 0 6.5em;
+    color: var(--text-secondary);
+    font-weight: 600;
+  }
+
   /* ── Footer ── */
   .footer {
     max-width: 1200px;
@@ -265,6 +295,8 @@
     .card-body .prompt { background: #252523; color: #aaa; }
     .card-body .image-placeholder { background: #252523; }
     .card-body .tech-meta .tag { background: #333; color: #aaa; }
+    .card-body .subtitle-line { background: #2a2618; color: #d8c98a; }
+    .sound-panel .sound-k { color: #aaa; }
     .status-badge.approved { background: #1a3a24; color: #8fdf9f; }
     .status-badge.pending { background: #3a3010; color: #dfc860; }
   }
@@ -330,6 +362,19 @@
 {{/each}}
 
 </div>
+
+{{#if sound._present}}
+<!-- ═══ Sound Design ═══ -->
+<section class="sound-panel">
+  <h2>声音设计（Sound Design）</h2>
+  <div class="sound-row"><span class="sound-k">🎵 配乐</span><span>{{sound.music_style}}</span></div>
+  <div class="sound-row"><span class="sound-k">🎼 参考曲目</span><span>{{sound.music_refs}}</span></div>
+  <div class="sound-row"><span class="sound-k">🎙 旁白</span><span>{{sound.narration_tone}} · {{sound.narration_language}}</span></div>
+  <div class="sound-row"><span class="sound-k">🔇 静默</span><span>{{sound.silence_usage}}</span></div>
+  <div class="sound-row"><span class="sound-k">🔊 音效</span><span>{{sound.sfx_notes}}</span></div>
+  <div class="sound-row"><span class="sound-k">🎚 音频路线</span><span>{{audio_gen.route}}</span></div>
+</section>
+{{else}}{{/if}}
 
 <!-- ═══ Footer ═══ -->
 <footer class="footer">

@@ -236,7 +236,7 @@ Phase 8: 下游工具引导      → 【预留】工具选择与费用预估（�
 | **激活角色** | Sound Designer（产出）→ Director（审核） |
 | **触发条件** | Phase 4 Director 审核通过 |
 | **输入** | 完整 script.* + project.tone + visual_dev.* |
-| **产出** | sound.music_style, sound.sfx_map[]（场景→音效映射）, sound.narration_tone, sound.silence_strategy, sound.reference_tracks[] |
+| **产出** | sound.music_style, sound.music_refs[], sound.sfx_notes[]（场景→音效映射）, sound.narration_tone, sound.narration_language, sound.silence_usage, sound.narration（旁白参数对象——批次 F3） |
 | **Director 审核** | ✅ 必须审核 |
 | **Loop 规则** | ≤2 轮修改 |
 
@@ -248,6 +248,7 @@ Phase 8: 下游工具引导      → 【预留】工具选择与费用预估（�
 1. Sound Designer 加载 `references/roles/sound-designer.md`
 2. 读取每个场景的情绪基调 → 匹配配乐风格 → 映射音效类型
 3. 产出声音方向（不是最终音轨，是方向性指导）
+3b. **【音频路线询问 — 批次 F3】**（Phase 5 末尾）按 `references/audio-gen-routing.md` §音频路线选择 询问音频路线：R1 视频模型原生（Seedance `--generate-audio`，零额外成本）/ R2 外部生成（音乐 + 配音）/ R3 无音频 / R4 混合（须明示分工）。选择写入 `audio_gen.route`（+ `_meta`）；R2 / R4 的模型选择在 Phase 7.5 编译后询问引导（步骤 7b）
 4. Director 审核：声音方向是否增强而非分散注意力？
    - 如有角色需求，额外检查：配乐动机是否从 character_bible[].voice 推导（非 visual_profile 逆推）？每个角色是否有独立声音签名？
    - **Approve** → 进入 Phase 6
@@ -398,8 +399,8 @@ Phase 8: 下游工具引导      → 【预留】工具选择与费用预估（�
 |------|------|
 | **激活角色** | Model Compiler |
 | **触发条件** | Phase 7 Creative Package 完成 + Director 确认 |
-| **输入** | Project State（script + subtitles + cinematography + visual_dev + sound + storyboard） |
-| **产出** | model_compilation JSON（编译后的模型调用指令 + 字幕合成 spec） |
+| **输入** | Project State（script + subtitles + cinematography + visual_dev + sound + storyboard + audio_gen（如有）） |
+| **产出** | model_compilation JSON（编译后的模型调用指令 + 字幕合成 spec + 音频生成指引（如有）） |
 | **Director 审核** | 可选 — 编译器产出为确定性转换。用户可选择「信任编译器」跳过审查，或逐镜检查 prompt_trace |
 | **Loop 规则** | 不适用 — 编译为确定性转换，无创意判断。如用户对编译结果不满意 → 调整上游 Phase 3/4/5/6 产出后重新编译 |
 
@@ -416,11 +417,14 @@ Phase 8: 下游工具引导      → 【预留】工具选择与费用预估（�
    e. 质量标记（GOOD / DEGRADED / INSUFFICIENT）+ 成本估算
    f. 多模态引用解析（image_refs + first_frame_ref——细则见 `references/model-compiler.md` §多模态引用映射）
    g. 字幕合成 spec（顶层 subtitles[] → `model_compilation.subtitles`；时间轴按 shots 名义时长累计；字幕不进 video prompt——见 §字幕合成 spec）
+   h. 音频编译（批次 F3）：按 `audio_gen.route` 分支——native → 命令含 `--generate-audio`（已有）；external / mixed → 编译「音频生成指令 + 对轨指引」（音乐段落切分 / TTS 参数 / 素材关键词——见 §音频编译）；none → 跳过
 5. 构建 video_ref 镜头链（`model_compilation.shot_chain`）
 6. 运行干跑验证清单（见 model-compiler.md §干跑验证清单）
 7. 输出编译摘要 + **导出编译预览 HTML**：
    - 运行 `python scripts/export_html.py --input <project-state.json> --compilation <out.html>` 渲染 `model_compilation`
    - 向用户展示：HTML 路径 + 摘要（目标模型 / 总时长 / 预估成本 / 质量标记）
+7b. **【音频模型引导询问 — 批次 F3】**（仅 route = external / mixed）编译完成后，按 `references/audio-gen-routing.md` 询问并引导用户选定音乐与配音模型（首批音乐适配：MiniMax Music 3.0；配音规划：火山方舟——专项待开）；选择写入 `audio_gen.music.target_model` / `audio_gen.voice.target_tool`
+
 8. **【用户二次确认 — 基于编译预览 HTML】**
    核对：编译后 prompt（六段式）/ 参考图映射（image_ref ↔ file_registry）/ arkcli 命令 / 成本估算 / 字幕 spec（如有）。
    - **确认** → 批准 `model_compilation._meta.director_approved = true`（「信任编译器」可直接确认）

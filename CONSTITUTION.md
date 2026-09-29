@@ -100,6 +100,7 @@ muse-video/
 │   ├── meta/                    ← Process quality gates — self-verification before delivery.
 │   │   └── verification-checklist.md  # Director's pre-delivery verification checklist
 │   │
+│   ├── audio-gen-routing.md     # Audio-gen model routing — selection + adapters (music / voice)
 │   ├── cover-design-guide.md    # Video cover design spec (WeChat Channels / RED covers)
 │   ├── downstream-integration.md  # Post-package downstream tools (HyperFrames / ComfyUI / Kling / Ark)
 │   ├── free-image-sources.md    # Free image sourcing — search fallback chain (Wikimedia → key sources → user fallback)
@@ -220,8 +221,8 @@ USER: "帮我做一支赛博朋克手机广告"
 ┌──────────────────────────────────────────────────────┐
 │ PHASE 5: 声音方向 (Sound Designer → Director)         │
 │ SD reads script + tone + visual_dev → produces:      │
-│   sound.music_style, sfx_map[], narration_tone       │
-│   sound.silence_strategy, reference_tracks[]         │
+│   sound.music_style, sfx_notes[], narration_tone     │
+│   sound.silence_usage, music_refs[]                  │
 │                                                       │
 │ Director review → Phase 6                             │
 └──────────────────────┬───────────────────────────────┘
