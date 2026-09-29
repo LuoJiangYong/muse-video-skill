@@ -427,7 +427,7 @@
         "properties": {
           "panel_id": { "type": "integer" },
           "scene_id": { "type": "integer" },
-          "layout": { "type": "string", "enum": ["wide", "close-up", "medium", "detail", "establishing"] },
+          "layout": { "type": "string", "enum": ["wide", "close-up", "medium", "detail", "establishing", "extreme-wide", "extreme-close-up", "medium-close-up"], "description": "镜头景别标签 — v0.36.0 additive 扩展（extreme-wide / extreme-close-up / medium-close-up，按示例实测值；生成门禁仅依赖 wide / establishing）" },
           "description": { "type": "string" },
           "prompt": { "type": "string", "description": "AI image generation prompt for this panel." },
           "character_ids": { "type": "array", "items": { "type": "integer" } },
