@@ -6,6 +6,27 @@
 
 ---
 
+## [0.35.1] — 2026-09-29
+
+### F3.1：音频适配参数回填 — 官方文档核实（需求 C 续）
+
+**背景**：v0.35.0 交付时两处适配章节为「📄 拟制」；用户提供官方文档链接（MiniMax 音乐生成 / 火山 DoubaoVoice 音频生成 HTTP）→ 按文档回填参数。未实测（专项试跑后升级 ✅）。
+
+**改动**：
+- **audio-gen-routing.md**：
+  - §适配：MiniMax Music 3.0——端点 `POST https://api.minimax.cn/v1/music_generation`、`music-3.0` 模型族（Token Plan / 付费，RPM 120）、`prompt`（≤2000）/ `lyrics`（结构标签；非纯音乐必填 ≤3500）/ `is_instrumental` / `lyrics_optimizer` / `audio_setting`（44100 · 256000 · mp3）/ `output_format`（hex / url 24h）参数表 + 官方调用示例；**收录可用性公告**（2026-08-20 起付费接口不对新用户开放、免费接口停止——替代：MiniMax Audio 产品 / 开源模型 `MiniMax-Music3`（HF / ModelScope））
+  - §适配：配音（TTS）——火山 DoubaoVoice 音频生成：端点 `POST https://openspeech.bytedance.com/api/v3/tts/create`、`X-Api-Key` 鉴权、`seed-audio-1.0`（16 语种 + 时间轴控制）、`text_prompt` 三模式（纯文本 / 参考音频 `@音频N`≤3 / 参考图片≤1）、`audio_config`（format / sample_rate / speech_rate / loudness_rate / pitch_rate / `enable_subtitle` 词级时间戳）、单次 ≤120s、水印与内容制作信息字段 + 与 `sound.narration` 映射建议（专项细化）
+  - §音频路线选择：新增「音乐可用性提示」段
+- **downstream-integration.md**：MiniMax / 火山方舟两行更新（含可用性警示与开源替代）
+
+**影响范围**：2 文件 +版本矩阵。
+
+**验证**：官方文档双源抓取成功（r.jina.ai 渲染通道，MiniMax 8.1KB / 火山 7.8KB）✓ · EOL 保持 ✓ · build_index 0/0 ✓
+
+**迁移**：无（文档内容更新，无 schema / 管线变更）。
+
+---
+
 ## [0.35.0] — 2026-09-29
 
 ### 批次 F3：视频配乐与配音 — 可选路线 + 解耦（需求 C）
