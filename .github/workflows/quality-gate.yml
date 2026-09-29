@@ -1,0 +1,53 @@
+name: Quality Gate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  quality-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: python -m pip install --quiet pyyaml jsonschema
+
+      - name: Syntax check — all scripts compile
+        run: python -m compileall -q scripts
+
+      - name: Index and dead-link check
+        run: python scripts/build_index.py --check --deps
+
+      - name: Schema contracts — example projects
+        run: |
+          python - <<'PY'
+          import glob
+          import json
+          import sys
+
+          from jsonschema import Draft202012Validator
+
+          schema = json.load(open("assets/schemas/project-state.json", encoding="utf-8"))
+          Draft202012Validator.check_schema(schema)
+          print("meta-schema: OK")
+
+          failed = False
+          for f in sorted(glob.glob("assets/examples/*/project-state.json")):
+              data = json.load(open(f, encoding="utf-8"))
+              errors = list(Draft202012Validator(schema).iter_errors(data))
+              print(f + ":", len(errors), "error(s)")
+              if errors:
+                  failed = True
+          sys.exit(1 if failed else 0)
+          PY

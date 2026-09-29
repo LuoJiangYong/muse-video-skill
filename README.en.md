@@ -108,6 +108,7 @@ muse-video-skill/
 ├── CONSTITUTION.md             ← Design constitution (5 principles + data flow + forbidden patterns)
 ├── README.md / README.en.md    ← Project page (Chinese / English)
 ├── LICENSE                     ← MIT
+├── .github/workflows/          ← CI quality gate (syntax / index / contracts)
 ├── references/                 ← Domain knowledge (loaded on demand)
 │   ├── cases/                  ← 38 benchmark cases + index + frame assets
 │   ├── roles/                  ← 6 role documents

@@ -108,6 +108,7 @@ muse-video-skill/
 ├── CONSTITUTION.md             ← 设计宪法（5 条原则 + 数据流 + 禁止模式）
 ├── README.md / README.en.md    ← 项目页（中文 / English）
 ├── LICENSE                     ← MIT
+├── .github/workflows/          ← CI 质量门（语法 / 索引 / 契约）
 ├── references/                 ← 领域知识（按需加载）
 │   ├── cases/                  ← 38 标杆案例 + 索引 + 案例帧素材
 │   ├── roles/                  ← 6 角色文档
