@@ -464,6 +464,15 @@ fields:
     version_added: "0.1.0"
     breaking_change: false
 
+  - path: storyboard[].refs_used
+    type: array<string>
+    default: []
+    description: "本 panel 生成时注入的参考图（顶层 file_registry 逻辑名列表）——溯源用"
+    affected_roles: [director, art-director]
+    affected_phases: [6, 7]
+    version_added: "0.32.0"
+    breaking_change: false
+
   # --- creative_pack ---
   - path: creative_pack.comfyui_workflow
     type: object
@@ -496,12 +505,30 @@ fields:
   - path: file_registry
     type: object
     default: {}
-    description: "全管线参考图注册表（Phase 1 登记；条目含 file_id / local_path / role / weight / source / credit / origin_url）"
+    description: "全管线参考图注册表（Phase 1 登记；条目含 file_id / local_path / role / weight / source / credit / origin_url；批次 D 起生图产物同登记——first_frame_p<panel_id> 等）"
     affected_roles: [director, art-director, dp, model-compiler]
-    affected_phases: [1, 3, 4, 6, 7.5]
+    affected_phases: [1, 3, 3.5, 4, 6, 7.5]
     version_added: "0.31.0"
     breaking_change: false
 
+  # --- image_gen (顶层 · v0.32.0) ---
+  - path: image_gen
+    type: object
+    default: {}
+    description: "生图模型选择与生成配置（Phase 3.5 步骤 0 选定；路由与适配见 references/image-gen-routing.md）"
+    affected_roles: [director, art-director]
+    affected_phases: [3.5, 6, 7]
+    version_added: "0.32.0"
+    breaking_change: false
+
+  - path: image_gen.target_model
+    type: string
+    default: ""
+    description: "选定生图模型/工具标识（自由字符串，不设 enum——解耦；如 doubao-seedream-4-5-251128 / comfyui-flux-ipadapter）"
+    affected_roles: [director, art-director]
+    affected_phases: [3.5, 6, 7]
+    version_added: "0.32.0"
+    breaking_change: false
   # --- model_compilation ---
   - path: model_compilation.target_model
     type: enum
@@ -528,6 +555,15 @@ fields:
     affected_roles: [model-compiler]
     affected_phases: [7.5]
     version_added: "0.30.0"
+    breaking_change: false
+
+  - path: model_compilation.shots[].panel_id
+    type: integer
+    default: null
+    description: "对应 storyboard panel 的 panel_id（编译器写入）——first_frame_ref 解析键：first_frame_p<panel_id>"
+    affected_roles: [model-compiler]
+    affected_phases: [7.5]
+    version_added: "0.32.0"
     breaking_change: false
 
   - path: model_compilation.shot_chain

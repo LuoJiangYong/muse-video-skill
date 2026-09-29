@@ -382,6 +382,7 @@
           "camera_notes": { "type": "string" },
           "vfx_notes": { "type": "string" },
           "generated_url": { "type": "string" },
+          "refs_used": { "type": "array", "items": { "type": "string" }, "description": "本 panel 生成时注入的参考图（顶层 file_registry 逻辑名列表）— 批次 D / v0.32.0，optional，溯源用" },
           "approved": { "type": "boolean", "default": false },
           "_meta": {
             "type": "object",
@@ -405,7 +406,7 @@
     },
     "file_registry": {
       "type": "object",
-      "description": "全管线参考图注册表（v0.31.0 从 model_compilation.file_registry 提升；optional）— Phase 1 起登记，全管线按逻辑名引用（file_id / local_path），不再重述参考图已有内容。",
+      "description": "全管线参考图注册表（v0.31.0 从 model_compilation.file_registry 提升；optional）— Phase 1 起登记，全管线按逻辑名引用（file_id / local_path），不再重述参考图已有内容。批次 D（v0.32.0）起生图产物同登记：source: \"generated\"；panel 生成图 → role: \"first_frame\"，命名 first_frame_p<panel_id>；moodboard → role: \"reference_image\"。",
       "additionalProperties": {
         "type": "object",
         "properties": {
@@ -416,6 +417,21 @@
           "source": { "type": "string", "enum": ["user", "generated", "search"], "description": "来源分类：用户提供 / 生图生成 / 网络搜索（含免版权与公开图库，2026-09-28 决策 1）" },
           "credit": { "type": "string", "description": "来源署名（搜索源：作者/平台，溯源元数据）" },
           "origin_url": { "type": "string", "description": "来源页 URL（搜索源可选）" }
+        }
+      }
+    },
+    "image_gen": {
+      "type": "object",
+      "description": "生图模型选择与生成配置（批次 D / v0.32.0；optional）— Phase 3.5 步骤 0 选定，Phase 6/7 复用；路由与适配见 references/image-gen-routing.md。target_model 为自由字符串（不设 enum，解耦）。",
+      "properties": {
+        "target_model": { "type": "string", "description": "选定生图模型/工具标识（如 'doubao-seedream-4-5-251128' / 'comfyui-flux-ipadapter'）" },
+        "_meta": {
+          "type": "object",
+          "properties": {
+            "selected_phase": { "type": "string", "description": "选择发生的阶段（如 '3.5'）" },
+            "selection_note": { "type": "string", "description": "选择依据/来源（探测结果 / 用户指定 / 帮我推荐）" },
+            "adapter_status": { "type": "string", "description": "适配状态：measured（✅实测）/ doc-inferred（📄文档推断·未实测）" }
+          }
         }
       }
     },
@@ -463,6 +479,7 @@
             "properties": {
               "shot_id": { "type": "string", "description": "Shot identifier (e.g., S01)" },
               "scene_id": { "type": "integer", "description": "Corresponding scene in script.scenes[]" },
+              "panel_id": { "type": "integer", "description": "对应 storyboard panel 的 panel_id（编译器写入；批次 D / v0.32.0）— first_frame_ref 解析键：first_frame_p<panel_id>" },
               "duration": { "type": "integer", "minimum": 4, "description": "Duration in seconds. Seedance 2.0 minimum: 4s" },
               "resolution": { "type": "string", "enum": ["480p", "720p", "1080p", "4k"], "description": "Output resolution" },
               "compiled_prompt": { "type": "string", "description": "Compiled 6-segment prompt ready for model consumption" },
