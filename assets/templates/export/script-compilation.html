@@ -132,6 +132,7 @@
   .ref-idx { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-weight: 700; color: var(--accent); }
   .ref-meta { color: var(--text-secondary); font-size: 0.8rem; }
   .ref-pend { color: #8a6d18; font-weight: 600; font-size: 0.8rem; }
+  .ref-miss { color: #a33333; font-weight: 600; font-size: 0.8rem; }
   .ref-thumb { max-height: 72px; border-radius: 6px; border: 1px solid var(--border); }
   .ref-empty { color: var(--text-secondary); font-size: 0.85rem; }
 
@@ -165,7 +166,7 @@
       <span class="chip">💰 {{compilation.est_cost}}</span>
       <span class="chip q-{{compilation.worst_quality}}">🏷 {{compilation.worst_quality}}</span>
     </div>
-    <p class="hint">请核对：<b>编译后 prompt（六段式）</b> / <b>参考图映射（image_ref ↔ file_registry）</b> / <b>arkcli 命令</b> / <b>成本估算</b>。质量标记非 GOOD 的镜头已自动展开。</p>
+    <p class="hint">请核对：<b>编译后 prompt（六段式）</b> / <b>多模态引用映射（首帧 / 尾帧 / image_ref ↔ file_registry）</b> / <b>arkcli 命令</b> / <b>成本估算</b>。质量标记非 GOOD 的镜头已自动展开。</p>
   </header>
 
   <main>
@@ -182,7 +183,7 @@
           <pre>{{compiled_prompt}}</pre>
         </div>
         <div class="block">
-          <h3>参考图映射（image_ref ↔ file_registry）</h3>
+          <h3>多模态引用映射（首帧 / 尾帧 / image_ref ↔ file_registry）</h3>
           {{_refs_html}}
         </div>
         <div class="block">

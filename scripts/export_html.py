@@ -16,7 +16,7 @@ import re
 from datetime import datetime, timezone
 from pathlib import Path
 
-VERSION = "0.4.0"
+VERSION = "0.4.1"
 
 
 def safe_str(val, default: str = "—") -> str:
@@ -199,13 +199,21 @@ def export_storyboard(project_state: dict, output_path: str) -> None:
     print(f"✅ Storyboard HTML → {output_path}", file=sys.stderr)
 
 
-def build_refs_html(image_refs: list, registry: dict) -> str:
-    """Render image_ref -> file_registry mapping rows for the compilation preview."""
-    if not image_refs:
+def build_refs_html(image_refs: list, registry: dict, first_frame: str = None, last_frame: str = None) -> str:
+    """Render multimodal_refs (first/last frame + image_refs) → file_registry mapping rows."""
+    items = []
+    if first_frame:
+        items.append(("首帧", first_frame))
+    if last_frame:
+        items.append(("尾帧", last_frame))
+    for idx, name in enumerate(image_refs, 1):
+        items.append(("image_ref_" + str(idx), name))
+    if not items:
         return '<div class="ref-empty">（本镜未引用参考图）</div>'
     rows = []
-    for idx, name in enumerate(image_refs, 1):
+    for label, name in items:
         entry = registry.get(str(name)) or {}
+        missing = ' <span class="ref-miss">⚠️ 未在注册表</span>' if not entry else ""
         local_path = entry.get("local_path") or "—"
         weight = entry.get("weight", "—")
         source = entry.get("source") or "—"
@@ -216,11 +224,11 @@ def build_refs_html(image_refs: list, registry: dict) -> str:
             thumb = ('<img class="ref-thumb" src="' + str(local_path) + '" alt="' + str(name)
                      + '" onerror="this.style.display=\'none\'">')
         rows.append(
-            '<div class="ref-row"><span class="ref-idx">image_ref_' + str(idx) + '</span>'
+            '<div class="ref-row"><span class="ref-idx">' + label + '</span>'
             + '<b>' + str(name) + '</b>'
             + '<span class="ref-meta">' + str(local_path) + ' · weight=' + str(weight)
             + ' · ' + str(source) + ' · file_id=' + str(file_id) + '</span>'
-            + pending + thumb + '</div>'
+            + missing + pending + thumb + '</div>'
         )
     return "".join(rows)
 
@@ -269,10 +277,13 @@ def export_compilation(project_state: dict, output_path: str) -> None:
     shots_view = []
     for s in shots:
         s2 = dict(s)
-        refs = ((s.get("multimodal_refs") or {}).get("image_refs")) or []
+        mr = s.get("multimodal_refs") or {}
+        refs = mr.get("image_refs") or []
         if not isinstance(refs, list):
             refs = []
-        s2["_refs_html"] = build_refs_html(refs, registry)
+        ff = mr.get("first_frame_ref") or None
+        lf = mr.get("last_frame_ref") or None
+        s2["_refs_html"] = build_refs_html(refs, registry, first_frame=ff, last_frame=lf)
         q = ((s.get("_quality") or {}).get("overall")) or ""
         s2["_quality_open"] = "open" if (q and q != "GOOD") else ""
         warnings = (s.get("_quality") or {}).get("warnings") or []
