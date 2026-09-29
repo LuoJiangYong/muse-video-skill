@@ -6,6 +6,26 @@
 
 ---
 
+## [0.36.2] — 2026-09-29
+
+### 仓库门面收口：README 中英双语重写 + MIT LICENSE + 仓库描述更新
+
+**背景**：公开仓库门面刷新（用户 2026-09-29 批准——画廊另批、About 采用调整版文案）。README 冻结于 v0.8.1（54 文件 / 16 案例 / 7 阶段旧口径 + registry.yaml 幽灵）；仓库无 LICENSE（GitHub 判定 NULL）与英文版；仓库描述为旧格式（非家庭惯例「中文｜English」）。
+
+**改动**：
+- `README.md`：全量重写（13 节骨架）——38 案例 / 6 角色 / 8+1 阶段 / 4 导出格式口径更新；通用 Agent Skills 定位（适配任何 AI Agent，Hermes 仅示例）；新增产出 / 门禁 / 开发自检 / 致谢 / 许可证节
+- `README.en.md`（新增）：同结构英文版 + 语言互链
+- `LICENSE`（新增）：MIT © 2026 Jiang Yong Luo
+- `CONSTITUTION.md`：目录树登记 README.en.md / LICENSE 两行 + 版本尾注
+- GitHub About：description 更新（调整版中文｜English 文案）
+
+**影响范围**：5 文件（README 重写 + README.en 新增 + LICENSE 新增 + CONSTITUTION + 版本矩阵）。
+
+**验证**：互链双向核 ✓ · 相对链接死链核 ✓ · git grep MIT 核（无第三处）✓ · EOL 保持 ✓ · build_index --check --deps 0/0 ✓ · gh description 读回 ✓
+
+**迁移**：无（纯文档层；脚本 / schema / 管线零改动）。
+
+---
 ## [0.36.1] — 2026-09-29
 
 ### 债务清偿 D2：validate_state 字幕绑定软检查（B-3 缓解第三腿补齐）
