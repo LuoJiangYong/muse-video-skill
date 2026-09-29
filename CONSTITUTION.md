@@ -359,4 +359,4 @@ python scripts/build_index.py --check --deps
 
 ---
 
-*Last amended: 2026-09-29. Author: Director-Agent (Hermes). v0.32.0（批次 D）—— 生图模型路由与适配（image-gen-routing.md：解耦的适配章节 + 未适配查文档；Seedream 实测钉定通道 file://D:/，ComfyUI 归纳适配）+ 参考图注入生图（Phase 3 / 3.5 / 6 序列）+ 生图产物入编译链（file_registry first_frame_p<panel_id> 登记 → shots[].panel_id 解析 → 干跑校验 + validate_state Phase 7 软检查）+ 编译预览首帧/尾帧映射。继承 v0.31.0 参考图引用链 + 编译确认 + 模型选择前置 + v0.30.4 Schema 还债收尾 + v0.30.3 封面集成 + v0.30.2 导出顺序 + v0.30.1 确认门禁 + Phase 8 预留。*
+*Last amended: 2026-09-29. Author: Director-Agent (Hermes). v0.32.1（批次 E·债务清偿）—— 债务扫描驱动两批：script 段缺口群补定义（character_bible / synopsis / scenes[].summary / emotional_curve / narrative_function）+ vfx.transitions[].to_scene 放宽 null（收官转场）；文档一致性（阶段数口径统一「8 阶段 + 1 预留」、narrative_structure→structure、volcano 文档漂移修正）。继承 v0.32.0（批次 D）生图模型路由与适配 + 参考图注入生图 + 生图产物入编译链 + 编译预览首帧/尾帧映射 + v0.31.0 参考图引用链 + 编译确认 + 模型选择前置 + v0.30.4 Schema 还债收尾 + v0.30.3 封面集成 + v0.30.2 导出顺序 + v0.30.1 确认门禁 + Phase 8 预留。*

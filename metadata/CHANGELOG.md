@@ -6,6 +6,35 @@
 
 ---
 
+## [0.32.1] — 2026-09-29
+
+### 债务清偿批次 E：Schema script 段缺口群 + 文档一致性（扫描驱动）
+
+**背景**：v0.32.0 基线债务扫描（账本 §11.14）——8 项独立复核 + handoff 六项开放项逐项核查 + v0.31.0..v0.32.0 提交审计（12 项复核全过）后，两批获准实施（E1/E2）；README 刷新、视频侧本地通道实测、build_index G5 升级未获批准（维持现状）。
+
+**E1 — Schema 补缺（T1 类残余缺口群）**：
+- `assets/schemas/project-state.json`：
+  - `script.character_bible[]` 补完整定义（character_id / name / identity{archetype, personality, background, motivation, flaw, role_arc} / voice{speech_style, pace, catchphrase, vocal_quality}）——writer.md §角色身份定义模板 + 双项目实测结构
+  - `script.synopsis`、`script.scenes[].summary / emotional_curve / narrative_function` 补定义（按实测）
+  - `vfx.transitions[].to_scene` → `["integer", "null"]`（收官转场无目标场景；guangzhou 旧数据 1→0 闭环）
+- `metadata/fields.yaml`：新注册 4 条（synopsis / summary / emotional_curve / narrative_function；version_added=0.2.0 实证值）+ vfx.transitions 注记
+
+**E2 — 文档一致性（7 文件 17 处）**：
+- 阶段数口径统一「8 阶段 + 1 预留」6 处（default.md 标题 / CONSTITUTION 目录注释 / fast-track 2 处 / 两个 examples README）
+- `narrative_structure` → `structure`（与 schema/fields.yaml/实测数据三方一致）4 处：CONSTITUTION 数据流框线 / default.md 2 处 / writer.md
+- 措辞对齐 2 处：`slug/setting/summary` → `scene_title/location/summary`（default.md + CONSTITUTION 框线，框线等长保持）
+- `volcano-engine-integration.md` 与 D0 实测对齐 7 处：@ 示例 → `first:URL` 形式 / flag 表 @ 标注 bug / Workaround 段补 2026-09-29 实测更新（图侧 `ref:file://D:/` 钉定、视频侧未实测）/ 裸模型名 3 处补全版本号
+
+**未处置（未批准/维持）**：README 刷新（v0.8.1 冻结 N1）；视频侧本地通道实测；build_index G5 升级；SKILL.md 字符豁免维持（≈3,754 字符）；180 条技法相似警告维持。
+
+**影响范围**：9 个文件（E1 2 文件 +75/−2；E2 7 文件 +19/−17；不含本条目）。
+
+**验证（全部实测）**：meta-schema (Draft 2020-12) ✓ · 双项目 jsonschema 校验 wes-cat 0/0、guangzhou 1→0 ✓ · fields.yaml 68 路径解析（余 1 设计性 `_meta_per_section`）✓ · EOL 各文件按既有约定保持（0 MIXED）✓ · build_index --check --deps 0/0 ✓ · 残留扫描归零（README/CHANGELOG 保留项除外）✓
+
+**迁移**：无破坏性变更（全 additive；to_scene null 为类型放宽）。
+
+---
+
 ## [0.32.0] — 2026-09-29
 
 ### 批次 D：生图模型路由（解耦）+ 参考图直连生图 + 生图产物入编译链
