@@ -443,7 +443,7 @@
     },
     "file_registry": {
       "type": "object",
-      "description": "全管线参考图注册表（v0.31.0 从 model_compilation.file_registry 提升；optional）— Phase 1 起登记，全管线按逻辑名引用（file_id / local_path），不再重述参考图已有内容。批次 D（v0.32.0）起生图产物同登记：source: \"generated\"；panel 生成图 → role: \"first_frame\"，命名 first_frame_p<panel_id>；moodboard → role: \"reference_image\"。",
+      "description": "全管线参考图注册表（v0.31.0 从 model_compilation.file_registry 提升；optional）— Phase 1 起登记，全管线按逻辑名引用（file_id / local_path），不再重述参考图已有内容。批次 D（v0.32.0）起生图产物同登记：source: \"generated\"；panel 生成图 → role: \"first_frame\"，命名 first_frame_p<panel_id>；moodboard → role: \"reference_image\"。批次 F1（v0.33.0）起资产化：条目可选 asset 元数据（asset_type / asset_id / is_canonical）；无 asset 键时按既有命名约定解析（双轨兼容），协议见 references/reference-image-over-text.md §资产引用协议。",
       "additionalProperties": {
         "type": "object",
         "properties": {
@@ -453,7 +453,20 @@
           "weight": { "type": "number", "minimum": 0, "maximum": 1, "description": "reference_image_weight（0.0-1.0）：角色锚点 0.8-1.0 / 场景 mood 0.5-0.7 / 风格 0.4-0.5" },
           "source": { "type": "string", "enum": ["user", "generated", "search"], "description": "来源分类：用户提供 / 生图生成 / 网络搜索（含免版权与公开图库，2026-09-28 决策 1）" },
           "credit": { "type": "string", "description": "来源署名（搜索源：作者/平台，溯源元数据）" },
-          "origin_url": { "type": "string", "description": "来源页 URL（搜索源可选）" }
+          "origin_url": { "type": "string", "description": "来源页 URL（搜索源可选）" },
+          "asset": {
+            "type": "object",
+            "description": "资产化元数据（批次 F1 / v0.33.0；optional additive）——资产分类与代表图标记；无 asset 键的条目按既有命名约定解析（双轨兼容）。引用协议见 references/reference-image-over-text.md §资产引用协议。",
+            "properties": {
+              "asset_type": {
+                "type": "string",
+                "enum": ["character", "product", "key_shot", "prop"],
+                "description": "资产分类（分开枚举、不全部罗列、保持可扩展）：character 关键人物形象（三视图先行）/ product 产品主体（三视图、顶视图等）/ key_shot 关键分镜（含场景和道具）/ prop 关键道具（预留）"
+              },
+              "asset_id": { "type": "string", "description": "资产稳定 ID——前缀规范：char_ / prod_ / shot_ / prop_（如 char_cat / prod_coffee_machine / shot_p3）" },
+              "is_canonical": { "type": "boolean", "description": "是否该资产的代表图（canonical）——每资产建议至多 1 张；角色资产优先级：用户原照 > 生成图（生成图不得顶替用户原照充当 image_ref）" }
+            }
+          }
         }
       }
     },
