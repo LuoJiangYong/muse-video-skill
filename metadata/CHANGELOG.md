@@ -6,6 +6,23 @@
 
 ---
 
+## [0.36.1] — 2026-09-29
+
+### 债务清偿 D2：validate_state 字幕绑定软检查（B-3 缓解第三腿补齐）
+
+**背景**：F 轮债务扫描新发现——评估报告 §2.3 B-3（挂载孤儿）三条缓解中「validate_state 软检查」未实现（F2 批次未动 validate_state.py）。裁定 D2:a——补齐：镜像 check_first_frame_registry 模式，Phase 7 非阻塞软检查。
+
+**改动**：
+- `scripts/validate_state.py`：新增 `check_subtitle_bindings`（Phase 7 软检查——① panel_id 悬挂（无对应 storyboard panel）→ 警告；② 无 panel_id 未绑定条目计数 → 警告；均非阻塞）+ 接入 `validate()` 第 8 项
+
+**影响范围**：1 文件 +48/−0 行（不含本条目与版本矩阵）。
+
+**验证**：单测 6 例（空 / 无字幕 / 悬挂 / 未绑定 / 正常 / 混合）全 PASS + 内容断言 ✓ · 双项目 phase 2–7 回归与基线一致（wes-cat P7 保持 1 条既有警告、guangzhou 0，字幕检查零新警告）✓ · 注入副本（绑定存在）零新警告 ✓ · py_compile ✓ · build_index --check --deps 0/0 ✓ · EOL 保持（LF）✓
+
+**迁移**：无破坏性变更（纯新增软检查；无字幕项目行为不变）。
+
+---
+
 ## [0.36.0] — 2026-09-29
 
 ### 债务清偿 D1：示例数据 × schema 枚举对齐 — storyboard[].layout additive 扩展（扫描驱动）
