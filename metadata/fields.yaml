@@ -126,6 +126,15 @@ fields:
     version_added: "0.1.0"
     breaking_change: false
 
+  - path: script.synopsis
+    type: string
+    default: ""
+    description: "故事梗概 — logline 的展开版；Writer P2 产出"
+    affected_roles: [writer]
+    affected_phases: [2, 4]
+    version_added: "0.2.0"
+    breaking_change: false
+
   - path: script.structure
     type: string
     default: ""
@@ -178,6 +187,33 @@ fields:
     affected_roles: [writer, art-director]
     affected_phases: [4]
     version_added: "0.1.0"
+    breaking_change: false
+
+  - path: script.scenes[].summary
+    type: string
+    default: ""
+    description: "场景概要（大纲层）— Phase 2 产出；与 P4 的 dialogue/action 区分"
+    affected_roles: [writer, art-director]
+    affected_phases: [2, 3]
+    version_added: "0.2.0"
+    breaking_change: false
+
+  - path: script.scenes[].emotional_curve
+    type: string
+    default: ""
+    description: "场景情绪曲线标注（如 3→5（好奇→期待））— Writer 产出"
+    affected_roles: [writer, sound-designer]
+    affected_phases: [2, 4, 5]
+    version_added: "0.2.0"
+    breaking_change: false
+
+  - path: script.scenes[].narrative_function
+    type: string
+    default: ""
+    description: "场景叙事功能（如 世界观建立/峰终释放）— Writer 产出"
+    affected_roles: [writer]
+    affected_phases: [2, 4]
+    version_added: "0.2.0"
     breaking_change: false
 
   - path: script.scenes[].dialogue
@@ -421,7 +457,7 @@ fields:
   - path: vfx.transitions
     type: array<object>
     default: []
-    description: "转场设计"
+    description: "转场设计（to_scene: null = 收官转场无目标场景；v0.32.1 起 schema 允许）"
     affected_roles: [vfx]
     affected_phases: [6]
     version_added: "0.1.0"

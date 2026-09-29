@@ -67,6 +67,7 @@
       "description": "Script output from Writer + DP — populated during Phase 4 (脚本).",
       "properties": {
         "logline": { "type": "string", "description": "One-sentence story summary." },
+        "synopsis": { "type": "string", "description": "Expanded story synopsis (one short paragraph) — Writer Phase 2." },
         "structure": { "type": "string", "description": "Narrative structure (e.g., '3-act', 'hero's journey', 'montage')." },
         "scenes": {
           "type": "array",
@@ -79,6 +80,9 @@
               "duration": { "type": "string", "description": "Duration in seconds or beats." },
               "location": { "type": "string" },
               "time_of_day": { "type": "string" },
+              "summary": { "type": "string", "description": "Scene summary — outline level (Phase 2; distinct from dialogue/action which are Phase 4)." },
+              "emotional_curve": { "type": "string", "description": "Emotional intensity marker for the scene (e.g., '3→5（好奇→期待）') — Writer annotation (optional)." },
+              "narrative_function": { "type": "string", "description": "The scene's narrative function (e.g., world-building / turning point / payoff) — Writer annotation (optional)." },
               "dialogue": { "type": "string" },
               "action": { "type": "string", "description": "Character actions and blocking." },
               "camera": {
@@ -94,6 +98,39 @@
               },
               "vfx_notes": { "type": "string", "description": "VFX-specific notes for this scene." },
               "sound_notes": { "type": "string", "description": "Sound design notes for this scene." }
+            }
+          }
+        },
+        "character_bible": {
+          "type": "array",
+          "description": "Writer Phase 2 character identity definitions (identity + voice) — the authoritative source for AD visual translation (visual_dev.characters[]), Writer dialogue, and Sound voice signatures. Populated when director_notes.has_characters = true.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "character_id": { "type": "string", "description": "Stable character key (e.g., 'char_01') — matches visual_dev.characters[].character_id (cross-phase link)." },
+              "name": { "type": "string", "description": "Character name or label." },
+              "identity": {
+                "type": "object",
+                "description": "Identity template per writer.md §角色身份定义.",
+                "properties": {
+                  "archetype": { "type": "string" },
+                  "personality": { "type": "string" },
+                  "background": { "type": "string" },
+                  "motivation": { "type": "string" },
+                  "flaw": { "type": "string" },
+                  "role_arc": { "type": "string" }
+                }
+              },
+              "voice": {
+                "type": "object",
+                "description": "Voice profile — authoritative input for Sound Designer voice signatures.",
+                "properties": {
+                  "speech_style": { "type": "string" },
+                  "pace": { "type": "string" },
+                  "catchphrase": { "type": "string" },
+                  "vocal_quality": { "type": "string" }
+                }
+              }
             }
           }
         },
@@ -340,7 +377,7 @@
             "type": "object",
             "properties": {
               "from_scene": { "type": "integer" },
-              "to_scene": { "type": "integer" },
+              "to_scene": { "type": ["integer", "null"], "description": "Target scene id — null for a closing transition with no target scene (e.g., final fade to white / end)." },
               "type": { "type": "string" },
               "description": { "type": "string" }
             }
