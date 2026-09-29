@@ -6,6 +6,23 @@
 
 ---
 
+## [0.36.0] — 2026-09-29
+
+### 债务清偿 D1：示例数据 × schema 枚举对齐 — storyboard[].layout additive 扩展（扫描驱动）
+
+**背景**：F 轮债务扫描（b01acf6..3ed32cc 区间 + 全仓）新发现——`assets/examples/` 两个示例项目各 4 处 `storyboard[].layout` 使用 `extreme-wide` / `extreme-close-up` / `medium-close-up`，超出最小枚举（wide / close-up / medium / detail / establishing）；此前校验口径（双项目）未覆盖示例。裁定 D1:a——按实测值 additive 扩展枚举（示例教学产物不动）。
+
+**改动**：
+- `assets/schemas/project-state.json`：`storyboard[].layout` enum additive +3 值（extreme-wide / extreme-close-up / medium-close-up）+ description 注记（生成门禁仅依赖 wide / establishing）
+
+**影响范围**：1 文件 +1/−1 行（不含本条目与版本矩阵）。
+
+**验证**：meta-schema (Draft 2020-12) ✓ · jsonschema 四口径——wes-cat 0/0 · guangzhou 0/0（保持）· sci-fi-short 4→0 · studio-ad-full 4→0（仅修复项、零新增）✓ · build_index --check --deps 0/0 ✓ · EOL 保持（LF）✓
+
+**迁移**：无 —— 枚举放宽（additive），既有数据零影响。
+
+---
+
 ## [0.35.1] — 2026-09-29
 
 ### F3.1：音频适配参数回填 — 官方文档核实（需求 C 续）
