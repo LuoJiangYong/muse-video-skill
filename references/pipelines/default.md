@@ -12,10 +12,10 @@
 Phase 1: 需求沟通          → Director 访谈用户，确定基础参数
 Phase 2: 内容梳理          → Writer 生成叙事结构，Director 审核
 Phase 3: 视觉开发          → Art Director 定色调/风格/场景搭建，Director 审核
-Phase 3.5: 风格定样          → image_gen 生成场景 moodboard + 角色概念图，用户看图确认（条件性子阶段）
+Phase 3.5: 风格定样          → 先选生图模型（见 references/image-gen-routing.md）→ image_gen 生成场景 moodboard + 角色概念图，用户看图确认（条件性子阶段）
 Phase 4: 脚本              → Writer→DP→Director 链式产出，含镜头语言
 Phase 5: 声音方向          → Sound Designer 定配乐/音效/旁白基调
-Phase 6: 分镜              → Storyboard 组装 + 生图 → Director 审核
+Phase 6: 分镜              → Storyboard 组装 + 生图（注入参考图 → 登记 file_registry）→ Director 审核
 Phase 7: 组装+调优         → prompt_assembler.py 产出 Creative Pack → HTML storyboard 确认门禁
 Phase 7.5: 模型编译        → Model Compiler 编译为模型调用指令（仅 Seedance 2.0）
 Phase 8: 下游工具引导      → 【预留】工具选择与费用预估（不执行）
@@ -124,7 +124,7 @@ Phase 8: 下游工具引导      → 【预留】工具选择与费用预估（�
 2. 如用户提到案例 → 加载对应案例的色彩/美术段
 3. Art Director 产出色调方案（含 hex 值）、风格方向、情绪参考
 3b. Art Director 为每个场景产 scene_composition：空间布局 / 核心道具 / 视觉重心 / 深度策略（通用，不限场景类型）
-4. 可选：调用 `image_gen` 生成 moodboard 参考图（如 ComfyUI 可用）
+4. 可选：生成 moodboard 参考图——首次生成前先选生图模型（`references/image-gen-routing.md` §生图模型选择）；可注入场景参考图；产物登记规则见 Phase 3.5 步骤 3.5
 5. Director 审核：色调是否匹配 vision？风格是否冲突？场景空间是否合理、视觉重心是否清晰？
    - 如有角色需求，额外检查：characters[] 的视觉翻译是否忠于 character_bible[].identity（例：character_bible 说「内敛克制」，AD 不应给亮色暴露服装）
    - **Approve** → 进入 Phase 4
@@ -137,7 +137,7 @@ Phase 8: 下游工具引导      → 【预留】工具选择与费用预估（�
 
 | 维度 | 内容 |
 |------|------|
-| **激活条件** | image_gen 可用（任一 provider 在线）。不可用则跳过，显式记录 `style_sample.skipped: true, reason: "no image_gen available"` |
+| **激活条件** | 生图能力可用（按 `references/image-gen-routing.md` 完成模型选择）。不可用则跳过，显式记录 `style_sample.skipped: true, reason: "no image_gen available"` |
 | **触发条件** | Phase 3 Director 审核通过 |
 | **输入** | visual_dev.palette[], visual_dev.style_direction, visual_dev.style_refs[], visual_dev.scene_composition[], visual_dev.characters[]（如有角色） |
 | **产出** | style_sample.scenes[]（2-3 张场景 moodboard），style_sample.characters[]（如有角色，每角色 1-2 张概念图），style_sample.user_decision（approved / revise / skipped） |
@@ -146,16 +146,22 @@ Phase 8: 下游工具引导      → 【预留】工具选择与费用预估（�
 
 #### 操作序列
 
+0. **【生图模型选择 — 首次生成前】** 读取 `references/image-gen-routing.md` §生图模型选择：探测可用能力 → 展示候选 → 询问规则（≥2 询问 / 仅 1 告知确认 / 探测不到直接问用户）；未适配模型 → Agent 读官方文档提炼参数（临时参数集 +「📄 未实测」标注）。选择写入 `image_gen.target_model`（+ `_meta`），Phase 6/7 复用
 1. **场景选择**：从 visual_dev.scene_composition[] 中选取 2-3 个代表性场景
    - 必选：开场场景（定调）
    - 必选：情绪转折/高潮场景（验证 mood→visual_cause 映射）
    - 可选：结尾场景（验证全局一致性）
-2. **生成场景 moodboard**：调用 image_gen，每场景 1 张
+2. **生成场景 moodboard**：按选定模型生成，每场景 1 张（**注入该场景的实景参考图**——file_registry 中该场景 role=reference_image 条目；注入规则见 `references/image-gen-routing.md`）
    - prompt 来源：style_direction 关键词 + palette hex 描述 + visual_cause + spatial_layout 概要
    - 图片附带色板叠加信息（hex 值标注）
 3. **如有角色 → 生成角色概念图**（仅当 has_characters = true 且 characters[] 非空）
    - 每角色 2 张：面部肖像（face_features + distinguishing_marks）+ 全身造型（height_build + wardrobe + silhouette）
    - prompt 使用与场景相同的 palette + style_direction——验证角色与场景的色彩一致性
+   - **注入该角色的用户参考照片**（file_registry 角色锚条目；无照片 → 纯文字生成）
+3.5 **【产物登记 — 原子动作】** 生成成功后：图片保存到 `projects/<name>/frames/` → 登记顶层 `file_registry`：
+   - 场景 moodboard → `mood_sc<scene_id>`（role: "reference_image"；source: "generated"；file_id: "PENDING"）
+   - 角色概念图 → `char_<character_id>_concept`（role: "reference_image"；分配优先级：用户原照 > 概念图）
+   - 既有 `style_sample.*` 正常写入（登记为编译链引用来源）
 4. **呈现给用户**（结构化格式）：
    ```
    [风格定样]
@@ -184,6 +190,7 @@ Phase 8: 下游工具引导      → 【预留】工具选择与费用预估（�
 | image_gen 全不可用 | 跳过 Phase 3.5，`style_sample.skipped: true, reason: "no image_gen available"`。不阻塞管线 |
 | image_gen 可用，用户要求跳过 | Agent 必须推送警告后记录。用户 insist 后跳过 |
 | 角色图生成失败（但场景图成功） | 场景图正常定样，角色图标注 `generation_failed`，Phase 4 Writer 基于文字 characters 继续 |
+| 模型不支持参考图注入 | 降级纯文字生成 + 显式警告（见 `references/image-gen-routing.md` §参考图注入规则） |
 | Fast-Track 管线 | Phase 3.5 不激活——快速管线默认接受首次 AD 产出 |
 
 ---
@@ -250,7 +257,7 @@ Phase 8: 下游工具引导      → 【预留】工具选择与费用预估（�
 | **激活角色** | Storyboard 组装（集成角色）→ VFX（特效标注）→ Director（审核） |
 | **触发条件** | Phase 5 Director 审核通过 |
 | **输入** | 全部前置产出：script.* + cinematography.* + visual_dev.* + vfx.* |
-| **产出** | storyboard.panels[]（每个 panel：编号 / 关联 scene / shot 描述 / camera / lighting / vfx / image_prompt / 参考图 URL） |
+| **产出** | storyboard.panels[]（每个 panel：编号 / 关联 scene / shot 描述 / camera / lighting / vfx / image_prompt / 参考图 URL / refs_used） |
 | **Director 审核** | ✅ 必须审核 |
 | **Loop 规则** | ≤2 轮修改 |
 
@@ -275,9 +282,10 @@ Phase 8: 下游工具引导      → 【预留】工具选择与费用预估（�
    - 未命中 → 提示用户提供照片，或 AI 生成 moodboard 代替（⚠️ 可能与实景存在偏差）
 5. **【显式确认：分镜图生成】** 向用户展示已组装的分镜面板摘要（panel 数量 / 关键画面描述 / 镜头参数）。
    询问用户：「是否调用 image_gen 为关键分镜面板生成参考图？（生成后 Phase 7 的 HTML storyboard 将包含实际画面预览）」
-   - 选择「**生成**」→ 为 storyboard 中标记为 `layout: "wide"` 或 `"establishing"` 的 panel 生成配图
+   - 选择「**生成**」→ 为 storyboard 中标记为 `layout: "wide"` 或 `"establishing"` 的 panel 生成配图（生成时注入参考图：角色 panel ← 角色锚 + 场景 refs；空镜 ← 场景 refs）
    - 选择「**跳过**」→ 继续。Phase 7 HTML storyboard 将使用文字占位符
    - 提示：如跳过，Phase 7 确认时仍可返回本步骤定向重生成（不丢失已确认的剧本和分镜结构）
+5b. **【产物登记 — 原子动作，不可跳过】** 每个生成成功的 panel 图：保存/改名到 `projects/<name>/frames/` → 写入 `storyboard[panel].generated_url`（本地相对路径）→ **登记顶层 `file_registry`**：`first_frame_p<panel_id>`（role: "first_frame"；source: "generated"；file_id: "PENDING"）→ 记录注入的参考图逻辑名到 `storyboard[panel].refs_used`
 6. Director 审核：分镜是否讲清楚了故事？画面构图是否一致？
    - **Approve** → 进入 Phase 7
    - **Revise** → 调整 panel 描述/prompt
@@ -327,8 +335,8 @@ Phase 8: 下游工具引导      → 【预留】工具选择与费用预估（�
    │                                                                 │
    │ **选项 C：「重新生成某个画面」（第二层 — 定向重生成）**                │
    │   → 用户指定 panel_id（可多选，如 S03, S05）                       │
-   │   → 回到 Phase 6 步骤 5，仅对指定 panel 重新调用 image_gen           │
-   │   → 新图片 URL 写入 storyboard[panel].generated_url                │
+   │   → 回到 Phase 6 步骤 5（含注入 + 5b 登记），仅对指定 panel 重新生成 │
+   │   → 新图写入 generated_url；first_frame 同键覆盖（旧 file_id 作废） │
    │   → ⚠️ 相邻 panel 可能风格不一致 → 提示但不禁用                      │
    │   → 重生成完成 → 重新导出 HTML → 回到步骤 4 确认门禁                │
    │                                                                 │
@@ -399,6 +407,7 @@ Phase 8: 下游工具引导      → 【预留】工具选择与费用预估（�
    c. 5 槽分配（三套策略自动选择：character_driven / product_driven / graphic_driven）
    d. arkcli 命令生成（Windows 安全路径：Files API file_id + --extra-body，不用 --input @本地文件）
    e. 质量标记（GOOD / DEGRADED / INSUFFICIENT）+ 成本估算
+   f. 多模态引用解析（image_refs + first_frame_ref——细则见 `references/model-compiler.md` §多模态引用映射）
 5. 构建 video_ref 镜头链（`model_compilation.shot_chain`）
 6. 运行干跑验证清单（见 model-compiler.md §干跑验证清单）
 7. 输出编译摘要 + **导出编译预览 HTML**：
@@ -472,5 +481,6 @@ Phase 8: 下游工具引导      → 【预留】工具选择与费用预估（�
 - Phase 6 读取全部前置产出（集成点）
 - VFX 在 Phase 6 被激活，其标注叠加到分镜 panel 上
 - Phase 7.5 读取 Phase 3/4/5/6 的全部产出，不修改任何上游字段
+- Phase 7.5 的 first_frame_ref 依赖 Phase 6 步骤 5b 的登记（file_registry `first_frame_p<panel_id>`）；未登记的 shot → 干跑警告
 - Phase 7 确认门禁支持返回 Phase 6 步骤 5（定向重生成，选项 C）或回退 Phase 3/4（完整回退，选项 D）。回退时执行「保留式」——未受影响部分不丢弃
 - Phase 8 预留读取 `model_compilation` JSON → 引导用户选择下游工具（不执行）
