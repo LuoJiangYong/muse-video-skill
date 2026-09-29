@@ -368,6 +368,50 @@ def check_asset_registry(state: dict) -> list:
     return warnings
 
 
+def check_subtitle_bindings(state: dict) -> list:
+    """Phase 7 soft check (债务清偿 D2, v0.36.1) — non-blocking.
+
+    Warn on subtitle binding issues when entering the storyboard-confirmation
+    phase: hanging entries (panel_id with no matching storyboard panel — e.g.
+    after Phase 7 option-B reorder/delete) and unbound entries (no panel_id —
+    Phase 6 step 2b binding incomplete).
+    """
+    subs = state.get("subtitles")
+    if not isinstance(subs, list) or not subs:
+        return []
+
+    panels = state.get("storyboard")
+    if not isinstance(panels, list):
+        panels = []
+    panel_ids = set()
+    for pnl in panels:
+        if isinstance(pnl, dict) and pnl.get("panel_id") is not None:
+            panel_ids.add(pnl.get("panel_id"))
+
+    hanging, unbound = [], 0
+    for s in subs:
+        if not isinstance(s, dict):
+            continue
+        pid = s.get("panel_id")
+        if pid is None:
+            unbound += 1
+        elif pid not in panel_ids:
+            hanging.append(str(s.get("subtitle_id") or "?"))
+
+    warnings = []
+    if hanging:
+        warnings.append(
+            "subtitles 悬挂：条目 %s 的 panel_id 无对应 storyboard panel —— "
+            "Phase 6 步骤 2b 绑定 / Phase 7 选项 B 重排后复核（见 references/meta/verification-checklist.md）"
+            % ", ".join(hanging[:5])
+        )
+    if unbound:
+        warnings.append(
+            "subtitles 未绑定：%d 条无 panel_id —— Phase 6 步骤 2b 绑定未完成（Phase 7 提示项）" % unbound
+        )
+    return warnings
+
+
 def validate(state: dict, gate: dict, phase_key: str) -> dict:
     """Run all gate checks for a phase.
 
@@ -438,6 +482,10 @@ def validate(state: dict, gate: dict, phase_key: str) -> dict:
     # ── 7. Phase 7 soft check — 资产键一致性（batch F1，非 BLOCKING）──
     if phase_num == 7:
         result["warnings"].extend(check_asset_registry(state))
+
+    # ── 8. Phase 7 soft check — 字幕绑定（债务清偿 D2，非 BLOCKING）──
+    if phase_num == 7:
+        result["warnings"].extend(check_subtitle_bindings(state))
 
     return result
 
