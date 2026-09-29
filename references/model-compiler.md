@@ -35,8 +35,8 @@
 | `cinematography.movement_language` | 运动语言偏好 | 术语翻译消歧 |
 | `sound.music_style` | 配乐风格 | audio_config |
 | `sound.narration_tone` | 旁白基调 | audio_prompt |
-| `storyboard[]` | 分镜面板（含 prompt / camera_notes / vfx_notes） | multimodal_refs + 编译交叉校验 |
-| 顶层 `file_registry`（回退 `model_compilation.file_registry`） | 参考图注册表（file_id / local_path / source 溯源） | `multimodal_refs` 解析 + 干跑检查 |
+| `storyboard[]` | 分镜面板（含 prompt / camera_notes / vfx_notes / generated_url / refs_used） | multimodal_refs（first_frame_ref 解析）+ 编译交叉校验 |
+| 顶层 `file_registry`（回退 `model_compilation.file_registry`） | 参考图注册表（file_id / local_path / source 溯源；含 first_frame_p<panel_id> 生成图条目） | `multimodal_refs` 解析 + 干跑检查 |
 
 ---
 
@@ -147,6 +147,8 @@
 
 - [ ] 所有 camera 术语在翻译表中有对应（或标记 `[TRANSLATION_AMBIGUITY]`）
 - [ ] 所有 image_ref file_id 在 file_registry 中可查
+- [ ] 所有已生成 panel 图均已登记（file_registry `first_frame_p<panel_id>`）
+- [ ] 所有 first_frame_ref 可解析（或已明示缺失并标注 `_quality` 警告）
 - [ ] 每镜 duration ≥ 4s（Seedance 2.0 硬下限）
 - [ ] resolution 值合法（`4k` / `1080p` / `720p` / `480p`）
 - [ ] `--extra-body` JSON 语法有效（无未闭合引号/括号）
@@ -179,9 +181,9 @@
 
 | 标签 | 用途 | Muse Video 映射来源 |
 |------|------|-------------------|
-| `first_frame_ref` | 指定视频起始画面 | Phase 6 分镜图 / Phase 3.5 moodboard |
+| `first_frame_ref` | 指定视频起始画面 | Phase 6 生成图（file_registry `first_frame_p<panel_id>`，批次 D 起） |
 | `last_frame_ref` | 指定结束画面 | Phase 6 下一镜首帧 |
-| `image_ref_1..N` | 风格/角色/构图参考（最多 5 张） | Phase 3 AD moodboard + 用户原始照片 |
+| `image_ref_1..N` | 风格/角色/构图参考（最多 5 张） | file_registry（用户原照 / 搜索实景 / 生成 moodboard） |
 | `video_ref` | 前一个镜头的输出 → 风格继承 | Phase 6 上一镜视频产出 |
 | `audio_ref` | 音频驱动口型/节奏 | Phase 5 Sound Designer 参考音频 |
 
@@ -297,7 +299,7 @@ Seedance 2.0 每镜最多 5 张 `image_ref`。根据项目类型自动选择分�
 | 槽位 | 用途 | weight | 分配 |
 |------|------|--------|------|
 | P0 | 角色锚点 | 0.8-1.0 | 最多 2 个角色各占 1 槽。超过 2 个角色 → 选 screen_time 最多的 2 个。超过 3 个角色 → 选主角 + 关键配角 |
-| P1 | first_frame_ref | — | 分镜首帧（独立字段，占用 1 槽） |
+| P1 | first_frame_ref | — | 分镜首帧（= Phase 6 生成图登记条目 `first_frame_p<panel_id>`；独立字段，占用 1 槽） |
 | P2 | 场景 mood | 0.5-0.7 | 1 张。多场景 → 选当前镜所在场景的 mood |
 | P3 | 风格参考 | 0.4-0.5 | 1 张。AD 的 moodboard 精选 |
 | P4 | 道具/服装 | 0.5 | 剩余的 image_ref 槽。无关键道具时留给 first_frame 的补充 |
@@ -335,6 +337,25 @@ Seedance 2.0 每镜最多 5 张 `image_ref`。根据项目类型自动选择分�
 ```
 
 用户可在 `overflow` 中手动调换到 `allocated`。
+
+---
+
+## 多模态引用映射（first_frame_ref 解析）
+
+> 批次 D（v0.32.0）：分镜生成图 → 顶层 `file_registry`（`first_frame_p<panel_id>`）→ 每镜首帧参考。登记规则见 `references/pipelines/default.md` Phase 6 步骤 5b。
+
+### 解析规则
+
+1. 编译器逐镜生成 `shots[]` 时写入 `panel_id`（对应 storyboard panel 的稳定 id，不依赖顺序编号——Phase 7 选项 B 允许重排 panel）
+2. `multimodal_refs.first_frame_ref` = 查 `file_registry["first_frame_p<panel_id>"]`：命中 → 该逻辑名写入（执行期经 file_id 解析；`file_id: "PENDING"` → 执行前需上传，干跑提示）
+3. `last_frame_ref` 同规则（`last_frame_p<panel_id>`；当前无生成点——模式对称预留）
+4. 条目缺失（panel 未生成图 / 未登记）→ `_quality` 警告「shot S<XX> 无首帧（Phase 6 未生成或未登记）」，照常编译（非阻塞）
+
+### 分工澄清（first_frame vs reference_image）
+
+- `first_frame`（构图锚）：**分镜生成图**——确立镜头起始画面与构图
+- `reference_image`（角色/风格锚）：**优先用户原照**；生成的概念图仅作补充（无原照场景 / 非主角槽位）
+- §角色一致性策略「无需 Seedream 中转」条款的适用域：**禁止以生图角色图替代用户原照充当 image_ref**；不禁止生成分镜图本身（其走 first_frame 通道）
 
 ---
 

@@ -272,6 +272,40 @@ def check_reference_image_citation(state: dict) -> list:
     ]
 
 
+def check_first_frame_registry(state: dict) -> list:
+    """Phase 7 soft check (batch D, v0.32.0) — non-blocking.
+
+    Warn when a storyboard panel has a generated_url but the registry lacks
+    its first_frame_p<panel_id> entry (Phase 6 step 5b registration).
+    """
+    storyboard = state.get("storyboard")
+    if not isinstance(storyboard, list):
+        return []
+
+    registry = state.get("file_registry")
+    if not isinstance(registry, dict) or not registry:
+        mc = state.get("model_compilation")
+        registry = mc.get("file_registry") if isinstance(mc, dict) else None
+    if not isinstance(registry, dict):
+        registry = {}
+
+    warnings = []
+    for panel in storyboard:
+        if not isinstance(panel, dict):
+            continue
+        pid = panel.get("panel_id")
+        if pid is None:
+            continue
+        if panel.get("generated_url"):
+            key = "first_frame_p%s" % pid
+            if key not in registry:
+                warnings.append(
+                    "storyboard panel %s 已有 generated_url 但 file_registry 无 %s"
+                    " —— 生成图未登记（Phase 6 步骤 5b）" % (pid, key)
+                )
+    return warnings
+
+
 def validate(state: dict, gate: dict, phase_key: str) -> dict:
     """Run all gate checks for a phase.
 
@@ -334,6 +368,10 @@ def validate(state: dict, gate: dict, phase_key: str) -> dict:
     # ── 5. Phase 3 soft check — 参考图引用纪律（decision 4/B，非 BLOCKING）──
     if phase_num == 3:
         result["warnings"].extend(check_reference_image_citation(state))
+
+    # ── 6. Phase 7 soft check — 生成图登记（batch D，非 BLOCKING）──
+    if phase_num == 7:
+        result["warnings"].extend(check_first_frame_registry(state))
 
     return result
 
