@@ -6,6 +6,29 @@
 
 ---
 
+## [0.34.0] — 2026-09-29
+
+### 批次 F2：视频字幕文案 — 解耦层 + 故事板联动（需求 B）
+
+**背景**：三项新需求裁定 B 组——顶层 `subtitles[]` 解耦（B1）；下游交付＝编译 spec + 展示（B2，SRT 后续可选）；panel 为主挂载 + scene 兼容（B3）；属性最小集 serif/sans · bottom/top/center · zh/en/bilingual（B4）；文案来源 dialogue 派生默认 + design/narration 可选 + 审核纳入（B5）。
+
+**改动**：
+- schema：新增顶层 `subtitles[]`（optional）——subtitle_id / panel_id（主挂载）/ scene_id / text_zh / text_en / language_mode / font_family / position / source / timing_note / speaker；`model_compilation.subtitles[]`（字幕合成 spec：名义时间轴 + 样式 + style_note）
+- fields.yaml：注册 `subtitles` + `model_compilation.subtitles`（version_added 0.34.0）
+- default.md：Phase 4 产出行 + 步骤 1b（Writer 派生/手写字幕）+ 审核字幕检查；Phase 6 输入/产出行 + 步骤 2b（panel 绑定）；Phase 7 确认门禁文案含字幕；Phase 7.5 输入/产出 + 步骤 4g + 步骤 8 核对
+- script-storyboard.html + export_html.py：卡片新增 `_subtitles` 字幕行（`build_subtitle_line`：文本 / 语言·字体族·位置；未绑定条目跳过）
+- script-compilation.html：shot 卡片新增「字幕（烧录 spec）」块
+- model-compiler.md：新增 §字幕合成 spec（纪律：**字幕不进 video prompt**；挂载孤儿警告；SRT 后续可选）
+- verification-checklist.md：字幕三项检查（悬挂 / dialogue 一致性 / 双语匹配）
+
+**影响范围**：8 文件 +161/−11（不含本条目与版本矩阵）。
+
+**验证**：meta-schema ✓ · 双项目 0/0 ✓ · fields 71 路径解析（余 1 设计性）✓ · EOL 0 MIXED ✓ · py_compile ✓ · **渲染冒烟**（注入测试字幕：故事板卡片 + 编译预览块渲染正确、未绑定条目跳过）✓ · build_index 0/0 ✓
+
+**迁移**：无破坏性变更（全 additive；无字幕项目行为不变）。
+
+---
+
 ## [0.33.0] — 2026-09-29
 
 ### 批次 F1：参考图/生图产物资产化（需求 A）
