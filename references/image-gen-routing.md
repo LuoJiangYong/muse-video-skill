@@ -4,7 +4,7 @@
 > **边界**：本文件定义选择与参数规范（含已验证命令模板）；实际生图调用由 Agent 在 Phase 3.5 / 6 / 7 序列中执行（调用用户配置的工具）。不持有执行逻辑。
 > **被依赖**：`pipelines/default.md`（Phase 3 步骤 4 / 3.5 / 6 步骤 5 / 7 选项 C）
 > **宪法位置**：`references/image-gen-routing.md` — 交叉关注点，放 references 根目录（镜像 `model-compiler.md` 的多模型适配模式）。
-> **最后更新**：2026-09-29 | v0.32.0
+> **最后更新**：2026-09-29 | v0.33.0
 
 ---
 
@@ -51,11 +51,12 @@
 | 场景 moodboard | 该场景的实景参考图（用户 / 搜索，role=reference_image） | 0.5-0.7 语义 |
 | 分镜 panel（含角色） | 角色锚 refs + 场景 refs（多参考） | 角色高 / 场景中 |
 | 分镜 panel（空镜） | 场景 refs | 0.5-0.7 语义 |
+| 产品资产图 / 道具资产图（门禁选定） | 用户提供的产品/道具素材（role=reference_image）；无 → 纯文字 | 0.5-0.7 语义 |
 
 - **强度映射**：`file_registry.weight` 为**视频侧**（Seedance reference_image_weight）语义；生图侧强度按各模型自己的能力参数映射（Seedream 无显式强度参数——经提示词措辞控制；ComfyUI 用 IP-Adapter weight）。**不得混用权重数值**。
 - **模型不支持参考图输入** → 降级纯文字 prompt + 显式警告「模型不支持参考图，角色/场景一致性降级」。
 - **引用纪律**：注入的 refs 适用 `references/reference-image-over-text.md`（不重述、不转述）。
-- **登记回写**：生成产物按 `pipelines/default.md` 序列登记顶层 `file_registry`（`source: "generated"`）；本 panel 用了哪些 refs 记录到 `storyboard[].refs_used`。
+- **登记回写**：生成产物按 `pipelines/default.md` 序列登记顶层 `file_registry`（`source: "generated"`；批次 F1 起属门禁选定资产范围的产物追加 `asset` 三键，协议见 `references/reference-image-over-text.md` §资产引用协议）；本 panel 用了哪些 refs 记录到 `storyboard[].refs_used`。
 
 ---
 

@@ -147,6 +147,7 @@ Phase 8: 下游工具引导      → 【预留】工具选择与费用预估（�
 #### 操作序列
 
 0. **【生图模型选择 — 首次生成前】** 读取 `references/image-gen-routing.md` §生图模型选择：探测可用能力 → 展示候选 → 询问规则（≥2 询问 / 仅 1 告知确认 / 探测不到直接问用户）；未适配模型 → Agent 读官方文档提炼参数（临时参数集 +「📄 未实测」标注）。选择写入 `image_gen.target_model`（+ `_meta`），Phase 6/7 复用
+0.5 **【资产生成门禁 — 批次 F1】** 列出候选资产清单——关键人物形象（`visual_dev.characters[]`）· 产品主体（如项目含产品/主体，来源：用户提供素材或 vision 指定）· 关键道具（`scene_composition[].key_props[]`，预留类别）——询问用户：「是否进行资产化生成？生成范围：全部 / 指定子集 / 不生成」。选定范围才做资产化生成与登记（人物 → 三视图优先；产品 → 三视图、顶视图等）；未选定对象按常规流程处理、不打 `asset` 标签
 1. **场景选择**：从 visual_dev.scene_composition[] 中选取 2-3 个代表性场景
    - 必选：开场场景（定调）
    - 必选：情绪转折/高潮场景（验证 mood→visual_cause 映射）
@@ -158,9 +159,12 @@ Phase 8: 下游工具引导      → 【预留】工具选择与费用预估（�
    - 每角色 2 张：面部肖像（face_features + distinguishing_marks）+ 全身造型（height_build + wardrobe + silhouette）
    - prompt 使用与场景相同的 palette + style_direction——验证角色与场景的色彩一致性
    - **注入该角色的用户参考照片**（file_registry 角色锚条目；无照片 → 纯文字生成）
+   - **资产化形式（批次 F1）**：门禁（步骤 0.5）选定该角色 → 补充生成**三视图**（正面/侧面/背面，或 面部+全身+特征 拼版）作为资产代表图（canonical），登记见步骤 3.5
+3b. **如有产品主体（门禁选定）→ 生成产品资产图**（批次 F1）：三视图、顶视图等（用户提供产品素材优先；无 → 生成）；登记见步骤 3.5
 3.5 **【产物登记 — 原子动作】** 生成成功后：图片保存到 `projects/<name>/frames/` → 登记顶层 `file_registry`：
    - 场景 moodboard → `mood_sc<scene_id>`（role: "reference_image"；source: "generated"；file_id: "PENDING"）
    - 角色概念图 → `char_<character_id>_concept`（role: "reference_image"；分配优先级：用户原照 > 概念图）
+   - **资产化产物（批次 F1）**：三视图 → `char_<character_id>_3view`；产品资产图 → `prod_<slug>_<视图>`（如 `_3view` / `_top`）——均 role: "reference_image"、source: "generated"，并追加 `asset` 键（`{asset_type: "character"|"product", asset_id: "char_<character_id>"|"prod_<slug>", is_canonical: …}`）。**canonical 规则**：资产已有用户原照 → 原照条目补 `is_canonical: true`（生成图仅作补充，不得顶替原照充当 image_ref）；无原照 → 三视图/资产图 `is_canonical: true`
    - 既有 `style_sample.*` 正常写入（登记为编译链引用来源）
 4. **呈现给用户**（结构化格式）：
    ```
@@ -285,7 +289,7 @@ Phase 8: 下游工具引导      → 【预留】工具选择与费用预估（�
    - 选择「**生成**」→ 为 storyboard 中标记为 `layout: "wide"` 或 `"establishing"` 的 panel 生成配图（生成时注入参考图：角色 panel ← 角色锚 + 场景 refs；空镜 ← 场景 refs）
    - 选择「**跳过**」→ 继续。Phase 7 HTML storyboard 将使用文字占位符
    - 提示：如跳过，Phase 7 确认时仍可返回本步骤定向重生成（不丢失已确认的剧本和分镜结构）
-5b. **【产物登记 — 原子动作，不可跳过】** 每个生成成功的 panel 图：保存/改名到 `projects/<name>/frames/` → 写入 `storyboard[panel].generated_url`（本地相对路径）→ **登记顶层 `file_registry`**：`first_frame_p<panel_id>`（role: "first_frame"；source: "generated"；file_id: "PENDING"）→ 记录注入的参考图逻辑名到 `storyboard[panel].refs_used`
+5b. **【产物登记 — 原子动作，不可跳过】** 每个生成成功的 panel 图：保存/改名到 `projects/<name>/frames/` → 写入 `storyboard[panel].generated_url`（本地相对路径）→ **登记顶层 `file_registry`**：`first_frame_p<panel_id>`（role: "first_frame"；source: "generated"；file_id: "PENDING"）→ 记录注入的参考图逻辑名到 `storyboard[panel].refs_used` → 追加 `asset` 键（批次 F1）：`{asset_type: "key_shot", asset_id: "shot_p<panel_id>", is_canonical: true}`（关键分镜资产）
 6. Director 审核：分镜是否讲清楚了故事？画面构图是否一致？
    - **Approve** → 进入 Phase 7
    - **Revise** → 调整 panel 描述/prompt

@@ -3,7 +3,7 @@
 > **角色**：读取 Project State 中所有创意角色的产出，编译为目标 AI 视频模型的调用指令。不执行网络请求，不修改上游数据。
 > **边界声明**：本编译器产出模型调用指令**文本**（CLI 命令或 API JSON）。实际执行由 `volcengine-ark` skill 或用户手动完成。编译器是格式转换层，不是执行层。
 > **宪法位置**：`references/model-compiler.md` — 交叉关注点，非创意角色，放在 references 根目录。
-> **最后更新**：2026-06-29 | v0.30.0
+> **最后更新**：2026-09-29 | v0.33.0
 
 ---
 
@@ -302,7 +302,7 @@ Seedance 2.0 每镜最多 5 张 `image_ref`。根据项目类型自动选择分�
 | P1 | first_frame_ref | — | 分镜首帧（= Phase 6 生成图登记条目 `first_frame_p<panel_id>`；独立字段，占用 1 槽） |
 | P2 | 场景 mood | 0.5-0.7 | 1 张。多场景 → 选当前镜所在场景的 mood |
 | P3 | 风格参考 | 0.4-0.5 | 1 张。AD 的 moodboard 精选 |
-| P4 | 道具/服装 | 0.5 | 剩余的 image_ref 槽。无关键道具时留给 first_frame 的补充 |
+| P4 | 道具/服装 | 0.5 | 剩余的 image_ref 槽。道具优先取资产协议中的 canonical 道具图（`asset_type: "prop"` + `is_canonical: true`；无 asset 键回退既有命名约定）。无关键道具时留给 first_frame 的补充 |
 
 ### 策略 2：product_driven
 
@@ -343,6 +343,7 @@ Seedance 2.0 每镜最多 5 张 `image_ref`。根据项目类型自动选择分�
 ## 多模态引用映射（first_frame_ref 解析）
 
 > 批次 D（v0.32.0）：分镜生成图 → 顶层 `file_registry`（`first_frame_p<panel_id>`）→ 每镜首帧参考。登记规则见 `references/pipelines/default.md` Phase 6 步骤 5b。
+> 批次 F1（v0.33.0）：登记条目可按资产协议携带 `asset` 三键（asset_type / asset_id / is_canonical）——slot 分配优先取 canonical；无 asset 键 → 回退既有命名约定（双轨兼容）。协议见 `references/reference-image-over-text.md` §资产引用协议。
 
 ### 解析规则
 

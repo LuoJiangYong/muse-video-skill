@@ -3,7 +3,7 @@
 > **角色**：参考图引用链的权威源 —— 全管线引用纪律 + 编译器检测规则。用户提供的参考照片（角色外观、场景实景）中的视觉信息，不应在 Project State 或 prompt 中用大段文字重新描述；参考图直接对接下游工具（Seedance reference_image），文字层只负责参考图覆盖不到的部分（构图 / 色调 / 运镜 / 氛围）。
 > **被依赖**：roles/art-director.md（步骤 0）· roles/dp.md
 > **宪法位置**：`references/reference-image-over-text.md` — 交叉关注点，放 references 根目录。
-> **最后更新**：2026-09-28 | v0.31.0
+> **最后更新**：2026-09-29 | v0.33.0
 
 ---
 
@@ -23,6 +23,24 @@
 
 - `compiled_prompt` 中出现参考图已有视觉特征的文字重述 → `_quality.warnings` 追加：「image_ref_N 已含 [该特征]，prompt 重复描述 → 建议删除」
 - 干跑清单已含「所有 image_ref file_id 在 file_registry 中可查」（见 `references/model-compiler.md` §干跑验证清单）
+
+---
+
+## 资产引用协议（批次 F1 / v0.33.0）
+
+> 参考图与生图产物按「资产」分类登记，统一引用。登记落点＝顶层 `file_registry` 条目的 `asset` 三键（asset_type / asset_id / is_canonical）；生成门禁与登记动作见 `pipelines/default.md`（Phase 3.5 步骤 0.5 / 3.5 · Phase 6 步骤 5b）。
+
+| 资产类型 | `asset_type` | `asset_id` 规范 | 代表图（canonical）生成形式 | 登记阶段 |
+|---------|--------------|----------------|---------------------------|---------|
+| 关键人物形象 | `character` | `char_<character_id>` | 三视图（先行；正/侧/背 或 面部+全身+特征拼版） | Phase 3.5（门禁选定） |
+| 产品主体 | `product` | `prod_<slug>` | 三视图、顶视图等 | Phase 3.5（门禁选定） |
+| 关键分镜 | `key_shot` | `shot_p<panel_id>` | 分镜 panel 生成图 | Phase 6 步骤 5b |
+| 关键道具 | `prop` | `prop_<slug>` | 预留（暂不主动生成） | 预留 |
+
+- **canonical 优先级**：用户原照 > 生成图——生成图不得顶替用户原照充当 `image_ref`；每资产至多 1 张 canonical。
+- **枚举可扩展**：以上为「分开枚举、不全部罗列」的起始集合，新增按 additive 方式扩展（schema enum 追加）。
+- **回退解析（双轨兼容）**：条目无 `asset` 键 → 按既有命名约定解析（`char_*_concept` / `mood_sc*` / `first_frame_p*` / 用户自定义逻辑名），行为与 v0.32.x 一致。
+- **引用纪律**：资产引用同适用本文件 §全管线执行纪律（不重述、不转述）；搜索来源资产保留 credit / origin_url。
 
 ---
 
