@@ -347,6 +347,21 @@
         "narration_tone": { "type": "string" },
         "narration_language": { "type": "string" },
         "silence_usage": { "type": "string", "description": "How and when to use silence." },
+        "narration": {
+          "type": "object",
+          "description": "旁白参数对象（批次 F3 / v0.35.0；optional）——sound-designer.md §旁白参数模板的对象落点，供配音生成（TTS）消费。",
+          "properties": {
+            "enabled": { "type": "boolean" },
+            "voice_gender": { "type": "string" },
+            "voice_age": { "type": "string" },
+            "pace": { "type": "string" },
+            "tone": { "type": "string" },
+            "distance": { "type": "string" },
+            "reverb": { "type": "string" },
+            "language": { "type": "string" },
+            "special_processing": { "type": "string" }
+          }
+        },
         "_meta": {
           "type": "object",
           "properties": {
@@ -486,10 +501,10 @@
             "properties": {
               "asset_type": {
                 "type": "string",
-                "enum": ["character", "product", "key_shot", "prop"],
+                "enum": ["character", "product", "key_shot", "prop", "audio"],
                 "description": "资产分类（分开枚举、不全部罗列、保持可扩展）：character 关键人物形象（三视图先行）/ product 产品主体（三视图、顶视图等）/ key_shot 关键分镜（含场景和道具）/ prop 关键道具（预留）"
               },
-              "asset_id": { "type": "string", "description": "资产稳定 ID——前缀规范：char_ / prod_ / shot_ / prop_（如 char_cat / prod_coffee_machine / shot_p3）" },
+              "asset_id": { "type": "string", "description": "资产稳定 ID——前缀规范：char_ / prod_ / shot_ / prop_ / audio_（如 char_cat / prod_coffee_machine / shot_p3 / audio_music_main）" },
               "is_canonical": { "type": "boolean", "description": "是否该资产的代表图（canonical）——每资产建议至多 1 张；角色资产优先级：用户原照 > 生成图（生成图不得顶替用户原照充当 image_ref）" }
             }
           }
@@ -507,6 +522,43 @@
             "selected_phase": { "type": "string", "description": "选择发生的阶段（如 '3.5'）" },
             "selection_note": { "type": "string", "description": "选择依据/来源（探测结果 / 用户指定 / 帮我推荐）" },
             "adapter_status": { "type": "string", "description": "适配状态：measured（✅实测）/ doc-inferred（📄文档推断·未实测）" }
+          }
+        }
+      }
+    },
+    "audio_gen": {
+      "type": "object",
+      "description": "音频生成配置与音轨清单（批次 F3 / v0.35.0；optional）——Phase 5 末尾选定音频路线（route），Phase 7.5 编译消费；音乐/配音模型路由与适配见 references/audio-gen-routing.md。执行边界＝仅编译指令（不代生成）。音轨文件登记顶层 file_registry（asset_type: \"audio\"）。",
+      "properties": {
+        "route": { "type": "string", "enum": ["native", "external", "mixed", "none"], "description": "音频路线：native 视频模型原生音画同步（Seedance --generate-audio）/ external 外部生成（音乐模型 + TTS）/ mixed 混合（分工见 _meta.selection_note）/ none 无音频" },
+        "music": {
+          "type": "object",
+          "properties": {
+            "target_model": { "type": "string", "description": "音乐生成模型标识（自由字符串，不设 enum；首批适配：MiniMax Music 3.0）" },
+            "brief": { "type": "string", "description": "音乐生成 brief（风格 / tempo / instrumentation——从 sound.music_style 提炼）" },
+            "segments": { "type": "array", "items": { "type": "object" }, "description": "段落级音乐清单（按 scene 段落生成；含 cue / scene_id / 状态）" }
+          }
+        },
+        "voice": {
+          "type": "object",
+          "properties": {
+            "target_tool": { "type": "string", "description": "配音工具/模型标识（规划：火山方舟——专项待开）" },
+            "params": { "type": "object", "description": "配音参数（来源 sound.narration）" },
+            "lines": { "type": "array", "items": { "type": "object" }, "description": "逐句配音清单（text / speaker / 状态）" }
+          }
+        },
+        "sfx": {
+          "type": "object",
+          "properties": {
+            "sources": { "type": "array", "items": { "type": "string" }, "description": "音效素材来源（素材库搜索关键词等）" }
+          }
+        },
+        "_meta": {
+          "type": "object",
+          "properties": {
+            "selected_phase": { "type": "string" },
+            "selection_note": { "type": "string" },
+            "adapter_status": { "type": "string", "description": "适配状态：measured（✅实测）/ doc-inferred（📄 文档推断·未实测）" }
           }
         }
       }

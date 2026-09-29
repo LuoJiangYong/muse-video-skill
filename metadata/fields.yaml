@@ -444,6 +444,42 @@ fields:
     version_added: "0.1.0"
     breaking_change: false
 
+  - path: sound.music_refs
+    type: array<string>
+    default: []
+    description: "参考曲目/搜索关键词（v0.35.0 补注册——实现名；旧文档名 reference_tracks 不再使用）"
+    affected_roles: [sound-designer]
+    affected_phases: [5]
+    version_added: "0.1.0"
+    breaking_change: false
+
+  - path: sound.narration_language
+    type: string
+    default: ""
+    description: "旁白语言（v0.35.0 补注册）"
+    affected_roles: [sound-designer]
+    affected_phases: [5]
+    version_added: "0.1.0"
+    breaking_change: false
+
+  - path: sound.silence_usage
+    type: string
+    default: ""
+    description: "静默运用（v0.35.0 补注册——实现名；旧文档名 silence_strategy 不再使用）"
+    affected_roles: [sound-designer]
+    affected_phases: [5]
+    version_added: "0.1.0"
+    breaking_change: false
+
+  - path: sound.narration
+    type: object
+    default: {}
+    description: "旁白参数对象（批次 F3 / v0.35.0）：voice_gender / voice_age / pace / tone / distance / reverb / language / special_processing——sound-designer.md §旁白参数模板的对象落点，供配音生成消费"
+    affected_roles: [sound-designer, model-compiler]
+    affected_phases: [5, 7.5]
+    version_added: "0.35.0"
+    breaking_change: false
+
   # --- vfx ---
   - path: vfx.techniques
     type: array<object>
@@ -551,7 +587,7 @@ fields:
   - path: file_registry.asset
     type: object
     default: {}
-    description: "（每个注册条目的）资产化元数据（批次 F1 / v0.33.0）：asset_type（character / product / key_shot / prop——分开枚举、可扩展）/ asset_id（char_ / prod_ / shot_ / prop_ 前缀）/ is_canonical（代表图标记，每资产至多 1；角色优先级：用户原照 > 生成图）"
+    description: "（每个注册条目的）资产化元数据（批次 F1 / v0.33.0）：asset_type（character / product / key_shot / prop / audio——分开枚举、可扩展）/ asset_id（char_ / prod_ / shot_ / prop_ / audio_ 前缀）/ is_canonical（代表图/代表资产标记，每资产至多 1；角色优先级：用户原照 > 生成图）"
     affected_roles: [director, art-director, model-compiler]
     affected_phases: [3.5, 6, 7.5]
     version_added: "0.33.0"
@@ -594,6 +630,43 @@ fields:
     affected_phases: [3.5, 6, 7]
     version_added: "0.32.0"
     breaking_change: false
+  # --- audio_gen (批次 F3 · v0.35.0) ---
+  - path: audio_gen
+    type: object
+    default: {}
+    description: "音频生成配置与音轨清单（批次 F3 / v0.35.0）：route（native/external/mixed/none）+ music/voice/sfx 清单；路由与适配见 references/audio-gen-routing.md；音轨文件登记顶层 file_registry（asset_type: audio）"
+    affected_roles: [director, sound-designer, model-compiler]
+    affected_phases: [5, 7.5]
+    version_added: "0.35.0"
+    breaking_change: false
+
+  - path: audio_gen.route
+    type: enum
+    default: ""
+    description: "音频路线（Phase 5 末尾询问）：native 视频模型原生音画同步 / external 外部生成 / mixed 混合（须明示分工）/ none 无音频"
+    affected_roles: [director, sound-designer]
+    affected_phases: [5, 7.5]
+    version_added: "0.35.0"
+    breaking_change: false
+
+  - path: audio_gen.music.target_model
+    type: string
+    default: ""
+    description: "音乐生成模型标识（自由字符串，不设 enum；首批适配 MiniMax Music 3.0）"
+    affected_roles: [model-compiler]
+    affected_phases: [7.5]
+    version_added: "0.35.0"
+    breaking_change: false
+
+  - path: audio_gen.voice.target_tool
+    type: string
+    default: ""
+    description: "配音工具/模型标识（规划：火山方舟——专项待开）"
+    affected_roles: [model-compiler]
+    affected_phases: [7.5]
+    version_added: "0.35.0"
+    breaking_change: false
+
   # --- model_compilation ---
   - path: model_compilation.target_model
     type: enum
