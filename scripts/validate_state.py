@@ -306,6 +306,67 @@ def check_first_frame_registry(state: dict) -> list:
     return warnings
 
 
+def check_asset_registry(state: dict) -> list:
+    """Phase 7 soft check (batch F1, v0.33.0) — non-blocking.
+
+    Warn on asset metadata hygiene issues in file_registry entries:
+    unknown asset_type, missing asset_id, asset_id prefix mismatch,
+    or multiple canonical images for one asset_id.
+    """
+    registry = state.get("file_registry")
+    if not isinstance(registry, dict) or not registry:
+        mc = state.get("model_compilation")
+        registry = mc.get("file_registry") if isinstance(mc, dict) else None
+    if not isinstance(registry, dict) or not registry:
+        return []
+
+    valid_types = ("character", "product", "key_shot", "prop")
+    prefixes = {
+        "character": "char_",
+        "product": "prod_",
+        "key_shot": "shot_",
+        "prop": "prop_",
+    }
+
+    warnings = []
+    canonical_count = {}
+    for name, entry in registry.items():
+        if not isinstance(entry, dict):
+            continue
+        asset = entry.get("asset")
+        if not isinstance(asset, dict):
+            continue
+        atype = asset.get("asset_type")
+        aid = asset.get("asset_id")
+        if atype not in valid_types:
+            warnings.append(
+                "file_registry[%s].asset.asset_type=%r 不在枚举内"
+                "（character / product / key_shot / prop）—— 见"
+                " references/reference-image-over-text.md §资产引用协议" % (name, atype)
+            )
+        if not aid or not isinstance(aid, str):
+            warnings.append(
+                "file_registry[%s].asset.asset_id 为空 —— 资产协议要求"
+                " char_ / prod_ / shot_ / prop_ 前缀 ID" % name
+            )
+            continue
+        if atype in prefixes and not aid.startswith(prefixes[atype]):
+            warnings.append(
+                "file_registry[%s].asset.asset_id=%r 与 asset_type=%s 前缀不符"
+                "（期望 %s 开头）" % (name, aid, atype, prefixes[atype])
+            )
+        if asset.get("is_canonical") is True:
+            canonical_count[aid] = canonical_count.get(aid, 0) + 1
+
+    for aid, cnt in canonical_count.items():
+        if cnt > 1:
+            warnings.append(
+                "asset_id=%s 有 %d 张 is_canonical=true —— 每资产至多 1 张代表图" % (aid, cnt)
+            )
+
+    return warnings
+
+
 def validate(state: dict, gate: dict, phase_key: str) -> dict:
     """Run all gate checks for a phase.
 
@@ -372,6 +433,10 @@ def validate(state: dict, gate: dict, phase_key: str) -> dict:
     # ── 6. Phase 7 soft check — 生成图登记（batch D，非 BLOCKING）──
     if phase_num == 7:
         result["warnings"].extend(check_first_frame_registry(state))
+
+    # ── 7. Phase 7 soft check — 资产键一致性（batch F1，非 BLOCKING）──
+    if phase_num == 7:
+        result["warnings"].extend(check_asset_registry(state))
 
     return result
 
