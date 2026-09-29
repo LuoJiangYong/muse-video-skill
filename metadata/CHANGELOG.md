@@ -6,6 +6,24 @@
 
 ---
 
+## [0.36.3] — 2026-09-29
+
+### 仓库质量门：GitHub Actions CI（语法 / 索引 / 契约）
+
+**背景**：公开仓库质量门补全（用户 2026-09-29 批准，包 3）—— 此前检查依赖本地会话手动执行；CI 上线后每次 push / PR 自动验证。
+
+**改动**：
+- `.github/workflows/quality-gate.yml`（新增）：Python 3.11 —— ① 全脚本语法检查（compileall）② build_index --check --deps（死链门禁）③ 示例项目 × schema 契约校验（Draft 2020-12 含 meta-schema 自检；依赖 pyyaml + jsonschema）
+- `README.md` / `README.en.md`：目录树登记 CI 行
+- `CONSTITUTION.md`：目录树登记 .github/workflows/ + 版本尾注
+
+**影响范围**：4 文件（3 改 + 1 新增，不含本条目与版本矩阵）。
+
+**验证**：本地 dry-run 三步骤全过（compileall ✓ / build_index 0 errors 0 dead links ✓ / 契约 2 示例 0 errors + meta-schema OK ✓）· YAML 解析 ✓ · CI 首跑经 gh run 复核 ✓
+
+**迁移**：无（纯基础设施新增）。
+
+---
 ## [0.36.2] — 2026-09-29
 
 ### 仓库门面收口：README 中英双语重写 + MIT LICENSE + 仓库描述更新
