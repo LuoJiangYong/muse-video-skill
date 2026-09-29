@@ -33,6 +33,8 @@
 | **FAL.ai / image_gen** | 云端 API | 快速出图（FLUX 等） | API key |
 | **火山引擎 Seedream** | 云端 CLI | 高质量角色图/场景图 | `arkcli` + API key |
 
+> **生图模型路由**：模型选择 / 参考图注入 / 适配参数，见 `references/image-gen-routing.md`。
+
 ## 音频
 
 | 工具 | 类型 | 适用场景 | 前置条件 |

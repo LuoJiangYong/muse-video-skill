@@ -3,6 +3,7 @@
 > **定位**：各场景提示词模板的中枢 + AI 生图工具的参数速查。不教「怎么用 ComfyUI」——教「怎么写出能用的 prompt」。
 > **适用工具**：ComfyUI (Flux/SDXL/SD1.5) / ChatGPT Image (GPT-4o) / Midjourney / DALL-E / NanoBanana (Google) / 即梦 (Jimeng)。以 Flux/SDXL 为基准，标注其他工具的差异。
 > **宪法约束**：本文件是交叉参考——Art Director 和各场景文档的提示词模板最终都汇聚到这里。
+> **路由与参数**：用哪个模型 / 带哪些参考图 / 什么参数 → 见 `references/image-gen-routing.md`（本指南专注「prompt 怎么写」）。
 
 ---
 
