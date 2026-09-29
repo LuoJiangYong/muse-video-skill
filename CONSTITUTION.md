@@ -359,4 +359,4 @@ python scripts/build_index.py --check --deps
 
 ---
 
-*Last amended: 2026-09-28. Author: Director-Agent (Hermes). v0.31.0（批次 C）—— 参考图引用链：file_registry 顶层提升（双轨兼容）+ 全链引用纪律（AD 步骤 0 / DP / 权威源迁入 / Phase 1 登记）+ validate_state Phase 3 WARNING（决策 4/B）；编译确认 HTML（--compilation 独立预览 + Phase 7.5 二次确认）；模型选择前置（子步骤 6.5）；免版权图源降级链（Wikimedia → key 源 → 兜底）。继承 v0.30.4 Schema 还债收尾 + v0.30.3 封面集成 + v0.30.2 导出顺序 + v0.30.1 确认门禁 + Phase 8 预留。*
+*Last amended: 2026-09-29. Author: Director-Agent (Hermes). v0.32.0（批次 D）—— 生图模型路由与适配（image-gen-routing.md：解耦的适配章节 + 未适配查文档；Seedream 实测钉定通道 file://D:/，ComfyUI 归纳适配）+ 参考图注入生图（Phase 3 / 3.5 / 6 序列）+ 生图产物入编译链（file_registry first_frame_p<panel_id> 登记 → shots[].panel_id 解析 → 干跑校验 + validate_state Phase 7 软检查）+ 编译预览首帧/尾帧映射。继承 v0.31.0 参考图引用链 + 编译确认 + 模型选择前置 + v0.30.4 Schema 还债收尾 + v0.30.3 封面集成 + v0.30.2 导出顺序 + v0.30.1 确认门禁 + Phase 8 预留。*

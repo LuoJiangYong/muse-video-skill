@@ -6,6 +6,36 @@
 
 ---
 
+## [0.32.0] — 2026-09-29
+
+### 批次 D：生图模型路由（解耦）+ 参考图直连生图 + 生图产物入编译链
+
+**背景**：批次 C 后仍有两条断链——①参考图无法注入生图模型（分镜生图）；②生图产物（moodboard / 分镜图）无法进入编译链喂视频模型。用户裁定：**解耦**（不锁 Seedream；镜像视频侧 §模型选择 路由；先让用户选生图模型；skill 无参数的查模型文档）。
+
+**新增**：
+- `references/image-gen-routing.md`：生图模型路由与适配中枢——选择流程（镜像 model-compiler §模型选择）+ 适配章节（「适配：Seedream」✅ 2026-09-29 实测钉定；「适配：ComfyUI」📄 归纳）+ 参考图注入规则 + 未适配模型处理（读官方文档）+ 扩展指南
+- Project State 顶层 `image_gen`（optional）：生图模型选择落点（`target_model` 自由字符串、不设 enum）
+- `storyboard[].refs_used`（optional）：panel 生成输入的溯源
+- `model_compilation.shots[].panel_id`（optional）：first_frame_ref 解析键
+
+**修改**：
+- `references/pipelines/default.md`：Phase 3.5 新增步骤 0（生图模型选择）+ 生成注入参考图 + 步骤 3.5 产物登记；Phase 3 步骤 4 改造；Phase 6 步骤 5 注入 + 新增 5b 登记（原子动作）；Phase 7 选项 C 覆盖规则；Phase 7.5 步骤 4f 解析指针；跨阶段依赖补行
+- `references/model-compiler.md`：§多模态引用映射（first_frame_ref 解析规则 + first_frame / reference_image 分工澄清）+ 输入表 / 标签表 / 5 槽表更新 + 干跑清单 +2
+- `scripts/validate_state.py`：Phase 7 软检查——已生成未登记的 panel → WARNING（非阻塞）
+- `scripts/export_html.py`（v0.4.1）+ `assets/templates/export/script-compilation.html`：编译预览多模态引用映射扩展（首帧 / 尾帧行 + 未注册标记）
+- `SKILL.md` / `CONSTITUTION.md` / `metadata/fields.yaml` / `references/media/image-gen-guide.md` / `references/downstream-integration.md`：路由入树 + 字段注册 + 交叉链接 + 版本矩阵
+
+**D0 实测钉定（2026-09-29，Windows / arkcli v1.0.1）**：
+- **通道**：`--input 'ref:file://D:/<正斜杠路径>'`（两斜杠 + 盘符）✅ 实测通过（单 / 双参考）；`@路径` 全系 ✗（invalid port，v1.0.1 未修复）；三斜杠 `file:///` ✗；`data:` ✗
+- **参数**：Seedream 4.5 `--modality image` / `--size 2048x2048`（下限 ≈3.69M px）/ 多参考 ✓ / 输出固定名 `ark-gen.jpeg`（须改名）/「AI生成」水印不可去（`--watermark=false` 无效）
+- **陷阱**：dry-run `validated: true` 不检验真实可跑性（以真实运行为准）；`arkcli docs *` 需 ARK_DOCS_MCP_URL（未配置）
+- **成本**：2 张测试图（批准预算内）
+
+**影响范围**：12 个文件（+325/−32，不含本条目）。
+
+**迁移**：无破坏性变更（新字段全 optional；旧项目零迁移；first_frame 缺失仅软警告）。
+
+---
 ## [0.31.0] — 2026-09-28
 
 ### 批次 C：参考图引用链 + 免版权图源 + 编译确认 + 模型选择前置
