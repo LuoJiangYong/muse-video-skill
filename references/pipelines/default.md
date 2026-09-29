@@ -206,7 +206,7 @@ Phase 8: 下游工具引导      → 【预留】工具选择与费用预估（�
 | **激活角色** | Writer（文本）→ DP（镜头）→ Director（审核），链式顺序 |
 | **触发条件** | Phase 3 Director 审核通过 |
 | **输入** | Phase 2 产出的 script.* + Phase 3 产出的 visual_dev.* |
-| **产出** | script.scenes[].dialogue, script.scenes[].action, cinematography.shot_list[], cinematography.camera_notes[]（每个场景的 shot type/movement/lens/lighting） |
+| **产出** | script.scenes[].dialogue, script.scenes[].action, subtitles[]（顶层字幕层——dialogue 派生默认 / design 手写；字体族/位置/语言属性，批次 F2）, cinematography.shot_list[], cinematography.camera_notes[]（每个场景的 shot type/movement/lens/lighting） |
 | **Director 审核** | ✅ 必须审核 |
 | **Loop 规则** | ≤2 轮修改 |
 
@@ -216,11 +216,13 @@ Phase 8: 下游工具引导      → 【预留】工具选择与费用预估（�
    - 如 BLOCKED → 输出阻塞原因（通常是 Phase 3 的 visual_dev 色调方案未完成），回到 Phase 3 完成后再试
    - 如 PASS → 继续
 1. Writer 基于 Phase 2 的叙事结构，为每个场景补充：对白 / 动作描述 / 时长估算
+1b. **字幕层（批次 F2）**：Writer 从 dialogue 派生字幕条目（source: "dialogue"；属性：字体族 serif/sans · 位置 bottom/top/center · 语言 zh/en/bilingual——未指定时用默认或询问）；设计性字幕（片头卡/标语）以 source: "design" 手写；旁白同步可选 source: "narration"。写入顶层 subtitles[]（panel_id 留待 Phase 6 绑定）
 2. DP 加载 `references/roles/dp.md` → 镜头语言 + 灯光模板
 3. DP 为每个场景的每个镜头补充：shot type / movement / lens / lighting setup
 4. **注意**：Writer 和 DP 串行执行（DP 依赖 Writer 的场景结构，但 DP 不改对白）
 5. Director 审核：脚本节奏是否合理？镜头语言是否匹配情绪？
    - 如有角色需求，额外检查：对白风格是否与 character_bible[].voice 一致？（不能所有角色同一种语气）
+   - 字幕检查（批次 F2）：错别字 / 翻译质量 / 与对白一致性（source=dialogue 时文本须与 scenes[].dialogue 一致或显式标注改写）
    - **Approve** → 进入 Phase 5
    - **Revise** → 标注问题，Writer/DP 分别修改
    - **Reject** → 回到 Phase 2 重写 vision（罕见）
@@ -260,8 +262,8 @@ Phase 8: 下游工具引导      → 【预留】工具选择与费用预估（�
 |------|------|
 | **激活角色** | Storyboard 组装（集成角色）→ VFX（特效标注）→ Director（审核） |
 | **触发条件** | Phase 5 Director 审核通过 |
-| **输入** | 全部前置产出：script.* + cinematography.* + visual_dev.* + vfx.* |
-| **产出** | storyboard.panels[]（每个 panel：编号 / 关联 scene / shot 描述 / camera / lighting / vfx / image_prompt / 参考图 URL / refs_used） |
+| **输入** | 全部前置产出：script.* + subtitles[]（批次 F2） + cinematography.* + visual_dev.* + vfx.* |
+| **产出** | storyboard.panels[]（每个 panel：编号 / 关联 scene / shot 描述 / camera / lighting / vfx / image_prompt / 参考图 URL / refs_used；字幕绑定——顶层 subtitles[] 条目 panel_id 填写，批次 F2） |
 | **Director 审核** | ✅ 必须审核 |
 | **Loop 规则** | ≤2 轮修改 |
 
@@ -276,6 +278,7 @@ Phase 8: 下游工具引导      → 【预留】工具选择与费用预估（�
    - cinematography（镜头/灯光）→ panel.camera, panel.lighting
    - visual_dev（色调/风格/场景搭建）→ panel.art_direction
    - vfx（特效标注）→ panel.vfx_notes
+2b. **字幕绑定（批次 F2）**：将顶层 subtitles[] 条目按画面进度绑定到 panel（填写 panel_id；一个 panel 可挂 0-N 条）；无对应 panel 的条目在 Phase 7 提示为未绑定
 3. VFX 加载 `references/roles/vfx.md` → 为需要特效的 panel 补充材质/粒子/转场说明
 4. 为每个 panel 生成 `image_prompt`（可注入 image_gen 的完整 prompt）
 4.5 **【实景参考图获取 — 可选】** 如分镜需要真实场景参照（地标 / 建筑 / 自然景观）且用户未提供实景照片：
@@ -320,7 +323,7 @@ Phase 8: 下游工具引导      → 【预留】工具选择与费用预估（�
 4. **【HTML Storyboard 确认门禁 — 唯一最终确认关卡】**
    运行 `scripts/export_html.py --storyboard <out.html>` 生成完整分镜预览 HTML。
    向用户展示 HTML storyboard 路径 + 关键参数摘要（总镜数 / 总时长 / 分辨率建议）。
-   显式提示：「请查看 HTML storyboard，确认**分镜内容**（镜头顺序 / 构图描述 / 景别 / 运镜 / 时长 / 节奏）。HTML 排版为自动生成，仅用于快速预览，不代表最终视觉质量。**您确认的每一张参考图将直接进入 Phase 7.5 模型编译，最终喂给 AI 视频模型。**」
+   显式提示：「请查看 HTML storyboard，确认**分镜内容**（镜头顺序 / 构图描述 / 景别 / 运镜 / 时长 / 节奏 / 字幕标注）。HTML 排版为自动生成，仅用于快速预览，不代表最终视觉质量。**您确认的每一张参考图将直接进入 Phase 7.5 模型编译，最终喂给 AI 视频模型。**」
 
 5. **【用户操作 — 四选项 + 默认】**
 
@@ -395,8 +398,8 @@ Phase 8: 下游工具引导      → 【预留】工具选择与费用预估（�
 |------|------|
 | **激活角色** | Model Compiler |
 | **触发条件** | Phase 7 Creative Package 完成 + Director 确认 |
-| **输入** | Project State（script + cinematography + visual_dev + sound + storyboard） |
-| **产出** | model_compilation JSON（编译后的模型调用指令） |
+| **输入** | Project State（script + subtitles + cinematography + visual_dev + sound + storyboard） |
+| **产出** | model_compilation JSON（编译后的模型调用指令 + 字幕合成 spec） |
 | **Director 审核** | 可选 — 编译器产出为确定性转换。用户可选择「信任编译器」跳过审查，或逐镜检查 prompt_trace |
 | **Loop 规则** | 不适用 — 编译为确定性转换，无创意判断。如用户对编译结果不满意 → 调整上游 Phase 3/4/5/6 产出后重新编译 |
 
@@ -412,13 +415,14 @@ Phase 8: 下游工具引导      → 【预留】工具选择与费用预估（�
    d. arkcli 命令生成（Windows 安全路径：Files API file_id + --extra-body，不用 --input @本地文件）
    e. 质量标记（GOOD / DEGRADED / INSUFFICIENT）+ 成本估算
    f. 多模态引用解析（image_refs + first_frame_ref——细则见 `references/model-compiler.md` §多模态引用映射）
+   g. 字幕合成 spec（顶层 subtitles[] → `model_compilation.subtitles`；时间轴按 shots 名义时长累计；字幕不进 video prompt——见 §字幕合成 spec）
 5. 构建 video_ref 镜头链（`model_compilation.shot_chain`）
 6. 运行干跑验证清单（见 model-compiler.md §干跑验证清单）
 7. 输出编译摘要 + **导出编译预览 HTML**：
    - 运行 `python scripts/export_html.py --input <project-state.json> --compilation <out.html>` 渲染 `model_compilation`
    - 向用户展示：HTML 路径 + 摘要（目标模型 / 总时长 / 预估成本 / 质量标记）
 8. **【用户二次确认 — 基于编译预览 HTML】**
-   核对：编译后 prompt（六段式）/ 参考图映射（image_ref ↔ file_registry）/ arkcli 命令 / 成本估算。
+   核对：编译后 prompt（六段式）/ 参考图映射（image_ref ↔ file_registry）/ arkcli 命令 / 成本估算 / 字幕 spec（如有）。
    - **确认** → 批准 `model_compilation._meta.director_approved = true`（「信任编译器」可直接确认）
    - **不满意** → 返回上游 Phase 调整后重新编译（原「逐镜检查 prompt_trace」并入本步核对范围）
 9. 如任何 shot 的 `_quality.overall = INSUFFICIENT` → **暂停**，要求用户确认后继续

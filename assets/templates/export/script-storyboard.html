@@ -147,6 +147,17 @@
     word-break: break-word;
   }
 
+  .card-body .subtitle-line {
+    background: #fffbe8;
+    border-left: 3px solid #e8c75a;
+    padding: 0.5rem 0.7rem;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.8rem;
+    color: #6b5a1e;
+    margin-bottom: 0.8rem;
+    line-height: 1.5;
+  }
+
   .card-body .tech-meta {
     display: flex;
     flex-wrap: wrap;
@@ -294,6 +305,10 @@
 
       {{#if prompt}}
       <div class="prompt">{{prompt}}</div>
+      {{/if}}
+
+      {{#if _subtitles}}
+      <div class="subtitle-line">{{_subtitles}}</div>
       {{/if}}
 
       <div class="tech-meta">

@@ -184,6 +184,39 @@ def export_literary(project_state: dict, output_path: str) -> None:
     print(f"✅ Literary script HTML → {output_path}", file=sys.stderr)
 
 
+def build_subtitle_line(project_state: dict, panel_id) -> str:
+    """Render subtitles bound to a panel → compact display line (batch F2, v0.34.0).
+
+    Reads top-level subtitles[]; entries without panel_id (unbound) are skipped.
+    """
+    subs = project_state.get("subtitles")
+    if not isinstance(subs, list) or not subs:
+        return ""
+    lines = []
+    for s in subs:
+        if not isinstance(s, dict):
+            continue
+        pid = s.get("panel_id")
+        if pid is None or pid != panel_id:
+            continue
+        mode = s.get("language_mode") or ("bilingual" if s.get("text_en") else "zh")
+        texts = []
+        if mode in ("zh", "bilingual") and s.get("text_zh"):
+            texts.append(str(s.get("text_zh")))
+        if mode in ("en", "bilingual") and s.get("text_en"):
+            texts.append(str(s.get("text_en")))
+        if not texts:
+            continue
+        meta = " · ".join(
+            str(x) for x in (mode, s.get("font_family"), s.get("position")) if x
+        )
+        prefix = (str(s.get("speaker")) + "：") if s.get("speaker") else ""
+        lines.append(prefix + " / ".join(texts) + "（" + meta + "）")
+    if not lines:
+        return ""
+    return "💬 字幕：" + " ｜ ".join(lines)
+
+
 def export_storyboard(project_state: dict, output_path: str) -> None:
     """Render script-storyboard.html."""
     script_dir = Path(__file__).resolve().parent.parent
@@ -193,7 +226,20 @@ def export_storyboard(project_state: dict, output_path: str) -> None:
     else:
         raise FileNotFoundError(f"Template not found: {tpl_path}")
 
-    html = fill_html_template(template, project_state)
+    state = dict(project_state)
+    panels = project_state.get("storyboard")
+    if isinstance(panels, list):
+        new_panels = []
+        for p in panels:
+            if isinstance(p, dict):
+                p2 = dict(p)
+                p2["_subtitles"] = build_subtitle_line(project_state, p.get("panel_id"))
+                new_panels.append(p2)
+            else:
+                new_panels.append(p)
+        state["storyboard"] = new_panels
+
+    html = fill_html_template(template, state)
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(html)
     print(f"✅ Storyboard HTML → {output_path}", file=sys.stderr)
@@ -288,6 +334,7 @@ def export_compilation(project_state: dict, output_path: str) -> None:
         s2["_quality_open"] = "open" if (q and q != "GOOD") else ""
         warnings = (s.get("_quality") or {}).get("warnings") or []
         s2["_quality_warnings_html"] = "".join("<li>" + str(w) + "</li>" for w in warnings)
+        s2["_subtitles"] = build_subtitle_line(project_state, s.get("panel_id"))
         shots_view.append(s2)
 
     simple_extra = {

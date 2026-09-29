@@ -166,7 +166,7 @@
       <span class="chip">💰 {{compilation.est_cost}}</span>
       <span class="chip q-{{compilation.worst_quality}}">🏷 {{compilation.worst_quality}}</span>
     </div>
-    <p class="hint">请核对：<b>编译后 prompt（六段式）</b> / <b>多模态引用映射（首帧 / 尾帧 / image_ref ↔ file_registry）</b> / <b>arkcli 命令</b> / <b>成本估算</b>。质量标记非 GOOD 的镜头已自动展开。</p>
+    <p class="hint">请核对：<b>编译后 prompt（六段式）</b> / <b>多模态引用映射（首帧 / 尾帧 / image_ref ↔ file_registry）</b> / <b>arkcli 命令</b> / <b>成本估算</b> / <b>字幕 spec</b>（如有）。质量标记非 GOOD 的镜头已自动展开。</p>
   </header>
 
   <main>
@@ -186,6 +186,12 @@
           <h3>多模态引用映射（首帧 / 尾帧 / image_ref ↔ file_registry）</h3>
           {{_refs_html}}
         </div>
+        {{#if _subtitles}}
+        <div class="block">
+          <h3>字幕（烧录 spec）</h3>
+          <div class="shot-meta">{{_subtitles}}</div>
+        </div>
+        {{/if}}
         <div class="block">
           <h3>arkcli 命令（仅文本，确认后由下游执行）</h3>
           <pre>{{arkcli_command}}</pre>

@@ -18,6 +18,9 @@
 - [ ] 色调全局一致性——所有场景主色色相偏差 ≤ 30°
 - [ ] 分镜 panel 数量覆盖所有关键场景
 - [ ] 角色对白风格与 character_bible[].voice 一致（如有角色）
+- [ ] 字幕条目 panel_id 皆对应已存在 panel（无悬挂；Phase 7 选项 B 重排后复核）
+- [ ] source=dialogue 的字幕文本与 scenes[].dialogue 一致（或显式标注改写）
+- [ ] 双语条目的语言模式与文本匹配（language_mode 与 text_zh / text_en 双填一致）
 
 ## 按需检查（NITPICK）
 

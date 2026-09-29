@@ -3,7 +3,7 @@
 > **角色**：读取 Project State 中所有创意角色的产出，编译为目标 AI 视频模型的调用指令。不执行网络请求，不修改上游数据。
 > **边界声明**：本编译器产出模型调用指令**文本**（CLI 命令或 API JSON）。实际执行由 `volcengine-ark` skill 或用户手动完成。编译器是格式转换层，不是执行层。
 > **宪法位置**：`references/model-compiler.md` — 交叉关注点，非创意角色，放在 references 根目录。
-> **最后更新**：2026-09-29 | v0.33.0
+> **最后更新**：2026-09-29 | v0.34.0
 
 ---
 
@@ -57,7 +57,7 @@
 }
 ```
 
-每个 shot 含：`compiled_prompt`（六段式合并）、`prompt_trace`（逐段溯源）、`multimodal_refs`（文件引用）、`slot_allocation`（5 槽分配）、`arkcli_command`（可执行命令）、`estimated_tokens`（成本估算）、`_quality`（质量标记）。
+每个 shot 含：`compiled_prompt`（六段式合并）、`prompt_trace`（逐段溯源）、`multimodal_refs`（文件引用）、`slot_allocation`（5 槽分配）、`arkcli_command`（可执行命令）、`estimated_tokens`（成本估算）、`_quality`（质量标记）。顶层另产出 `subtitles[]`（字幕合成 spec——批次 F2 / v0.34.0，见 §字幕合成 spec）。
 
 ---
 
@@ -357,6 +357,17 @@ Seedance 2.0 每镜最多 5 张 `image_ref`。根据项目类型自动选择分�
 - `first_frame`（构图锚）：**分镜生成图**——确立镜头起始画面与构图
 - `reference_image`（角色/风格锚）：**优先用户原照**；生成的概念图仅作补充（无原照场景 / 非主角槽位）
 - §角色一致性策略「无需 Seedream 中转」条款的适用域：**禁止以生图角色图替代用户原照充当 image_ref**；不禁止生成分镜图本身（其走 first_frame 通道）
+
+---
+
+## 字幕合成 spec（批次 F2 / v0.34.0）
+
+> 字幕**不进 video prompt**（模型文字渲染不可控；与「AI 生图≠实景」「参考图不转述」同源纪律）——编译器把顶层 `subtitles[]` 编译为**字幕合成 spec**，供下游后期烧录（HyperFrames / ffmpeg 等）。
+
+1. 逐条输出 `model_compilation.subtitles[]`：`{subtitle_id, panel_id, start_s, end_s, text_zh, text_en, language_mode, font_family, position, style_note}`——时间轴按 shots 名义时长累计（**nominal**，panel 级颗粒度；实际时长以下游为准）
+2. 样式透传：font_family / position / language_mode 原样透传；双语排版默认建议（中文主、英文副；副行字号 ≈ 主行 80%）写入 `style_note`
+3. 挂载校验：`subtitle.panel_id` 无对应 shot → `_quality` 警告「字幕 sub_XX 挂载孤儿」（非阻塞）；未绑定（panel_id 空）条目跳过并在摘要提示
+4. 下游烧录指引：spec 交付时附「按实际时长对齐」提示；SRT/ASS 导出列为后续可选（v0.34.0 未实现）
 
 ---
 
