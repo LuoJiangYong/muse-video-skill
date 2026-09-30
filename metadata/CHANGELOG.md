@@ -6,6 +6,24 @@
 
 ---
 
+## [0.36.5] — 2026-09-30
+
+### 拉片表上架：Phase 1 拆解页在线预览 + README 06 升级可点击
+
+**背景**：Phase 1 拉片分析同样产出了完整 HTML（`shotlist_v1.html`）——按 01–04 同款「图 = 页面截屏 + 点击打开完整页」待遇上架（用户拍板：方案 A）。
+
+**改动**：
+- `docs/preview/guangdong-slipper/reference/`（新增预览包）：`shotlist_v1.html` + 80 帧（按页面引用精确打包，2.97MB）；自包含、无外部依赖
+- `docs/images/gallery-06-reference-deconstruction.jpg`：画廊 06 图更换为拉片表截图（1239×1495；标题 + 拆解说明 + 完整第 1 节）
+- `README.md` / `README.en.md`：06 行改为「图 → 链接拉片表完整页」（与 01–04 同款）；引言改「点击 01–04、06」；版本行更新
+
+**影响范围**：87 文件（新增 81 = reference 预览包；修改 6 = 双 README / 06 图替换 / SKILL / CONSTITUTION / CHANGELOG，不含本条目）。
+
+**验证**：拉片表预览包本地渲染 80/80 全载零损坏 · 隐私扫描 clean（html 无本机路径）· build_index 0 errors / 0 dead links · EOL 0 MIXED · Pages 链接随推送复核（shotlist + gallery-06）。
+
+**迁移**：无。
+
+---
 ## [0.36.4] — 2026-09-30
 
 ### 项目实测画廊：README 实拍截图（单列）+ GitHub Pages 在线预览
