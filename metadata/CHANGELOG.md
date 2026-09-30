@@ -6,6 +6,25 @@
 
 ---
 
+## [0.36.6] — 2026-09-30
+
+### 实测成片上架：3 段渲染镜头（GIF 内联循环 + MP4 在线播放）
+
+**背景**：用户挑选 3 段实测渲染镜头（项目共渲染 13 镜）→ README 新增「实测成片」展示（用户批准：GIF 内联 + 点击看原片方案）。
+
+**改动**：
+- `docs/preview/guangdong-slipper/renders/`（新增）：3 段 MP4 原片直拷不改码（s1/shot_p3 · s2/shot_p5 · s3/shot_p10，共 ≈12MB）；Pages 在线播放（S2/S3 含立体声）
+- `docs/images/renders-0{1,2,3}-*.gif`（新增 3 张）：600px / 10fps / 128 色 GIF 预览（合计 ≈9.7MB，自动循环）
+- `README.md` / `README.en.md`：新增「实测成片 / Rendered Shots」节（GIF 内联 + 点击 → MP4）；版本行更新
+- `.gitignore`：`!docs/**/*.mp4` 例外（`*.mp4` 全局忽略为既有设计）
+
+**影响范围**：12 文件（新增 6 = MP4 ×3 + GIF ×3；修改 6 = 双 README / .gitignore / SKILL / CONSTITUTION / CHANGELOG，不含本条目）。
+
+**验证**：GIF 目检（抽帧无色带 / 马赛克；抖动克制）· MP4 直拷字节一致 · 线上播放与链接复核（6 链接）· build_index 0/0 · EOL 0 MIXED。
+
+**迁移**：无。
+
+---
 ## [0.36.5] — 2026-09-30
 
 ### 拉片表上架：Phase 1 拆解页在线预览 + README 06 升级可点击
