@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<title>拉片表 v1 — 参考片拆解校准</title>
+<style>
+:root { --bg:#141312; --card:#1e1c1a; --line:#33302c; --fg:#e8e4de; --dim:#a49e94; --accent:#cc785c; }
+* { box-sizing:border-box; }
+body { background:var(--bg); color:var(--fg); font:14px/1.55 "Noto Sans SC","Microsoft YaHei",Inter,sans-serif; margin:0; padding:28px 32px 80px; }
+h1 { font-size:22px; margin:0 0 6px; }
+h2 { font-size:16px; color:var(--accent); border-bottom:1px solid var(--line); padding-bottom:6px; margin:34px 0 14px; }
+.sub { color:var(--dim); font-size:12.5px; }
+.notes { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:14px 18px; margin:16px 0 8px; font-size:13px; }
+.notes li { margin:4px 0; }
+.grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(430px,1fr)); gap:12px; }
+.shot { background:var(--card); border:1px solid var(--line); border-radius:10px; overflow:hidden; }
+.hd { padding:7px 10px; border-bottom:1px solid var(--line); font-size:13px; }
+.hd b { color:var(--accent); }
+.tc { color:var(--dim); font-family:Consolas,monospace; font-size:12px; }
+.dur { color:var(--dim); font-size:11.5px; }
+.body { display:flex; gap:10px; padding:10px; }
+.thumb img { width:190px; border-radius:6px; display:block; }
+.meta { flex:1; font-size:12.3px; }
+.meta div { margin:1.5px 0; color:var(--fg); }
+.meta label { color:var(--dim); display:inline-block; min-width:64px; }
+.meta label::after { content:"："; }
+.meta .wide { color:#f3ede6; }
+.note { color:var(--accent); margin-top:3px; }
+</style></head><body>
+<h1>参考片拉片表 v1（校准稿）— 《如何把广东省凳拍成买不起的样子》</h1>
+<div class="sub">来源：小红书（xsec 分享链）· 时长 2:28.7 · 1280×720 · 25fps · 共 <b>80 个镜头片段</b> · 拆解日期 2026-09-30</div>
+
+<div class="notes"><b>拆解方式与置信度说明（请先读）</b>
+<ul>
+<li>本机 Hermes <code>video_analyze</code> 端点不支持视频输入（422），已按技能文档降级路径执行：<b>逐镜抽帧 + 逐帧目检校字</b>（80 帧全量目检 + 关键帧全分辨率精读）。</li>
+<li><b>运镜⚑</b> 列为静帧推定——静态帧无法判定运动，请凭你的记忆重点校对（如：慢推 / 摇移 / 跟拍 / 手持）。</li>
+<li><b>音效⚑</b> 列为低置信（帧图不含声音）。机器分析结论：全片无静音、音乐贯穿（综合响度 -19.2 LUFS）；转场时刻（19.4 / 40.3 / 65.5 / 103.1 / 117.7s）有同步重音。<b>是否存在人声旁白：机器无法判定，需你确认。</b></li>
+<li>字幕为逐条精校；带 ⚑ 的条目为重点核对项（详见会话中的校准清单）。</li>
+<li>5 组「手绘线条动画 + 快速闪帧」转场即全片章节分隔符。</li>
+<li>「剪映AI制作」字样出现在开场标题卡底部——该片可能使用了 AI 辅助制作（部分超现实镜头如悬浮凳子，或为 AI 生成）。</li>
+</ul></div>
+<h2>1. A · 开场 + 棚拍微距 <span class="tc">00:00.0–00:19.2</span></h2><div class="grid">
+<div class="shot">
+  <div class="hd"><b>S001</b> <span class="tc">00:00.0–00:02.8</span> <span class="dur">2.76s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_001_0000.35.jpg" target="_blank"><img src="frames/f_001_0000.35.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>全景</div>
+      <div><label>运镜⚑</label>固定（推定）</div>
+      <div><label>构图</label>中轴对称·人物坐凳居中·大留白</div>
+      <div><label>色调+场景</label>暖橙渐变棚墙·影棚柔光</div>
+      <div><label>角色</label>模特（坐姿·深色服装）</div>
+      <div><label>音效⚑</label>音乐起＋疑似人声⚑</div>
+      <div><label>叙事功能</label>开场标题卡</div>
+      <div><label>特效</label>—</div>
+      <div class="wide"><label>字幕文案</label>「如何拍一支地道的奢侈品大片」（片尾小字：本片由剪映AI制作）</div>
+      <div class="note">⚑底部小字核对</div>
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S002</b> <span class="tc">00:02.8–00:02.8</span> <span class="dur">0.08s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_002_0002.80.jpg" target="_blank"><img src="frames/f_002_0002.80.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>—</div>
+      <div><label>运镜⚑</label>—</div>
+      <div><label>构图</label>黑场闪</div>
+      <div><label>色调+场景</label>—</div>
+      <div><label>角色</label>—</div>
+      <div><label>音效⚑</label>—</div>
+      <div><label>叙事功能</label>章节黑闪转场</div>
+      <div><label>特效</label>黑闪</div>
+      <div class="wide"><label>字幕文案</label>（无字）</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S003</b> <span class="tc">00:02.8–00:07.3</span> <span class="dur">4.44s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_003_0003.19.jpg" target="_blank"><img src="frames/f_003_0003.19.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>大特写（微距）</div>
+      <div><label>运镜⚑</label>（推定）</div>
+      <div><label>构图</label>凳面网格纹理·浅景深</div>
+      <div><label>色调+场景</label>暖红光·油亮高光</div>
+      <div><label>角色</label>—</div>
+      <div><label>音效⚑</label>音乐</div>
+      <div><label>叙事功能</label>教程①「首先」</div>
+      <div><label>特效</label>—</div>
+      <div class="wide"><label>字幕文案</label>「首先」</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S004</b> <span class="tc">00:07.3–00:10.6</span> <span class="dur">3.32s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_004_0007.63.jpg" target="_blank"><img src="frames/f_004_0007.63.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>大特写（微距）</div>
+      <div><label>运镜⚑</label>（推定）</div>
+      <div><label>构图</label>凳缘弧面·逆光轮廓</div>
+      <div><label>色调+场景</label>暖红·侧逆光</div>
+      <div><label>角色</label>—</div>
+      <div><label>音效⚑</label>音乐</div>
+      <div><label>叙事功能</label>教程·连接词</div>
+      <div><label>特效</label>—</div>
+      <div class="wide"><label>字幕文案</label>「接下来」</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S005</b> <span class="tc">00:10.6–00:11.9</span> <span class="dur">1.28s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_005_0010.95.jpg" target="_blank"><img src="frames/f_005_0010.95.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>特写</div>
+      <div><label>运镜⚑</label>（推定）</div>
+      <div><label>构图</label>凳腿高光</div>
+      <div><label>色调+场景</label>暖红</div>
+      <div><label>角色</label>—</div>
+      <div><label>音效⚑</label>音乐</div>
+      <div><label>叙事功能</label>教程②先拍一条腿</div>
+      <div><label>特效</label>—</div>
+      <div class="wide"><label>字幕文案</label>「先拍一条腿」</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S006</b> <span class="tc">00:11.9–00:15.5</span> <span class="dur">3.64s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_006_0012.23.jpg" target="_blank"><img src="frames/f_006_0012.23.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>特写</div>
+      <div><label>运镜⚑</label>（推定）</div>
+      <div><label>构图</label>凳面菱形格纹·微距</div>
+      <div><label>色调+场景</label>暖红·顶光</div>
+      <div><label>角色</label>—</div>
+      <div><label>音效⚑</label>音乐</div>
+      <div><label>叙事功能</label>教程③再拍一个面</div>
+      <div><label>特效</label>—</div>
+      <div class="wide"><label>字幕文案</label>「再拍一个面」</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S007</b> <span class="tc">00:15.5–00:16.9</span> <span class="dur">1.4s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_007_0015.87.jpg" target="_blank"><img src="frames/f_007_0015.87.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>大特写（微距）</div>
+      <div><label>运镜⚑</label>（推定）</div>
+      <div><label>构图</label>凳底加强筋排珠纹理</div>
+      <div><label>色调+场景</label>深红·点状高光</div>
+      <div><label>角色</label>—</div>
+      <div><label>音效⚑</label>音乐</div>
+      <div><label>叙事功能</label>教程④认知反差</div>
+      <div><label>特效</label>—</div>
+      <div class="wide"><label>字幕文案</label>「越是认识的东西」</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S008</b> <span class="tc">00:16.9–00:19.2</span> <span class="dur">2.32s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_008_0017.27.jpg" target="_blank"><img src="frames/f_008_0017.27.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>大特写（微距）</div>
+      <div><label>运镜⚑</label>（推定）</div>
+      <div><label>构图</label>半透红塑料板·背景暖光晕</div>
+      <div><label>色调+场景</label>暖红渐晕</div>
+      <div><label>角色</label>—</div>
+      <div><label>音效⚑</label>音乐</div>
+      <div><label>叙事功能</label>教程⑤去识别化</div>
+      <div><label>特效</label>—</div>
+      <div class="wide"><label>字幕文案</label>「越不能让大家认出来」</div>
+      
+    </div>
+  </div>
+</div>
+</div>
+<h2>2. T1 · 转场①（手绘线+闪帧） <span class="tc">00:19.2–00:19.8</span></h2><div class="grid">
+<div class="shot">
+  <div class="hd"><b>S009</b> <span class="tc">00:19.2–00:19.3</span> <span class="dur">0.04s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_009_0019.26.jpg" target="_blank"><img src="frames/f_009_0019.26.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>图形帧</div>
+      <div><label>运镜⚑</label>—</div>
+      <div><label>构图</label>暖橙渐变色块</div>
+      <div><label>色调+场景</label>暖橙</div>
+      <div><label>角色</label>—</div>
+      <div><label>音效⚑</label>音效重音</div>
+      <div><label>叙事功能</label>转场①起</div>
+      <div><label>特效</label>手绘线动画</div>
+      <div class="wide"><label>字幕文案</label>（无字）</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S010</b> <span class="tc">00:19.3–00:19.3</span> <span class="dur">0.04s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_010_0019.30.jpg" target="_blank"><img src="frames/f_010_0019.30.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>图形帧</div>
+      <div><label>运镜⚑</label>—</div>
+      <div><label>构图</label>暗场闪帧</div>
+      <div><label>色调+场景</label>暗</div>
+      <div><label>角色</label>—</div>
+      <div><label>音效⚑</label>音效</div>
+      <div><label>叙事功能</label>转场①</div>
+      <div><label>特效</label>闪帧</div>
+      <div class="wide"><label>字幕文案</label>（无字）</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S011</b> <span class="tc">00:19.3–00:19.4</span> <span class="dur">0.04s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_011_0019.34.jpg" target="_blank"><img src="frames/f_011_0019.34.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>图形帧</div>
+      <div><label>运镜⚑</label>—</div>
+      <div><label>构图</label>暗红闪帧</div>
+      <div><label>色调+场景</label>暗红</div>
+      <div><label>角色</label>—</div>
+      <div><label>音效⚑</label>音效</div>
+      <div><label>叙事功能</label>转场①</div>
+      <div><label>特效</label>闪帧</div>
+      <div class="wide"><label>字幕文案</label>（无字）</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S012</b> <span class="tc">00:19.4–00:19.5</span> <span class="dur">0.12s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_012_0019.46.jpg" target="_blank"><img src="frames/f_012_0019.46.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>图形帧</div>
+      <div><label>运镜⚑</label>—</div>
+      <div><label>构图</label>红底白线绘制中</div>
+      <div><label>色调+场景</label>红</div>
+      <div><label>角色</label>—</div>
+      <div><label>音效⚑</label>音效</div>
+      <div><label>叙事功能</label>转场①</div>
+      <div><label>特效</label>白线手绘动画</div>
+      <div class="wide"><label>字幕文案</label>（无字）</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S013</b> <span class="tc">00:19.5–00:19.7</span> <span class="dur">0.2s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_013_0019.58.jpg" target="_blank"><img src="frames/f_013_0019.58.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>图形帧</div>
+      <div><label>运镜⚑</label>—</div>
+      <div><label>构图</label>红底白线曲线</div>
+      <div><label>色调+场景</label>红</div>
+      <div><label>角色</label>—</div>
+      <div><label>音效⚑</label>音效</div>
+      <div><label>叙事功能</label>转场①</div>
+      <div><label>特效</label>同上</div>
+      <div class="wide"><label>字幕文案</label>（无字）</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S014</b> <span class="tc">00:19.7–00:19.8</span> <span class="dur">0.08s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_014_0019.72.jpg" target="_blank"><img src="frames/f_014_0019.72.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>图形帧</div>
+      <div><label>运镜⚑</label>—</div>
+      <div><label>构图</label>米黄闪帧</div>
+      <div><label>色调+场景</label>米黄</div>
+      <div><label>角色</label>—</div>
+      <div><label>音效⚑</label>音效</div>
+      <div><label>叙事功能</label>转场①末</div>
+      <div><label>特效</label>闪帧</div>
+      <div class="wide"><label>字幕文案</label>（无字）</div>
+      
+    </div>
+  </div>
+</div>
+</div>
+<h2>3. B · 设计呈现（图纸/颜色/款式） <span class="tc">00:19.8–00:40.2</span></h2><div class="grid">
+<div class="shot">
+  <div class="hd"><b>S015</b> <span class="tc">00:19.8–00:22.0</span> <span class="dur">2.2s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_015_0020.11.jpg" target="_blank"><img src="frames/f_015_0020.11.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>特写</div>
+      <div><label>运镜⚑</label>（推定·横移）</div>
+      <div><label>构图</label>草图纸堆·红蓝水彩凳稿</div>
+      <div><label>色调+场景</label>暖纸色·顶光</div>
+      <div><label>角色</label>—</div>
+      <div><label>音效⚑</label>音乐</div>
+      <div><label>叙事功能</label>内容段：设计草图</div>
+      <div><label>特效</label>实物×手绘混排</div>
+      <div class="wide"><label>字幕文案</label>（无字）</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S016</b> <span class="tc">00:22.0–00:25.9</span> <span class="dur">3.96s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_016_0022.31.jpg" target="_blank"><img src="frames/f_016_0022.31.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>近景（俯）</div>
+      <div><label>运镜⚑</label>（推定）</div>
+      <div><label>构图</label>图纸铺满画面·毫米标注</div>
+      <div><label>色调+场景</label>暖纸色</div>
+      <div><label>角色</label>—</div>
+      <div><label>音效⚑</label>音乐</div>
+      <div><label>叙事功能</label>内容段：展示款式材质</div>
+      <div><label>特效</label>同上</div>
+      <div class="wide"><label>字幕文案</label>「开始展示款式和材质」</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S017</b> <span class="tc">00:25.9–00:27.6</span> <span class="dur">1.72s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_017_0026.27.jpg" target="_blank"><img src="frames/f_017_0026.27.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>特写（俯）</div>
+      <div><label>运镜⚑</label>（推定）</div>
+      <div><label>构图</label>俯视凳面×图纸尺寸标注(250/320mm)</div>
+      <div><label>色调+场景</label>红白</div>
+      <div><label>角色</label>—</div>
+      <div><label>音效⚑</label>音乐</div>
+      <div><label>叙事功能</label>内容段：你得说</div>
+      <div><label>特效</label>照片×图纸合成感</div>
+      <div class="wide"><label>字幕文案</label>「你得说」</div>
+      <div class="note">⚑此前误读为「俯视图」</div>
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S018</b> <span class="tc">00:27.6–00:28.5</span> <span class="dur">0.88s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_018_0027.99.jpg" target="_blank"><img src="frames/f_018_0027.99.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>近景</div>
+      <div><label>运镜⚑</label>（推定）</div>
+      <div><label>构图</label>蓝凳×手写标注(stable base)</div>
+      <div><label>色调+场景</label>蓝×纸白</div>
+      <div><label>角色</label>—</div>
+      <div><label>音效⚑</label>音乐</div>
+      <div><label>叙事功能</label>内容段：颜色名①</div>
+      <div><label>特效</label>实物×手绘混排</div>
+      <div class="wide"><label>字幕文案</label>「天水碧」</div>
+      <div class="note">⚑精校</div>
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S019</b> <span class="tc">00:28.5–00:29.7</span> <span class="dur">1.2s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_019_0028.87.jpg" target="_blank"><img src="frames/f_019_0028.87.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>近景</div>
+      <div><label>运镜⚑</label>（推定）</div>
+      <div><label>构图</label>粉凳×图纸</div>
+      <div><label>色调+场景</label>粉×纸白</div>
+      <div><label>角色</label>—</div>
+      <div><label>音效⚑</label>音乐</div>
+      <div><label>叙事功能</label>内容段：颜色名②</div>
+      <div><label>特效</label>同上</div>
+      <div class="wide"><label>字幕文案</label>「闲云粉」</div>
+      <div class="note">⚑精校</div>
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S020</b> <span class="tc">00:29.7–00:32.8</span> <span class="dur">3.04s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_020_0030.07.jpg" target="_blank"><img src="frames/f_020_0030.07.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>特写</div>
+      <div><label>运镜⚑</label>（推定）</div>
+      <div><label>构图</label>红凳·暖色虚化背景</div>
+      <div><label>色调+场景</label>暖红</div>
+      <div><label>角色</label>—</div>
+      <div><label>音效⚑</label>音乐</div>
+      <div><label>叙事功能</label>内容段：气质指令</div>
+      <div><label>特效</label>同上</div>
+      <div class="wide"><label>字幕文案</label>「你要走国际范」</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S021</b> <span class="tc">00:32.8–00:35.4</span> <span class="dur">2.64s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_021_0033.11.jpg" target="_blank"><img src="frames/f_021_0033.11.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>近景</div>
+      <div><label>运镜⚑</label>（推定）</div>
+      <div><label>构图</label>蓝凳·红墙棚景</div>
+      <div><label>色调+场景</label>蓝×红撞色</div>
+      <div><label>角色</label>—</div>
+      <div><label>音效⚑</label>音乐</div>
+      <div><label>叙事功能</label>内容段：颜色名③</div>
+      <div><label>特效</label>棚拍</div>
+      <div class="wide"><label>字幕文案</label>「蒂芙尼蓝」</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S022</b> <span class="tc">00:35.4–00:40.2</span> <span class="dur">4.84s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_022_0035.75.jpg" target="_blank"><img src="frames/f_022_0035.75.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>全景（俯）</div>
+      <div><label>运镜⚑</label>（推定）</div>
+      <div><label>构图</label>三色凳斜向排列·轻微漂浮感</div>
+      <div><label>色调+场景</label>暖红棚景</div>
+      <div><label>角色</label>—</div>
+      <div><label>音效⚑</label>音乐</div>
+      <div><label>叙事功能</label>内容段：陈列收束</div>
+      <div><label>特效</label>疑似AI悬浮</div>
+      <div class="wide"><label>字幕文案</label>「总之」</div>
+      
+    </div>
+  </div>
+</div>
+</div>
+<h2>4. T2 · 转场② <span class="tc">00:40.2–00:40.7</span></h2><div class="grid">
+<div class="shot">
+  <div class="hd"><b>S023</b> <span class="tc">00:40.2–00:40.3</span> <span class="dur">0.04s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_023_0040.26.jpg" target="_blank"><img src="frames/f_023_0040.26.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>图形帧</div>
+      <div><label>运镜⚑</label>—</div>
+      <div><label>构图</label>手绘线+闪帧（同转场①）</div>
+      <div><label>色调+场景</label>暖橙</div>
+      <div><label>角色</label>—</div>
+      <div><label>音效⚑</label>音效重音</div>
+      <div><label>叙事功能</label>转场②起</div>
+      <div><label>特效</label>动画+闪帧</div>
+      <div class="wide"><label>字幕文案</label>（无字）</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S024</b> <span class="tc">00:40.3–00:40.3</span> <span class="dur">0.04s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_024_0040.30.jpg" target="_blank"><img src="frames/f_024_0040.30.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>图形帧</div>
+      <div><label>运镜⚑</label>—</div>
+      <div><label>构图</label>暗场闪帧</div>
+      <div><label>色调+场景</label>暗</div>
+      <div><label>角色</label>—</div>
+      <div><label>音效⚑</label>音效</div>
+      <div><label>叙事功能</label>转场②</div>
+      <div><label>特效</label>闪帧</div>
+      <div class="wide"><label>字幕文案</label>（无字）</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S025</b> <span class="tc">00:40.3–00:40.5</span> <span class="dur">0.16s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_025_0040.42.jpg" target="_blank"><img src="frames/f_025_0040.42.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>图形帧</div>
+      <div><label>运镜⚑</label>—</div>
+      <div><label>构图</label>红底白线</div>
+      <div><label>色调+场景</label>红</div>
+      <div><label>角色</label>—</div>
+      <div><label>音效⚑</label>音效</div>
+      <div><label>叙事功能</label>转场②</div>
+      <div><label>特效</label>白线手绘动画</div>
+      <div class="wide"><label>字幕文案</label>（无字）</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S026</b> <span class="tc">00:40.5–00:40.7</span> <span class="dur">0.2s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_026_0040.58.jpg" target="_blank"><img src="frames/f_026_0040.58.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>图形帧</div>
+      <div><label>运镜⚑</label>—</div>
+      <div><label>构图</label>红底白线（更近）</div>
+      <div><label>色调+场景</label>红</div>
+      <div><label>角色</label>—</div>
+      <div><label>音效⚑</label>音效</div>
+      <div><label>叙事功能</label>转场②</div>
+      <div><label>特效</label>同上</div>
+      <div class="wide"><label>字幕文案</label>（无字）</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S027</b> <span class="tc">00:40.7–00:40.7</span> <span class="dur">0.04s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_027_0040.70.jpg" target="_blank"><img src="frames/f_027_0040.70.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>图形帧</div>
+      <div><label>运镜⚑</label>—</div>
+      <div><label>构图</label>米黄闪帧</div>
+      <div><label>色调+场景</label>米黄</div>
+      <div><label>角色</label>—</div>
+      <div><label>音效⚑</label>音效</div>
+      <div><label>叙事功能</label>转场②末</div>
+      <div><label>特效</label>闪帧</div>
+      <div class="wide"><label>字幕文案</label>（无字）</div>
+      
+    </div>
+  </div>
+</div>
+</div>
+<h2>5. C · 街头金句 + 超现实 <span class="tc">00:40.7–01:05.4</span></h2><div class="grid">
+<div class="shot">
+  <div class="hd"><b>S028</b> <span class="tc">00:40.7–00:43.7</span> <span class="dur">2.96s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_028_0041.07.jpg" target="_blank"><img src="frames/f_028_0041.07.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>全景</div>
+      <div><label>运镜⚑</label>缓推（推定）</div>
+      <div><label>构图</label>街头逆光·三凳·蓝凳前景</div>
+      <div><label>色调+场景</label>金色逆光·光斑</div>
+      <div><label>角色</label>—</div>
+      <div><label>音效⚑</label>音乐</div>
+      <div><label>叙事功能</label>情绪：金色时刻英雄镜头</div>
+      <div><label>特效</label>光晕</div>
+      <div class="wide"><label>字幕文案</label>（无字）</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S029</b> <span class="tc">00:43.7–00:46.1</span> <span class="dur">2.44s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_029_0044.03.jpg" target="_blank"><img src="frames/f_029_0044.03.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>全景（建筑）</div>
+      <div><label>运镜⚑</label>（推定）</div>
+      <div><label>构图</label>骑楼透视·凳子极小</div>
+      <div><label>色调+场景</label>暖灰石色</div>
+      <div><label>角色</label>—</div>
+      <div><label>音效⚑</label>音乐</div>
+      <div><label>叙事功能</label>金句引入</div>
+      <div><label>特效</label>—</div>
+      <div class="wide"><label>字幕文案</label>「就需要一句金句文案」</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S030</b> <span class="tc">00:46.1–00:49.0</span> <span class="dur">2.84s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_030_0046.47.jpg" target="_blank"><img src="frames/f_030_0046.47.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>特写</div>
+      <div><label>运镜⚑</label>（推定）</div>
+      <div><label>构图</label>粉凳暗背景</div>
+      <div><label>色调+场景</label>暗调粉</div>
+      <div><label>角色</label>—</div>
+      <div><label>音效⚑</label>音乐</div>
+      <div><label>叙事功能</label>金句铺垫「注意」</div>
+      <div><label>特效</label>—</div>
+      <div class="wide"><label>字幕文案</label>「注意」</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S031</b> <span class="tc">00:49.0–00:53.0</span> <span class="dur">4.04s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_031_0049.31.jpg" target="_blank"><img src="frames/f_031_0049.31.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>近景</div>
+      <div><label>运镜⚑</label>（推定）</div>
+      <div><label>构图</label>红凳虚化·光影</div>
+      <div><label>色调+场景</label>暖红</div>
+      <div><label>角色</label>—</div>
+      <div><label>音效⚑</label>音乐</div>
+      <div><label>叙事功能</label>金句①</div>
+      <div><label>特效</label>—</div>
+      <div class="wide"><label>字幕文案</label>「真正的经典 从不追赶经典」</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S032</b> <span class="tc">00:53.0–00:58.0</span> <span class="dur">5.0s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_032_0053.35.jpg" target="_blank"><img src="frames/f_032_0053.35.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>近景</div>
+      <div><label>运镜⚑</label>（推定）</div>
+      <div><label>构图</label>蓝凳×石地·冷调</div>
+      <div><label>色调+场景</label>青灰冷调</div>
+      <div><label>角色</label>—</div>
+      <div><label>音效⚑</label>音乐</div>
+      <div><label>叙事功能</label>金句②</div>
+      <div><label>特效</label>—</div>
+      <div class="wide"><label>字幕文案</label>「不是被看见 而是无法被忽略」</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S033</b> <span class="tc">00:58.0–01:00.8</span> <span class="dur">2.84s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_033_0058.35.jpg" target="_blank"><img src="frames/f_033_0058.35.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>中景（俯）</div>
+      <div><label>运镜⚑</label>（推定）</div>
+      <div><label>构图</label>三凳空中排列·坠落感</div>
+      <div><label>色调+场景</label>街景背景</div>
+      <div><label>角色</label>—</div>
+      <div><label>音效⚑</label>音乐</div>
+      <div><label>叙事功能</label>金句③+超现实</div>
+      <div><label>特效</label>AI悬浮</div>
+      <div class="wide"><label>字幕文案</label>「熟练使用」</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S034</b> <span class="tc">01:00.8–01:05.4</span> <span class="dur">4.56s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_034_0061.19.jpg" target="_blank"><img src="frames/f_034_0061.19.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>中景</div>
+      <div><label>运镜⚑</label>（推定）</div>
+      <div><label>构图</label>三凳斜向悬浮·欧式街景</div>
+      <div><label>色调+场景</label>冷灰×彩色凳</div>
+      <div><label>角色</label>—</div>
+      <div><label>音效⚑</label>音乐</div>
+      <div><label>叙事功能</label>金句④留白</div>
+      <div><label>特效</label>AI悬浮</div>
+      <div class="wide"><label>字幕文案</label>「真正的……从来不……」</div>
+      
+    </div>
+  </div>
+</div>
+</div>
+<h2>6. T3 · 转场③（接模特段） <span class="tc">01:05.4–01:05.9</span></h2><div class="grid">
+<div class="shot">
+  <div class="hd"><b>S035</b> <span class="tc">01:05.4–01:05.4</span> <span class="dur">0.04s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_035_0065.42.jpg" target="_blank"><img src="frames/f_035_0065.42.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>图形帧</div>
+      <div><label>运镜⚑</label>—</div>
+      <div><label>构图</label>手绘线起</div>
+      <div><label>色调+场景</label>暖橙</div>
+      <div><label>角色</label>—</div>
+      <div><label>音效⚑</label>音效重音</div>
+      <div><label>叙事功能</label>转场③起</div>
+      <div><label>特效</label>动画</div>
+      <div class="wide"><label>字幕文案</label>（无字）</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S036</b> <span class="tc">01:05.4–01:05.5</span> <span class="dur">0.04s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_036_0065.46.jpg" target="_blank"><img src="frames/f_036_0065.46.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>图形帧</div>
+      <div><label>运镜⚑</label>—</div>
+      <div><label>构图</label>暗橙闪帧</div>
+      <div><label>色调+场景</label>暗橙</div>
+      <div><label>角色</label>—</div>
+      <div><label>音效⚑</label>音效</div>
+      <div><label>叙事功能</label>转场③</div>
+      <div><label>特效</label>闪帧</div>
+      <div class="wide"><label>字幕文案</label>（无字）</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S037</b> <span class="tc">01:05.5–01:05.5</span> <span class="dur">0.04s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_037_0065.50.jpg" target="_blank"><img src="frames/f_037_0065.50.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>图形帧</div>
+      <div><label>运镜⚑</label>—</div>
+      <div><label>构图</label>暗场闪帧</div>
+      <div><label>色调+场景</label>暗</div>
+      <div><label>角色</label>—</div>
+      <div><label>音效⚑</label>音效</div>
+      <div><label>叙事功能</label>转场③</div>
+      <div><label>特效</label>闪帧</div>
+      <div class="wide"><label>字幕文案</label>（无字）</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S038</b> <span class="tc">01:05.5–01:05.6</span> <span class="dur">0.12s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_038_0065.62.jpg" target="_blank"><img src="frames/f_038_0065.62.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>图形帧</div>
+      <div><label>运镜⚑</label>—</div>
+      <div><label>构图</label>红底白线</div>
+      <div><label>色调+场景</label>红</div>
+      <div><label>角色</label>—</div>
+      <div><label>音效⚑</label>音效</div>
+      <div><label>叙事功能</label>转场③</div>
+      <div><label>特效</label>白线手绘动画</div>
+      <div class="wide"><label>字幕文案</label>（无字）</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S039</b> <span class="tc">01:05.6–01:05.8</span> <span class="dur">0.2s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_039_0065.74.jpg" target="_blank"><img src="frames/f_039_0065.74.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>图形帧</div>
+      <div><label>运镜⚑</label>—</div>
+      <div><label>构图</label>红底白线（更近）</div>
+      <div><label>色调+场景</label>红</div>
+      <div><label>角色</label>—</div>
+      <div><label>音效⚑</label>音效</div>
+      <div><label>叙事功能</label>转场③</div>
+      <div><label>特效</label>同上</div>
+      <div class="wide"><label>字幕文案</label>（无字）</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S040</b> <span class="tc">01:05.8–01:05.9</span> <span class="dur">0.04s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_040_0065.86.jpg" target="_blank"><img src="frames/f_040_0065.86.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>特写（低机位）</div>
+      <div><label>运镜⚑</label>跟拍（推定）</div>
+      <div><label>构图</label>行走腿部·条纹袜+凉鞋</div>
+      <div><label>色调+场景</label>暖石色</div>
+      <div><label>角色</label>模特（足部）</div>
+      <div><label>音效⚑</label>音乐</div>
+      <div><label>叙事功能</label>转场③→模特段桥接</div>
+      <div><label>特效</label>—</div>
+      <div class="wide"><label>字幕文案</label>（无字）</div>
+      
+    </div>
+  </div>
+</div>
+</div>
+<h2>7. D · 模特指导 + 互动 <span class="tc">01:05.9–01:43.0</span></h2><div class="grid">
+<div class="shot">
+  <div class="hd"><b>S041</b> <span class="tc">01:05.9–01:08.0</span> <span class="dur">2.08s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_041_0066.23.jpg" target="_blank"><img src="frames/f_041_0066.23.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>全景（低机位）</div>
+      <div><label>运镜⚑</label>跟拍→固定（推定）</div>
+      <div><label>构图</label>石阶行走·背影</div>
+      <div><label>色调+场景</label>暖石色</div>
+      <div><label>角色</label>模特（局部·行走）</div>
+      <div><label>音效⚑</label>音乐</div>
+      <div><label>叙事功能</label>模特段开场</div>
+      <div><label>特效</label>—</div>
+      <div class="wide"><label>字幕文案</label>「接下来」</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S042</b> <span class="tc">01:08.0–01:10.4</span> <span class="dur">2.48s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_042_0068.31.jpg" target="_blank"><img src="frames/f_042_0068.31.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>中景</div>
+      <div><label>运镜⚑</label>（推定）</div>
+      <div><label>构图</label>骑楼柱间·模特站立·花纹夹克</div>
+      <div><label>色调+场景</label>暖灰</div>
+      <div><label>角色</label>模特（全身）</div>
+      <div><label>音效⚑</label>音乐</div>
+      <div><label>叙事功能</label>表演指导①「不开心」</div>
+      <div><label>特效</label>—</div>
+      <div class="wide"><label>字幕文案</label>「他一定要保持不开心的样子」</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S043</b> <span class="tc">01:10.4–01:11.5</span> <span class="dur">1.08s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_043_0070.79.jpg" target="_blank"><img src="frames/f_043_0070.79.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>全景</div>
+      <div><label>运镜⚑</label>（推定）</div>
+      <div><label>构图</label>骑楼纵深·模特立姿</div>
+      <div><label>色调+场景</label>暖灰</div>
+      <div><label>角色</label>模特</div>
+      <div><label>音效⚑</label>音乐</div>
+      <div><label>叙事功能</label>指导②</div>
+      <div><label>特效</label>—</div>
+      <div class="wide"><label>字幕文案</label>「不能笑」</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S044</b> <span class="tc">01:11.5–01:12.7</span> <span class="dur">1.16s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_044_0071.87.jpg" target="_blank"><img src="frames/f_044_0071.87.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>特写</div>
+      <div><label>运镜⚑</label>（推定）</div>
+      <div><label>构图</label>面部·冷调</div>
+      <div><label>色调+场景</label>冷灰</div>
+      <div><label>角色</label>模特（面部）</div>
+      <div><label>音效⚑</label>音乐</div>
+      <div><label>叙事功能</label>指导③</div>
+      <div><label>特效</label>—</div>
+      <div class="wide"><label>字幕文案</label>「不能惊讶」</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S045</b> <span class="tc">01:12.7–01:16.0</span> <span class="dur">3.28s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_045_0073.03.jpg" target="_blank"><img src="frames/f_045_0073.03.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>大特写</div>
+      <div><label>运镜⚑</label>（推定）</div>
+      <div><label>构图</label>面部·泪痕线·冷调</div>
+      <div><label>色调+场景</label>冷灰</div>
+      <div><label>角色</label>模特</div>
+      <div><label>音效⚑</label>音乐</div>
+      <div><label>叙事功能</label>指导④</div>
+      <div><label>特效</label>—</div>
+      <div class="wide"><label>字幕文案</label>「更不能表现出」</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S046</b> <span class="tc">01:16.0–01:19.8</span> <span class="dur">3.8s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_046_0076.31.jpg" target="_blank"><img src="frames/f_046_0076.31.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>中景（低机位仰拍）</div>
+      <div><label>运镜⚑</label>（推定）</div>
+      <div><label>构图</label>倚栏望天·暖边光</div>
+      <div><label>色调+场景</label>暖金×冷灰</div>
+      <div><label>角色</label>模特</div>
+      <div><label>音效⚑</label>音乐</div>
+      <div><label>叙事功能</label>指导⑤「所谓贵族气质」</div>
+      <div><label>特效</label>—</div>
+      <div class="wide"><label>字幕文案</label>「所谓贵族气质」</div>
+      <div class="note">⚑精校</div>
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S047</b> <span class="tc">01:19.8–01:22.5</span> <span class="dur">2.72s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_047_0080.11.jpg" target="_blank"><img src="frames/f_047_0080.11.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>远景</div>
+      <div><label>运镜⚑</label>（推定）</div>
+      <div><label>构图</label>石桥×骑楼×中式屋顶·凳渺小</div>
+      <div><label>色调+场景</label>灰调日光</div>
+      <div><label>角色</label>路人远景</div>
+      <div><label>音效⚑</label>音乐</div>
+      <div><label>叙事功能</label>场景展示</div>
+      <div><label>特效</label>—</div>
+      <div class="wide"><label>字幕文案</label>（无字）</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S048</b> <span class="tc">01:22.5–01:25.2</span> <span class="dur">2.68s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_048_0082.83.jpg" target="_blank"><img src="frames/f_048_0082.83.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>全景</div>
+      <div><label>运镜⚑</label>（推定）</div>
+      <div><label>构图</label>街景纵深·模特背行</div>
+      <div><label>色调+场景</label>暖灰</div>
+      <div><label>角色</label>模特</div>
+      <div><label>音效⚑</label>音乐</div>
+      <div><label>叙事功能</label>段落衔接「然后」</div>
+      <div><label>特效</label>—</div>
+      <div class="wide"><label>字幕文案</label>「然后」</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S049</b> <span class="tc">01:25.2–01:26.4</span> <span class="dur">1.24s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_049_0085.51.jpg" target="_blank"><img src="frames/f_049_0085.51.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>中景</div>
+      <div><label>运镜⚑</label>（推定）</div>
+      <div><label>构图</label>蹲姿·与凳对视</div>
+      <div><label>色调+场景</label>暖灰</div>
+      <div><label>角色</label>模特</div>
+      <div><label>音效⚑</label>音乐</div>
+      <div><label>叙事功能</label>互动①「凝视」</div>
+      <div><label>特效</label>—</div>
+      <div class="wide"><label>字幕文案</label>「凝视它」</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S050</b> <span class="tc">01:26.4–01:27.6</span> <span class="dur">1.16s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_050_0086.75.jpg" target="_blank"><img src="frames/f_050_0086.75.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>特写</div>
+      <div><label>运镜⚑</label>（推定）</div>
+      <div><label>构图</label>手指触凳面</div>
+      <div><label>色调+场景</label>暖红</div>
+      <div><label>角色</label>模特（手）</div>
+      <div><label>音效⚑</label>音乐</div>
+      <div><label>叙事功能</label>互动②「研究」</div>
+      <div><label>特效</label>—</div>
+      <div class="wide"><label>字幕文案</label>「研究它」</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S051</b> <span class="tc">01:27.6–01:31.5</span> <span class="dur">3.96s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_051_0087.91.jpg" target="_blank"><img src="frames/f_051_0087.91.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>中景（低机位）</div>
+      <div><label>运镜⚑</label>（推定）</div>
+      <div><label>构图</label>凳前景大·人物后景</div>
+      <div><label>色调+场景</label>暖调</div>
+      <div><label>角色</label>模特</div>
+      <div><label>音效⚑</label>音乐</div>
+      <div><label>叙事功能</label>互动③拟人化</div>
+      <div><label>特效</label>—</div>
+      <div class="wide"><label>字幕文案</label>「仿佛眼前不是一张凳子」</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S052</b> <span class="tc">01:31.5–01:35.8</span> <span class="dur">4.24s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_052_0091.87.jpg" target="_blank"><img src="frames/f_052_0091.87.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>中景</div>
+      <div><label>运镜⚑</label>（推定）</div>
+      <div><label>构图</label>手拎凳·如手袋</div>
+      <div><label>色调+场景</label>暖灰</div>
+      <div><label>角色</label>模特</div>
+      <div><label>音效⚑</label>音乐</div>
+      <div><label>叙事功能</label>道具奢侈品化①</div>
+      <div><label>特效</label>—</div>
+      <div class="wide"><label>字幕文案</label>「在这种大片里」</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S053</b> <span class="tc">01:35.8–01:38.1</span> <span class="dur">2.32s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_053_0096.11.jpg" target="_blank"><img src="frames/f_053_0096.11.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>特写</div>
+      <div><label>运镜⚑</label>（推定）</div>
+      <div><label>构图</label>凳孔框脸·对视</div>
+      <div><label>色调+场景</label>红×冷灰</div>
+      <div><label>角色</label>模特（眼部）</div>
+      <div><label>音效⚑</label>音乐</div>
+      <div><label>叙事功能</label>道具奢侈品化②</div>
+      <div><label>特效</label>框景</div>
+      <div class="wide"><label>字幕文案</label>「它就自带高端属性」</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S054</b> <span class="tc">01:38.1–01:43.0</span> <span class="dur">4.92s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_054_0098.43.jpg" target="_blank"><img src="frames/f_054_0098.43.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>中景</div>
+      <div><label>运镜⚑</label>（推定）</div>
+      <div><label>构图</label>窄巷石墙·凳孤置·斑驳光</div>
+      <div><label>色调+场景</label>冷灰×红点缀</div>
+      <div><label>角色</label>—</div>
+      <div><label>音效⚑</label>音乐</div>
+      <div><label>叙事功能</label>悬念句</div>
+      <div><label>特效</label>—</div>
+      <div class="wide"><label>字幕文案</label>「等观众快忘了这是一张凳子」</div>
+      <div class="note">⚑精校</div>
+    </div>
+  </div>
+</div>
+</div>
+<h2>8. T4 · 转场④ <span class="tc">01:43.0–01:43.5</span></h2><div class="grid">
+<div class="shot">
+  <div class="hd"><b>S055</b> <span class="tc">01:43.0–01:43.0</span> <span class="dur">0.04s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_055_0103.02.jpg" target="_blank"><img src="frames/f_055_0103.02.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>图形帧</div>
+      <div><label>运镜⚑</label>—</div>
+      <div><label>构图</label>手绘线起</div>
+      <div><label>色调+场景</label>暖橙</div>
+      <div><label>角色</label>—</div>
+      <div><label>音效⚑</label>音效重音</div>
+      <div><label>叙事功能</label>转场④起</div>
+      <div><label>特效</label>动画</div>
+      <div class="wide"><label>字幕文案</label>（无字）</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S056</b> <span class="tc">01:43.0–01:43.1</span> <span class="dur">0.04s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_056_0103.06.jpg" target="_blank"><img src="frames/f_056_0103.06.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>图形帧</div>
+      <div><label>运镜⚑</label>—</div>
+      <div><label>构图</label>暗橙闪帧</div>
+      <div><label>色调+场景</label>暗橙</div>
+      <div><label>角色</label>—</div>
+      <div><label>音效⚑</label>音效</div>
+      <div><label>叙事功能</label>转场④</div>
+      <div><label>特效</label>闪帧</div>
+      <div class="wide"><label>字幕文案</label>（无字）</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S057</b> <span class="tc">01:43.1–01:43.1</span> <span class="dur">0.04s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_057_0103.10.jpg" target="_blank"><img src="frames/f_057_0103.10.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>图形帧</div>
+      <div><label>运镜⚑</label>—</div>
+      <div><label>构图</label>暗场闪帧</div>
+      <div><label>色调+场景</label>暗</div>
+      <div><label>角色</label>—</div>
+      <div><label>音效⚑</label>音效</div>
+      <div><label>叙事功能</label>转场④</div>
+      <div><label>特效</label>闪帧</div>
+      <div class="wide"><label>字幕文案</label>（无字）</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S058</b> <span class="tc">01:43.1–01:43.3</span> <span class="dur">0.16s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_058_0103.22.jpg" target="_blank"><img src="frames/f_058_0103.22.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>图形帧</div>
+      <div><label>运镜⚑</label>—</div>
+      <div><label>构图</label>暗红闪帧</div>
+      <div><label>色调+场景</label>暗红</div>
+      <div><label>角色</label>—</div>
+      <div><label>音效⚑</label>音效</div>
+      <div><label>叙事功能</label>转场④</div>
+      <div><label>特效</label>闪帧</div>
+      <div class="wide"><label>字幕文案</label>（无字）</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S059</b> <span class="tc">01:43.3–01:43.4</span> <span class="dur">0.16s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_059_0103.38.jpg" target="_blank"><img src="frames/f_059_0103.38.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>图形帧</div>
+      <div><label>运镜⚑</label>—</div>
+      <div><label>构图</label>红底白线</div>
+      <div><label>色调+场景</label>红</div>
+      <div><label>角色</label>—</div>
+      <div><label>音效⚑</label>音效</div>
+      <div><label>叙事功能</label>转场④</div>
+      <div><label>特效</label>白线手绘动画</div>
+      <div class="wide"><label>字幕文案</label>（无字）</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S060</b> <span class="tc">01:43.4–01:43.5</span> <span class="dur">0.08s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_060_0103.48.jpg" target="_blank"><img src="frames/f_060_0103.48.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>图形帧</div>
+      <div><label>运镜⚑</label>—</div>
+      <div><label>构图</label>米黄闪帧</div>
+      <div><label>色调+场景</label>米黄</div>
+      <div><label>角色</label>—</div>
+      <div><label>音效⚑</label>音效</div>
+      <div><label>叙事功能</label>转场④末</div>
+      <div><label>特效</label>闪帧</div>
+      <div class="wide"><label>字幕文案</label>（无字）</div>
+      
+    </div>
+  </div>
+</div>
+</div>
+<h2>9. E · 坐姿金句（靠背双关） <span class="tc">01:43.5–01:57.6</span></h2><div class="grid">
+<div class="shot">
+  <div class="hd"><b>S061</b> <span class="tc">01:43.5–01:51.4</span> <span class="dur">7.84s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_061_0103.87.jpg" target="_blank"><img src="frames/f_061_0103.87.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>全景</div>
+      <div><label>运镜⚑</label>固定/缓推（推定）</div>
+      <div><label>构图</label>骑楼暖光·模特坐凳·光束</div>
+      <div><label>色调+场景</label>暖金</div>
+      <div><label>角色</label>模特（坐姿）</div>
+      <div><label>音效⚑</label>音乐</div>
+      <div><label>叙事功能</label>坐姿段开场+金句铺垫</div>
+      <div><label>特效</label>—</div>
+      <div class="wide"><label>字幕文案</label>「接着」→「高端产品最大的忌讳」</div>
+      <div class="note">⚑两行字幕·后行全片校验</div>
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S062</b> <span class="tc">01:51.4–01:53.7</span> <span class="dur">2.32s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_062_0111.71.jpg" target="_blank"><img src="frames/f_062_0111.71.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>特写</div>
+      <div><label>运镜⚑</label>（推定）</div>
+      <div><label>构图</label>花纹面料·图案特写</div>
+      <div><label>色调+场景</label>暖灰</div>
+      <div><label>角色</label>模特（衣料）</div>
+      <div><label>音效⚑</label>音乐</div>
+      <div><label>叙事功能</label>金句铺垫「没有靠背」</div>
+      <div><label>特效</label>—</div>
+      <div class="wide"><label>字幕文案</label>「没有靠背」</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S063</b> <span class="tc">01:53.7–01:57.6</span> <span class="dur">3.96s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_063_0114.03.jpg" target="_blank"><img src="frames/f_063_0114.03.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>中近景</div>
+      <div><label>运镜⚑</label>（推定）</div>
+      <div><label>构图</label>背影坐姿·凳无靠背</div>
+      <div><label>色调+场景</label>暖灰</div>
+      <div><label>角色</label>模特（坐姿背影）</div>
+      <div><label>音效⚑</label>音乐</div>
+      <div><label>叙事功能</label>核心金句（双关）</div>
+      <div><label>特效</label>—</div>
+      <div class="wide"><label>字幕文案</label>「真正从容的人 从不急着依靠」</div>
+      <div class="note">⚑精校</div>
+    </div>
+  </div>
+</div>
+</div>
+<h2>10. T5 · 转场⑤ <span class="tc">01:57.6–01:58.1</span></h2><div class="grid">
+<div class="shot">
+  <div class="hd"><b>S064</b> <span class="tc">01:57.6–01:57.7</span> <span class="dur">0.04s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_064_0117.66.jpg" target="_blank"><img src="frames/f_064_0117.66.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>图形帧</div>
+      <div><label>运镜⚑</label>—</div>
+      <div><label>构图</label>手绘线起</div>
+      <div><label>色调+场景</label>暖橙</div>
+      <div><label>角色</label>—</div>
+      <div><label>音效⚑</label>音效重音</div>
+      <div><label>叙事功能</label>转场⑤起</div>
+      <div><label>特效</label>动画</div>
+      <div class="wide"><label>字幕文案</label>（无字）</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S065</b> <span class="tc">01:57.7–01:57.7</span> <span class="dur">0.04s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_065_0117.70.jpg" target="_blank"><img src="frames/f_065_0117.70.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>图形帧</div>
+      <div><label>运镜⚑</label>—</div>
+      <div><label>构图</label>暗橙闪帧</div>
+      <div><label>色调+场景</label>暗橙</div>
+      <div><label>角色</label>—</div>
+      <div><label>音效⚑</label>音效</div>
+      <div><label>叙事功能</label>转场⑤</div>
+      <div><label>特效</label>闪帧</div>
+      <div class="wide"><label>字幕文案</label>（无字）</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S066</b> <span class="tc">01:57.7–01:57.9</span> <span class="dur">0.16s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_066_0117.82.jpg" target="_blank"><img src="frames/f_066_0117.82.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>图形帧</div>
+      <div><label>运镜⚑</label>—</div>
+      <div><label>构图</label>暗场闪帧</div>
+      <div><label>色调+场景</label>暗</div>
+      <div><label>角色</label>—</div>
+      <div><label>音效⚑</label>音效</div>
+      <div><label>叙事功能</label>转场⑤</div>
+      <div><label>特效</label>闪帧</div>
+      <div class="wide"><label>字幕文案</label>（无字）</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S067</b> <span class="tc">01:57.9–01:58.1</span> <span class="dur">0.2s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_067_0117.98.jpg" target="_blank"><img src="frames/f_067_0117.98.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>图形帧</div>
+      <div><label>运镜⚑</label>—</div>
+      <div><label>构图</label>红底白线</div>
+      <div><label>色调+场景</label>红</div>
+      <div><label>角色</label>—</div>
+      <div><label>音效⚑</label>音效</div>
+      <div><label>叙事功能</label>转场⑤</div>
+      <div><label>特效</label>白线手绘动画</div>
+      <div class="wide"><label>字幕文案</label>（无字）</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S068</b> <span class="tc">01:58.1–01:58.1</span> <span class="dur">0.04s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_068_0118.10.jpg" target="_blank"><img src="frames/f_068_0118.10.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>图形帧</div>
+      <div><label>运镜⚑</label>—</div>
+      <div><label>构图</label>米黄闪帧</div>
+      <div><label>色调+场景</label>米黄</div>
+      <div><label>角色</label>—</div>
+      <div><label>音效⚑</label>音效</div>
+      <div><label>叙事功能</label>转场⑤末</div>
+      <div><label>特效</label>闪帧</div>
+      <div class="wide"><label>字幕文案</label>（无字）</div>
+      
+    </div>
+  </div>
+</div>
+</div>
+<h2>11. F · 收尾终章 <span class="tc">01:58.1–02:28.7</span></h2><div class="grid">
+<div class="shot">
+  <div class="hd"><b>S069</b> <span class="tc">01:58.1–02:00.0</span> <span class="dur">1.88s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_069_0118.47.jpg" target="_blank"><img src="frames/f_069_0118.47.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>特写（低机位）</div>
+      <div><label>运镜⚑</label>跟拍（推定）</div>
+      <div><label>构图</label>行走脚步·条纹袜+皮凉鞋</div>
+      <div><label>色调+场景</label>暖石色</div>
+      <div><label>角色</label>模特（足部）</div>
+      <div><label>音效⚑</label>音乐</div>
+      <div><label>叙事功能</label>收尾段开场「到这里」</div>
+      <div><label>特效</label>—</div>
+      <div class="wide"><label>字幕文案</label>「到这里」</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S070</b> <span class="tc">02:00.0–02:02.7</span> <span class="dur">2.68s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_070_0120.35.jpg" target="_blank"><img src="frames/f_070_0120.35.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>中景</div>
+      <div><label>运镜⚑</label>（推定）</div>
+      <div><label>构图</label>手按凳面行走</div>
+      <div><label>色调+场景</label>暖灰</div>
+      <div><label>角色</label>模特（手）</div>
+      <div><label>音效⚑</label>音乐</div>
+      <div><label>叙事功能</label>总结句</div>
+      <div><label>特效</label>—</div>
+      <div class="wide"><label>字幕文案</label>「你已经基本掌握奢侈品广告的精髓了」</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S071</b> <span class="tc">02:02.7–02:04.4</span> <span class="dur">1.76s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_071_0123.03.jpg" target="_blank"><img src="frames/f_071_0123.03.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>近景</div>
+      <div><label>运镜⚑</label>（推定）</div>
+      <div><label>构图</label>拎凳近脸·对视</div>
+      <div><label>色调+场景</label>暖灰</div>
+      <div><label>角色</label>模特</div>
+      <div><label>音效⚑</label>音乐</div>
+      <div><label>叙事功能</label>终章「最后」</div>
+      <div><label>特效</label>—</div>
+      <div class="wide"><label>字幕文案</label>「最后」</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S072</b> <span class="tc">02:04.4–02:06.8</span> <span class="dur">2.36s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_072_0124.79.jpg" target="_blank"><img src="frames/f_072_0124.79.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>中景（背后）</div>
+      <div><label>运镜⚑</label>（推定）</div>
+      <div><label>构图</label>肩扛凳背面</div>
+      <div><label>色调+场景</label>暖灰</div>
+      <div><label>角色</label>模特（背影）</div>
+      <div><label>音效⚑</label>音乐</div>
+      <div><label>叙事功能</label>升华指令</div>
+      <div><label>特效</label>—</div>
+      <div class="wide"><label>字幕文案</label>「一定要把凳子上升到」</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S073</b> <span class="tc">02:06.8–02:08.9</span> <span class="dur">2.08s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_073_0127.15.jpg" target="_blank"><img src="frames/f_073_0127.15.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>近景</div>
+      <div><label>运镜⚑</label>（推定）</div>
+      <div><label>构图</label>持凳侧脸</div>
+      <div><label>色调+场景</label>暖灰</div>
+      <div><label>角色</label>模特</div>
+      <div><label>音效⚑</label>音乐</div>
+      <div><label>叙事功能</label>升华（延续）</div>
+      <div><label>特效</label>—</div>
+      <div class="wide"><label>字幕文案</label>（无字·延续上句）</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S074</b> <span class="tc">02:08.9–02:10.0</span> <span class="dur">1.08s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_074_0129.23.jpg" target="_blank"><img src="frames/f_074_0129.23.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>近景</div>
+      <div><label>运镜⚑</label>（推定）</div>
+      <div><label>构图</label>凝视凳</div>
+      <div><label>色调+场景</label>暖灰</div>
+      <div><label>角色</label>模特</div>
+      <div><label>音效⚑</label>音乐</div>
+      <div><label>叙事功能</label>三连拍①</div>
+      <div><label>特效</label>—</div>
+      <div class="wide"><label>字幕文案</label>「选择」</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S075</b> <span class="tc">02:10.0–02:11.0</span> <span class="dur">1.04s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_075_0130.31.jpg" target="_blank"><img src="frames/f_075_0130.31.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>特写</div>
+      <div><label>运镜⚑</label>（推定）</div>
+      <div><label>构图</label>手抚凳顶</div>
+      <div><label>色调+场景</label>暖红</div>
+      <div><label>角色</label>模特（手）</div>
+      <div><label>音效⚑</label>音乐</div>
+      <div><label>叙事功能</label>三连拍②</div>
+      <div><label>特效</label>—</div>
+      <div class="wide"><label>字幕文案</label>「位置」</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S076</b> <span class="tc">02:11.0–02:12.4</span> <span class="dur">1.44s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_076_0131.35.jpg" target="_blank"><img src="frames/f_076_0131.35.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>特写</div>
+      <div><label>运镜⚑</label>（推定）</div>
+      <div><label>构图</label>凳孔框脸②</div>
+      <div><label>色调+场景</label>红×暖灰</div>
+      <div><label>角色</label>模特</div>
+      <div><label>音效⚑</label>音乐</div>
+      <div><label>叙事功能</label>三连拍③</div>
+      <div><label>特效</label>框景</div>
+      <div class="wide"><label>字幕文案</label>「自我」</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S077</b> <span class="tc">02:12.4–02:15.3</span> <span class="dur">2.88s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_077_0132.79.jpg" target="_blank"><img src="frames/f_077_0132.79.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>中景</div>
+      <div><label>运镜⚑</label>（推定）</div>
+      <div><label>构图</label>正面持凳</div>
+      <div><label>色调+场景</label>暖灰</div>
+      <div><label>角色</label>模特</div>
+      <div><label>音效⚑</label>音乐</div>
+      <div><label>叙事功能</label>转接「总之」</div>
+      <div><label>特效</label>—</div>
+      <div class="wide"><label>字幕文案</label>「总之」</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S078</b> <span class="tc">02:15.3–02:17.5</span> <span class="dur">2.16s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_078_0135.67.jpg" target="_blank"><img src="frames/f_078_0135.67.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>中近景</div>
+      <div><label>运镜⚑</label>（推定）</div>
+      <div><label>构图</label>倚柱望左·手搭凳</div>
+      <div><label>色调+场景</label>暖灰</div>
+      <div><label>角色</label>模特</div>
+      <div><label>音效⚑</label>音乐</div>
+      <div><label>叙事功能</label>沉思句</div>
+      <div><label>特效</label>—</div>
+      <div class="wide"><label>字幕文案</label>「站起来也想不明白的问题」</div>
+      <div class="note">⚑初读另一版本，需核对</div>
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S079</b> <span class="tc">02:17.5–02:21.4</span> <span class="dur">3.92s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_079_0137.83.jpg" target="_blank"><img src="frames/f_079_0137.83.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>特写</div>
+      <div><label>运镜⚑</label>（推定）</div>
+      <div><label>构图</label>侧脸·望远方</div>
+      <div><label>色调+场景</label>暖灰×冷</div>
+      <div><label>角色</label>模特</div>
+      <div><label>音效⚑</label>音乐</div>
+      <div><label>叙事功能</label>主题句</div>
+      <div><label>特效</label>—</div>
+      <div class="wide"><label>字幕文案</label>「世界一直在改变 我们的位置」</div>
+      
+    </div>
+  </div>
+</div>
+<div class="shot">
+  <div class="hd"><b>S080</b> <span class="tc">02:21.4–02:28.7</span> <span class="dur">7.25s</span></div>
+  <div class="body">
+    <div class="thumb"><a href="frames/f_080_0141.75.jpg" target="_blank"><img src="frames/f_080_0141.75.jpg" loading="lazy"></a></div>
+    <div class="meta">
+      <div><label>景别</label>全景</div>
+      <div><label>运镜⚑</label>缓推/固定（推定）</div>
+      <div><label>构图</label>骑楼纵深·凳孤置·空镜收尾</div>
+      <div><label>色调+场景</label>暖灰转冷</div>
+      <div><label>角色</label>—</div>
+      <div><label>音效⚑</label>音乐收束</div>
+      <div><label>叙事功能</label>终卡：最终金句+品牌标</div>
+      <div><label>特效</label>字幕板式+水印</div>
+      <div class="wide"><label>字幕文案</label>「真正的选择是决定自己坐在哪里」→「GDSD/广东省凳」水印</div>
+      
+    </div>
+  </div>
+</div>
+</div>
+</body></html>

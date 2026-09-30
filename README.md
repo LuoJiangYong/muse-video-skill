@@ -55,7 +55,7 @@ Agent 会自动匹配案例技法 → 注入角色 prompt → 走管线 → 导�
 
 ## 项目实测
 
-> 以下 6 张实拍截图来自一次完整的 8+1 阶段管线实测——90 秒棚拍广告《把广东省拖拍成奢侈品大片》：从参考视频拆解（Phase 1）到模型编译（Phase 7.5），全部由本 Skill 产出。点击 01–04 可在浏览器中打开完整页面。
+> 以下 6 张实拍截图来自一次完整的 8+1 阶段管线实测——90 秒棚拍广告《把广东省拖拍成奢侈品大片》：从参考视频拆解（Phase 1）到模型编译（Phase 7.5），全部由本 Skill 产出。点击 01–04、06 可在浏览器中打开完整页面。
 
 [![分镜总览](docs/images/gallery-01-storyboard-overview.jpg)](https://luojiangyong.com/muse-video-skill/docs/preview/guangdong-slipper/exports/storyboard.html)
 
@@ -77,9 +77,9 @@ Agent 会自动匹配案例技法 → 注入角色 prompt → 走管线 → 导�
 
 **05 · 成片封面** — Seedream 生成的竖版 / 横版双封面
 
-![参考视频拆解](docs/images/gallery-06-reference-deconstruction.jpg)
+[![参考视频拆解](docs/images/gallery-06-reference-deconstruction.jpg)](https://luojiangyong.com/muse-video-skill/docs/preview/guangdong-slipper/reference/shotlist_v1.html)
 
-**06 · 参考视频拆解（Phase 1）** — 参考片拉片帧阵列；技法摘要注入后续角色
+**06 · 参考视频拆解（Phase 1）** — 拉片表：80 帧逐镜拆解（镜头 / 光影 / 运镜 / 节奏 / 声音 / 字幕 / 技法）；技法摘要注入后续角色
 
 ---
 
@@ -202,4 +202,4 @@ python -m py_compile scripts/*.py              # 全脚本可编译
 
 ## 版本
 
-[v0.36.4](metadata/CHANGELOG.md) — 项目实测画廊（6 张实拍截图 + GitHub Pages 在线预览）；38 案例技法库 × 六角色 × 8+1 阶段管线，参考图资产化 / 字幕层 / 音频路线 / 模型编译（Seedance 2.0）。
+[v0.36.5](metadata/CHANGELOG.md) — 项目实测画廊（6 张实拍截图 + Pages 在线预览：分镜 / 编译预览 / 文学剧本 / 拉片表）；38 案例技法库 × 六角色 × 8+1 阶段管线，参考图资产化 / 字幕层 / 音频路线 / 模型编译（Seedance 2.0）。
