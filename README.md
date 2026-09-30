@@ -53,6 +53,24 @@ Agent 会自动匹配案例技法 → 注入角色 prompt → 走管线 → 导�
 
 ---
 
+## 实测成片
+
+> 以下为实拍成片的 GIF 预览（静音循环）；点击观看 MP4 原片（浏览器直接播放，S2 / S3 含立体声）。
+
+[![S1 · 镜头3 — 棚拍微距](docs/images/renders-01-s1-p3.gif)](https://luojiangyong.com/muse-video-skill/docs/preview/guangdong-slipper/renders/s1/shot_p3.mp4)
+
+**S1 · 镜头3 — 棚拍微距** — 红色人字拖的琉璃质感与琥珀棚拍光
+
+[![S2 · 镜头5 — 设计呈现](docs/images/renders-02-s2-p5.gif)](https://luojiangyong.com/muse-video-skill/docs/preview/guangdong-slipper/renders/s2/shot_p5.mp4)
+
+**S2 · 镜头5 — 设计呈现** — 技术图纸上的红 / 白 / 绿三色设计稿
+
+[![S3 · 镜头10 — 海边微距](docs/images/renders-03-s3-p10.gif)](https://luojiangyong.com/muse-video-skill/docs/preview/guangdong-slipper/renders/s3/shot_p10.mp4)
+
+**S3 · 镜头10 — 海边微距** — 金色时刻逆光与砂砾质感
+
+---
+
 ## 项目实测
 
 > 以下 6 张实拍截图来自一次完整的 8+1 阶段管线实测——90 秒棚拍广告《把广东省拖拍成奢侈品大片》：从参考视频拆解（Phase 1）到模型编译（Phase 7.5），全部由本 Skill 产出。点击 01–04、06 可在浏览器中打开完整页面。
@@ -80,24 +98,6 @@ Agent 会自动匹配案例技法 → 注入角色 prompt → 走管线 → 导�
 [![参考视频拆解](docs/images/gallery-06-reference-deconstruction.jpg)](https://luojiangyong.com/muse-video-skill/docs/preview/guangdong-slipper/reference/shotlist_v1.html)
 
 **06 · 参考视频拆解（Phase 1）** — 拉片表：80 帧逐镜拆解（镜头 / 光影 / 运镜 / 节奏 / 声音 / 字幕 / 技法）；技法摘要注入后续角色
-
----
-
-## 实测成片
-
-> 以下为实拍成片的 GIF 预览（静音循环）；点击观看 MP4 原片（浏览器直接播放，S2 / S3 含立体声）。
-
-[![S1 · 镜头3 — 棚拍微距](docs/images/renders-01-s1-p3.gif)](https://luojiangyong.com/muse-video-skill/docs/preview/guangdong-slipper/renders/s1/shot_p3.mp4)
-
-**S1 · 镜头3 — 棚拍微距** — 红色人字拖的琉璃质感与琥珀棚拍光
-
-[![S2 · 镜头5 — 设计呈现](docs/images/renders-02-s2-p5.gif)](https://luojiangyong.com/muse-video-skill/docs/preview/guangdong-slipper/renders/s2/shot_p5.mp4)
-
-**S2 · 镜头5 — 设计呈现** — 技术图纸上的红 / 白 / 绿三色设计稿
-
-[![S3 · 镜头10 — 海边微距](docs/images/renders-03-s3-p10.gif)](https://luojiangyong.com/muse-video-skill/docs/preview/guangdong-slipper/renders/s3/shot_p10.mp4)
-
-**S3 · 镜头10 — 海边微距** — 金色时刻逆光与砂砾质感
 
 ---
 
@@ -220,4 +220,4 @@ python -m py_compile scripts/*.py              # 全脚本可编译
 
 ## 版本
 
-[v0.36.6](metadata/CHANGELOG.md) — 项目实测画廊 + 实测成片（3 段渲染镜头 GIF 内联 / MP4 在线播放）；38 案例技法库 × 六角色 × 8+1 阶段管线，参考图资产化 / 字幕层 / 音频路线 / 模型编译（Seedance 2.0）。
+[v0.36.7](metadata/CHANGELOG.md) — 实测成片（3 段渲染镜头 GIF 内联 / MP4 在线播放）+ 项目实测画廊（截图与页面预览）；38 案例技法库 × 六角色 × 8+1 阶段管线，参考图资产化 / 字幕层 / 音频路线 / 模型编译（Seedance 2.0）。

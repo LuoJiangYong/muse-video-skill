@@ -53,6 +53,24 @@ Full examples in [`assets/examples/`](assets/examples/) — a sci-fi short and a
 
 ---
 
+## Rendered Shots
+
+> GIF previews of three rendered shots (silent loops); click to watch the MP4 originals in your browser (S2 / S3 with stereo audio).
+
+[![S1 · Shot 3 — studio macro](docs/images/renders-01-s1-p3.gif)](https://luojiangyong.com/muse-video-skill/docs/preview/guangdong-slipper/renders/s1/shot_p3.mp4)
+
+**S1 · Shot 3 — Studio macro** — glass-like translucency under amber studio light
+
+[![S2 · Shot 5 — design reveal](docs/images/renders-02-s2-p5.gif)](https://luojiangyong.com/muse-video-skill/docs/preview/guangdong-slipper/renders/s2/shot_p5.mp4)
+
+**S2 · Shot 5 — Design reveal** — red / white / green concept sketches on a technical drawing
+
+[![S3 · Shot 10 — seaside macro](docs/images/renders-03-s3-p10.gif)](https://luojiangyong.com/muse-video-skill/docs/preview/guangdong-slipper/renders/s3/shot_p10.mp4)
+
+**S3 · Shot 10 — Seaside macro** — golden-hour backlight on sand texture
+
+---
+
 ## Project Showcase
 
 > These 6 real screenshots come from one complete 8+1 phase test run — a 90-second studio ad, "Guangdong Slippers, Shot Like a Luxury Blockbuster": from reference-video deconstruction (Phase 1) to model compilation (Phase 7.5), all produced by this Skill. Click 01–04 and 06 to open the full pages in your browser.
@@ -80,24 +98,6 @@ Full examples in [`assets/examples/`](assets/examples/) — a sci-fi short and a
 [![Reference deconstruction](docs/images/gallery-06-reference-deconstruction.jpg)](https://luojiangyong.com/muse-video-skill/docs/preview/guangdong-slipper/reference/shotlist_v1.html)
 
 **06 · Reference deconstruction (Phase 1)** — breakdown sheet: 80 frames annotated shot by shot (camera / lighting / movement / pacing / sound / subtitles / technique); techniques distilled into role prompts
-
----
-
-## Rendered Shots
-
-> GIF previews of three rendered shots (silent loops); click to watch the MP4 originals in your browser (S2 / S3 with stereo audio).
-
-[![S1 · Shot 3 — studio macro](docs/images/renders-01-s1-p3.gif)](https://luojiangyong.com/muse-video-skill/docs/preview/guangdong-slipper/renders/s1/shot_p3.mp4)
-
-**S1 · Shot 3 — Studio macro** — glass-like translucency under amber studio light
-
-[![S2 · Shot 5 — design reveal](docs/images/renders-02-s2-p5.gif)](https://luojiangyong.com/muse-video-skill/docs/preview/guangdong-slipper/renders/s2/shot_p5.mp4)
-
-**S2 · Shot 5 — Design reveal** — red / white / green concept sketches on a technical drawing
-
-[![S3 · Shot 10 — seaside macro](docs/images/renders-03-s3-p10.gif)](https://luojiangyong.com/muse-video-skill/docs/preview/guangdong-slipper/renders/s3/shot_p10.mp4)
-
-**S3 · Shot 10 — Seaside macro** — golden-hour backlight on sand texture
 
 ---
 
@@ -220,4 +220,4 @@ Cases cite their works and creators; technique breakdowns are for study and rese
 
 ## Version
 
-[v0.36.6](metadata/CHANGELOG.md) — Project showcase + rendered shots (3 clips inline as GIF / MP4 online); 38-case technique library × six-role crew × 8+1 phase pipeline; reference-asset registry, subtitles, audio routing and model compilation (Seedance 2.0).
+[v0.36.7](metadata/CHANGELOG.md) — Rendered shots (3 clips inline as GIF / MP4 online) + project showcase (screenshots & page previews); 38-case technique library × six-role crew × 8+1 phase pipeline; reference-asset registry, subtitles, audio routing and model compilation (Seedance 2.0).
