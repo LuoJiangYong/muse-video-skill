@@ -26,6 +26,8 @@ output/
 !assets/examples/**/*.png
 !assets/examples/**/*.jpg
 !references/cases/assets/**/*.jpg
+!docs/**/*.png
+!docs/**/*.jpg
 
 # Environment
 .env

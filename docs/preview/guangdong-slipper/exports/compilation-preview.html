@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>把广东省拖拍成奢侈品大片 — 编译预览（Phase 7.5）</title>
+<style>
+  /* ── 编译预览（Phase 7.5 模型编译最终核对）── */
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+  :root {
+    --bg: #faf9f5;
+    --card-bg: #ffffff;
+    --text: #141413;
+    --text-secondary: #666;
+    --accent: #cc785c;
+    --border: #e0ddd5;
+    --shadow: 0 1px 3px rgba(0,0,0,0.08);
+    --shadow-open: 0 4px 12px rgba(0,0,0,0.10);
+    --radius: 10px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text);
+    background: var(--bg);
+    padding: 2rem;
+  }
+
+  /* ── Header ── */
+  .header {
+    max-width: 1200px;
+    margin: 0 auto 1.5rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 2px solid var(--accent);
+  }
+
+  .header h1 { font-size: 1.75rem; font-weight: 700; margin-bottom: 0.3rem; }
+
+  .header .subtitle { font-size: 0.9rem; color: var(--text-secondary); }
+
+  .summary { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.9rem; }
+
+  .chip {
+    display: inline-block;
+    padding: 0.22em 0.85em;
+    border-radius: 999px;
+    background: #f0ede6;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  .chip.model { background: var(--accent); color: #fff; }
+  .chip.q-GOOD { background: #e6f4ea; color: #1e7f46; }
+  .chip.q-DEGRADED { background: #fdf3d8; color: #8a6d18; }
+  .chip.q-INSUFFICIENT { background: #fde8e8; color: #a33333; }
+
+  .hint { margin-top: 0.7rem; font-size: 0.85rem; color: var(--text-secondary); }
+  .hint b { color: var(--text); }
+
+  /* ── Shot cards ── */
+  main { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem; }
+
+  details.shot {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+
+  details.shot[open] { box-shadow: var(--shadow-open); }
+
+  summary.shot-head {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 0.8rem 1rem;
+    background: #f5f3ef;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  summary.shot-head::-webkit-details-marker { display: none; }
+
+  .shot-id { font-weight: 700; font-size: 1.05rem; color: var(--accent); min-width: 3.2em; }
+  .shot-meta { font-size: 0.85rem; color: var(--text-secondary); }
+  .shot-q { margin-left: auto; font-size: 0.85rem; font-weight: 700; }
+  .shot-q.q-GOOD { color: #1e7f46; }
+  .shot-q.q-DEGRADED { color: #8a6d18; }
+  .shot-q.q-INSUFFICIENT { color: #a33333; }
+
+  .shot-body { padding: 1rem; display: flex; flex-direction: column; gap: 1rem; }
+
+  .block h3 {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-secondary);
+    margin-bottom: 0.4rem;
+  }
+
+  pre {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.82rem;
+    line-height: 1.55;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.75rem 0.9rem;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  .ref-row {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    flex-wrap: wrap;
+    padding: 0.4rem 0;
+    border-bottom: 1px dashed var(--border);
+    font-size: 0.85rem;
+  }
+
+  .ref-row:last-child { border-bottom: none; }
+
+  .ref-idx { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-weight: 700; color: var(--accent); }
+  .ref-meta { color: var(--text-secondary); font-size: 0.8rem; }
+  .ref-pend { color: #8a6d18; font-weight: 600; font-size: 0.8rem; }
+  .ref-miss { color: #a33333; font-weight: 600; font-size: 0.8rem; }
+  .ref-thumb { max-height: 72px; border-radius: 6px; border: 1px solid var(--border); }
+  .ref-empty { color: var(--text-secondary); font-size: 0.85rem; }
+
+  .warn-box {
+    background: #fdf3d8;
+    border: 1px solid #ecd9a0;
+    border-radius: 8px;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.85rem;
+  }
+
+  .warn-box ul { margin-left: 1.2em; }
+
+  .foot {
+    max-width: 1200px;
+    margin: 1.5rem auto 0;
+    text-align: center;
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+  }
+</style>
+</head>
+<body>
+
+  <header class="header">
+    <h1>把广东省拖拍成奢侈品大片 — 编译预览</h1>
+    <div class="subtitle">Phase 7.5 模型编译 · 最终核对 —— 您确认的内容将直接作为下游模型调用输入（方案 A 独立 HTML）</div>
+    <div class="summary">
+      <span class="chip model">🎯 doubao-seedance-2-0-260128</span>
+      <span class="chip">⏱ 91s / 19 镜</span>
+      <span class="chip">💰 按方舟实际计费（1080p 参考 196k tokens/4s；4K 为 4 倍）</span>
+      <span class="chip q-GOOD">🏷 GOOD</span>
+    </div>
+    <p class="hint">请核对：<b>编译后 prompt（六段式）</b> / <b>多模态引用映射（首帧 / 尾帧 / image_ref ↔ file_registry）</b> / <b>arkcli 命令</b> / <b>成本估算</b> / <b>字幕 spec</b>（如有）。质量标记非 GOOD 的镜头已自动展开。</p>
+  </header>
+
+  <main>
+
+    <details class="shot" >
+      <summary class="shot-head">
+        <span class="shot-id">S01</span>
+        <span class="shot-meta">scene 1 · 5s · 1080p</span>
+        <span class="shot-q q-GOOD">🏷 GOOD</span>
+      </summary>
+      <div class="shot-body">
+        <div class="block">
+          <h3>编译后 prompt（六段式）</h3>
+          <pre><Subject>Extreme close-up of the sole of a red plastic flip-flop, the ridged bottom structure filling the frame like a small landscape. The product must match the reference images.</Subject><Action>Light glides along the ridge lines as the camera creeps forward very slowly. No other movement.</Action><Scene>Macro studio set: seamless warm gradient backdrop from amber #B85C38 to deep sienna #5C2E1E. No complete product visible.</Scene><Camera>100mm macro lens, extreme close-up, very slow dolly in toward the subject, smooth forward movement.</Camera><Lighting>3200K warm tungsten softbox at 45 degrees with soft reflector fill, highlights flowing along the ridge lines, shallow depth of field.</Lighting><Style>Luxury commercial macro photography, warm amber tones, cinematic and photorealistic.</Style></pre>
+        </div>
+        <div class="block">
+          <h3>多模态引用映射（首帧 / 尾帧 / image_ref ↔ file_registry）</h3>
+          <div class="ref-row"><span class="ref-idx">首帧</span><b>first_frame_p1</b><span class="ref-meta">projects/guangdong-slipper/frames/storyboard_p1.png · weight=— · generated · file_id=PENDING</span> <span class="ref-pend">⚠️ 待上传（PENDING）</span><img class="ref-thumb" src="../frames/storyboard_p1.jpg" alt="first_frame_p1" onerror="this.style.display='none'"></div><div class="ref-row"><span class="ref-idx">image_ref_1</span><b>ref_slipper_appearance</b><span class="ref-meta">projects/guangdong-slipper/reference/ref_poster_wutiaoren.jpg · weight=0.8 · user · file_id=PENDING</span> <span class="ref-pend">⚠️ 待上传（PENDING）</span><img class="ref-thumb" src="../reference/ref_poster_wutiaoren.jpg" alt="ref_slipper_appearance" onerror="this.style.display='none'"></div><div class="ref-row"><span class="ref-idx">image_ref_2</span><b>mood_sc1</b><span class="ref-meta">projects/guangdong-slipper/frames/mood_sc1.png · weight=0.6 · generated · file_id=PENDING</span> <span class="ref-pend">⚠️ 待上传（PENDING）</span><img class="ref-thumb" src="../frames/mood_sc1.jpg" alt="mood_sc1" onerror="this.style.display='none'"></div>
+        </div>
+        
+        <div class="block">
+          <h3>字幕（烧录 spec）</h3>
+          <div class="shot-meta">💬 字幕：旁白：在广东，它比天气更常见。（zh · serif · bottom）</div>
+        </div>
+        
+        <div class="block">
+          <h3>arkcli 命令（仅文本，确认后由下游执行）</h3>
+          <pre>arkcli +gen --model doubao-seedance-2-0-260128 --duration 5 --resolution 1080p --ratio 16:9 --extra-body '{"input": [{"type": "input_image", "image_url": "file-PENDING", "role": "first_frame"}, {"type": "input_image", "image_url": "file-PENDING", "role": "reference_image", "reference_image_weight": 0.9}, {"type": "input_image", "image_url": "file-PENDING", "role": "reference_image", "reference_image_weight": 0.6}]}' --force --wait "<Subject>Extreme close-up of the sole of a red plastic flip-flop, the ridged bottom structure filling the frame like a small landscape. The product must match the reference images.</Subject><Action>Light glides along the ridge lines as the camera creeps forward very slowly. No other movement.</Action><Scene>Macro studio set: seamless warm gradient backdrop from amber #B85C38 to deep sienna #5C2E1E. No complete product visible.</Scene><Camera>100mm macro lens, extreme close-up, very slow dolly in toward the subject, smooth forward movement.</Camera><Lighting>3200K warm tungsten softbox at 45 degrees with soft reflector fill, highlights flowing along the ridge lines, shallow depth of field.</Lighting><Style>Luxury commercial macro photography, warm amber tones, cinematic and photorealistic.</Style>"</pre>
+        </div>
+        <div class="block">
+          <h3>成本估算</h3>
+          <div class="shot-meta">预估 tokens：245531 · 预估成本：按方舟实际计费（1080p 参考 196k tokens/4s；4K 为 4 倍）</div>
+        </div>
+        <div class="warn-box"><b>质量警告</b><ul><li>refs file_id=PENDING (upload via Files API before execution)</li></ul></div>
+      </div>
+    </details>
+
+    <details class="shot" >
+      <summary class="shot-head">
+        <span class="shot-id">S02</span>
+        <span class="shot-meta">scene 1 · 5s · 1080p</span>
+        <span class="shot-q q-GOOD">🏷 GOOD</span>
+      </summary>
+      <div class="shot-body">
+        <div class="block">
+          <h3>编译后 prompt（六段式）</h3>
+          <pre><Subject>Extreme macro close-up of the woven texture of the flip-flop Y-strap. Match the reference images.</Subject><Action>The focus travels gently from the strap weave to the translucent edge where light bleeds through.</Action><Scene>The same warm macro studio world, amber gradient tones.</Scene><Camera>100mm macro lens, static shot with a slow focus pull toward the edge.</Camera><Lighting>3200K warm tungsten soft light, gentle falloff, the material glowing at its edges.</Lighting><Style>Luxury macro, warm amber, cinematic and photorealistic.</Style></pre>
+        </div>
+        <div class="block">
+          <h3>多模态引用映射（首帧 / 尾帧 / image_ref ↔ file_registry）</h3>
+          <div class="ref-row"><span class="ref-idx">首帧</span><b>first_frame_p2</b><span class="ref-meta">projects/guangdong-slipper/frames/storyboard_p2.png · weight=— · generated · file_id=PENDING</span> <span class="ref-pend">⚠️ 待上传（PENDING）</span><img class="ref-thumb" src="../frames/storyboard_p2.jpg" alt="first_frame_p2" onerror="this.style.display='none'"></div><div class="ref-row"><span class="ref-idx">image_ref_1</span><b>ref_slipper_appearance</b><span class="ref-meta">projects/guangdong-slipper/reference/ref_poster_wutiaoren.jpg · weight=0.8 · user · file_id=PENDING</span> <span class="ref-pend">⚠️ 待上传（PENDING）</span><img class="ref-thumb" src="../reference/ref_poster_wutiaoren.jpg" alt="ref_slipper_appearance" onerror="this.style.display='none'"></div><div class="ref-row"><span class="ref-idx">image_ref_2</span><b>mood_sc1</b><span class="ref-meta">projects/guangdong-slipper/frames/mood_sc1.png · weight=0.6 · generated · file_id=PENDING</span> <span class="ref-pend">⚠️ 待上传（PENDING）</span><img class="ref-thumb" src="../frames/mood_sc1.jpg" alt="mood_sc1" onerror="this.style.display='none'"></div>
+        </div>
+        
+        <div class="block">
+          <h3>字幕（烧录 spec）</h3>
+          <div class="shot-meta">💬 字幕：旁白：它贴着地面，也贴着我们的日子。（zh · serif · bottom）</div>
+        </div>
+        
+        <div class="block">
+          <h3>arkcli 命令（仅文本，确认后由下游执行）</h3>
+          <pre>arkcli +gen --model doubao-seedance-2-0-260128 --duration 5 --resolution 1080p --ratio 16:9 --extra-body '{"input": [{"type": "input_image", "image_url": "file-PENDING", "role": "first_frame"}, {"type": "input_image", "image_url": "file-PENDING", "role": "reference_image", "reference_image_weight": 0.9}, {"type": "input_image", "image_url": "file-PENDING", "role": "reference_image", "reference_image_weight": 0.6}]}' --force --wait "<Subject>Extreme macro close-up of the woven texture of the flip-flop Y-strap. Match the reference images.</Subject><Action>The focus travels gently from the strap weave to the translucent edge where light bleeds through.</Action><Scene>The same warm macro studio world, amber gradient tones.</Scene><Camera>100mm macro lens, static shot with a slow focus pull toward the edge.</Camera><Lighting>3200K warm tungsten soft light, gentle falloff, the material glowing at its edges.</Lighting><Style>Luxury macro, warm amber, cinematic and photorealistic.</Style>"</pre>
+        </div>
+        <div class="block">
+          <h3>成本估算</h3>
+          <div class="shot-meta">预估 tokens：245531 · 预估成本：按方舟实际计费（1080p 参考 196k tokens/4s；4K 为 4 倍）</div>
+        </div>
+        <div class="warn-box"><b>质量警告</b><ul><li>refs file_id=PENDING (upload via Files API before execution)</li></ul></div>
+      </div>
+    </details>
+
+    <details class="shot" >
+      <summary class="shot-head">
+        <span class="shot-id">S03</span>
+        <span class="shot-meta">scene 1 · 4s · 1080p</span>
+        <span class="shot-q q-GOOD">🏷 GOOD</span>
+      </summary>
+      <div class="shot-body">
+        <div class="block">
+          <h3>编译后 prompt（六段式）</h3>
+          <pre><Subject>Close-up of the semi-translucent red plastic of the flip-flop glowing with layered translucency in backlight. Match the reference images.</Subject><Action>The camera retreats very slowly and settles on a still frame.</Action><Scene>Warm macro studio, amber to sienna gradient, no complete product.</Scene><Camera>85mm, static to a very slow dolly back, side-backlight composition.</Camera><Lighting>3200K warm light with a strong side-backlight revealing the inner translucency of the material.</Lighting><Style>Luxury macro, cinematic warm grade.</Style></pre>
+        </div>
+        <div class="block">
+          <h3>多模态引用映射（首帧 / 尾帧 / image_ref ↔ file_registry）</h3>
+          <div class="ref-row"><span class="ref-idx">首帧</span><b>first_frame_p3</b><span class="ref-meta">projects/guangdong-slipper/frames/storyboard_p3.png · weight=— · generated · file_id=PENDING</span> <span class="ref-pend">⚠️ 待上传（PENDING）</span><img class="ref-thumb" src="../frames/storyboard_p3.jpg" alt="first_frame_p3" onerror="this.style.display='none'"></div><div class="ref-row"><span class="ref-idx">image_ref_1</span><b>ref_slipper_appearance</b><span class="ref-meta">projects/guangdong-slipper/reference/ref_poster_wutiaoren.jpg · weight=0.8 · user · file_id=PENDING</span> <span class="ref-pend">⚠️ 待上传（PENDING）</span><img class="ref-thumb" src="../reference/ref_poster_wutiaoren.jpg" alt="ref_slipper_appearance" onerror="this.style.display='none'"></div><div class="ref-row"><span class="ref-idx">image_ref_2</span><b>mood_sc1</b><span class="ref-meta">projects/guangdong-slipper/frames/mood_sc1.png · weight=0.6 · generated · file_id=PENDING</span> <span class="ref-pend">⚠️ 待上传（PENDING）</span><img class="ref-thumb" src="../frames/mood_sc1.jpg" alt="mood_sc1" onerror="this.style.display='none'"></div>
+        </div>
+        
+        <div class="block">
+          <h3>字幕（烧录 spec）</h3>
+          <div class="shot-meta">💬 字幕：旁白：熟悉到，没人认真看过它第二眼。（zh · serif · bottom） ｜ 旁白：这一次，我们认真看它第二眼。（zh · serif · bottom）</div>
+        </div>
+        
+        <div class="block">
+          <h3>arkcli 命令（仅文本，确认后由下游执行）</h3>
+          <pre>arkcli +gen --model doubao-seedance-2-0-260128 --duration 4 --resolution 1080p --ratio 16:9 --extra-body '{"input": [{"type": "input_image", "image_url": "file-PENDING", "role": "first_frame"}, {"type": "input_image", "image_url": "file-PENDING", "role": "reference_image", "reference_image_weight": 0.9}, {"type": "input_image", "image_url": "file-PENDING", "role": "reference_image", "reference_image_weight": 0.6}]}' --force --wait "<Subject>Close-up of the semi-translucent red plastic of the flip-flop glowing with layered translucency in backlight. Match the reference images.</Subject><Action>The camera retreats very slowly and settles on a still frame.</Action><Scene>Warm macro studio, amber to sienna gradient, no complete product.</Scene><Camera>85mm, static to a very slow dolly back, side-backlight composition.</Camera><Lighting>3200K warm light with a strong side-backlight revealing the inner translucency of the material.</Lighting><Style>Luxury macro, cinematic warm grade.</Style>"</pre>
+        </div>
+        <div class="block">
+          <h3>成本估算</h3>
+          <div class="shot-meta">预估 tokens：196425 · 预估成本：按方舟实际计费（1080p 参考 196k tokens/4s；4K 为 4 倍）</div>
+        </div>
+        <div class="warn-box"><b>质量警告</b><ul><li>refs file_id=PENDING (upload via Files API before execution)</li></ul></div>
+      </div>
+    </details>
+
+    <details class="shot" >
+      <summary class="shot-head">
+        <span class="shot-id">S04</span>
+        <span class="shot-meta">scene 2 · 5s · 1080p</span>
+        <span class="shot-q q-GOOD">🏷 GOOD</span>
+      </summary>
+      <div class="shot-body">
+        <div class="block">
+          <h3>编译后 prompt（六段式）</h3>
+          <pre><Subject>Overhead composition: three flip-flops in red, translucent green and cream white lying on an off-white engineering drawing sheet that shows hand-drafted technical line drawings, dimension lines and red and blue pencil marks. The products must match the reference images.</Subject><Action>Stillness, an archival presentation; the camera descends very slowly.</Action><Scene>Studio table top, cream drawing sheet #EDE3D2 filling the frame, drafting marks and pencils around the products.</Scene><Camera>50mm top-down wide establishing shot, very slow pedestal descent.</Camera><Lighting>4200K even soft studio light, clean paper sheen.</Lighting><Style>Luxury product archive aesthetic, warm clean tones, photorealistic, no readable text.</Style></pre>
+        </div>
+        <div class="block">
+          <h3>多模态引用映射（首帧 / 尾帧 / image_ref ↔ file_registry）</h3>
+          <div class="ref-row"><span class="ref-idx">首帧</span><b>first_frame_p4</b><span class="ref-meta">projects/guangdong-slipper/frames/storyboard_p4.png · weight=— · generated · file_id=PENDING</span> <span class="ref-pend">⚠️ 待上传（PENDING）</span><img class="ref-thumb" src="../frames/storyboard_p4.jpg" alt="first_frame_p4" onerror="this.style.display='none'"></div><div class="ref-row"><span class="ref-idx">image_ref_1</span><b>ref_slipper_appearance</b><span class="ref-meta">projects/guangdong-slipper/reference/ref_poster_wutiaoren.jpg · weight=0.8 · user · file_id=PENDING</span> <span class="ref-pend">⚠️ 待上传（PENDING）</span><img class="ref-thumb" src="../reference/ref_poster_wutiaoren.jpg" alt="ref_slipper_appearance" onerror="this.style.display='none'"></div>
+        </div>
+        
+        <div class="block">
+          <h3>字幕（烧录 spec）</h3>
+          <div class="shot-meta">💬 字幕：旁白：把它放上纸面，一切就严肃了起来。（zh · serif · bottom）</div>
+        </div>
+        
+        <div class="block">
+          <h3>arkcli 命令（仅文本，确认后由下游执行）</h3>
+          <pre>arkcli +gen --model doubao-seedance-2-0-260128 --duration 5 --resolution 1080p --ratio 16:9 --extra-body '{"input": [{"type": "input_image", "image_url": "file-PENDING", "role": "first_frame"}, {"type": "input_image", "image_url": "file-PENDING", "role": "reference_image", "reference_image_weight": 0.9}]}' --force --wait "<Subject>Overhead composition: three flip-flops in red, translucent green and cream white lying on an off-white engineering drawing sheet that shows hand-drafted technical line drawings, dimension lines and red and blue pencil marks. The products must match the reference images.</Subject><Action>Stillness, an archival presentation; the camera descends very slowly.</Action><Scene>Studio table top, cream drawing sheet #EDE3D2 filling the frame, drafting marks and pencils around the products.</Scene><Camera>50mm top-down wide establishing shot, very slow pedestal descent.</Camera><Lighting>4200K even soft studio light, clean paper sheen.</Lighting><Style>Luxury product archive aesthetic, warm clean tones, photorealistic, no readable text.</Style>"</pre>
+        </div>
+        <div class="block">
+          <h3>成本估算</h3>
+          <div class="shot-meta">预估 tokens：245531 · 预估成本：按方舟实际计费（1080p 参考 196k tokens/4s；4K 为 4 倍）</div>
+        </div>
+        <div class="warn-box"><b>质量警告</b><ul><li>refs file_id=PENDING (upload via Files API before execution)</li></ul></div>
+      </div>
+    </details>
+
+    <details class="shot" >
+      <summary class="shot-head">
+        <span class="shot-id">S05</span>
+        <span class="shot-meta">scene 2 · 5s · 1080p</span>
+        <span class="shot-q q-GOOD">🏷 GOOD</span>
+      </summary>
+      <div class="shot-body">
+        <div class="block">
+          <h3>编译后 prompt（六段式）</h3>
+          <pre><Subject>Technical illustration sheet: three flip-flop engineering drawings rendered in light color washes, one red, one translucent green, one cream white, on a cream drafting sheet with construction lines and faint dimension marks. Drawings only, no physical products, no color swatches.</Subject><Action>A slow lateral drift across the sheet.</Action><Scene>Overhead view of the drafting sheet with subtle pencil annotations.</Scene><Camera>85mm overhead close shot, slow lateral tracking movement.</Camera><Lighting>4200K even soft studio light.</Lighting><Style>Colored engineering drawing aesthetic, warm minimal, cinematic.</Style></pre>
+        </div>
+        <div class="block">
+          <h3>多模态引用映射（首帧 / 尾帧 / image_ref ↔ file_registry）</h3>
+          <div class="ref-row"><span class="ref-idx">首帧</span><b>first_frame_p5</b><span class="ref-meta">projects/guangdong-slipper/frames/storyboard_p5.png · weight=— · generated · file_id=PENDING</span> <span class="ref-pend">⚠️ 待上传（PENDING）</span><img class="ref-thumb" src="../frames/storyboard_p5.jpg" alt="first_frame_p5" onerror="this.style.display='none'"></div><div class="ref-row"><span class="ref-idx">image_ref_1</span><b>first_frame_p4</b><span class="ref-meta">projects/guangdong-slipper/frames/storyboard_p4.png · weight=— · generated · file_id=PENDING</span> <span class="ref-pend">⚠️ 待上传（PENDING）</span><img class="ref-thumb" src="../frames/storyboard_p4.jpg" alt="first_frame_p4" onerror="this.style.display='none'"></div>
+        </div>
+        
+        <div class="block">
+          <h3>字幕（烧录 spec）</h3>
+          <div class="shot-meta">💬 字幕：旁白：荔枝红、榕荫绿、骑楼白——它一直有自己的色号。（zh · serif · bottom） ｜ 旁白：只是从来没人问过。（zh · serif · bottom）</div>
+        </div>
+        
+        <div class="block">
+          <h3>arkcli 命令（仅文本，确认后由下游执行）</h3>
+          <pre>arkcli +gen --model doubao-seedance-2-0-260128 --duration 5 --resolution 1080p --ratio 16:9 --extra-body '{"input": [{"type": "input_image", "image_url": "file-PENDING", "role": "first_frame"}, {"type": "input_image", "image_url": "file-PENDING", "role": "reference_image", "reference_image_weight": 0.5}]}' --force --wait "<Subject>Technical illustration sheet: three flip-flop engineering drawings rendered in light color washes, one red, one translucent green, one cream white, on a cream drafting sheet with construction lines and faint dimension marks. Drawings only, no physical products, no color swatches.</Subject><Action>A slow lateral drift across the sheet.</Action><Scene>Overhead view of the drafting sheet with subtle pencil annotations.</Scene><Camera>85mm overhead close shot, slow lateral tracking movement.</Camera><Lighting>4200K even soft studio light.</Lighting><Style>Colored engineering drawing aesthetic, warm minimal, cinematic.</Style>"</pre>
+        </div>
+        <div class="block">
+          <h3>成本估算</h3>
+          <div class="shot-meta">预估 tokens：245531 · 预估成本：按方舟实际计费（1080p 参考 196k tokens/4s；4K 为 4 倍）</div>
+        </div>
+        <div class="warn-box"><b>质量警告</b><ul><li>refs file_id=PENDING (upload via Files API before execution)</li></ul></div>
+      </div>
+    </details>
+
+    <details class="shot" >
+      <summary class="shot-head">
+        <span class="shot-id">S06</span>
+        <span class="shot-meta">scene 2 · 6s · 1080p</span>
+        <span class="shot-q q-GOOD">🏷 GOOD</span>
+      </summary>
+      <div class="shot-body">
+        <div class="block">
+          <h3>编译后 prompt（六段式）</h3>
+          <pre><Subject>Extreme macro: pencil annotation lines meeting the edge of molded plastic on the drawing sheet; paper grain against plastic sheen.</Subject><Action>A still frame, texture only.</Action><Scene>Drawing sheet detail, cream surface.</Scene><Camera>100mm macro, static shot, side light raking across the paper grain.</Camera><Lighting>4200K soft side light emphasizing paper texture and the contrast with plastic.</Lighting><Style>Archival detail macro, warm minimal.</Style></pre>
+        </div>
+        <div class="block">
+          <h3>多模态引用映射（首帧 / 尾帧 / image_ref ↔ file_registry）</h3>
+          <div class="ref-row"><span class="ref-idx">首帧</span><b>first_frame_p6</b><span class="ref-meta">projects/guangdong-slipper/frames/storyboard_p6.png · weight=— · generated · file_id=PENDING</span> <span class="ref-pend">⚠️ 待上传（PENDING）</span><img class="ref-thumb" src="../frames/storyboard_p6.jpg" alt="first_frame_p6" onerror="this.style.display='none'"></div><div class="ref-row"><span class="ref-idx">image_ref_1</span><b>first_frame_p4</b><span class="ref-meta">projects/guangdong-slipper/frames/storyboard_p4.png · weight=— · generated · file_id=PENDING</span> <span class="ref-pend">⚠️ 待上传（PENDING）</span><img class="ref-thumb" src="../frames/storyboard_p4.jpg" alt="first_frame_p4" onerror="this.style.display='none'"></div>
+        </div>
+        
+        <div class="block">
+          <h3>字幕（烧录 spec）</h3>
+          <div class="shot-meta">💬 字幕：旁白：两片塑料，一条带子——结构简单得没有一句废话。（zh · serif · bottom）</div>
+        </div>
+        
+        <div class="block">
+          <h3>arkcli 命令（仅文本，确认后由下游执行）</h3>
+          <pre>arkcli +gen --model doubao-seedance-2-0-260128 --duration 6 --resolution 1080p --ratio 16:9 --extra-body '{"input": [{"type": "input_image", "image_url": "file-PENDING", "role": "first_frame"}, {"type": "input_image", "image_url": "file-PENDING", "role": "reference_image", "reference_image_weight": 0.5}]}' --force --wait "<Subject>Extreme macro: pencil annotation lines meeting the edge of molded plastic on the drawing sheet; paper grain against plastic sheen.</Subject><Action>A still frame, texture only.</Action><Scene>Drawing sheet detail, cream surface.</Scene><Camera>100mm macro, static shot, side light raking across the paper grain.</Camera><Lighting>4200K soft side light emphasizing paper texture and the contrast with plastic.</Lighting><Style>Archival detail macro, warm minimal.</Style>"</pre>
+        </div>
+        <div class="block">
+          <h3>成本估算</h3>
+          <div class="shot-meta">预估 tokens：294637 · 预估成本：按方舟实际计费（1080p 参考 196k tokens/4s；4K 为 4 倍）</div>
+        </div>
+        <div class="warn-box"><b>质量警告</b><ul><li>refs file_id=PENDING (upload via Files API before execution)</li></ul></div>
+      </div>
+    </details>
+
+    <details class="shot" >
+      <summary class="shot-head">
+        <span class="shot-id">S07</span>
+        <span class="shot-meta">scene 3 · 5s · 1080p</span>
+        <span class="shot-q q-GOOD">🏷 GOOD</span>
+      </summary>
+      <div class="shot-body">
+        <div class="block">
+          <h3>编译后 prompt（六段式）</h3>
+          <pre><Subject>Golden-hour Lingnan arcade street: a stone colonnade with beams of sunlight pouring between the columns, drifting dust and lens flare in the air. No people, no product.</Subject><Action>The air and haze barely move; the light does the work.</Action><Scene>Qilou stone street in deep perspective, warm stone paving.</Scene><Camera>35mm low angle establishing shot, very slow dolly in.</Camera><Lighting>3000K golden hour, low sun backlight, volumetric light shafts, dust motes visible.</Lighting><Style>Cinematic luxury commercial realism, amber gold palette, shallow depth of field.</Style></pre>
+        </div>
+        <div class="block">
+          <h3>多模态引用映射（首帧 / 尾帧 / image_ref ↔ file_registry）</h3>
+          <div class="ref-row"><span class="ref-idx">首帧</span><b>first_frame_p7</b><span class="ref-meta">projects/guangdong-slipper/frames/storyboard_p7.png · weight=— · generated · file_id=PENDING</span> <span class="ref-pend">⚠️ 待上传（PENDING）</span><img class="ref-thumb" src="../frames/storyboard_p7.jpg" alt="first_frame_p7" onerror="this.style.display='none'"></div><div class="ref-row"><span class="ref-idx">image_ref_1</span><b>mood_sc3</b><span class="ref-meta">projects/guangdong-slipper/frames/mood_sc3.png · weight=0.6 · generated · file_id=PENDING</span> <span class="ref-pend">⚠️ 待上传（PENDING）</span><img class="ref-thumb" src="../frames/mood_sc3.jpg" alt="mood_sc3" onerror="this.style.display='none'"></div>
+        </div>
+        
+        <div class="block">
+          <h3>字幕（烧录 spec）</h3>
+          <div class="shot-meta">💬 字幕：旁白：现在，让它走进光里。（zh · serif · bottom）</div>
+        </div>
+        
+        <div class="block">
+          <h3>arkcli 命令（仅文本，确认后由下游执行）</h3>
+          <pre>arkcli +gen --model doubao-seedance-2-0-260128 --duration 5 --resolution 1080p --ratio 16:9 --extra-body '{"input": [{"type": "input_image", "image_url": "file-PENDING", "role": "first_frame"}, {"type": "input_image", "image_url": "file-PENDING", "role": "reference_image", "reference_image_weight": 0.6}]}' --force --wait "<Subject>Golden-hour Lingnan arcade street: a stone colonnade with beams of sunlight pouring between the columns, drifting dust and lens flare in the air. No people, no product.</Subject><Action>The air and haze barely move; the light does the work.</Action><Scene>Qilou stone street in deep perspective, warm stone paving.</Scene><Camera>35mm low angle establishing shot, very slow dolly in.</Camera><Lighting>3000K golden hour, low sun backlight, volumetric light shafts, dust motes visible.</Lighting><Style>Cinematic luxury commercial realism, amber gold palette, shallow depth of field.</Style>"</pre>
+        </div>
+        <div class="block">
+          <h3>成本估算</h3>
+          <div class="shot-meta">预估 tokens：245531 · 预估成本：按方舟实际计费（1080p 参考 196k tokens/4s；4K 为 4 倍）</div>
+        </div>
+        <div class="warn-box"><b>质量警告</b><ul><li>refs file_id=PENDING (upload via Files API before execution)</li></ul></div>
+      </div>
+    </details>
+
+    <details class="shot" >
+      <summary class="shot-head">
+        <span class="shot-id">S08</span>
+        <span class="shot-meta">scene 3 · 6s · 1080p</span>
+        <span class="shot-q q-GOOD">🏷 GOOD</span>
+      </summary>
+      <div class="shot-body">
+        <div class="block">
+          <h3>编译后 prompt（六段式）</h3>
+          <pre><Subject>Hero shot: the red flip-flop standing at the center of a sunlit pool on the stone street, rimmed with golden backlight. Match the reference images.</Subject><Action>Stillness; the light shimmers faintly around the product.</Action><Scene>Stone arcade floor with a bright pool of sunlight.</Scene><Camera>50mm close shot from a low angle, static camera, backlit composition with golden reflector fill.</Camera><Lighting>3000K golden hour backlight, glowing rim around the product, shallow depth of field.</Lighting><Style>Luxury hero product photography, warm cinematic grade.</Style></pre>
+        </div>
+        <div class="block">
+          <h3>多模态引用映射（首帧 / 尾帧 / image_ref ↔ file_registry）</h3>
+          <div class="ref-row"><span class="ref-idx">首帧</span><b>first_frame_p8</b><span class="ref-meta">projects/guangdong-slipper/frames/storyboard_p8.png · weight=— · generated · file_id=PENDING</span> <span class="ref-pend">⚠️ 待上传（PENDING）</span><img class="ref-thumb" src="../frames/storyboard_p8.jpg" alt="first_frame_p8" onerror="this.style.display='none'"></div><div class="ref-row"><span class="ref-idx">image_ref_1</span><b>ref_slipper_appearance</b><span class="ref-meta">projects/guangdong-slipper/reference/ref_poster_wutiaoren.jpg · weight=0.8 · user · file_id=PENDING</span> <span class="ref-pend">⚠️ 待上传（PENDING）</span><img class="ref-thumb" src="../reference/ref_poster_wutiaoren.jpg" alt="ref_slipper_appearance" onerror="this.style.display='none'"></div><div class="ref-row"><span class="ref-idx">image_ref_2</span><b>mood_sc3</b><span class="ref-meta">projects/guangdong-slipper/frames/mood_sc3.png · weight=0.6 · generated · file_id=PENDING</span> <span class="ref-pend">⚠️ 待上传（PENDING）</span><img class="ref-thumb" src="../frames/mood_sc3.jpg" alt="mood_sc3" onerror="this.style.display='none'"></div>
+        </div>
+        
+        <div class="block">
+          <h3>字幕（烧录 spec）</h3>
+          <div class="shot-meta">💬 字幕：旁白：真正的经典，从不挑剔舞台。（zh · serif · bottom）</div>
+        </div>
+        
+        <div class="block">
+          <h3>arkcli 命令（仅文本，确认后由下游执行）</h3>
+          <pre>arkcli +gen --model doubao-seedance-2-0-260128 --duration 6 --resolution 1080p --ratio 16:9 --extra-body '{"input": [{"type": "input_image", "image_url": "file-PENDING", "role": "first_frame"}, {"type": "input_image", "image_url": "file-PENDING", "role": "reference_image", "reference_image_weight": 0.9}, {"type": "input_image", "image_url": "file-PENDING", "role": "reference_image", "reference_image_weight": 0.6}]}' --force --wait "<Subject>Hero shot: the red flip-flop standing at the center of a sunlit pool on the stone street, rimmed with golden backlight. Match the reference images.</Subject><Action>Stillness; the light shimmers faintly around the product.</Action><Scene>Stone arcade floor with a bright pool of sunlight.</Scene><Camera>50mm close shot from a low angle, static camera, backlit composition with golden reflector fill.</Camera><Lighting>3000K golden hour backlight, glowing rim around the product, shallow depth of field.</Lighting><Style>Luxury hero product photography, warm cinematic grade.</Style>"</pre>
+        </div>
+        <div class="block">
+          <h3>成本估算</h3>
+          <div class="shot-meta">预估 tokens：294637 · 预估成本：按方舟实际计费（1080p 参考 196k tokens/4s；4K 为 4 倍）</div>
+        </div>
+        <div class="warn-box"><b>质量警告</b><ul><li>refs file_id=PENDING (upload via Files API before execution)</li></ul></div>
+      </div>
+    </details>
+
+    <details class="shot" >
+      <summary class="shot-head">
+        <span class="shot-id">S09</span>
+        <span class="shot-meta">scene 3 · 4s · 1080p</span>
+        <span class="shot-q q-GOOD">🏷 GOOD</span>
+      </summary>
+      <div class="shot-body">
+        <div class="block">
+          <h3>编译后 prompt（六段式）</h3>
+          <pre><Subject>A pair of red flip-flops resting on the golden stone ground between the columns of the arcade; the colonnade lines lead deep into the frame. Match the reference images.</Subject><Action>Stillness with drifting dust; the camera glides sideways very slowly.</Action><Scene>Sunlit qilou arcade, warm stone slabs, a blurred street in the distance.</Scene><Camera>50mm medium shot, very slow lateral tracking movement, 1 to 3 lighting ratio.</Camera><Lighting>3000K golden hour side-backlight, gentle haze, soft lens flare.</Lighting><Style>Cinematic luxury realism, amber gold.</Style></pre>
+        </div>
+        <div class="block">
+          <h3>多模态引用映射（首帧 / 尾帧 / image_ref ↔ file_registry）</h3>
+          <div class="ref-row"><span class="ref-idx">首帧</span><b>first_frame_p9</b><span class="ref-meta">projects/guangdong-slipper/frames/storyboard_p9.png · weight=— · generated · file_id=PENDING</span> <span class="ref-pend">⚠️ 待上传（PENDING）</span><img class="ref-thumb" src="../frames/storyboard_p9.jpg" alt="first_frame_p9" onerror="this.style.display='none'"></div><div class="ref-row"><span class="ref-idx">image_ref_1</span><b>ref_slipper_appearance</b><span class="ref-meta">projects/guangdong-slipper/reference/ref_poster_wutiaoren.jpg · weight=0.8 · user · file_id=PENDING</span> <span class="ref-pend">⚠️ 待上传（PENDING）</span><img class="ref-thumb" src="../reference/ref_poster_wutiaoren.jpg" alt="ref_slipper_appearance" onerror="this.style.display='none'"></div><div class="ref-row"><span class="ref-idx">image_ref_2</span><b>mood_sc3</b><span class="ref-meta">projects/guangdong-slipper/frames/mood_sc3.png · weight=0.6 · generated · file_id=PENDING</span> <span class="ref-pend">⚠️ 待上传（PENDING）</span><img class="ref-thumb" src="../frames/mood_sc3.jpg" alt="mood_sc3" onerror="this.style.display='none'"></div>
+        </div>
+        
+        <div class="block">
+          <h3>字幕（烧录 spec）</h3>
+          <div class="shot-meta">💬 字幕：旁白：它进过大排档，也进过演唱会。（zh · serif · bottom）</div>
+        </div>
+        
+        <div class="block">
+          <h3>arkcli 命令（仅文本，确认后由下游执行）</h3>
+          <pre>arkcli +gen --model doubao-seedance-2-0-260128 --duration 4 --resolution 1080p --ratio 16:9 --extra-body '{"input": [{"type": "input_image", "image_url": "file-PENDING", "role": "first_frame"}, {"type": "input_image", "image_url": "file-PENDING", "role": "reference_image", "reference_image_weight": 0.9}, {"type": "input_image", "image_url": "file-PENDING", "role": "reference_image", "reference_image_weight": 0.6}]}' --force --wait "<Subject>A pair of red flip-flops resting on the golden stone ground between the columns of the arcade; the colonnade lines lead deep into the frame. Match the reference images.</Subject><Action>Stillness with drifting dust; the camera glides sideways very slowly.</Action><Scene>Sunlit qilou arcade, warm stone slabs, a blurred street in the distance.</Scene><Camera>50mm medium shot, very slow lateral tracking movement, 1 to 3 lighting ratio.</Camera><Lighting>3000K golden hour side-backlight, gentle haze, soft lens flare.</Lighting><Style>Cinematic luxury realism, amber gold.</Style>"</pre>
+        </div>
+        <div class="block">
+          <h3>成本估算</h3>
+          <div class="shot-meta">预估 tokens：196425 · 预估成本：按方舟实际计费（1080p 参考 196k tokens/4s；4K 为 4 倍）</div>
+        </div>
+        <div class="warn-box"><b>质量警告</b><ul><li>refs file_id=PENDING (upload via Files API before execution)</li></ul></div>
+      </div>
+    </details>
+
+    <details class="shot" >
+      <summary class="shot-head">
+        <span class="shot-id">S10</span>
+        <span class="shot-meta">scene 3 · 4s · 1080p</span>
+        <span class="shot-q q-GOOD">🏷 GOOD</span>
+      </summary>
+      <div class="shot-body">
+        <div class="block">
+          <h3>编译后 prompt（六段式）</h3>
+          <pre><Subject>Extreme macro: the red flip-flop surface and its correctly shaped Y-strap; dust motes and light specks drift across; the backlight glows through the translucent red plastic. The strap structure must match the reference images.</Subject><Action>The motes drift slowly across the frame; the camera holds still.</Action><Scene>Golden hour macro world at ground level.</Scene><Camera>100mm macro, static shot, backlit transmission.</Camera><Lighting>3000K golden hour backlight through translucent material, floating particles lit up.</Lighting><Style>Luxury macro, warm gold, cinematic.</Style></pre>
+        </div>
+        <div class="block">
+          <h3>多模态引用映射（首帧 / 尾帧 / image_ref ↔ file_registry）</h3>
+          <div class="ref-row"><span class="ref-idx">首帧</span><b>first_frame_p10</b><span class="ref-meta">projects/guangdong-slipper/frames/storyboard_p10.png · weight=— · generated · file_id=PENDING</span> <span class="ref-pend">⚠️ 待上传（PENDING）</span><img class="ref-thumb" src="../frames/storyboard_p10.jpg" alt="first_frame_p10" onerror="this.style.display='none'"></div><div class="ref-row"><span class="ref-idx">image_ref_1</span><b>ref_slipper_appearance</b><span class="ref-meta">projects/guangdong-slipper/reference/ref_poster_wutiaoren.jpg · weight=0.8 · user · file_id=PENDING</span> <span class="ref-pend">⚠️ 待上传（PENDING）</span><img class="ref-thumb" src="../reference/ref_poster_wutiaoren.jpg" alt="ref_slipper_appearance" onerror="this.style.display='none'"></div><div class="ref-row"><span class="ref-idx">image_ref_2</span><b>mood_sc3</b><span class="ref-meta">projects/guangdong-slipper/frames/mood_sc3.png · weight=0.6 · generated · file_id=PENDING</span> <span class="ref-pend">⚠️ 待上传（PENDING）</span><img class="ref-thumb" src="../frames/mood_sc3.jpg" alt="mood_sc3" onerror="this.style.display='none'"></div>
+        </div>
+        
+        <div class="block">
+          <h3>字幕（烧录 spec）</h3>
+          <div class="shot-meta">💬 字幕：旁白：不是它高攀了光——是光选对了脚。（zh · serif · bottom）</div>
+        </div>
+        
+        <div class="block">
+          <h3>arkcli 命令（仅文本，确认后由下游执行）</h3>
+          <pre>arkcli +gen --model doubao-seedance-2-0-260128 --duration 4 --resolution 1080p --ratio 16:9 --extra-body '{"input": [{"type": "input_image", "image_url": "file-PENDING", "role": "first_frame"}, {"type": "input_image", "image_url": "file-PENDING", "role": "reference_image", "reference_image_weight": 0.9}, {"type": "input_image", "image_url": "file-PENDING", "role": "reference_image", "reference_image_weight": 0.6}]}' --force --wait "<Subject>Extreme macro: the red flip-flop surface and its correctly shaped Y-strap; dust motes and light specks drift across; the backlight glows through the translucent red plastic. The strap structure must match the reference images.</Subject><Action>The motes drift slowly across the frame; the camera holds still.</Action><Scene>Golden hour macro world at ground level.</Scene><Camera>100mm macro, static shot, backlit transmission.</Camera><Lighting>3000K golden hour backlight through translucent material, floating particles lit up.</Lighting><Style>Luxury macro, warm gold, cinematic.</Style>"</pre>
+        </div>
+        <div class="block">
+          <h3>成本估算</h3>
+          <div class="shot-meta">预估 tokens：196425 · 预估成本：按方舟实际计费（1080p 参考 196k tokens/4s；4K 为 4 倍）</div>
+        </div>
+        <div class="warn-box"><b>质量警告</b><ul><li>refs file_id=PENDING (upload via Files API before execution)</li><li>duration raised from 3s to 4s (Seedance hard minimum)</li></ul></div>
+      </div>
+    </details>
+
+    <details class="shot" >
+      <summary class="shot-head">
+        <span class="shot-id">S11</span>
+        <span class="shot-meta">scene 4 · 6s · 1080p</span>
+        <span class="shot-q q-GOOD">🏷 GOOD</span>
+      </summary>
+      <div class="shot-body">
+        <div class="block">
+          <h3>编译后 prompt（六段式）</h3>
+          <pre><Subject>A lean young Guangdong man with short black hair and a calm unreadable face, keeping exactly the same face and the same outfit as the reference images: a cream linen short-sleeve shirt, loose warm-grey shorts and red flip-flops. He walks with unhurried ease, expressionless.</Subject><Action>He walks slowly through the colonnade at a relaxed pace; bands of light and shadow alternate across his body.</Action><Scene>Qilou arcade in the afternoon, warm stone columns, soft background blur.</Scene><Camera>35mm wide shot, steadicam glide, floating tracking movement following the subject at walking pace.</Camera><Lighting>3800K afternoon raking light, colonnade shadow stripes, shallow depth of field.</Lighting><Style>High-end commercial fashion realism, warm cinematic grade.</Style></pre>
+        </div>
+        <div class="block">
+          <h3>多模态引用映射（首帧 / 尾帧 / image_ref ↔ file_registry）</h3>
+          <div class="ref-row"><span class="ref-idx">首帧</span><b>first_frame_p11</b><span class="ref-meta">projects/guangdong-slipper/frames/storyboard_p11.png · weight=— · generated · file_id=PENDING</span> <span class="ref-pend">⚠️ 待上传（PENDING）</span><img class="ref-thumb" src="../frames/storyboard_p11.jpg" alt="first_frame_p11" onerror="this.style.display='none'"></div><div class="ref-row"><span class="ref-idx">image_ref_1</span><b>char_char01_concept_face</b><span class="ref-meta">projects/guangdong-slipper/frames/char_char01_face_v2.png · weight=0.8 · generated · file_id=PENDING</span> <span class="ref-pend">⚠️ 待上传（PENDING）</span><img class="ref-thumb" src="../frames/char_char01_face_v2.jpg" alt="char_char01_concept_face" onerror="this.style.display='none'"></div><div class="ref-row"><span class="ref-idx">image_ref_2</span><b>mood_sc3</b><span class="ref-meta">projects/guangdong-slipper/frames/mood_sc3.png · weight=0.6 · generated · file_id=PENDING</span> <span class="ref-pend">⚠️ 待上传（PENDING）</span><img class="ref-thumb" src="../frames/mood_sc3.jpg" alt="mood_sc3" onerror="this.style.display='none'"></div><div class="ref-row"><span class="ref-idx">image_ref_3</span><b>char_char01_concept_full</b><span class="ref-meta">projects/guangdong-slipper/frames/char_char01_full_v2.png · weight=0.8 · generated · file_id=PENDING</span> <span class="ref-pend">⚠️ 待上传（PENDING）</span><img class="ref-thumb" src="../frames/char_char01_full_v2.jpg" alt="char_char01_concept_full" onerror="this.style.display='none'"></div>
+        </div>
+        
+        <div class="block">
+          <h3>字幕（烧录 spec）</h3>
+          <div class="shot-meta">💬 字幕：旁白：接着，穿它的人出现了。（zh · serif · bottom）</div>
+        </div>
+        
+        <div class="block">
+          <h3>arkcli 命令（仅文本，确认后由下游执行）</h3>
+          <pre>arkcli +gen --model doubao-seedance-2-0-260128 --duration 6 --resolution 1080p --ratio 16:9 --extra-body '{"input": [{"type": "input_image", "image_url": "file-PENDING", "role": "first_frame"}, {"type": "input_image", "image_url": "file-PENDING", "role": "reference_image", "reference_image_weight": 0.9}, {"type": "input_image", "image_url": "file-PENDING", "role": "reference_image", "reference_image_weight": 0.5}, {"type": "input_image", "image_url": "file-PENDING", "role": "reference_image", "reference_image_weight": 0.5}]}' --force --wait "<Subject>A lean young Guangdong man with short black hair and a calm unreadable face, keeping exactly the same face and the same outfit as the reference images: a cream linen short-sleeve shirt, loose warm-grey shorts and red flip-flops. He walks with unhurried ease, expressionless.</Subject><Action>He walks slowly through the colonnade at a relaxed pace; bands of light and shadow alternate across his body.</Action><Scene>Qilou arcade in the afternoon, warm stone columns, soft background blur.</Scene><Camera>35mm wide shot, steadicam glide, floating tracking movement following the subject at walking pace.</Camera><Lighting>3800K afternoon raking light, colonnade shadow stripes, shallow depth of field.</Lighting><Style>High-end commercial fashion realism, warm cinematic grade.</Style>"</pre>
+        </div>
+        <div class="block">
+          <h3>成本估算</h3>
+          <div class="shot-meta">预估 tokens：294637 · 预估成本：按方舟实际计费（1080p 参考 196k tokens/4s；4K 为 4 倍）</div>
+        </div>
+        <div class="warn-box"><b>质量警告</b><ul><li>refs file_id=PENDING (upload via Files API before execution)</li></ul></div>
+      </div>
+    </details>
+
+    <details class="shot" >
+      <summary class="shot-head">
+        <span class="shot-id">S12</span>
+        <span class="shot-meta">scene 4 · 5s · 1080p</span>
+        <span class="shot-q q-GOOD">🏷 GOOD</span>
+      </summary>
+      <div class="shot-body">
+        <div class="block">
+          <h3>编译后 prompt（六段式）</h3>
+          <pre><Subject>The same man as the reference images (same face, same outfit: cream linen shirt, warm-grey shorts, red flip-flops), standing between the columns of the arcade, a level gaze into the depth of the street, expressionless and at ease.</Subject><Action>He stands still; only the faintest breath moves his shirt. No performance.</Action><Scene>Qilou arcade, warm afternoon columns.</Scene><Camera>50mm medium shot, static camera as he enters and holds the frame; rim light separates him from the warm wall.</Camera><Lighting>3800K raking light with rim separation, soft falloff.</Lighting><Style>High-end commercial realism, warm cinematic.</Style></pre>
+        </div>
+        <div class="block">
+          <h3>多模态引用映射（首帧 / 尾帧 / image_ref ↔ file_registry）</h3>
+          <div class="ref-row"><span class="ref-idx">首帧</span><b>first_frame_p12</b><span class="ref-meta">projects/guangdong-slipper/frames/storyboard_p12.png · weight=— · generated · file_id=PENDING</span> <span class="ref-pend">⚠️ 待上传（PENDING）</span><img class="ref-thumb" src="../frames/storyboard_p12.jpg" alt="first_frame_p12" onerror="this.style.display='none'"></div><div class="ref-row"><span class="ref-idx">image_ref_1</span><b>char_char01_concept_face</b><span class="ref-meta">projects/guangdong-slipper/frames/char_char01_face_v2.png · weight=0.8 · generated · file_id=PENDING</span> <span class="ref-pend">⚠️ 待上传（PENDING）</span><img class="ref-thumb" src="../frames/char_char01_face_v2.jpg" alt="char_char01_concept_face" onerror="this.style.display='none'"></div><div class="ref-row"><span class="ref-idx">image_ref_2</span><b>mood_sc3</b><span class="ref-meta">projects/guangdong-slipper/frames/mood_sc3.png · weight=0.6 · generated · file_id=PENDING</span> <span class="ref-pend">⚠️ 待上传（PENDING）</span><img class="ref-thumb" src="../frames/mood_sc3.jpg" alt="mood_sc3" onerror="this.style.display='none'"></div><div class="ref-row"><span class="ref-idx">image_ref_3</span><b>char_char01_concept_full</b><span class="ref-meta">projects/guangdong-slipper/frames/char_char01_full_v2.png · weight=0.8 · generated · file_id=PENDING</span> <span class="ref-pend">⚠️ 待上传（PENDING）</span><img class="ref-thumb" src="../frames/char_char01_full_v2.jpg" alt="char_char01_concept_full" onerror="this.style.display='none'"></div>
+        </div>
+        
+        <div class="block">
+          <h3>字幕（烧录 spec）</h3>
+          <div class="shot-meta">💬 字幕：旁白：他走得很慢，慢得像整条街都在等他。（zh · serif · bottom） ｜ 旁白：穿它的人，不需要向任何人解释。（zh · serif · bottom）</div>
+        </div>
+        
+        <div class="block">
+          <h3>arkcli 命令（仅文本，确认后由下游执行）</h3>
+          <pre>arkcli +gen --model doubao-seedance-2-0-260128 --duration 5 --resolution 1080p --ratio 16:9 --extra-body '{"input": [{"type": "input_image", "image_url": "file-PENDING", "role": "first_frame"}, {"type": "input_image", "image_url": "file-PENDING", "role": "reference_image", "reference_image_weight": 0.9}, {"type": "input_image", "image_url": "file-PENDING", "role": "reference_image", "reference_image_weight": 0.5}, {"type": "input_image", "image_url": "file-PENDING", "role": "reference_image", "reference_image_weight": 0.5}]}' --force --wait "<Subject>The same man as the reference images (same face, same outfit: cream linen shirt, warm-grey shorts, red flip-flops), standing between the columns of the arcade, a level gaze into the depth of the street, expressionless and at ease.</Subject><Action>He stands still; only the faintest breath moves his shirt. No performance.</Action><Scene>Qilou arcade, warm afternoon columns.</Scene><Camera>50mm medium shot, static camera as he enters and holds the frame; rim light separates him from the warm wall.</Camera><Lighting>3800K raking light with rim separation, soft falloff.</Lighting><Style>High-end commercial realism, warm cinematic.</Style>"</pre>
+        </div>
+        <div class="block">
+          <h3>成本估算</h3>
+          <div class="shot-meta">预估 tokens：245531 · 预估成本：按方舟实际计费（1080p 参考 196k tokens/4s；4K 为 4 倍）</div>
+        </div>
+        <div class="warn-box"><b>质量警告</b><ul><li>refs file_id=PENDING (upload via Files API before execution)</li></ul></div>
+      </div>
+    </details>
+
+    <details class="shot" >
+      <summary class="shot-head">
+        <span class="shot-id">S13</span>
+        <span class="shot-meta">scene 4 · 5s · 1080p</span>
+        <span class="shot-q q-GOOD">🏷 GOOD</span>
+      </summary>
+      <div class="shot-body">
+        <div class="block">
+          <h3>编译后 prompt（六段式）</h3>
+          <pre><Subject>Low-angle insert: feet in red flip-flops walking on stone slabs; a relaxed stride; the footwear and gait match the reference images.</Subject><Action>Steps land in a quiet rhythm while the camera holds low; a gentle pan follows the feet.</Action><Scene>Stone pavement of the arcade, afternoon light.</Scene><Camera>50mm close shot from a low angle, static to a slight pan.</Camera><Lighting>3800K afternoon light with ground bounce, shallow depth of field.</Lighting><Style>Commercial fashion realism, warm grade.</Style></pre>
+        </div>
+        <div class="block">
+          <h3>多模态引用映射（首帧 / 尾帧 / image_ref ↔ file_registry）</h3>
+          <div class="ref-row"><span class="ref-idx">首帧</span><b>first_frame_p13</b><span class="ref-meta">projects/guangdong-slipper/frames/storyboard_p13.png · weight=— · generated · file_id=PENDING</span> <span class="ref-pend">⚠️ 待上传（PENDING）</span><img class="ref-thumb" src="../frames/storyboard_p13.jpg" alt="first_frame_p13" onerror="this.style.display='none'"></div><div class="ref-row"><span class="ref-idx">image_ref_1</span><b>char_char01_concept_full</b><span class="ref-meta">projects/guangdong-slipper/frames/char_char01_full_v2.png · weight=0.8 · generated · file_id=PENDING</span> <span class="ref-pend">⚠️ 待上传（PENDING）</span><img class="ref-thumb" src="../frames/char_char01_full_v2.jpg" alt="char_char01_concept_full" onerror="this.style.display='none'"></div><div class="ref-row"><span class="ref-idx">image_ref_2</span><b>ref_slipper_appearance</b><span class="ref-meta">projects/guangdong-slipper/reference/ref_poster_wutiaoren.jpg · weight=0.8 · user · file_id=PENDING</span> <span class="ref-pend">⚠️ 待上传（PENDING）</span><img class="ref-thumb" src="../reference/ref_poster_wutiaoren.jpg" alt="ref_slipper_appearance" onerror="this.style.display='none'"></div>
+        </div>
+        
+        <div class="block">
+          <h3>字幕（烧录 spec）</h3>
+          <div class="shot-meta">💬 字幕：旁白：有人喊他老板，有人喊他阿广——他都应。（zh · serif · bottom）</div>
+        </div>
+        
+        <div class="block">
+          <h3>arkcli 命令（仅文本，确认后由下游执行）</h3>
+          <pre>arkcli +gen --model doubao-seedance-2-0-260128 --duration 5 --resolution 1080p --ratio 16:9 --extra-body '{"input": [{"type": "input_image", "image_url": "file-PENDING", "role": "first_frame"}, {"type": "input_image", "image_url": "file-PENDING", "role": "reference_image", "reference_image_weight": 0.9}, {"type": "input_image", "image_url": "file-PENDING", "role": "reference_image", "reference_image_weight": 0.5}]}' --force --wait "<Subject>Low-angle insert: feet in red flip-flops walking on stone slabs; a relaxed stride; the footwear and gait match the reference images.</Subject><Action>Steps land in a quiet rhythm while the camera holds low; a gentle pan follows the feet.</Action><Scene>Stone pavement of the arcade, afternoon light.</Scene><Camera>50mm close shot from a low angle, static to a slight pan.</Camera><Lighting>3800K afternoon light with ground bounce, shallow depth of field.</Lighting><Style>Commercial fashion realism, warm grade.</Style>"</pre>
+        </div>
+        <div class="block">
+          <h3>成本估算</h3>
+          <div class="shot-meta">预估 tokens：245531 · 预估成本：按方舟实际计费（1080p 参考 196k tokens/4s；4K 为 4 倍）</div>
+        </div>
+        <div class="warn-box"><b>质量警告</b><ul><li>refs file_id=PENDING (upload via Files API before execution)</li></ul></div>
+      </div>
+    </details>
+
+    <details class="shot" >
+      <summary class="shot-head">
+        <span class="shot-id">S14</span>
+        <span class="shot-meta">scene 5 · 4s · 1080p</span>
+        <span class="shot-q q-GOOD">🏷 GOOD</span>
+      </summary>
+      <div class="shot-body">
+        <div class="block">
+          <h3>编译后 prompt（六段式）</h3>
+          <pre><Subject>A narrow Lingnan alley of brick walls, almost black; a single shaft of warm light slices in from the alley mouth onto the stone path; about 85 percent of the frame in clean shadow. No people, no product.</Subject><Action>Stillness; a faint atmospheric haze floats in the shaft of light.</Action><Scene>Old alley interior, stone path, aged brick texture.</Scene><Camera>35mm wide shot, static camera, a single motivated light source.</Camera><Lighting>2800K single stray warm light, deep clean shadows without muddiness.</Lighting><Style>Dark luxury minimalism, cinematic.</Style></pre>
+        </div>
+        <div class="block">
+          <h3>多模态引用映射（首帧 / 尾帧 / image_ref ↔ file_registry）</h3>
+          <div class="ref-row"><span class="ref-idx">首帧</span><b>first_frame_p14</b><span class="ref-meta">projects/guangdong-slipper/frames/storyboard_p14.png · weight=— · generated · file_id=PENDING</span> <span class="ref-pend">⚠️ 待上传（PENDING）</span><img class="ref-thumb" src="../frames/storyboard_p14.jpg" alt="first_frame_p14" onerror="this.style.display='none'"></div>
+        </div>
+        
+        <div class="block">
+          <h3>字幕（烧录 spec）</h3>
+          <div class="shot-meta">💬 字幕：旁白：它没有后跟。（zh · serif · bottom）</div>
+        </div>
+        
+        <div class="block">
+          <h3>arkcli 命令（仅文本，确认后由下游执行）</h3>
+          <pre>arkcli +gen --model doubao-seedance-2-0-260128 --duration 4 --resolution 1080p --ratio 16:9 --extra-body '{"input": [{"type": "input_image", "image_url": "file-PENDING", "role": "first_frame"}]}' --force --wait "<Subject>A narrow Lingnan alley of brick walls, almost black; a single shaft of warm light slices in from the alley mouth onto the stone path; about 85 percent of the frame in clean shadow. No people, no product.</Subject><Action>Stillness; a faint atmospheric haze floats in the shaft of light.</Action><Scene>Old alley interior, stone path, aged brick texture.</Scene><Camera>35mm wide shot, static camera, a single motivated light source.</Camera><Lighting>2800K single stray warm light, deep clean shadows without muddiness.</Lighting><Style>Dark luxury minimalism, cinematic.</Style>"</pre>
+        </div>
+        <div class="block">
+          <h3>成本估算</h3>
+          <div class="shot-meta">预估 tokens：196425 · 预估成本：按方舟实际计费（1080p 参考 196k tokens/4s；4K 为 4 倍）</div>
+        </div>
+        <div class="warn-box"><b>质量警告</b><ul><li>refs file_id=PENDING (upload via Files API before execution)</li></ul></div>
+      </div>
+    </details>
+
+    <details class="shot" >
+      <summary class="shot-head">
+        <span class="shot-id">S15</span>
+        <span class="shot-meta">scene 5 · 4s · 1080p</span>
+        <span class="shot-q q-GOOD">🏷 GOOD</span>
+      </summary>
+      <div class="shot-body">
+        <div class="block">
+          <h3>编译后 prompt（六段式）</h3>
+          <pre><Subject>The red flip-flop with red straps and a cream footbed resting exactly on the boundary between light and shadow; the diagonal of light cuts the frame in two. Match the reference images.</Subject><Action>The camera creeps in at a very slow pace as the object sits half in warm light and half in shadow.</Action><Scene>Dark alley floor, stone texture in shadow.</Scene><Camera>85mm close shot, very slow dolly in, barely perceptible forward motion.</Camera><Lighting>2800K single stray warm light; a high contrast boundary crosses the product.</Lighting><Style>Dark cinematic luxury, quiet and precise.</Style></pre>
+        </div>
+        <div class="block">
+          <h3>多模态引用映射（首帧 / 尾帧 / image_ref ↔ file_registry）</h3>
+          <div class="ref-row"><span class="ref-idx">首帧</span><b>first_frame_p15</b><span class="ref-meta">projects/guangdong-slipper/frames/storyboard_p15.png · weight=— · generated · file_id=PENDING</span> <span class="ref-pend">⚠️ 待上传（PENDING）</span><img class="ref-thumb" src="../frames/storyboard_p15.jpg" alt="first_frame_p15" onerror="this.style.display='none'"></div><div class="ref-row"><span class="ref-idx">image_ref_1</span><b>ref_slipper_appearance</b><span class="ref-meta">projects/guangdong-slipper/reference/ref_poster_wutiaoren.jpg · weight=0.8 · user · file_id=PENDING</span> <span class="ref-pend">⚠️ 待上传（PENDING）</span><img class="ref-thumb" src="../reference/ref_poster_wutiaoren.jpg" alt="ref_slipper_appearance" onerror="this.style.display='none'"></div><div class="ref-row"><span class="ref-idx">image_ref_2</span><b>first_frame_p14</b><span class="ref-meta">projects/guangdong-slipper/frames/storyboard_p14.png · weight=— · generated · file_id=PENDING</span> <span class="ref-pend">⚠️ 待上传（PENDING）</span><img class="ref-thumb" src="../frames/storyboard_p14.jpg" alt="first_frame_p14" onerror="this.style.display='none'"></div>
+        </div>
+        
+        <div class="block">
+          <h3>字幕（烧录 spec）</h3>
+          <div class="shot-meta">💬 字幕：旁白：真正往前走的人，不需要后跟。（zh · serif · bottom） ｜ 旁白：一条带子，夹住脚，也夹得住日子。（zh · serif · bottom）</div>
+        </div>
+        
+        <div class="block">
+          <h3>arkcli 命令（仅文本，确认后由下游执行）</h3>
+          <pre>arkcli +gen --model doubao-seedance-2-0-260128 --duration 4 --resolution 1080p --ratio 16:9 --extra-body '{"input": [{"type": "input_image", "image_url": "file-PENDING", "role": "first_frame"}, {"type": "input_image", "image_url": "file-PENDING", "role": "reference_image", "reference_image_weight": 0.9}, {"type": "input_image", "image_url": "file-PENDING", "role": "reference_image", "reference_image_weight": 0.5}]}' --force --wait "<Subject>The red flip-flop with red straps and a cream footbed resting exactly on the boundary between light and shadow; the diagonal of light cuts the frame in two. Match the reference images.</Subject><Action>The camera creeps in at a very slow pace as the object sits half in warm light and half in shadow.</Action><Scene>Dark alley floor, stone texture in shadow.</Scene><Camera>85mm close shot, very slow dolly in, barely perceptible forward motion.</Camera><Lighting>2800K single stray warm light; a high contrast boundary crosses the product.</Lighting><Style>Dark cinematic luxury, quiet and precise.</Style>"</pre>
+        </div>
+        <div class="block">
+          <h3>成本估算</h3>
+          <div class="shot-meta">预估 tokens：196425 · 预估成本：按方舟实际计费（1080p 参考 196k tokens/4s；4K 为 4 倍）</div>
+        </div>
+        <div class="warn-box"><b>质量警告</b><ul><li>refs file_id=PENDING (upload via Files API before execution)</li></ul></div>
+      </div>
+    </details>
+
+    <details class="shot" >
+      <summary class="shot-head">
+        <span class="shot-id">S16</span>
+        <span class="shot-meta">scene 5 · 4s · 1080p</span>
+        <span class="shot-q q-GOOD">🏷 GOOD</span>
+      </summary>
+      <div class="shot-body">
+        <div class="block">
+          <h3>编译后 prompt（六段式）</h3>
+          <pre><Subject>Extreme low-angle close-up at ground level in the dark alley: the flip-flops settled on the stone pavement, red straps over cream footbeds, dust drifting in the stray light; the frame implies the soft tap of a step that just passed.</Subject><Action>The faintest settling motion; dust drifts through the light. The audible tap is carried by the sound design, the image stays quiet.</Action><Scene>Alley pavement in near darkness, stones catching a thin line of light.</Scene><Camera>100mm macro from a low angle, static shot, low side light.</Camera><Lighting>2800K low side light grazing the ground, deep shadows.</Lighting><Style>Dark macro, cinematic minimalism.</Style></pre>
+        </div>
+        <div class="block">
+          <h3>多模态引用映射（首帧 / 尾帧 / image_ref ↔ file_registry）</h3>
+          <div class="ref-row"><span class="ref-idx">首帧</span><b>first_frame_p16</b><span class="ref-meta">projects/guangdong-slipper/frames/storyboard_p16.png · weight=— · generated · file_id=PENDING</span> <span class="ref-pend">⚠️ 待上传（PENDING）</span><img class="ref-thumb" src="../frames/storyboard_p16.jpg" alt="first_frame_p16" onerror="this.style.display='none'"></div><div class="ref-row"><span class="ref-idx">image_ref_1</span><b>ref_slipper_appearance</b><span class="ref-meta">projects/guangdong-slipper/reference/ref_poster_wutiaoren.jpg · weight=0.8 · user · file_id=PENDING</span> <span class="ref-pend">⚠️ 待上传（PENDING）</span><img class="ref-thumb" src="../reference/ref_poster_wutiaoren.jpg" alt="ref_slipper_appearance" onerror="this.style.display='none'"></div><div class="ref-row"><span class="ref-idx">image_ref_2</span><b>first_frame_p14</b><span class="ref-meta">projects/guangdong-slipper/frames/storyboard_p14.png · weight=— · generated · file_id=PENDING</span> <span class="ref-pend">⚠️ 待上传（PENDING）</span><img class="ref-thumb" src="../frames/storyboard_p14.jpg" alt="first_frame_p14" onerror="this.style.display='none'"></div>
+        </div>
+        
+        <div class="block">
+          <h3>字幕（烧录 spec）</h3>
+          <div class="shot-meta">💬 字幕：旁白：啪嗒，啪嗒——松弛，是有声音的。（zh · serif · bottom）</div>
+        </div>
+        
+        <div class="block">
+          <h3>arkcli 命令（仅文本，确认后由下游执行）</h3>
+          <pre>arkcli +gen --model doubao-seedance-2-0-260128 --duration 4 --resolution 1080p --ratio 16:9 --extra-body '{"input": [{"type": "input_image", "image_url": "file-PENDING", "role": "first_frame"}, {"type": "input_image", "image_url": "file-PENDING", "role": "reference_image", "reference_image_weight": 0.9}, {"type": "input_image", "image_url": "file-PENDING", "role": "reference_image", "reference_image_weight": 0.5}]}' --force --wait "<Subject>Extreme low-angle close-up at ground level in the dark alley: the flip-flops settled on the stone pavement, red straps over cream footbeds, dust drifting in the stray light; the frame implies the soft tap of a step that just passed.</Subject><Action>The faintest settling motion; dust drifts through the light. The audible tap is carried by the sound design, the image stays quiet.</Action><Scene>Alley pavement in near darkness, stones catching a thin line of light.</Scene><Camera>100mm macro from a low angle, static shot, low side light.</Camera><Lighting>2800K low side light grazing the ground, deep shadows.</Lighting><Style>Dark macro, cinematic minimalism.</Style>"</pre>
+        </div>
+        <div class="block">
+          <h3>成本估算</h3>
+          <div class="shot-meta">预估 tokens：196425 · 预估成本：按方舟实际计费（1080p 参考 196k tokens/4s；4K 为 4 倍）</div>
+        </div>
+        <div class="warn-box"><b>质量警告</b><ul><li>refs file_id=PENDING (upload via Files API before execution)</li><li>first frame shows the slippers resting (design called for a heel-strap macro); action adapted to the frame, the tap beat is carried by sound</li></ul></div>
+      </div>
+    </details>
+
+    <details class="shot" >
+      <summary class="shot-head">
+        <span class="shot-id">S17</span>
+        <span class="shot-meta">scene 6 · 5s · 1080p</span>
+        <span class="shot-q q-GOOD">🏷 GOOD</span>
+      </summary>
+      <div class="shot-body">
+        <div class="block">
+          <h3>编译后 prompt（六段式）</h3>
+          <pre><Subject>Night qilou street lit by a single warm street lamp, the only light source; a pair of flip-flops rests alone at the center of the empty road, vast negative space around. The products match the reference images.</Subject><Action>Complete stillness; the lamp glow holds steady.</Action><Scene>Empty night street between closed arcade shops, clean dark asphalt.</Scene><Camera>35mm wide shot, static camera.</Camera><Lighting>2700K single street lamp, clean darkness, a warm pool of light.</Lighting><Style>Night luxury minimalism, cinematic.</Style></pre>
+        </div>
+        <div class="block">
+          <h3>多模态引用映射（首帧 / 尾帧 / image_ref ↔ file_registry）</h3>
+          <div class="ref-row"><span class="ref-idx">首帧</span><b>first_frame_p17</b><span class="ref-meta">projects/guangdong-slipper/frames/storyboard_p17.png · weight=— · generated · file_id=PENDING</span> <span class="ref-pend">⚠️ 待上传（PENDING）</span><img class="ref-thumb" src="../frames/storyboard_p17.jpg" alt="first_frame_p17" onerror="this.style.display='none'"></div><div class="ref-row"><span class="ref-idx">image_ref_1</span><b>ref_slipper_appearance</b><span class="ref-meta">projects/guangdong-slipper/reference/ref_poster_wutiaoren.jpg · weight=0.8 · user · file_id=PENDING</span> <span class="ref-pend">⚠️ 待上传（PENDING）</span><img class="ref-thumb" src="../reference/ref_poster_wutiaoren.jpg" alt="ref_slipper_appearance" onerror="this.style.display='none'"></div><div class="ref-row"><span class="ref-idx">image_ref_2</span><b>mood_sc6</b><span class="ref-meta">projects/guangdong-slipper/frames/mood_sc6.png · weight=0.6 · generated · file_id=PENDING</span> <span class="ref-pend">⚠️ 待上传（PENDING）</span><img class="ref-thumb" src="../frames/mood_sc6.jpg" alt="mood_sc6" onerror="this.style.display='none'"></div>
+        </div>
+        
+        <div class="block">
+          <h3>字幕（烧录 spec）</h3>
+          <div class="shot-meta">💬 字幕：旁白：夜深了，它被留在街心。（zh · serif · bottom）</div>
+        </div>
+        
+        <div class="block">
+          <h3>arkcli 命令（仅文本，确认后由下游执行）</h3>
+          <pre>arkcli +gen --model doubao-seedance-2-0-260128 --duration 5 --resolution 1080p --ratio 16:9 --extra-body '{"input": [{"type": "input_image", "image_url": "file-PENDING", "role": "first_frame"}, {"type": "input_image", "image_url": "file-PENDING", "role": "reference_image", "reference_image_weight": 0.9}, {"type": "input_image", "image_url": "file-PENDING", "role": "reference_image", "reference_image_weight": 0.6}]}' --force --wait "<Subject>Night qilou street lit by a single warm street lamp, the only light source; a pair of flip-flops rests alone at the center of the empty road, vast negative space around. The products match the reference images.</Subject><Action>Complete stillness; the lamp glow holds steady.</Action><Scene>Empty night street between closed arcade shops, clean dark asphalt.</Scene><Camera>35mm wide shot, static camera.</Camera><Lighting>2700K single street lamp, clean darkness, a warm pool of light.</Lighting><Style>Night luxury minimalism, cinematic.</Style>"</pre>
+        </div>
+        <div class="block">
+          <h3>成本估算</h3>
+          <div class="shot-meta">预估 tokens：245531 · 预估成本：按方舟实际计费（1080p 参考 196k tokens/4s；4K 为 4 倍）</div>
+        </div>
+        <div class="warn-box"><b>质量警告</b><ul><li>refs file_id=PENDING (upload via Files API before execution)</li></ul></div>
+      </div>
+    </details>
+
+    <details class="shot" >
+      <summary class="shot-head">
+        <span class="shot-id">S18</span>
+        <span class="shot-meta">scene 6 · 5s · 1080p</span>
+        <span class="shot-q q-GOOD">🏷 GOOD</span>
+      </summary>
+      <div class="shot-body">
+        <div class="block">
+          <h3>编译后 prompt（六段式）</h3>
+          <pre><Subject>The same night street, closer: the flip-flops on the road while the lamplight brushes the pavement. Match the reference images.</Subject><Action>The camera pushes in very slowly and stops at eye level with the night.</Action><Scene>Night arcade street, deep quiet.</Scene><Camera>50mm medium shot, very slow dolly in, smooth forward movement.</Camera><Lighting>2700K lamp glow, low contrast pool, clean shadows.</Lighting><Style>Night luxury minimalism, cinematic.</Style></pre>
+        </div>
+        <div class="block">
+          <h3>多模态引用映射（首帧 / 尾帧 / image_ref ↔ file_registry）</h3>
+          <div class="ref-row"><span class="ref-idx">首帧</span><b>first_frame_p18</b><span class="ref-meta">projects/guangdong-slipper/frames/storyboard_p18.png · weight=— · generated · file_id=PENDING</span> <span class="ref-pend">⚠️ 待上传（PENDING）</span><img class="ref-thumb" src="../frames/storyboard_p18.jpg" alt="first_frame_p18" onerror="this.style.display='none'"></div><div class="ref-row"><span class="ref-idx">image_ref_1</span><b>ref_slipper_appearance</b><span class="ref-meta">projects/guangdong-slipper/reference/ref_poster_wutiaoren.jpg · weight=0.8 · user · file_id=PENDING</span> <span class="ref-pend">⚠️ 待上传（PENDING）</span><img class="ref-thumb" src="../reference/ref_poster_wutiaoren.jpg" alt="ref_slipper_appearance" onerror="this.style.display='none'"></div><div class="ref-row"><span class="ref-idx">image_ref_2</span><b>mood_sc6</b><span class="ref-meta">projects/guangdong-slipper/frames/mood_sc6.png · weight=0.6 · generated · file_id=PENDING</span> <span class="ref-pend">⚠️ 待上传（PENDING）</span><img class="ref-thumb" src="../frames/mood_sc6.jpg" alt="mood_sc6" onerror="this.style.display='none'"></div>
+        </div>
+        
+        <div class="block">
+          <h3>字幕（烧录 spec）</h3>
+          <div class="shot-meta">💬 字幕：旁白：它不是便宜——是不肯贵。（zh · serif · bottom） ｜ 旁白：真正的自由，是一双不怕弄脏的鞋。（zh · serif · bottom）</div>
+        </div>
+        
+        <div class="block">
+          <h3>arkcli 命令（仅文本，确认后由下游执行）</h3>
+          <pre>arkcli +gen --model doubao-seedance-2-0-260128 --duration 5 --resolution 1080p --ratio 16:9 --extra-body '{"input": [{"type": "input_image", "image_url": "file-PENDING", "role": "first_frame"}, {"type": "input_image", "image_url": "file-PENDING", "role": "reference_image", "reference_image_weight": 0.9}, {"type": "input_image", "image_url": "file-PENDING", "role": "reference_image", "reference_image_weight": 0.6}]}' --force --wait "<Subject>The same night street, closer: the flip-flops on the road while the lamplight brushes the pavement. Match the reference images.</Subject><Action>The camera pushes in very slowly and stops at eye level with the night.</Action><Scene>Night arcade street, deep quiet.</Scene><Camera>50mm medium shot, very slow dolly in, smooth forward movement.</Camera><Lighting>2700K lamp glow, low contrast pool, clean shadows.</Lighting><Style>Night luxury minimalism, cinematic.</Style>"</pre>
+        </div>
+        <div class="block">
+          <h3>成本估算</h3>
+          <div class="shot-meta">预估 tokens：245531 · 预估成本：按方舟实际计费（1080p 参考 196k tokens/4s；4K 为 4 倍）</div>
+        </div>
+        <div class="warn-box"><b>质量警告</b><ul><li>refs file_id=PENDING (upload via Files API before execution)</li></ul></div>
+      </div>
+    </details>
+
+    <details class="shot" >
+      <summary class="shot-head">
+        <span class="shot-id">S19</span>
+        <span class="shot-meta">scene 6 · 4s · 1080p</span>
+        <span class="shot-q q-GOOD">🏷 GOOD</span>
+      </summary>
+      <div class="shot-body">
+        <div class="block">
+          <h3>编译后 prompt（六段式）</h3>
+          <pre><Subject>Brand end card: a pure dark night-brown field #2A211C with a warm-gold serif wordmark GDST and the smaller Chinese line for Guangdong slippers beneath it, a soft glow. The mark is already rendered in the first frame.</Subject><Action>The wordmark glows gently and holds; a soft fade to black at the end.</Action><Scene>Graphic end frame, minimal, no environment.</Scene><Camera>50mm static shot, locked off tripod, centered composition.</Camera><Lighting>Warm gold light on the mark, clean dark field.</Lighting><Style>Luxury brand end card, minimal and calm.</Style></pre>
+        </div>
+        <div class="block">
+          <h3>多模态引用映射（首帧 / 尾帧 / image_ref ↔ file_registry）</h3>
+          <div class="ref-row"><span class="ref-idx">首帧</span><b>first_frame_p19</b><span class="ref-meta">projects/guangdong-slipper/frames/storyboard_p19.png · weight=— · generated · file_id=PENDING</span> <span class="ref-pend">⚠️ 待上传（PENDING）</span><img class="ref-thumb" src="../frames/storyboard_p19.jpg" alt="first_frame_p19" onerror="this.style.display='none'"></div>
+        </div>
+        
+        <div class="block">
+          <h3>字幕（烧录 spec）</h3>
+          <div class="shot-meta">💬 字幕：字标：广东省拖 · GDST（zh · serif · center）</div>
+        </div>
+        
+        <div class="block">
+          <h3>arkcli 命令（仅文本，确认后由下游执行）</h3>
+          <pre>arkcli +gen --model doubao-seedance-2-0-260128 --duration 4 --resolution 1080p --ratio 16:9 --extra-body '{"input": [{"type": "input_image", "image_url": "file-PENDING", "role": "first_frame"}]}' --force --wait "<Subject>Brand end card: a pure dark night-brown field #2A211C with a warm-gold serif wordmark GDST and the smaller Chinese line for Guangdong slippers beneath it, a soft glow. The mark is already rendered in the first frame.</Subject><Action>The wordmark glows gently and holds; a soft fade to black at the end.</Action><Scene>Graphic end frame, minimal, no environment.</Scene><Camera>50mm static shot, locked off tripod, centered composition.</Camera><Lighting>Warm gold light on the mark, clean dark field.</Lighting><Style>Luxury brand end card, minimal and calm.</Style>"</pre>
+        </div>
+        <div class="block">
+          <h3>成本估算</h3>
+          <div class="shot-meta">预估 tokens：196425 · 预估成本：按方舟实际计费（1080p 参考 196k tokens/4s；4K 为 4 倍）</div>
+        </div>
+        <div class="warn-box"><b>质量警告</b><ul><li>refs file_id=PENDING (upload via Files API before execution)</li><li>wordmark best re-composited in post; video stage keeps static frame with soft glow and fade</li></ul></div>
+      </div>
+    </details>
+
+  </main>
+
+  <div class="foot">Generated by Muse Video Skill · export_html.py v0.4.1 · 2026-09-30T08:23:23Z</div>
+
+</body>
+</html>

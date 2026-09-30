@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>把广东省拖拍成奢侈品大片 — 分镜展示</title>
+<style>
+  /* ── 分镜卡片网格 ── */
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+  :root {
+    --bg: #faf9f5;
+    --card-bg: #ffffff;
+    --text: #141413;
+    --text-secondary: #666;
+    --accent: #cc785c;
+    --border: #e0ddd5;
+    --shadow: 0 1px 3px rgba(0,0,0,0.08);
+    --shadow-hover: 0 4px 12px rgba(0,0,0,0.12);
+    --radius: 10px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text);
+    background: var(--bg);
+    padding: 2rem;
+  }
+
+  /* ── Header ── */
+  .header {
+    max-width: 1200px;
+    margin: 0 auto 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid var(--accent);
+  }
+
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+
+  .header .subtitle {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+  }
+
+  .header .grid-info {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.2em 0.8em;
+    background: var(--accent);
+    color: white;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  /* ── Grid ── */
+  .storyboard-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  /* For 2×3 layout */
+  .storyboard-grid.layout-2x3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .storyboard-grid.layout-3x3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* ── Card ── */
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+
+  .card:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px);
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.8rem 1rem;
+    background: #f5f3ef;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .card-header .panel-id {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--accent);
+  }
+
+  .card-header .scene-ref {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+  }
+
+  .card-header .layout-badge {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    padding: 0.15em 0.5em;
+    background: var(--text);
+    color: white;
+    border-radius: 3px;
+    letter-spacing: 0.05em;
+  }
+
+  .card-body {
+    padding: 1rem;
+  }
+
+  .card-body .description {
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.5;
+  }
+
+  .card-body .prompt {
+    background: #f8f8f8;
+    padding: 0.6rem 0.8rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.8rem;
+    color: #555;
+    line-height: 1.4;
+    margin-bottom: 0.8rem;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  .card-body .subtitle-line {
+    background: #fffbe8;
+    border-left: 3px solid #e8c75a;
+    padding: 0.5rem 0.7rem;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.8rem;
+    color: #6b5a1e;
+    margin-bottom: 0.8rem;
+    line-height: 1.5;
+  }
+
+  .card-body .tech-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  .card-body .tech-meta .tag {
+    padding: 0.15em 0.5em;
+    background: #eee;
+    border-radius: 3px;
+    color: #555;
+  }
+
+  .card-body .image-placeholder {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #f0eee8;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #bbb;
+    font-size: 0.85rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .card-body .image-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+
+  .card-footer {
+    padding: 0.6rem 1rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+  }
+
+  .status-badge {
+    padding: 0.15em 0.6em;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.7rem;
+  }
+
+  .status-badge.approved {
+    background: #d4edda;
+    color: #155724;
+  }
+
+  .status-badge.pending {
+    background: #fff3cd;
+    color: #856404;
+  }
+
+  /* ── Sound design panel ── */
+  .sound-panel {
+    max-width: 1200px;
+    margin: 2rem auto 0;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem 1.2rem;
+  }
+
+  .sound-panel h2 {
+    font-size: 1rem;
+    margin-bottom: 0.6rem;
+    color: var(--accent);
+  }
+
+  .sound-panel .sound-row {
+    display: flex;
+    gap: 0.6rem;
+    font-size: 0.85rem;
+    margin-bottom: 0.35rem;
+    line-height: 1.5;
+  }
+
+  .sound-panel .sound-k {
+    flex: 0 0 6.5em;
+    color: var(--text-secondary);
+    font-weight: 600;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    max-width: 1200px;
+    margin: 2rem auto 0;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .storyboard-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .storyboard-grid {
+      grid-template-columns: 1fr;
+    }
+    body { padding: 1rem; }
+  }
+
+  /* ── Print ── */
+  @media print {
+    body { background: white; }
+    .card { box-shadow: none; break-inside: avoid; }
+    .card:hover { transform: none; }
+  }
+
+  /* ── Dark mode ── */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #141413;
+      --card-bg: #1e1e1c;
+      --text: #e0e0e0;
+      --text-secondary: #999;
+      --border: #333;
+      --shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
+    .card-header { background: #252523; }
+    .card-body .prompt { background: #252523; color: #aaa; }
+    .card-body .image-placeholder { background: #252523; }
+    .card-body .tech-meta .tag { background: #333; color: #aaa; }
+    .card-body .subtitle-line { background: #2a2618; color: #d8c98a; }
+    .sound-panel .sound-k { color: #aaa; }
+    .status-badge.approved { background: #1a3a24; color: #8fdf9f; }
+    .status-badge.pending { background: #3a3010; color: #dfc860; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ Header ═══ -->
+<header class="header">
+  <h1>把广东省拖拍成奢侈品大片</h1>
+  <div class="subtitle">
+    studio-ad · 90s · 16:9
+  </div>
+  <span class="grid-info">3×3 网格 · 19 镜</span>
+</header>
+
+<!-- ═══ Storyboard Grid ═══ -->
+<div class="storyboard-grid layout-3x3">
+
+
+  <article class="card">
+    <header class="card-header">
+      <span class="panel-id">#1</span>
+      <span class="layout-badge">extreme-close-up</span>
+      <span class="scene-ref">Scene 1</span>
+    </header>
+
+    <div class="card-body">
+      
+      <div class="image-placeholder">
+        <img src="../frames/storyboard_p1.jpg" alt="鞋底波纹在暖光下起伏，像某种地形（微距；不出现完整产品）" loading="lazy">
+      </div>
+      
+      
+      
+
+      <div class="description">鞋底波纹在暖光下起伏，像某种地形（微距；不出现完整产品）</div>
+
+      
+      <div class="prompt">以参考图中拖鞋的材质与配色为准，生成奢侈品广告风格超微距静物：红色塑料人字拖鞋底的波纹结构，暖光下如地形起伏；琥珀橙#B85C38到深赭#5C2E1E暖调背景渐变；3200K 暖钨丝柔光、高光沿棱线流动、浅景深；不出现完整产品；16:9，无文字</div>
+      
+
+      
+      <div class="subtitle-line">💬 字幕：旁白：在广东，它比天气更常见。（zh · serif · bottom）</div>
+      
+
+      <div class="tech-meta">
+        <span class="tag">📷 100mm 微距，极缓 dolly-in（≤0.3m/s），暖钨丝柔光箱 45° 侧光+反光板</span>
+        <span class="tag">✨ 半透明塑料 SSS：透光边缘柔化（roughness 0.35）</span>
+        
+      </div>
+    </div>
+
+    <footer class="card-footer">
+      <span>Rev 1</span>
+      
+      <span class="status-badge approved">✓ 已审核</span>
+      
+      
+      
+    </footer>
+  </article>
+
+  <article class="card">
+    <header class="card-header">
+      <span class="panel-id">#2</span>
+      <span class="layout-badge">extreme-close-up</span>
+      <span class="scene-ref">Scene 1</span>
+    </header>
+
+    <div class="card-body">
+      
+      <div class="image-placeholder">
+        <img src="../frames/storyboard_p2.jpg" alt="人字带织纹特写，焦点缓移向边缘透光" loading="lazy">
+      </div>
+      
+      
+      
+
+      <div class="description">人字带织纹特写，焦点缓移向边缘透光</div>
+
+      
+      <div class="prompt">以参考图中拖鞋的材质与配色为准，生成超微距：人字带织物织纹特写，焦点从纹路缓移到边缘透光；琥珀橙暖调；3200K 暖钨丝柔光；浅景深；16:9，无文字</div>
+      
+
+      
+      <div class="subtitle-line">💬 字幕：旁白：它贴着地面，也贴着我们的日子。（zh · serif · bottom）</div>
+      
+
+      <div class="tech-meta">
+        <span class="tag">📷 100mm 微距，静态（焦点缓移）</span>
+        <span class="tag">✨ SSS 透光边缘</span>
+        
+      </div>
+    </div>
+
+    <footer class="card-footer">
+      <span>Rev 1</span>
+      
+      <span class="status-badge approved">✓ 已审核</span>
+      
+      
+      
+    </footer>
+  </article>
+
+  <article class="card">
+    <header class="card-header">
+      <span class="panel-id">#3</span>
+      <span class="layout-badge">close-up</span>
+      <span class="scene-ref">Scene 1</span>
+    </header>
+
+    <div class="card-body">
+      
+      <div class="image-placeholder">
+        <img src="../frames/storyboard_p3.jpg" alt="半透明塑料透光层次，极缓拉远收在静帧" loading="lazy">
+      </div>
+      
+      
+      
+
+      <div class="description">半透明塑料透光层次，极缓拉远收在静帧</div>
+
+      
+      <div class="prompt">以参考图中拖鞋的材质与配色为准，生成静物特写：半透明红色塑料在侧逆光中透出层次光泽，极缓拉远收在静帧；琥珀橙到深赭暖调；3200K；16:9，无文字</div>
+      
+
+      
+      <div class="subtitle-line">💬 字幕：旁白：熟悉到，没人认真看过它第二眼。（zh · serif · bottom） ｜ 旁白：这一次，我们认真看它第二眼。（zh · serif · bottom）</div>
+      
+
+      <div class="tech-meta">
+        <span class="tag">📷 85mm，静态→极缓拉远，侧逆光</span>
+        
+        
+      </div>
+    </div>
+
+    <footer class="card-footer">
+      <span>Rev 1</span>
+      
+      <span class="status-badge approved">✓ 已审核</span>
+      
+      
+      
+    </footer>
+  </article>
+
+  <article class="card">
+    <header class="card-header">
+      <span class="panel-id">#4</span>
+      <span class="layout-badge">wide</span>
+      <span class="scene-ref">Scene 2</span>
+    </header>
+
+    <div class="card-body">
+      
+      <div class="image-placeholder">
+        <img src="../frames/storyboard_p4.jpg" alt="图纸上的省拖（v3 终版）：图纸清晰绘出人字拖俯视工程线稿+尺寸标注，三色实物（红款粉红底缘）环列映照" loading="lazy">
+      </div>
+      
+      
+      
+
+      <div class="description">图纸上的省拖（v3 终版）：图纸清晰绘出人字拖俯视工程线稿+尺寸标注，三色实物（红款粉红底缘）环列映照</div>
+
+      
+      <div class="prompt">以参考图中拖鞋的材质与配色为准（红款：奶白鞋床、红色人字带、白色中底侧壁、底缘一圈粉红色；绿款：半透明翠绿），生成奢侈品广告风格俯拍图纸场景：米白工程图纸铺满画面，图纸上清晰绘有人字拖的俯视工程线稿——鞋底轮廓、人字带结构、夹趾点与鞋床纹路（工程制图细线+构造虚线），另绘尺寸标注线（箭头与刻度、数字示意）与红蓝铅笔批注线迹；三只实物拖鞋（红/绿/白）在图纸上列位，红款实物紧邻其线稿、互为映照，标注引线自实物边缘自然引出；4200K 均匀柔光、纸面反光干净、浅景深、电影级调色；16:9（数字与笔迹为示意级）</div>
+      
+
+      
+      <div class="subtitle-line">💬 字幕：旁白：把它放上纸面，一切就严肃了起来。（zh · serif · bottom）</div>
+      
+
+      <div class="tech-meta">
+        <span class="tag">📷 50mm 俯视全景，极缓 pedestal 下降，均匀柔光</span>
+        <span class="tag">✨ 纸张与铅笔材质（哑光纸纹+石墨反光）</span>
+        
+      </div>
+    </div>
+
+    <footer class="card-footer">
+      <span>Rev 3</span>
+      
+      <span class="status-badge approved">✓ 已审核</span>
+      
+      
+      
+    </footer>
+  </article>
+
+  <article class="card">
+    <header class="card-header">
+      <span class="panel-id">#5</span>
+      <span class="layout-badge">close-up</span>
+      <span class="scene-ref">Scene 2</span>
+    </header>
+
+    <div class="card-body">
+      
+      <div class="image-placeholder">
+        <img src="../frames/storyboard_p5.jpg" alt="图纸上的三只拖鞋制图（红/绿/白·淡彩上色；无实物、无色卡）" loading="lazy">
+      </div>
+      
+      
+      
+
+      <div class="description">图纸上的三只拖鞋制图（红/绿/白·淡彩上色；无实物、无色卡）</div>
+
+      
+      <div class="prompt">奢侈品广告风格俯拍图纸特写：米白工程图纸上绘有三只人字拖的工程制图，红色款、绿色款、白色款各一只，线稿配淡彩上色（红、翠绿、奶白），人字带与夹趾点结构准确；辅以尺寸标注线与铅笔批注线迹（示意）；画面中无实物拖鞋、无色卡；4200K 均匀柔光、纸面反光干净、浅景深、电影级调色；16:9，无文字</div>
+      
+
+      
+      <div class="subtitle-line">💬 字幕：旁白：荔枝红、榕荫绿、骑楼白——它一直有自己的色号。（zh · serif · bottom） ｜ 旁白：只是从来没人问过。（zh · serif · bottom）</div>
+      
+
+      <div class="tech-meta">
+        <span class="tag">📷 85mm，静态微横移</span>
+        
+        
+      </div>
+    </div>
+
+    <footer class="card-footer">
+      <span>Rev 2</span>
+      
+      <span class="status-badge approved">✓ 已审核</span>
+      
+      
+      
+    </footer>
+  </article>
+
+  <article class="card">
+    <header class="card-header">
+      <span class="panel-id">#6</span>
+      <span class="layout-badge">extreme-close-up</span>
+      <span class="scene-ref">Scene 2</span>
+    </header>
+
+    <div class="card-body">
+      
+      <div class="image-placeholder">
+        <img src="../frames/storyboard_p6.jpg" alt="标注线与材质边缘微距，收静帧" loading="lazy">
+      </div>
+      
+      
+      
+
+      <div class="description">标注线与材质边缘微距，收静帧</div>
+
+      
+      <div class="prompt">以参考图（图纸场景）的视觉语言为准，生成超微距：铅笔标注线与塑料材质边缘的对照细节；骑楼白基底；4200K；侧光强调纸纹与塑料对比；16:9，无文字</div>
+      
+
+      
+      <div class="subtitle-line">💬 字幕：旁白：两片塑料，一条带子——结构简单得没有一句废话。（zh · serif · bottom）</div>
+      
+
+      <div class="tech-meta">
+        <span class="tag">📷 100mm 微距，静态，侧光强调纸纹与塑料对比</span>
+        
+        
+      </div>
+    </div>
+
+    <footer class="card-footer">
+      <span>Rev 1</span>
+      
+      <span class="status-badge approved">✓ 已审核</span>
+      
+      
+      
+    </footer>
+  </article>
+
+  <article class="card">
+    <header class="card-header">
+      <span class="panel-id">#7</span>
+      <span class="layout-badge">establishing</span>
+      <span class="scene-ref">Scene 3</span>
+    </header>
+
+    <div class="card-body">
+      
+      <div class="image-placeholder">
+        <img src="../frames/storyboard_p7.jpg" alt="金色时刻骑楼石街纵深，光从柱列间涌入（英雄登场前空镜）" loading="lazy">
+      </div>
+      
+      
+      
+
+      <div class="description">金色时刻骑楼石街纵深，光从柱列间涌入（英雄登场前空镜）</div>
+
+      
+      <div class="prompt">以参考图的场景与金色时刻光感为准，生成英雄登场前的空镜：岭南骑楼石街纵深，光从柱列间涌入，空气中可见浮尘与镜头光斑；大面积柔光、浅景深、电影级调色；16:9，无文字</div>
+      
+
+      
+      <div class="subtitle-line">💬 字幕：旁白：现在，让它走进光里。（zh · serif · bottom）</div>
+      
+
+      <div class="tech-meta">
+        <span class="tag">📷 35mm，低角度极缓 dolly-in；haze 让光束可见</span>
+        <span class="tag">✨ 浮尘粒子（团块+湍流，非均匀）；轻 bloom</span>
+        
+      </div>
+    </div>
+
+    <footer class="card-footer">
+      <span>Rev 1</span>
+      
+      <span class="status-badge approved">✓ 已审核</span>
+      
+      
+      
+    </footer>
+  </article>
+
+  <article class="card">
+    <header class="card-header">
+      <span class="panel-id">#8</span>
+      <span class="layout-badge">close-up</span>
+      <span class="scene-ref">Scene 3</span>
+    </header>
+
+    <div class="card-body">
+      
+      <div class="image-placeholder">
+        <img src="../frames/storyboard_p8.jpg" alt="红拖立于光斑中央的 Hero 镜头，逆光镶金" loading="lazy">
+      </div>
+      
+      
+      
+
+      <div class="description">红拖立于光斑中央的 Hero 镜头，逆光镶金</div>
+
+      
+      <div class="prompt">以参考图的拖鞋材质配色与金色时刻光感为准，生成奢侈品广告风格 Hero 镜头：红色塑料人字拖立于石板光斑中央，逆光在边缘镶上金边；暖金#E8B04B；浅景深；16:9，无文字</div>
+      
+
+      
+      <div class="subtitle-line">💬 字幕：旁白：真正的经典，从不挑剔舞台。（zh · serif · bottom）</div>
+      
+
+      <div class="tech-meta">
+        <span class="tag">📷 50mm，静态低角度，逆光主光+金色反光板</span>
+        <span class="tag">✨ 边缘镶金（rim glow）+ 轻 bloom</span>
+        
+      </div>
+    </div>
+
+    <footer class="card-footer">
+      <span>Rev 1</span>
+      
+      <span class="status-badge approved">✓ 已审核</span>
+      
+      
+      
+    </footer>
+  </article>
+
+  <article class="card">
+    <header class="card-header">
+      <span class="panel-id">#9</span>
+      <span class="layout-badge">medium</span>
+      <span class="scene-ref">Scene 3</span>
+    </header>
+
+    <div class="card-body">
+      
+      <div class="image-placeholder">
+        <img src="../frames/storyboard_p9.jpg" alt="侧逆光剪影，柱廊形成引导线" loading="lazy">
+      </div>
+      
+      
+      
+
+      <div class="description">侧逆光剪影，柱廊形成引导线</div>
+
+      
+      <div class="prompt">以参考图的金色时刻骑楼场景为准，生成电影感中景：柱廊下产品侧逆光剪影，柱廊线条引导纵深；暖金主调；光比 1:3；16:9，无文字</div>
+      
+
+      
+      <div class="subtitle-line">💬 字幕：旁白：它进过大排档，也进过演唱会。（zh · serif · bottom）</div>
+      
+
+      <div class="tech-meta">
+        <span class="tag">📷 50mm，极缓侧移</span>
+        <span class="tag">✨ haze 轻微</span>
+        
+      </div>
+    </div>
+
+    <footer class="card-footer">
+      <span>Rev 1</span>
+      
+      <span class="status-badge approved">✓ 已审核</span>
+      
+      
+      
+    </footer>
+  </article>
+
+  <article class="card">
+    <header class="card-header">
+      <span class="panel-id">#10</span>
+      <span class="layout-badge">extreme-close-up</span>
+      <span class="scene-ref">Scene 3</span>
+    </header>
+
+    <div class="card-body">
+      
+      <div class="image-placeholder">
+        <img src="../frames/storyboard_p10.jpg" alt="浮尘光斑掠过鞋面（微距）" loading="lazy">
+      </div>
+      
+      
+      
+
+      <div class="description">浮尘光斑掠过鞋面（微距）</div>
+
+      
+      <div class="prompt">以参考图1的拖鞋造型与配色为准（人字带为清晰的 V 字形分叉、夹趾点位于鞋床前部、带与鞋床连接处自然无变形），以参考图2的金色时刻光感为氛围，生成超微距：浮尘与光斑掠过红色塑料人字拖的鞋面与鞋带，逆光透射；暖金#E8B04B；16:9，无文字</div>
+      
+
+      
+      <div class="subtitle-line">💬 字幕：旁白：不是它高攀了光——是光选对了脚。（zh · serif · bottom）</div>
+      
+
+      <div class="tech-meta">
+        <span class="tag">📷 100mm 微距，静态，逆光透射</span>
+        <span class="tag">✨ 光斑+浮尘粒子</span>
+        
+      </div>
+    </div>
+
+    <footer class="card-footer">
+      <span>Rev 2</span>
+      
+      <span class="status-badge approved">✓ 已审核</span>
+      
+      
+      
+    </footer>
+  </article>
+
+  <article class="card">
+    <header class="card-header">
+      <span class="panel-id">#11</span>
+      <span class="layout-badge">wide</span>
+      <span class="scene-ref">Scene 4</span>
+    </header>
+
+    <div class="card-body">
+      
+      <div class="image-placeholder">
+        <img src="../frames/storyboard_p11.jpg" alt="阿广走过骑楼柱廊，明暗条带交替扫过身体（Steadicam 跟随）" loading="lazy">
+      </div>
+      
+      
+      
+
+      <div class="description">阿广走过骑楼柱廊，明暗条带交替扫过身体（Steadicam 跟随）</div>
+
+      
+      <div class="prompt">以参考图1-3的人物为同一人（保持同一张脸、同一套穿着），以参考图4为场景：他抬步走过骑楼柱廊，明暗条带交替扫过身体；午后斜光、背景虚化、电影级调色、浅景深；16:9，无文字</div>
+      
+
+      
+      <div class="subtitle-line">💬 字幕：旁白：接着，穿它的人出现了。（zh · serif · bottom）</div>
+      
+
+      <div class="tech-meta">
+        <span class="tag">📷 35mm，Steadicam 步行速跟随；柱廊明暗条带</span>
+        
+        
+      </div>
+    </div>
+
+    <footer class="card-footer">
+      <span>Rev 1</span>
+      
+      <span class="status-badge approved">✓ 已审核</span>
+      
+      
+      
+    </footer>
+  </article>
+
+  <article class="card">
+    <header class="card-header">
+      <span class="panel-id">#12</span>
+      <span class="layout-badge">medium</span>
+      <span class="scene-ref">Scene 4</span>
+    </header>
+
+    <div class="card-body">
+      
+      <div class="image-placeholder">
+        <img src="../frames/storyboard_p12.jpg" alt="柱廊间驻足，平直前视（框架构图）" loading="lazy">
+      </div>
+      
+      
+      
+
+      <div class="description">柱廊间驻足，平直前视（框架构图）</div>
+
+      
+      <div class="prompt">以参考图1-3的人物为同一人（保持同一张脸、同一套穿着），以参考图4为场景：他在柱廊间驻足，平直目光望向纵深，面无表情的松弛；午后斜光、框架构图、浅景深；16:9，无文字</div>
+      
+
+      
+      <div class="subtitle-line">💬 字幕：旁白：他走得很慢，慢得像整条街都在等他。（zh · serif · bottom） ｜ 旁白：穿它的人，不需要向任何人解释。（zh · serif · bottom）</div>
+      
+
+      <div class="tech-meta">
+        <span class="tag">📷 50mm，静态（人物入出画），轮廓光分离暖衣与暖墙</span>
+        
+        
+      </div>
+    </div>
+
+    <footer class="card-footer">
+      <span>Rev 1</span>
+      
+      <span class="status-badge approved">✓ 已审核</span>
+      
+      
+      
+    </footer>
+  </article>
+
+  <article class="card">
+    <header class="card-header">
+      <span class="panel-id">#13</span>
+      <span class="layout-badge">close-up</span>
+      <span class="scene-ref">Scene 4</span>
+    </header>
+
+    <div class="card-body">
+      
+      <div class="image-placeholder">
+        <img src="../frames/storyboard_p13.jpg" alt="双脚与红拖走过石板的低角度插入镜头" loading="lazy">
+      </div>
+      
+      
+      
+
+      <div class="description">双脚与红拖走过石板的低角度插入镜头</div>
+
+      
+      <div class="prompt">以参考图中的红色人字拖与双脚为准，生成低角度插入镜头：一双脚穿着红色塑料人字拖走过石板路，步伐松弛；午后斜光；浅景深；16:9，无文字</div>
+      
+
+      
+      <div class="subtitle-line">💬 字幕：旁白：有人喊他老板，有人喊他阿广——他都应。（zh · serif · bottom）</div>
+      
+
+      <div class="tech-meta">
+        <span class="tag">📷 50mm，低角度静态→微摇</span>
+        
+        
+      </div>
+    </div>
+
+    <footer class="card-footer">
+      <span>Rev 1</span>
+      
+      <span class="status-badge approved">✓ 已审核</span>
+      
+      
+      
+    </footer>
+  </article>
+
+  <article class="card">
+    <header class="card-header">
+      <span class="panel-id">#14</span>
+      <span class="layout-badge">wide</span>
+      <span class="scene-ref">Scene 5</span>
+    </header>
+
+    <div class="card-body">
+      
+      <div class="image-placeholder">
+        <img src="../frames/storyboard_p14.jpg" alt="暗巷近黑，一束余光从巷口斜切（85% 暗区）" loading="lazy">
+      </div>
+      
+      
+      
+
+      <div class="description">暗巷近黑，一束余光从巷口斜切（85% 暗区）</div>
+
+      
+      <div class="prompt">奢侈品广告风格暗调场景：岭南暗巷近黑，一束暖色余光从巷口斜切进来，石板路面有漫长光影；暗夜棕#2A211C；2800K 单一余光；暗部纯净不浑浊；电影级调色；16:9，无文字</div>
+      
+
+      
+      <div class="subtitle-line">💬 字幕：旁白：它没有后跟。（zh · serif · bottom）</div>
+      
+
+      <div class="tech-meta">
+        <span class="tag">📷 35mm，静态；单一余光动机</span>
+        <span class="tag">✨ 大气压暗（暗部纯净）+ 极轻 haze</span>
+        
+      </div>
+    </div>
+
+    <footer class="card-footer">
+      <span>Rev 1</span>
+      
+      <span class="status-badge approved">✓ 已审核</span>
+      
+      
+      
+    </footer>
+  </article>
+
+  <article class="card">
+    <header class="card-header">
+      <span class="panel-id">#15</span>
+      <span class="layout-badge">close-up</span>
+      <span class="scene-ref">Scene 5</span>
+    </header>
+
+    <div class="card-body">
+      
+      <div class="image-placeholder">
+        <img src="../frames/storyboard_p15.jpg" alt="红色拖鞋静置于光影交界，镜头 0.2m/s 逼近" loading="lazy">
+      </div>
+      
+      
+      
+
+      <div class="description">红色拖鞋静置于光影交界，镜头 0.2m/s 逼近</div>
+
+      
+      <div class="prompt">以参考图1的红色拖鞋造型与配色为准（红色人字带加奶白鞋床），以参考图2的暗调场景光线为准，生成静物特写：红色塑料人字拖静置于光影交界处——一半在暖光里、一半藏在阴影里，明暗把画面切开；暗夜棕#2A211C；2800K 单一余光；16:9，无文字</div>
+      
+
+      
+      <div class="subtitle-line">💬 字幕：旁白：真正往前走的人，不需要后跟。（zh · serif · bottom） ｜ 旁白：一条带子，夹住脚，也夹得住日子。（zh · serif · bottom）</div>
+      
+
+      <div class="tech-meta">
+        <span class="tag">📷 85mm，极缓 dolly-in（0.2m/s）</span>
+        
+        
+      </div>
+    </div>
+
+    <footer class="card-footer">
+      <span>Rev 2</span>
+      
+      <span class="status-badge approved">✓ 已审核</span>
+      
+      
+      
+    </footer>
+  </article>
+
+  <article class="card">
+    <header class="card-header">
+      <span class="panel-id">#16</span>
+      <span class="layout-badge">extreme-close-up</span>
+      <span class="scene-ref">Scene 5</span>
+    </header>
+
+    <div class="card-body">
+      
+      <div class="image-placeholder">
+        <img src="../frames/storyboard_p16.jpg" alt="脚跟抬起、带子受力、落下（「啪嗒」的视觉化微距）" loading="lazy">
+      </div>
+      
+      
+      
+
+      <div class="description">脚跟抬起、带子受力、落下（「啪嗒」的视觉化微距）</div>
+
+      
+      <div class="prompt">以参考图1的暗调场景与参考图2的拖鞋材质为准，生成超微距：脚跟抬起、人字带受力、落下的瞬间，微尘与光影轻震；暗夜棕；低角度侧光；16:9，无文字</div>
+      
+
+      
+      <div class="subtitle-line">💬 字幕：旁白：啪嗒，啪嗒——松弛，是有声音的。（zh · serif · bottom）</div>
+      
+
+      <div class="tech-meta">
+        <span class="tag">📷 100mm 微距，静态，低角度侧光</span>
+        <span class="tag">✨ 微尘与光影一震（啪嗒视觉化——极轻颗粒扰动）</span>
+        
+      </div>
+    </div>
+
+    <footer class="card-footer">
+      <span>Rev 1</span>
+      
+      <span class="status-badge approved">✓ 已审核</span>
+      
+      
+      
+    </footer>
+  </article>
+
+  <article class="card">
+    <header class="card-header">
+      <span class="panel-id">#17</span>
+      <span class="layout-badge">wide</span>
+      <span class="scene-ref">Scene 6</span>
+    </header>
+
+    <div class="card-body">
+      
+      <div class="image-placeholder">
+        <img src="../frames/storyboard_p17.jpg" alt="夜街空镜：单盏街灯下街心放置拖鞋，大留白" loading="lazy">
+      </div>
+      
+      
+      
+
+      <div class="description">夜街空镜：单盏街灯下街心放置拖鞋，大留白</div>
+
+      
+      <div class="prompt">以参考图的夜景场景为准：单盏街灯下、街心静静放着一双塑料人字拖；暗部纯净、大面积留白、克制构图、电影级调色；16:9，无文字</div>
+      
+
+      
+      <div class="subtitle-line">💬 字幕：旁白：夜深了，它被留在街心。（zh · serif · bottom）</div>
+      
+
+      <div class="tech-meta">
+        <span class="tag">📷 35mm，静态；2700K 单盏街灯唯一亮源</span>
+        
+        
+      </div>
+    </div>
+
+    <footer class="card-footer">
+      <span>Rev 1</span>
+      
+      <span class="status-badge approved">✓ 已审核</span>
+      
+      
+      
+    </footer>
+  </article>
+
+  <article class="card">
+    <header class="card-header">
+      <span class="panel-id">#18</span>
+      <span class="layout-badge">medium</span>
+      <span class="scene-ref">Scene 6</span>
+    </header>
+
+    <div class="card-body">
+      
+      <div class="image-placeholder">
+        <img src="../frames/storyboard_p18.jpg" alt="极缓推近至街心的拖鞋（收束呼吸）" loading="lazy">
+      </div>
+      
+      
+      
+
+      <div class="description">极缓推近至街心的拖鞋（收束呼吸）</div>
+
+      
+      <div class="prompt">以参考图的夜景场景与构图为准，生成：镜头极缓推近街心静置的塑料人字拖，街灯顶光在地面拉出微光；暗夜棕加暖金；16:9，无文字</div>
+      
+
+      
+      <div class="subtitle-line">💬 字幕：旁白：它不是便宜——是不肯贵。（zh · serif · bottom） ｜ 旁白：真正的自由，是一双不怕弄脏的鞋。（zh · serif · bottom）</div>
+      
+
+      <div class="tech-meta">
+        <span class="tag">📷 50mm，极缓 dolly-in</span>
+        
+        
+      </div>
+    </div>
+
+    <footer class="card-footer">
+      <span>Rev 1</span>
+      
+      <span class="status-badge approved">✓ 已审核</span>
+      
+      
+      
+    </footer>
+  </article>
+
+  <article class="card">
+    <header class="card-header">
+      <span class="panel-id">#19</span>
+      <span class="layout-badge">wide</span>
+      <span class="scene-ref">Scene 6</span>
+    </header>
+
+    <div class="card-body">
+      
+      <div class="image-placeholder">
+        <img src="../frames/storyboard_p19.jpg" alt="落版帧（生成尝试·字标示意）：GDST +「广东省拖」暖金字标于暗夜棕底；正片仍以后期精排为准" loading="lazy">
+      </div>
+      
+      
+      
+
+      <div class="description">落版帧（生成尝试·字标示意）：GDST +「广东省拖」暖金字标于暗夜棕底；正片仍以后期精排为准</div>
+
+      
+      <div class="prompt">奢侈品广告风格落版帧：暗夜棕#2A211C 纯净底色，画面中央暖金色衬线字标「GDST」大字（轻 bloom），下方小字「广东省拖」；大面积留白、克制、电影级打光；16:9</div>
+      
+
+      
+      <div class="subtitle-line">💬 字幕：字标：广东省拖 · GDST（zh · serif · center）</div>
+      
+
+      <div class="tech-meta">
+        <span class="tag">📷 50mm 落版静帧；暗夜棕底+暖金字标光</span>
+        <span class="tag">✨ 字标 bloom + 淡出（Fade out）</span>
+        
+      </div>
+    </div>
+
+    <footer class="card-footer">
+      <span>Rev 1</span>
+      
+      <span class="status-badge approved">✓ 已审核</span>
+      
+      
+      
+    </footer>
+  </article>
+
+
+</div>
+
+
+<!-- ═══ Sound Design ═══ -->
+<section class="sound-panel">
+  <h2>声音设计（Sound Design）</h2>
+  <div class="sound-row"><span class="sound-k">🎵 配乐</span><span>新古典极简（极简钢琴 + 极简弦乐）：柔音钢琴单音动机为主线，弦乐由大提琴独奏渐展至弦乐组；tempo 60-72 BPM，以全音符/二分音符动机为主（对齐旁白中慢语速与 1.2s/步步态）。全片脉动＝拖鞋「啪嗒」的音乐化木质敲击——声音设计音乐化：角色的声音签名即配乐的节拍器。六章情绪递进（2→9）；克制密度（环境音＞音乐，BR2049 层次原则），S5 大幅抽离为近静默，S6 落版后以静默收束（静默＝最后一个音符）。</span></div>
+  <div class="sound-row"><span class="sound-k">🎼 参考曲目</span><span>minimalist piano, soft melancholy, solo keys, emotional simple melody（现代极简钢琴：60-75 BPM）；minimal orchestral, slow build, intimate strings, contemplative（极简管弦：弦乐渐进）；wooden percussive texture, organic rhythm, footsteps as percussion, diegetic rhythm（木质敲击／声音设计音乐化：啪嗒即节拍）</span></div>
+  <div class="sound-row"><span class="sound-k">🎙 旁白</span><span>广东知情者第一人称（我/我们）——冷静带笑意，deadpan 不叫卖；中慢语速、句间停顿长；近讲感（耳边低语—面对面之间）；不表演、不煽情，像在讲一件早就想通的事。 · 普通话（F3 落定 2026-09-30；配音工具：火山 DoubaoVoice seed-audio-1.0）</span></div>
+  <div class="sound-row"><span class="sound-k">🔇 静默</span><span>静默三用：①微静默——每场旁白句间 0.5-1s 呼吸点；②中静默——S3 英雄登场前 2s（仅余环境）＋ S6 字标浮现前 2-3s（音乐停下）；③长静默×1——S6 落版定格后（音乐收束→极低环境 5s→淡出）：让画面完全主导，静默是最后一个音符。静默期保留极低环境底（非绝对无声）。</span></div>
+  <div class="sound-row"><span class="sound-k">🔊 音效</span><span>S1 微距：Foley＝塑料轻触与纹路摩擦的细腻近场声（近乎呼吸）；Ambience＝棚内极低空气底噪；首句旁白前留 1s 微静默；S2 图纸：Foley＝图纸展开/抚平、铅笔划线沙沙、色卡翻动；Design＝铅笔点色轻击（与钢琴同音高，音乐化）；Ambience＝工作室安静底噪；S3 街景：Foley＝「啪嗒」脚步声首次完整登场；Ambience＝石街环境（远处单车铃/风/城市低鸣）；Design＝章节转场重音（低频 thump＋手绘线 swish，落在章节接缝处）；S4 人群：Foley＝啪嗒×步伐节奏（与配乐节拍同频）、亚麻衣物摩擦；Ambience＝街市 murmured 人声（远、低）＋偶发单车铃；Design＝无（让人物主导）；S5 后路：Foley＝单次啪嗒特写（脚跟抬起/落下的细节音）；Ambience 降低 -6dB（负空间手法）；Design＝无（极简留白）；S6 收束：Foley＝夜风轻掠鞋面与石板；Ambience＝夜深巷静（远风/微虫声）；Design＝字标浮现「落版音」（低频暖垫＋轻泛音）→ 静默收束</span></div>
+  <div class="sound-row"><span class="sound-k">🎚 音频路线</span><span>external</span></div>
+</section>
+
+
+<!-- ═══ Footer ═══ -->
+<footer class="footer">
+  Generated by Muse Video Skill · 2026-09-30T08:11:12Z<br>
+  总镜数 19 · 网格 3×3
+</footer>
+
+</body>
+</html>

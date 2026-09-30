@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>把广东省拖拍成奢侈品大片 — 文学剧本</title>
+<style>
+  /* ── Courier 标准剧本格式 ── */
+  @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap');
+
+  :root {
+    --page-width: 8.5in;
+    --margin: 1.5in 1in 1in 1.5in; /* 标准剧本页边距 */
+    --text-color: #1a1a1a;
+    --bg-color: #faf9f5;
+    --accent: #cc785c;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+    font-size: 12pt;
+    line-height: 1.0; /* 标准剧本行距=1 */
+    color: var(--text-color);
+    background: var(--bg-color);
+    max-width: var(--page-width);
+    margin: 0 auto;
+    padding: 1.5in 1in 1in 1.5in;
+  }
+
+  /* ── 标题页 ── */
+  .title-page {
+    text-align: center;
+    margin-top: 3in;
+    page-break-after: always;
+  }
+
+  .title-page h1 {
+    font-size: 24pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 1em;
+    text-decoration: underline;
+  }
+
+  .title-page .byline {
+    font-size: 14pt;
+    margin-bottom: 2em;
+  }
+
+  .title-page .meta {
+    font-size: 11pt;
+    color: #666;
+    margin-top: 3in;
+    text-align: left;
+  }
+
+  .title-page .meta p {
+    margin-bottom: 0.3em;
+  }
+
+  /* ── 场景标题 ── */
+  .scene-header {
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+  }
+
+  .scene-header .slug {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .scene-header .info {
+    font-size: 10pt;
+    color: #555;
+    margin-top: 0.3em;
+  }
+
+  /* ── 剧本元素 ── */
+  .action {
+    margin: 0.7em 0;
+    text-align: justify;
+  }
+
+  .character {
+    margin: 1em 0 0 0;
+    padding-left: 2.2in;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+
+  .dialogue {
+    margin: 0 1in 0 1.5in;
+    max-width: 3.5in;
+    margin-bottom: 0.5em;
+  }
+
+  .parenthetical {
+    margin: 0 1.3in 0 1.8in;
+    font-style: italic;
+    color: #555;
+    font-size: 10pt;
+  }
+
+  .transition {
+    text-align: right;
+    margin: 1em 0;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  .shot {
+    margin: 0.5em 0;
+    font-weight: 700;
+  }
+
+  /* ── 技术备注 ── */
+  .tech-notes {
+    margin: 0.5em 0 1em 0;
+    padding: 0.5em 0.8em;
+    background: #f0f0f0;
+    border-left: 3px solid var(--accent);
+    font-size: 9pt;
+    color: #666;
+  }
+
+  .tech-notes dt {
+    font-weight: 700;
+    display: inline;
+    color: #444;
+  }
+
+  .tech-notes dd {
+    display: inline;
+    margin-right: 1.5em;
+  }
+
+  /* ── 页脚 ── */
+  .page-break { page-break-before: always; }
+
+  .footer {
+    margin-top: 2em;
+    padding-top: 1em;
+    border-top: 1px solid #ddd;
+    font-size: 9pt;
+    color: #999;
+    text-align: center;
+  }
+
+  /* ── 打印优化 ── */
+  @media print {
+    body {
+      padding: 1.5in 1in 1in 1.5in;
+      background: white;
+    }
+    .tech-notes { background: none; border-left-color: #999; }
+    .no-print { display: none; }
+  }
+
+  /* ── Dark mode ── */
+  @media (prefers-color-scheme: dark) {
+    body { background: #141413; color: #e0e0e0; }
+    .tech-notes { background: #1e1e1e; border-left-color: var(--accent); color: #aaa; }
+    .tech-notes dt { color: #ccc; }
+    .title-page .meta { color: #888; }
+    .scene-header .info { color: #999; }
+    .parenthetical { color: #999; }
+    .footer { color: #666; border-top-color: #333; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ 标题页 ═══ -->
+<div class="title-page">
+  <h1>把广东省拖拍成奢侈品大片</h1>
+  <div class="byline">编剧：Muse Video Skill</div>
+
+  <div class="meta">
+    <p><strong>场景类型</strong>：studio-ad</p>
+    <p><strong>预估时长</strong>：90s</p>
+    <p><strong>画幅比例</strong>：16:9</p>
+    <p><strong>风格类型</strong>：luxury-parody</p>
+    <p><strong>目标平台</strong>：xiaohongshu</p>
+    <p><strong>语言</strong>：zh-CN</p>
+    <p><strong>Logline</strong>：全世界当它是几块钱的廉价货，它偏要用一场奢侈品大片重新介绍自己。</p>
+    <p style="margin-top:1em;"><strong>导演阐述</strong>：一支 90 秒的「广东省拖」致敬片：借用参考片《如何把广东省凳拍成买不起的样子》的全部奢侈品广告语法（微距去识别化 → 章节化转场 → 款式命名 → 金色街景 → 去表演化演员 → 双关金句 → 品牌标收尾），把一双几块钱的人字拖当作奢侈品来介绍。文案与旁白不是第三者教学口吻，而是直接面向省拖本身说话：让「廉价」在奢侈的语言里完成一次反向加冕——反差即幽默，松弛即高级。</p>
+  </div>
+</div>
+
+<!-- ═══ 正文 ═══ -->
+<div class="page-break"></div>
+
+
+
+<div class="scene-header">
+  <div class="slug">1. 熟悉到陌生</div>
+  <div class="info">影棚A·暖橙墙面与浅色地板（微距布光台） · 无时间概念（棚内） · 14s</div>
+</div>
+
+
+<div class="action">全片由微距开场，不出现完整产品。①：鞋底波纹在3200K暖光下起伏，极缓推进，高光沿棱线流动；②：人字带织纹特写，焦点从纹路缓缓移到边缘透光；③：半透明塑料在侧逆光中透出层次光泽，极缓拉远，收在静帧上——此刻观众仍不知道这是什么。</div>
+
+
+
+<div class="character">角色</div>
+<div class="dialogue">旁白（第一人称·冷静带笑意；音色 Phase 5 定）：
+① 在广东，它比天气更常见。
+② 它贴着地面，也贴着我们的日子。
+③ 熟悉到，没人认真看过它第二眼。
+④ 这一次，我们认真看它第二眼。</div>
+
+
+
+
+
+
+
+
+
+
+<div class="scene-header">
+  <div class="slug">2. 给颜色起个名字</div>
+  <div class="info">影棚A + 图纸桌面（草图/尺寸标注/色卡） · 无时间概念（棚内） · 16s</div>
+</div>
+
+
+<div class="action">图纸在均匀柔光下铺满画面：三色拖鞋列位其上，红蓝铅笔标注线与尺寸数字清晰可见。①：俯视全景缓慢下降，纸面高光干净；②：色卡与三色拖鞋并置，铅笔尖轻点色块，像在指认证物；③：微距扫过标注线与材质边缘，收在静帧——为它立档、命名、给出身。</div>
+
+
+
+<div class="character">角色</div>
+<div class="dialogue">旁白（第一人称）：
+① 把它放上纸面，一切就严肃了起来。
+② 荔枝红、榕荫绿、骑楼白——它一直有自己的色号。
+③ 只是从来没人问过。
+④ 两片塑料，一条带子——结构简单得没有一句废话。</div>
+
+
+
+
+
+
+
+
+
+
+<div class="scene-header">
+  <div class="slug">3. 走进光里</div>
+  <div class="info">岭南骑楼石街·金色时刻 · 金色时刻（黄昏前） · 18s</div>
+</div>
+
+
+<div class="action">金色时刻的骑楼石街，光从柱列间涌入。①：低角度极缓推进的空镜，浮尘在光束中可见；②：红色拖鞋立于光斑中央，逆光在边缘镶上金边；③：极缓侧移，柱廊形成引导线，轮廓被光勾勒；④：浮尘光斑掠过鞋面的大特写，收在静帧——全片最庄重的一口气。</div>
+
+
+
+<div class="character">角色</div>
+<div class="dialogue">旁白（第一人称）：
+① 现在，让它走进光里。
+② 真正的经典，从不挑剔舞台。
+③ 它进过大排档，也进过演唱会。
+④ 不是它高攀了光——是光选对了脚。</div>
+
+
+
+
+
+
+
+
+
+
+<div class="scene-header">
+  <div class="slug">4. 穿它的人</div>
+  <div class="info">骑楼街巷·午后斜光 · 午后 · 16s</div>
+</div>
+
+
+<div class="action">阿广出场，去表演化演绎：不迎合镜头、不加速。①：Steadicam 步行速跟随他走过柱廊，午后斜光的明暗条带交替扫过身体；②：他在柱廊间驻足，平直目光望向纵深，像与镜头达成无声默契；③：低角度插入镜头只见双脚与红拖走过石板，啪嗒声与步伐同频——人与鞋，一场沉默的默契。</div>
+
+
+
+<div class="character">角色</div>
+<div class="dialogue">旁白（第一人称）：
+① 接着，穿它的人出现了。
+② 他走得很慢，慢得像整条街都在等他。
+③ 穿它的人，不需要向任何人解释。
+④ 有人喊他老板，有人喊他阿广——他都应。</div>
+
+
+
+
+
+
+
+
+
+
+<div class="scene-header">
+  <div class="slug">5. 后跟与后路</div>
+  <div class="info">街巷暗调段·斑驳光影 · 黄昏转暗 · 12s</div>
+</div>
+
+
+<div class="action">光线转暗，节奏放慢。①：暗巷全景，85%暗部，一束余光从巷口斜切；②：拖鞋静置于光影交界，镜头以0.2m/s极缓逼近；③：微距中脚跟抬起、带子受力、落下——「啪嗒」被翻译成画面上的微尘与一震的光影。玩笑话说出真心话的章节。</div>
+
+
+
+<div class="character">角色</div>
+<div class="dialogue">旁白（第一人称）：
+① 它没有后跟。
+② 真正往前走的人，不需要后跟。
+③ 一条带子，夹住脚，也夹得住日子。
+④ 啪嗒，啪嗒——松弛，是有声音的。</div>
+
+
+
+
+
+
+
+
+
+
+<div class="scene-header">
+  <div class="slug">6. 真正的选择</div>
+  <div class="info">骑楼空镜+落版位（暖灰转入夜） · 入夜（暖灰） · 14s</div>
+</div>
+
+
+<div class="action">夜色空镜收束。①：单盏街灯下的骑楼夜街，街心静静放着那双拖鞋，大面积留白；②：极缓推近，停在与夜平视的距离；③：字标 GDST 与「广东省拖」在暗夜棕底上浮现，暖金描边——用奢侈品的落版方式署名，静帧淡出。</div>
+
+
+
+<div class="character">角色</div>
+<div class="dialogue">旁白（第一人称）：
+① 夜深了，它被留在街心。
+② 它不是便宜——是不肯贵。
+③ 真正的自由，是一双不怕弄脏的鞋。
+④（设计字幕）广东省拖 · GDST</div>
+
+
+
+
+
+
+
+
+
+
+<!-- ═══ 页脚 ═══ -->
+<div class="footer">
+  Generated by Muse Video Skill · 2026-09-30T08:16:42Z<br>
+  编剧版本 1 · DP 版本 1 · 导演审核：True
+</div>
+
+</body>
+</html>

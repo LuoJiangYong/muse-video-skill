@@ -49,7 +49,37 @@ Agent 会自动匹配案例技法 → 注入角色 prompt → 走管线 → 导�
 | 音频路线 | 配乐 / 配音 / 音效的路线选择 + 生成 brief（解耦，不代生成）|
 | 模型调用指令 | Phase 7.5 编译：六段式 prompt + 多模态引用 + arkcli 命令 + 成本估算 + 下游工具配置（ComfyUI / HyperFrames / Kling）|
 
-完整成品见 [`assets/examples/`](assets/examples/)——科幻短片与棚拍广告两个全流程示例（含 HTML / Excel 导出）。
+完整成品见 [`assets/examples/`](assets/examples/)——科幻短片与棚拍广告两个全流程示例（含 HTML / Excel 导出）。真实项目的完整实测见下方「项目实测」。
+
+---
+
+## 项目实测
+
+> 以下 6 张实拍截图来自一次完整的 8+1 阶段管线实测——90 秒棚拍广告《把广东省拖拍成奢侈品大片》：从参考视频拆解（Phase 1）到模型编译（Phase 7.5），全部由本 Skill 产出。点击 01–04 可在浏览器中打开完整页面。
+
+[![分镜总览](docs/images/gallery-01-storyboard-overview.jpg)](https://luojiangyong.com/muse-video-skill/docs/preview/guangdong-slipper/exports/storyboard.html)
+
+**01 · 分镜总览** — 19 镜 3×3 分镜网格；每格携带画面 / 描述 / 字幕 / 机位 / VFX / 审核状态
+
+[![分镜中段](docs/images/gallery-02-storyboard-panels.jpg)](https://luojiangyong.com/muse-video-skill/docs/preview/guangdong-slipper/exports/storyboard.html)
+
+**02 · 分镜中段** — 微距 / 人物 / 街景多类型镜头，画面与描述层延续
+
+[![编译预览](docs/images/gallery-03-compilation-preview.jpg)](https://luojiangyong.com/muse-video-skill/docs/preview/guangdong-slipper/exports/compilation-preview.html)
+
+**03 · 编译预览（Phase 7.5）** — 六段式 prompt / 多模态引用映射（首帧 · 尾帧 · image_ref）/ arkcli 命令 / 成本估算（19 镜可逐镜展开核对）
+
+[![文学剧本](docs/images/gallery-04-script-literary.jpg)](https://luojiangyong.com/muse-video-skill/docs/preview/guangdong-slipper/exports/script-literary.html)
+
+**04 · 文学剧本** — 好莱坞 Courier 标准格式：标题页（Logline + 导演阐述）+ 场景与旁白
+
+![成片封面](docs/images/gallery-05-covers.jpg)
+
+**05 · 成片封面** — Seedream 生成的竖版 / 横版双封面
+
+![参考视频拆解](docs/images/gallery-06-reference-deconstruction.jpg)
+
+**06 · 参考视频拆解（Phase 1）** — 参考片拉片帧阵列；技法摘要注入后续角色
 
 ---
 
@@ -109,6 +139,7 @@ muse-video-skill/
 ├── README.md / README.en.md    ← 项目页（中文 / English）
 ├── LICENSE                     ← MIT
 ├── .github/workflows/          ← CI 质量门（语法 / 索引 / 契约）
+├── docs/                       ← 项目实测画廊（实拍截图 + Pages 在线预览包）
 ├── references/                 ← 领域知识（按需加载）
 │   ├── cases/                  ← 38 标杆案例 + 索引 + 案例帧素材
 │   ├── roles/                  ← 6 角色文档
@@ -171,4 +202,4 @@ python -m py_compile scripts/*.py              # 全脚本可编译
 
 ## 版本
 
-[v0.36.2](metadata/CHANGELOG.md) — 中英双语项目页 + MIT LICENSE；38 案例技法库 × 六角色 × 8+1 阶段管线，参考图资产化 / 字幕层 / 音频路线 / 模型编译（Seedance 2.0）。
+[v0.36.4](metadata/CHANGELOG.md) — 项目实测画廊（6 张实拍截图 + GitHub Pages 在线预览）；38 案例技法库 × 六角色 × 8+1 阶段管线，参考图资产化 / 字幕层 / 音频路线 / 模型编译（Seedance 2.0）。
