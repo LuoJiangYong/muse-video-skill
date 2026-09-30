@@ -6,6 +6,27 @@
 
 ---
 
+## [0.36.4] — 2026-09-30
+
+### 项目实测画廊：README 实拍截图（单列）+ GitHub Pages 在线预览
+
+**背景**：一次完整实测（guangdong-slipper《把广东省拖拍成奢侈品大片》90s 棚拍广告全链路）后画廊解冻——用户拍板（①6 图 ②单列布局 ③B 方案最完整在线预览）；README 从纯文字升级为实拍画廊 + 可点开的完整成品页。
+
+**改动**：
+- `docs/images/`（新增 6 张实拍截图 · 1185px 宽）：分镜总览 / 分镜中段 / 编译预览（S01 展开态）/ 文学剧本（标题页+场景1）/ 成片封面（竖+横合成）/ 参考视频拆解（拉片帧阵列）
+- `docs/preview/guangdong-slipper/`（新增自包含在线预览包）：分镜页 + 编译预览（原生 details 手风琴）+ 文学剧本 + 24 张压缩帧（1200px / q5）+ 参考海报；HTML 副本引用改写（.png→.jpg）
+- `README.md` / `README.en.md`：新增「项目实测」单列画廊节（6 图 + 图注 + 01–04 点击在线预览）+ 目录树登记 docs/ 行 + 版本行更新
+- `.nojekyll`（新增）：Pages 静态直出（跳过 Jekyll 对 md 的渲染处理）
+- `.gitignore`：docs/ 图片白名单例外（`!docs/**/*.png` / `!docs/**/*.jpg`，沿既有 assets/examples / cases/assets 例外惯例）
+- `CONSTITUTION.md`：目录树登记 docs/ + 版本尾注 v0.36.4
+
+**影响范围**：41 文件（新增 35 = docs 34 + .nojekyll；修改 6 = 双 README / CONSTITUTION / SKILL / CHANGELOG / .gitignore，不含本条目）。
+
+**验证**：预览包本地渲染实测（分镜 19/19 · 编译预览 51/51 图全载零损坏 · accordion 19 组正常）· 隐私扫描（三个 HTML 无本机路径）· build_index 0 errors / 0 dead links · EOL 0 MIXED · Pages 随推送启用并复核链接。
+
+**迁移**：无。
+
+---
 ## [0.36.3] — 2026-09-29
 
 ### 仓库质量门：GitHub Actions CI（语法 / 索引 / 契约）
