@@ -28,6 +28,7 @@ output/
 !references/cases/assets/**/*.jpg
 !docs/**/*.png
 !docs/**/*.jpg
+!docs/**/*.mp4
 
 # Environment
 .env

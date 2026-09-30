@@ -83,6 +83,24 @@ Full examples in [`assets/examples/`](assets/examples/) — a sci-fi short and a
 
 ---
 
+## Rendered Shots
+
+> GIF previews of three rendered shots (silent loops); click to watch the MP4 originals in your browser (S2 / S3 with stereo audio).
+
+[![S1 · Shot 3 — studio macro](docs/images/renders-01-s1-p3.gif)](https://luojiangyong.com/muse-video-skill/docs/preview/guangdong-slipper/renders/s1/shot_p3.mp4)
+
+**S1 · Shot 3 — Studio macro** — glass-like translucency under amber studio light
+
+[![S2 · Shot 5 — design reveal](docs/images/renders-02-s2-p5.gif)](https://luojiangyong.com/muse-video-skill/docs/preview/guangdong-slipper/renders/s2/shot_p5.mp4)
+
+**S2 · Shot 5 — Design reveal** — red / white / green concept sketches on a technical drawing
+
+[![S3 · Shot 10 — seaside macro](docs/images/renders-03-s3-p10.gif)](https://luojiangyong.com/muse-video-skill/docs/preview/guangdong-slipper/renders/s3/shot_p10.mp4)
+
+**S3 · Shot 10 — Seaside macro** — golden-hour backlight on sand texture
+
+---
+
 ## Pipeline
 
 ```
@@ -202,4 +220,4 @@ Cases cite their works and creators; technique breakdowns are for study and rese
 
 ## Version
 
-[v0.36.5](metadata/CHANGELOG.md) — Project showcase (6 real screenshots + Pages live preview: storyboard / compilation / literary script / breakdown sheet); 38-case technique library × six-role crew × 8+1 phase pipeline; reference-asset registry, subtitles, audio routing and model compilation (Seedance 2.0).
+[v0.36.6](metadata/CHANGELOG.md) — Project showcase + rendered shots (3 clips inline as GIF / MP4 online); 38-case technique library × six-role crew × 8+1 phase pipeline; reference-asset registry, subtitles, audio routing and model compilation (Seedance 2.0).
